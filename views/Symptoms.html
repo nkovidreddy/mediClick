@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html ng-app="masters">
+<head>
+<title>MediClick</title>
+
+
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+  <script src="../public/js/jquery.min.js"></script>
+ <script src="http://code.jquery.com/jquery-2.1.1.js"></script>
+<link href="../public/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
+<!-- Custom Theme files -->
+<!--theme-style-->
+<link href="../public/css/style.css" rel="stylesheet" type="text/css" media="all" />	
+<link href="../public/css/templatemo_style.css" rel="stylesheet" type="text/css" media="all" />	
+
+<!--onload-->
+<script>
+$(document).ready(function(){    
+  
+    $('.targetDiv').hide(); 
+});
+</script>
+
+
+<!--header-->
+<body>
+<div class="header header-top">
+	<div class="container">
+		<div class="logo">
+		<h1><a href="index.html">
+			MediClick
+		</a></h1>
+		</div>
+		<div class="top-nav">
+			<span class="menu"><img src="images/menu.png" alt=""> </span>
+				<ul>
+					<li ><a href="index.html" class="hvr-sweep-to-bottom">Home</a></li>
+					<li><a href="services.html" class="hvr-sweep-to-bottom">Services</a></li>
+					<li  class="active"><a href="Remedies.html" >Remedies</a></li>
+					<li><a href="typo.html" class="hvr-sweep-to-bottom">Typo </a></li>
+					<li><a href="mail.html" class="hvr-sweep-to-bottom">Mail </a></li>
+				</ul>
+		
+					<script>
+						$("span.menu").click(function(){
+							$(".top-nav ul").slideToggle(500, function(){
+							});
+						});
+				</script>				
+		</div>
+		<div class="clearfix"> </div>
+	</div>
+<!---->
+</div>
+
+
+<div class="container">
+ <div class="row">
+    <div class="col-md-6" style="
+    background-color: rgba(125, 63, 152, 0.35);">
+    <h3>Symptom Checker</h3>
+<form>
+
+   <div class="form-group">
+  
+    <input type="text" class="form-control" id="Age" placeholder="Age">
+  </div>
+      <label for="gender">Select a gender</label>
+  <div class="radio">
+   <label>
+      <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+      Male
+    </label>
+    <label>
+      <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+     Female
+    </label>
+  </div>
+  <fieldset class="form-group">
+    <label for="exampleSelect1">Select a body part</label>
+    <select class="form-control" id="exampleSelect1">
+      <option>head</option>
+      <option>hands</option>
+      <option>legs</option>
+    </select>
+  </fieldset>
+  <fieldset class="form-group">
+    <label for="exampleSelect1">Select a specific body part</label>
+    <select class="form-control" id="exampleSelect1">
+       <option>nose</option>
+      <option>ear</option>
+      <option>scalp</option>
+    </select>
+  </fieldset>
+  
+ 
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+
+
+
+</div>
+<div class="col-md-6" >
+	
+	<img class="img-responsive anatomy" src="../public/images/humanBody.jpg"/ >
+</div>
+  </div>
+</div>
+
+
+<div class="container">
+ <div class="row">
+<div class="col-lg-12" >
+	
+	
+	<div class="top-blog">
+			<h3>List of Symptoms</h3>
+			<p> </p>
+		</div>	
+  
+  <div class="list-group">
+    <a href="#" class="list-group-item">Cold</a>
+    <a href="#" class="list-group-item">HeadAche</a>
+    <a href="#" class="list-group-item">Migraine</a>
+  </div>
+</div>
+</div>
+</div>
+
+
+</body>
+<style type="text/css">
+	
+	.moveBtn{
+		margin-left: 30%;
+    margin-top: 5%;
+	}
+	.img-responsive {
+		height: 55%;
+		width: 55%;
+	}
+
+</style>
+</html>
+
+

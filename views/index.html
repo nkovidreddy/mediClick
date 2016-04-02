@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+ <html ng-app="masters">
+ <head>
+ <meta charset="UTF-8">
+ <title>Symptom Checker Application - Mediclick</title>
+ <base href="/">
+ <!-- Loading bootstrap and stylesheet -->
+ <link rel="stylesheet" href="../public/css/style.css">
+ <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+ <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css">
+ <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css">
+ <!-- JS -->
+ <!-- load angular and our custom application -->
+ <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+ <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-route.js"></script>
+ <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-animate.js"></script>
+ <script src="../public/js/app.routes.js"></script>
+ <script src="../public/js/app.js"></script>
+</head>
+
+<!--<body ng-app="masters">-->
+<body ng-controller="indexController">
+
+<!-- HEADER AND NAVBAR -->
+<header>
+	<nav class="navbar navbar-default">
+	<div class="navbar-header">
+	<a class="navbar-brand" href="/">MediClick</a>
+	</div>
+
+	<ul class="nav navbar-nav navbar-right">
+	<li><a href="/home"><i class="fa fa-home"></i> Home</a></li>
+	<li><a href="/Symptoms"><i class="fa fa-shield"></i> Symptoms</a></li>
+	<li><a href="/Remedies"><i class="fa fa-comment"></i> Remedies</a></li>
+	<li><a href="/gmaps"><i class="fa fa-comment"></i> GMaps</a></li>
+	</ul>
+	</nav>
+</header>
+
+<div id="content-views">
+<div ng-view></div>
+</div>
+
+ 
+
+
+ </body>
+ </html>

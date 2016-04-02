@@ -1,0 +1,65 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html ng-app="masters">
+<head>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
+  <script src="../public/js/gmaps.js" type="text/javascript"></script>
+   <link rel="stylesheet" href="../public/css/style.css">
+</head>
+<body>
+  <table id="choose-address-table" class="ui-widget ui-widget-content">
+    <thead>
+        <tr class="ui-widget-header ">
+            <th>Name/Nr.</th>
+            <th>Area of Expertise</th>
+            <th>Address</th>
+            <th>Country</th>
+            <th>Get Directions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><span>John</span>
+            </td>
+            <td>Physician</td>
+            <td class="nr">San Jose</td>
+            <td>USA</td>
+            <td>
+                <button id="routeGo1" onClick="calcGoogleRoute()">Route</button>
+            </td>
+        </tr>
+        <tr>
+            <td>Joe</td>
+            <td>Physician</td>
+            <td class="nr">San Francisco</td>
+            <td>USA</td>
+            <td>
+                <button id="routeGo2" onClick="calcGoogleRoute()">Route</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+  <input type="text" id="routeFrom" name="routeFrom" value="" />
+<label for="routeFrom">From</label>
+<br />
+<input type="text" id="routeTo" name="routeTo" value="" />
+<label for="routeTo">To</label>
+<br />
+<select id="routeMode" name="routeMode">
+  <option value="DRIVING">Driving</option>
+  <option value="WALKING">Walking</option>
+  <option value="BICYCLING">Bicycling</option>
+  <option value="TRANSIT">Transit</option>
+</select>
+<label for="routeMode">Mode</label>
+<br />
+<div class="textcenter">
+ <button id="routeGo">Route</button>
+  <button id="routeClear">Clear Route</button>
+</div>
+<div id="map_canvas"></div>
+<div id="directions"></div>
+
+</body>
+</html>	

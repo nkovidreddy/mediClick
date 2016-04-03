@@ -1,7 +1,6 @@
 {
   "name": "masters",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "dependencies": {
     "angular": "^1.5.3",
@@ -13,6 +12,15 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "author": "Sindhura",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sindhurav18/mediClick.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sindhurav18/mediClick/issues"
+  },
+  "homepage": "https://github.com/sindhurav18/mediClick#readme",
+  "description": ""
 }

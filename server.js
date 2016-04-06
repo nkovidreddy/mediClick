@@ -50,7 +50,7 @@ app.use(express.static(__dirname+'/'));
 
 //Setup one route to index.html file
  
-app.get('*',function(req,res){
+app.get('/',function(req,res){
  	//res.send('index',{title:'hey',message:'Hello there!'});
  	res.sendFile(path.join(__dirname+'/views/index.html'))
  	//next();

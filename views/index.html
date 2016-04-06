@@ -19,7 +19,7 @@
 </head>
 
 <!--<body ng-app="masters">-->
-<body ng-controller="indexController">
+<body ng-controller="indexController as index">
 
 <!-- HEADER AND NAVBAR -->
 <header>
@@ -37,12 +37,41 @@
 	</nav>
 </header>
 
-<div id="content-views">
-<div ng-view></div>
-</div>
+<div class="jumbotron">
+<!-- display the message -->
+<h2>This is my message:</h2>
+{{ index.message }}
+<h2>This is my list:</h2>
+<table class="table table-bordered">
+ <thead>
+ <tr>
+ <td>Name</td>
+ <td>Color</td>
+ <td>Nerd Level</td>
+ </tr>
+ </thead>
+ <tbody>
+ <tr ng-repeat="computer in index.computers">
+<td>{{ computer.name }}</td>
+ <td>{{ computer.color }}</td>
+ <td>{{ computer.nerdness }}</td>
+ </tr>
+ </tbody>
+ </table>
+ </div>
 
- 
+ <div class="form-group">
+<label>Message</label>
+ <input type="text" class="form-control" ng-model="index.message">
+ </div>
+<form class="form-inline" ng-submit="index.addComputer()">
 
+ <input type="text" class="form-control" placeholder="Macbook" ng-model="index.computerData.name">
+ <input type="text" class="form-control" placeholder="Silver" ng-model="index.computerData.color">
+ <input type="number" class="form-control" placeholder="8" ng-model="index.computerData.nerdness">
+
+ <button type="submit" class="btn btn-success">Add</button>
+ </form>
 
  </body>
  </html>

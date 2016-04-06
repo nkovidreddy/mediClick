@@ -13,7 +13,7 @@ $routeProvider
 
 
 .when('/home', {
- 	templateUrl : 'views/home.html',
+ 	templateUrl : 'views/register.html',
  	controller : 'homeController',
  	controllerAs: 'Home'
  	})

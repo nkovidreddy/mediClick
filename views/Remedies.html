@@ -24,16 +24,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <link href="../public/css/templatemo_style.css" rel="stylesheet" type="text/css" media="all" />	
 
 
+
+<body class="container" ng-app="masters" ng-controller="remediesController as remedies ">
 <!--onload-->
+
 <script>
 $(document).ready(function(){    
   
     $('.targetDiv').hide(); 
 });
 </script>
-<!--onload-->
-<body ng-app="masters">
-<!--header-->
+<!--
+header
+
 <div class="header header-top">
 	<div class="container">
 		<div class="logo">
@@ -50,8 +53,8 @@ $(document).ready(function(){
 					<li><a href="typo.html" class="hvr-sweep-to-bottom">Typo </a></li>
 					<li><a href="mail.html" class="hvr-sweep-to-bottom">Mail </a></li>
 				</ul>
-				<!--<div class="clearfix"> </div>-->
-						<!--script-->
+		
+				
 					<script>
 						$("span.menu").click(function(){
 							$(".top-nav ul").slideToggle(500, function(){
@@ -61,8 +64,8 @@ $(document).ready(function(){
 		</div>
 		<div class="clearfix"> </div>
 	</div>
-<!---->
-</div>
+
+</div>-->
 <!--contact-->	
 <div class="container">
 	<div class="blog">
@@ -121,7 +124,7 @@ $(document).ready(function(){
 		<!--added-->
 		
    </div>
-</div>
+
 <div id="div1" class="targetDiv">
 <div class="panel panel-primary">
       <div class="panel-heading">First adid</div>
@@ -241,12 +244,11 @@ $(document).ready(function(){
         pager.showPage(1);
     </script>       <!--thumb nails - end-->
 
-
-
-
+  </div>
 
     </div>
-    </div>
+
+
     <div id="div2" class="targetDiv">
    <div class="panel panel-primary">
       <div class="panel-heading">Home Remedies</div>
@@ -261,7 +263,12 @@ $(document).ready(function(){
     </div>
    
 
-    <script>
+
+</body>
+
+
+
+<script>
 jQuery(function(){
          
         jQuery('.img-responsive').click(function(){
@@ -271,9 +278,6 @@ jQuery(function(){
 });
 </script>
 
-</body>
-</html>
-
 <script>
 $(document).ready(function() {
     $('.image-frame').hover(function(){
@@ -281,3 +285,4 @@ $(document).ready(function() {
 	});
 });
 </script>
+</html>

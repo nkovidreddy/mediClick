@@ -29,7 +29,7 @@ $routeProvider
  	})
 
  	.when('/Remedies', {
- 	templateUrl : 'views/Remedies.html',
+ 	templateUrl : 'views/Rem.html',
  	controller : 'remediesController',
  	controllerAs: 'Remedies'
  	})

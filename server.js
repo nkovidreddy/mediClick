@@ -71,7 +71,7 @@ app.get('/Symptoms',function(req,res){
 
 app.get('/Remedies',function(req,res){
  	//res.send('index',{title:'hey',message:'Hello there!'});
- 	res.sendFile(path.join(__dirname+'/views/Remedies.html'))
+ 	res.sendFile(path.join(__dirname+'/views/Rem.html'))
  	//next();
  });
 app.get('/gmaps',function(req,res){

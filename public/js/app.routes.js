@@ -10,13 +10,18 @@ $routeProvider
  // 	})
 
 // route for the home page
-
-
-.when('/home', {
- 	templateUrl : 'views/register.html',
- 	controller : 'homeController',
- 	controllerAs: 'Home'
+.when('/', {
+ 	templateUrl : 'views/index.html',
+ 	controller : 'indexController',
+ 	controllerAs: 'index'
  	})
+
+.when('/register', {
+ 	templateUrl : 'views/register.html',
+ 	controller : 'registerController',
+ 	controllerAs: 'register'
+ 	})
+
  	.when('/Symptoms', {
  	templateUrl : 'views/Symptoms.html',
  	controller : 'symptomsController',

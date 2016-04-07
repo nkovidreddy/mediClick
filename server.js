@@ -56,11 +56,12 @@ app.get('/',function(req,res){
  	//next();
  });
 
-app.get('/home',function(req,res){
+app.get('/register',function(req,res){
  	//res.send('index',{title:'hey',message:'Hello there!'});
  	res.sendFile(path.join(__dirname+'/views/register.html'))
  	//next();
  });
+
 
 app.get('/Symptoms',function(req,res){
  	//res.send('index',{title:'hey',message:'Hello there!'});

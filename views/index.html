@@ -1,77 +1,343 @@
-<!DOCTYPE html>
- <html ng-app="masters">
- <head>
- <meta charset="UTF-8">
- <title>Symptom Checker Application - Mediclick</title>
- <base href="/">
- <!-- Loading bootstrap and stylesheet -->
- <link rel="stylesheet" href="../public/css/style.css">
- <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
- <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css">
- <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css">
- <!-- JS -->
- <!-- load angular and our custom application -->
+<!doctype html>
+<!--[if lt IE 7]><html lang="en" class="no-js ie6"><![endif]-->
+<!--[if IE 7]><html lang="en" class="no-js ie7"><![endif]-->
+<!--[if IE 8]><html lang="en" class="no-js ie8"><![endif]-->
+<!--[if gt IE 8]><!-->
+<html ng-app="masters">
+<!--<![endif]-->
+
+<head>
+    <meta charset="UTF-8">
+    <title>MediClick</title>
+
+<!--angular routes-->
+ <script src="../public/js/app.routes.js"></script>
+ <script src="../public/js/app.js"></script>
  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-route.js"></script>
  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-animate.js"></script>
- <script src="../public/js/app.routes.js"></script>
- <script src="../public/js/app.js"></script>
+
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="shortcut icon" href="favicon.png">
+
+    <link rel="stylesheet" href="../public/css2/bootstrap.css">
+    
+    <link rel="stylesheet" href="../public/css2/animate.css">
+    <link rel="stylesheet" href="../public/css2/font-awesome.min.css">
+    <link rel="stylesheet" href="../public/css2/slick.css">
+    <link rel="stylesheet" href="../public/js2/rs-plugin/css/settings.css">
+
+    <script type="text/javascript" src="../public/js2/modernizr.custom.32033.js"></script>
+    
+    <link rel="stylesheet" href="../public/css2/eco.css">
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
 </head>
 
-<!--<body ng-app="masters">-->
-<body ng-controller="indexController as index">
+<body ng-app="masters" ng-controller="indexController as index">
 
-<!-- HEADER AND NAVBAR -->
-<header>
-	<nav class="navbar navbar-default">
-	<div class="navbar-header">
-	<a class="navbar-brand" href="/">MediClick</a>
-	</div>
+    <div class="pre-loader">
+        <div class="load-con">
+            <img src="../public/img/logo.png" class="animated fadeInDown" alt="">
+            <div class="spinner">
+              <div class="bounce1"></div>
+              <div class="bounce2"></div>
+              <div class="bounce3"></div>
+            </div>
+        </div>
+    </div>
+   
+    <header>
+        
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="fa fa-bars fa-lg"></span>
+                        </button>
+                        <a class="navbar-brand" href="index.html">
+                            <img src="../public/images/logo.png" alt="" class="logo">
+                        </a>
+                    </div>
 
-	<ul class="nav navbar-nav navbar-right">
-	<li><a href="/home"><i class="fa fa-home"></i> Home</a></li>
-	<li><a href="/Symptoms"><i class="fa fa-shield"></i> Symptoms</a></li>
-	<li><a href="/Remedies"><i class="fa fa-comment"></i> Remedies</a></li>
-	<li><a href="/gmaps"><i class="fa fa-comment"></i> GMaps</a></li>
-	</ul>
-	</nav>
-</header>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-<div class="jumbotron">
-<!-- display the message -->
-<h2>This is my message:</h2>
-{{ index.message }}
-<h2>This is my list:</h2>
-<table class="table table-bordered">
- <thead>
- <tr>
- <td>Name</td>
- <td>Color</td>
- <td>Nerd Level</td>
- </tr>
- </thead>
- <tbody>
- <tr ng-repeat="computer in index.computers">
-<td>{{ computer.name }}</td>
- <td>{{ computer.color }}</td>
- <td>{{ computer.nerdness }}</td>
- </tr>
- </tbody>
- </table>
- </div>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="#about">Home</a>
+                            </li>
+                            <li><a href="#features">features</a>
+                            </li>
+                            <li><a href="/Symptoms">Symptom Checker</a>
+                            </li>
+                            <li><a href="/Remedies">Remedies</a>
+                            </li>
+                            <li><a href="#demo">Doctor</a>
+                            </li>
+                            <li><a class="getApp" data-toggle="modal" data-target="#myModal">Sign In</a>
+                            </li>
+                            <li><a href="/register">Register</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /.navbar-collapse -->
+                </div>
+                <!-- /.container-->
+        </nav>
+    <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        
+        <div class="modal-body">
+         <!-- login -->
+         <div class="wrapper">
+    <form class="form-signin">       
+      <h2 class="form-signin-heading">Please login</h2>
+      <input type="text" class="form-control" name="username" placeholder="Email Address" required="" autofocus="" />
+      <input type="password" class="form-control" name="password" placeholder="Password" required=""/>      
+      <label class="checkbox">
+        <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
+      </label>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>   
+    </form>
+  </div>
+  <!--end-->
+        </div>
+        
+      </div>
+    </div>
+  </div>
+        
+  
+        
+        <!--RevSlider-->
+        <div class="tp-banner-container">
+            <div class="tp-banner" >
+                <ul>
+                    <!-- SLIDE  -->
+                    <li data-transition="fade" data-slotamount="7" data-masterspeed="1500" >
+                        <!-- MAIN IMAGE -->
+                        <img src="../public/img/transparent.png"  alt="slidebg1"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+                        <!-- LAYERS -->
+                        <!-- LAYER NR. 1 -->
+                        <div class="tp-caption lfl fadeout hidden-xs"
+                            data-x="left"
+                            data-y="bottom"
+                            data-hoffset="30"
+                            data-voffset="0"
+                            data-speed="500"
+                            data-start="700"
+                            data-easing="Power4.easeOut">
+                            <img src="../public/img/eco/Slides/hih.png" alt="">
+                        </div>
 
- <div class="form-group">
-<label>Message</label>
- <input type="text" class="form-control" ng-model="index.message">
- </div>
-<form class="form-inline" ng-submit="index.addComputer()">
+                        <div class="tp-caption lfl fadeout visible-xs"
+                            data-x="left"
+                            data-y="center"
+                            data-hoffset="700"
+                            data-voffset="0"
+                            data-speed="500"
+                            data-start="700"
+                            data-easing="Power4.easeOut">
+                            <img src="../public/img/eco/iphone-eco.png" alt="">
+                        </div>
 
- <input type="text" class="form-control" placeholder="Macbook" ng-model="index.computerData.name">
- <input type="text" class="form-control" placeholder="Silver" ng-model="index.computerData.color">
- <input type="number" class="form-control" placeholder="8" ng-model="index.computerData.nerdness">
+                        <div class="tp-caption large_white_bold sft" data-x="550" data-y="center" data-hoffset="0" data-voffset="-80" data-speed="500" data-start="1200" data-easing="Power4.easeOut">
+                            MediClick
+                        </div>
+                        <div class="tp-caption large_white_light sfr" data-x="770" data-y="center" data-hoffset="0" data-voffset="-80" data-speed="500" data-start="1400" data-easing="Power4.easeOut">
+                            
+                        </div>
+                        <div class="tp-caption large_white_light sfb" data-x="550" data-y="center" data-hoffset="0" data-voffset="0" data-speed="1000" data-start="1500" data-easing="Power4.easeOut">
+                            Health in Your Hands
+                        </div>
 
- <button type="submit" class="btn btn-success">Add</button>
- </form>
+                        <div class="tp-caption sfb hidden-xs" data-x="550" data-y="center" data-hoffset="0" data-voffset="85" data-speed="1000" data-start="1700" data-easing="Power4.easeOut">
+                            <a href="#about" class="btn btn-primary inverse btn-lg">LEARN MORE</a>
+                        </div>
+                        <div class="tp-caption sfr hidden-xs" data-x="730" data-y="center" data-hoffset="0" data-voffset="85" data-speed="1500" data-start="1900" data-easing="Power4.easeOut">
+                            <a href="#getApp" class="btn btn-default btn-lg">Sign In</a>
+                        </div>
 
- </body>
- </html>
+                    </li>
+                    <!-- SLIDE 2 -->
+                    <li data-transition="zoomout" data-slotamount="7" data-masterspeed="1000" >
+                        <!-- MAIN IMAGE -->
+                        <img src="../public/img/transparent.png"  alt="slidebg1"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+                        <!-- LAYERS -->
+                        <!-- LAYER NR. 1 -->
+                        <div class="tp-caption lfb fadeout hidden-xs"
+                            data-x="center"
+                            data-y="bottom"
+                            data-hoffset="0"
+                            data-voffset="0"
+                            data-speed="1000"
+                            data-start="700"
+                            data-easing="Power4.easeOut">
+                            <img src="../public/img/eco/Slides/docs.png" alt="">
+                        </div>
+
+                        
+                        <div class="tp-caption large_white_light sft" data-x="center" data-y="250" data-hoffset="0" data-voffset="0" data-speed="1000" data-start="1400" data-easing="Power4.easeOut">
+                             <i class="fa fa-heart"></i>
+                        </div>
+                        
+                        
+                    </li>
+
+                    <!-- SLIDE 3 -->
+                    <li data-transition="zoomout" data-slotamount="7" data-masterspeed="1000" >
+                        <!-- MAIN IMAGE -->
+
+                        <img src="../public/img/transparent.png"  alt="slidebg1"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+                        <!-- LAYERS -->
+                        <!-- LAYER NR. 1 -->
+                        <div class="tp-caption customin customout hidden-xs"
+                            data-x="right"
+                            data-y="center"
+                            data-hoffset="0"
+                            data-customin="x:50;y:150;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.5;scaleY:0.5;skewX:0;skewY:0;opacity:0;transformPerspective:0;transformOrigin:50% 50%;"
+                        data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                            data-voffset="50"
+                            data-speed="1000"
+                            data-start="700"
+                            data-easing="Power4.easeOut">
+                            <img src="../public/img/eco/Slides/dia.png" alt="">
+                        </div>
+
+                        <div class="tp-caption customin customout visible-xs"
+                            data-x="center"
+                            data-y="center"
+                            data-hoffset="0"
+                            data-customin="x:50;y:150;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.5;scaleY:0.5;skewX:0;skewY:0;opacity:0;transformPerspective:0;transformOrigin:50% 50%;"
+                        data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                            data-voffset="0"
+                            data-speed="1000"
+                            data-start="700"
+                            data-easing="Power4.easeOut">
+                            <img src="../public/img/eco/Slides/family-eco.png" alt="">
+                        </div>
+
+                        <div class="tp-caption lfb visible-xs" data-x="center" data-y="center" data-hoffset="0" data-voffset="400" data-speed="1000" data-start="1200" data-easing="Power4.easeOut">
+                            <a href="#" class="btn btn-primary inverse btn-lg">Check</a>
+                        </div>
+
+                        
+                        <div class="tp-caption mediumlarge_light_white sfl hidden-xs" data-x="left" data-y="center" data-hoffset="0" data-voffset="-50" data-speed="1000" data-start="1000" data-easing="Power4.easeOut">
+                           Get your exclusive medical diagnosis of your symptoms
+                        </div>
+                        <div class="tp-caption mediumlarge_light_white sft hidden-xs" data-x="left" data-y="center" data-hoffset="0" data-voffset="0" data-speed="1000" data-start="1200" data-easing="Power4.easeOut">
+                           And Remedies for your illness
+                        </div>
+                        <div class="tp-caption small_light_white sfb hidden-xs" data-x="left" data-y="center" data-hoffset="0" data-voffset="80" data-speed="1000" data-start="1600" data-easing="Power4.easeOut">
+                           <p>MediClick performs a refined exclusive medical diagnosis on the symptoms entered by you. <br> It also offers various first aid, home remedies and drugs for your illness.</p>
+                        </div>
+
+                        <div class="tp-caption lfl hidden-xs" data-x="left" data-y="center" data-hoffset="0" data-voffset="160" data-speed="1000" data-start="1800" data-easing="Power4.easeOut">
+                            <a href="#" class="btn btn-primary inverse btn-lg">Check</a>
+                        </div>
+                        
+                        
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+
+
+    </header>
+
+
+    <div class="wrapper">
+
+        
+
+        <section id="features">
+            <div class="container">
+                
+                <div class="section-heading scrollpoint sp-effect3">
+                    <h1>Features</h1>
+                    <div class="divider"></div>
+                    <p>MediClick offers a variety of features</p>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3 col-sm-3 col-xs-6">
+                        <div class="about-item scrollpoint sp-effect2">
+                          <!--  <i class="fa fa-download fa-2x"></i>-->
+                          <img src="../public/img/eco/sym.png">
+                            <h3>Symptom Checker</h3>
+                            <p>Get a diagnosis of your symptoms</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-6" >
+                        <div class="about-item scrollpoint sp-effect5">
+                         <!--   <i class="fa fa-mobile fa-2x"></i>-->
+                         <img src="../public/img/eco/rem.png">
+                            <h3>Get Remedies</h3>
+                            <p>Get remedies for your illness</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-6" >
+                        <div class="about-item scrollpoint sp-effect5">
+                         <!--   <i class="fa fa-users fa-2x"></i>-->
+                         <img src="../public/img/eco/d.png">
+                            <h3>Contact Doctor</h3>
+                            <p>Contact a doctor and schedule appointments</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-6" >
+                        <div class="about-item scrollpoint sp-effect1">
+                          <!--  <i class="fa fa-sliders fa-2x"></i>-->
+                          <img src="../public/img/eco/more.png">
+                            <h3>Get More</h3>
+                            <p>Access additional features such as Calorimeter</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+       
+        <footer>
+            <div class="container">
+                <a href="#" class="scrollpoint sp-effect3">
+                    <img src="../public/img/eco/logo.png" alt="" class="logo">
+                </a>
+                <div class="social">
+                    <a href="#" class="scrollpoint sp-effect3"><i class="fa fa-twitter fa-lg"></i></a>
+                    <a href="#" class="scrollpoint sp-effect3"><i class="fa fa-google-plus fa-lg"></i></a>
+                    <a href="#" class="scrollpoint sp-effect3"><i class="fa fa-facebook fa-lg"></i></a>
+                </div>
+                <div class="rights">
+                    <p>Copyright &copy; 2014</p>
+                    <p>Template by <a href="http://www.scoopthemes.com" target="_blank">ScoopThemes</a></p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <script src="../public/js2/jquery-1.11.1.min.js"></script>
+    <script src="../public/js2/bootstrap.min.js"></script>
+    <script src="../public/js2/slick.min.js"></script>
+    <script src="../public/js2/placeholdem.min.js"></script>
+    <script src="../public/js2/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+    <script src="../public/js2/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+    <script src="../public/js2/waypoints.min.js"></script>
+    <script src="../public/js2/scripts.js"></script>
+    <script>
+        $(document).ready(function() {
+            appMaster.preLoader();
+        });
+    </script>
+</body>
+
+</html>

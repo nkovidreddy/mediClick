@@ -1,6 +1,18 @@
 angular.module('masters',['routerRoutes'])
 
+
 .controller('indexController',function(){
+	var vm=this;
+	vm.message = 'my remedy page.';
+	//vm.regSubmit = $http.post("http://localhost:3000/saveUser");
+
+})
+
+.controller('registerController',function(){
+	var vm=this;
+	
+})
+/*.controller('indexController',function(){
 // bind this to vm (view-model)
 var vm = this;
 
@@ -30,8 +42,14 @@ vm.computerData = {};
  vm.computerData = {};
  };
 
-})
+})*/
+//symptom checker
+.controller('symptomsController',function(){
+	var vm=this;
+	vm.message = 'my symptoms page.';
+	//vm.regSubmit = $http.post("http://localhost:3000/saveUser");
 
+})
 //remedies Controller
 
 .controller('remediesController',function(){
@@ -39,9 +57,6 @@ vm.computerData = {};
 	vm.message = 'my remedy page.';
 	//vm.regSubmit = $http.post("http://localhost:3000/saveUser");
 
-})
-.controller('registerController',function(){
-	var vm=this;
-	vm.regSubmit = $http.post("http://localhost:3000/saveUser");
-
 });
+
+

@@ -3,7 +3,8 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var bcrypt = require('bcrypt-nodejs');
 
-mongoose.connect('localhost:27017/test');
+// mongoose.connect('localhost:27017/test');
+mongoose.connect('mongodb://sindhura:sindhu@ds019480.mlab.com:19480/mediclick')
 var schema=mongoose.schema;
 
  // user schema

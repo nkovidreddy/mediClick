@@ -11,11 +11,13 @@
     <title>MediClick</title>
 
 <!--angular routes-->
- <script src="../public/js/app.routes.js"></script>
- <script src="../public/js/app.js"></script>
- <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-route.js"></script>
  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-animate.js"></script>
+<script src="../public/js/app.routes.js"></script>
+ <script src="../public/js/app.js"></script>
+ 
+ 
 
 
 
@@ -45,7 +47,7 @@
 
     <div class="pre-loader">
         <div class="load-con">
-            <img src="../public/img/logo.png" class="animated fadeInDown" alt="">
+            <img src="../public/img/eco/logo.png" class="animated fadeInDown" alt="">
             <div class="spinner">
               <div class="bounce1"></div>
               <div class="bounce2"></div>
@@ -55,7 +57,8 @@
     </div>
    
     <header>
-        
+
+      <label for="useremail">{{index.useremail}}</label> 
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
                 <div class="container">
                     <!-- Brand and toggle get grouped for better mobile display -->
@@ -99,11 +102,11 @@
         <div class="modal-body">
          <!-- login -->
          <div class="wrapper">
-    <form class="form-signin">       
+    <form class="form-signin" ng-submit="index.login()">       
       <h2 class="form-signin-heading">Please login</h2>
-      <input type="text" class="form-control" name="username" placeholder="Email Address" required="" autofocus="" />
-      <input type="password" class="form-control" name="password" placeholder="Password" required=""/>      
-      <label class="checkbox">
+      <input type="text" class="form-control" name="username" placeholder="Email Address" required="" autofocus="" ng-model="index.email"/>
+      <input type="password" class="form-control" name="password" placeholder="Password" required="" ng-model="index.password"/>      
+      <label class="checkbox" >
         <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
       </label>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>   

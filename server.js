@@ -90,42 +90,70 @@ apiRouter.route('/users')
 
  // set the users information (comes from the request)
 // console.log(req.body);
- user.name = req.body.name;
- //console.log("iam here");
- console.log(user.name);
- user.username = req.body.username;
- user.password = req.body.password;
+ user.email = req.body.email;
+ console.log("iam testing register");
+ console.log(user.email);
 
+ user.password = req.body.password;
+console.log(user.password);
  // save the user and check for errors
  user.save(function(err) {
- 	console.log("I m here");
+ 	console.log("I m here success");
  
  if (err) {
- 	console.log("I m here1");
+ 	console.log(err);
  // duplicate entry
  if (err.code == 11000)
- 	return res.json({ success: false, message: 'A user with that\
- 			username already exists. '});
+ 	return res.json( "Email Id already exists.");
  else
  	return res.send(err);
  }
 
- res.json({ message: 'User created!' });
+ res.json("Account creation successful!");
  });
+
+
+
 
 })
 
 
 .get(function(req, res) {
 //Build a RESTful Node API 70
+
+console.log("inside get users");
+console.log(req.body);
+//User.find({ 'username': username,'email':email }, function(err, user) {
+
  User.find(function(err, users) {
+
+
  if (err) res.send(err);
 
  // return the users
+ console.log(users);
  res.json(users);
  });
-});
+ });
 //database
+//database2
+apiRouter.route('/users/:email/:password')
+
+//get the user with that ID
+//accessed at http://localhost:8080/api/users/:userid
+.get(function(req,res) {
+	console.log("inside get datase 2");
+	console.log(req.params.password);
+	User.find({ "email": req.params.email}, function(err, user) {
+//User.findById(req.params.email,function(err,user){
+if(err) res.send(err);
+//returing that user only
+console.log(user);
+res.json(user);
+});
+})
+
+//database2
 app.listen(port);
 console.log('listening to port' +port);
 //setting public folder

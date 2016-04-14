@@ -1,7 +1,7 @@
 {
   "name": "masters",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "dependencies": {
     "angular": "^1.5.3",
     "bcrypt-nodejs": "0.0.3",

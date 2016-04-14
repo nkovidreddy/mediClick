@@ -6,16 +6,15 @@ var bcrypt = require('bcrypt-nodejs');
 // mongoose.connect('localhost:27017/test');
 mongoose.connect('mongodb://sindhura:sindhu@ds019480.mlab.com:19480/mediclick')
 var schema=mongoose.schema;
- console.log("iam testing register inside users.js");
+
  // user schema
- var UserSchema = new Schema({
- //name: String,
+ var RegisterSchema = new Schema({
  email: { type: String, required: true, index: { unique: true }},
- password: { type: String, required: true, select: false }
+ password: { type: String, required: true, select: false },
  });
- console.log("iam testing register inside users.js 1");
+
  // hash the password before the user is saved
- UserSchema.pre('save', function(next) {
+ RegisterSchema.pre('save', function(next) {
  	
  var user = this;
 
@@ -33,11 +32,11 @@ var schema=mongoose.schema;
  });
 
  // method to compare a given password with the database hash
- UserSchema.methods.comparePassword = function(password) {
+ RegisterSchema.methods.comparePassword = function(password) {
  var user = this;
 
  return bcrypt.compareSync(password, user.password);
  };
 
  // return the model
- module.exports = mongoose.model('User', UserSchema);
+ module.exports = mongoose.model('Register', RegisterSchema);

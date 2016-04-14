@@ -16,6 +16,8 @@ $routeProvider
  	controllerAs: 'index'
  	})
 
+
+
 .when('/register', {
  	templateUrl : 'views/register.html',
  	controller : 'registerController',

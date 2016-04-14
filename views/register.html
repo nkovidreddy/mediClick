@@ -9,12 +9,12 @@
         <title>MediClick Registration Form</title>
 
 <!--angular routes-->
- <script src="../public/js/app.routes.js"></script>
- <script src="../public/js/app.js"></script>
+
  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-route.js"></script>
  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-animate.js"></script>
-
+ <script src="../public/js/app.routes.js"></script>
+ <script src="../public/js/app.js"></script>
         <!-- CSS -->
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
         <link rel="stylesheet" href="../public/assets/bootstrap/css/bootstrap.min.css">
@@ -35,6 +35,7 @@
     <body ng-controller="registerController as register ">
 
 		<!-- Top menu -->
+        <label for="registerMessage">{{register.registerMessage}}</label> 
 		<nav class="navbar navbar-inverse navbar-no-bg" role="navigation">
 			<div class="container">
 				<div class="navbar-header">
@@ -95,18 +96,18 @@
                         		</div>
                             </div>
                             <div class="form-bottom">
-			                    <form role="form" action="forms.html" method="post" class="registration-form">
+			                    <form role="form" ng-submit="register.register()" method="post" class="registration-form">
                                   <div class="form-group">
                                         <label class="sr-only" for="form-email">Email</label>
-                                        <input type="email" name="form-email" placeholder="Email..." class="form-email form-control" id="form-email">
+                                        <input type="email" name="form-email" placeholder="Email..." class="form-email form-control" id="form-email" ng-model="register.email">
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only" for="form-first-name">Password</label>
-                                        <input type="password" name="form-first-name" placeholder="Password..." class="form-first-name form-control" id="form-first-name">
+                                        <input type="password" name="form-first-name" placeholder="Password..." class="form-first-name form-control" id="form-first-name" ng-model="register.password">
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only" for="form-last-name">Confirm Password</label>
-                                        <input type="password" name="form-last-name" placeholder="Confirm Password..." class="form-last-name form-control" id="form-last-name">
+                                        <input type="password" name="form-last-name" placeholder="Confirm Password..." class="form-last-name form-control" id="form-last-name" ng-model="register.confirmpassword">
                                     </div>
                                       <button type="submit" class="btn" value="Register" onsubmit="togglediv('form1')">Register</button>                                
                                 </form>

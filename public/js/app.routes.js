@@ -24,6 +24,18 @@ $routeProvider
  	controllerAs: 'register'
  	})
 
+.when('/forms', {
+ 	templateUrl : 'views/forms.html',
+ 	controller : 'formsController',
+ 	controllerAs: 'forms'
+})
+
+.when('/MedicalHistory', {
+ 	templateUrl : 'views/MedicalHistory.html',
+ 	controller : 'medicalController',
+ 	controllerAs: 'medicalInfo'
+ 	})
+
  	.when('/Symptoms', {
  	templateUrl : 'views/Symptoms.html',
  	controller : 'symptomsController',

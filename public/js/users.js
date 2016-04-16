@@ -38,6 +38,7 @@ var schema=mongoose.schema;
 
  return bcrypt.compareSync(password, user.password);
  };
-
+ //closing db connection
+//mongoose.connection.close();
  // return the model
  module.exports = mongoose.model('User', UserSchema);

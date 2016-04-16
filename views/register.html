@@ -15,6 +15,7 @@
  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-animate.js"></script>
  <script src="../public/js/app.routes.js"></script>
  <script src="../public/js/app.js"></script>
+ 
         <!-- CSS -->
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
         <link rel="stylesheet" href="../public/assets/bootstrap/css/bootstrap.min.css">
@@ -31,11 +32,9 @@
 <link rel="apple-touch-icon-precomposed" href="../public/assets/ico/apple-touch-icon-57-precomposed.png">
 
     </head>
-
-    <body ng-controller="registerController as register ">
-
+ <body ng-controller="registerController as register ">
+  <label for="registerMessage">{{register.registerMessage}}</label> 
 		<!-- Top menu -->
-        <label for="registerMessage">{{register.registerMessage}}</label> 
 		<nav class="navbar navbar-inverse navbar-no-bg" role="navigation">
 			<div class="container">
 				<div class="navbar-header">
@@ -96,10 +95,11 @@
                         		</div>
                             </div>
                             <div class="form-bottom">
-			                    <form role="form" ng-submit="register.register()" method="post" class="registration-form">
+			                 <form role="form" ng-submit="register.register()" class="registration-form">
                                   <div class="form-group">
                                         <label class="sr-only" for="form-email">Email</label>
                                         <input type="email" name="form-email" placeholder="Email..." class="form-email form-control" id="form-email" ng-model="register.email">
+                                        <!--changed above ng-model="register.email" to emailTest.name -->
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only" for="form-first-name">Password</label>

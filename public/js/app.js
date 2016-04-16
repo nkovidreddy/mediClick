@@ -1,6 +1,20 @@
 angular.module('masters',['routerRoutes'])
 
-.controller('indexController',function($http){
+.service('userem', function() {
+ //Dev Sample
+ var emailTest= {
+ 	name: ''
+ };
+ return emailTest;
+ //
+  // private variable
+  //var _email = "test@gmail.com";
+ /*var _email={};
+  // public API
+  this.useremail = _email;*/
+})
+
+.controller('indexController',function($http,$scope){
 var vm=this;
 		vm.login=function(){
 			//console.log("Email=" +vm.email);
@@ -15,24 +29,23 @@ var vm=this;
       //headers: {'Content-Type': 'application/json'}
 	}
 	$http(getReq1).then(function(data){
-		console.log("displayng data in get method index"); 
-		console.log(data.data[0].email);
+		//console.log("displayng data in get method index"); 
+		//console.log(data.data[0].email);
 		vm.useremail=data.data[0].email;
-      //	for(i in data.email){
-      		//console.log(i);
-      	//}
-      	 
-      	//vm.displayname=data.name;
-      	//vm.resultText=data.data.entities.keyword;
+    $scope.email=data.data[0].email;
+    console.log($scope.email);
       })
 
 	}
-	//vm.regSubmit = $http.post("http://localhost:3000/saveUser");
 
 })
-.controller('registerController',function($http){
+
+
+//.controller('registerController',['$scope','userem', function($scope,userem,$http){
+.controller('registerController', function($http){
 	console.log("inside regoster cotroller");
 	var vm=this;
+	//$scope.emailTest=userem;
 
 	vm.register=function(){
 		console.log('Testing Register Function');
@@ -50,17 +63,60 @@ var vm=this;
       data: {'email':vm.email,'password':vm.password},
       headers: {'Content-Type': 'application/json'}
 	}
+
 	$http(req).then(function(data){
       		console.log(data.data);
       	vm.registerMessage=data.data;
-      
-
-      	//vm.resultText=data.data.entities.keyword;
+      	window.alert(data.data);
+      	window.location.href = '/forms';
+//res.sendFile(path.join(__dirname+'/views/forms.html'))
+ 
       })
-	//vm.regSubmit = $http.post("http://localhost:3000/saveUser");
-
+	
 }
 
+})
+
+
+
+//.controller('formsController', ['$scope','userem',function($scope,userem){
+	.controller('formsController', function($http){
+	var vm=this;
+	console.log("inside forms controller");
+	vm.personalInfo=function(){
+		console.log("inisde personal info function");
+		var fname=vm.fname;
+		var lname=vm.lname;
+		var bday=vm.bday;
+		var gender=vm.gender;
+		var phone=vm.phone;
+		var address=vm.address;
+		var zipcode=vm.zipcode;
+
+		var req = {
+      url: '/api/forms', // No need of IP address
+      method: 'POST',
+      data: {'fname':vm.fname, 'lname':vm.lname, 'bday':vm.bday, 'gender':vm.gender, 'phone':vm.phone, 'address':vm.address, 'zipcode':vm.zipcode},
+      headers: {'Content-Type': 'application/json'}
+	}
+
+		$http(req).then(function(data){
+   
+      	//vm.registerMessage=data.data;
+      
+      	window.location.href = '/forms';
+
+      })
+	}
+	//console.log($scope);
+	//$scope.emailTest=userem;
+	
+	})
+
+.controller('medicalController',function(){
+	var vm=this;
+	vm.message = 'my forms page.';
+	
 })
 
 /*.controller('loginController', function($http) {

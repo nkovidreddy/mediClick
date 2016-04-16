@@ -10,6 +10,7 @@ var mongoose = require('mongoose'); // for working w/ our database
 
 
 var User = require(__dirname+'/public/js/users.js');//database
+var personalinfo = require(__dirname+'/public/js/personalinfo.js');//database
 
 var port=process.env.PORT || 3000;
 
@@ -61,7 +62,16 @@ app.get('/register',function(req,res){
  	res.sendFile(path.join(__dirname+'/views/register.html'))
  	//next();
  });
-
+app.get('/forms',function(req,res){
+ 	//res.send('index',{title:'hey',message:'Hello there!'});
+ 	res.sendFile(path.join(__dirname+'/views/forms.html'))
+ 	//next();
+ });
+app.get('/MedicalHistory',function(req,res){
+ 	//res.send('index',{title:'hey',message:'Hello there!'});
+ 	res.sendFile(path.join(__dirname+'/views/MedicalHistory.html'))
+ 	//next();
+ });
 
 app.get('/Symptoms',function(req,res){
  	//res.send('index',{title:'hey',message:'Hello there!'});
@@ -91,15 +101,13 @@ apiRouter.route('/users')
  // set the users information (comes from the request)
 // console.log(req.body);
  user.email = req.body.email;
- console.log("iam testing register");
  console.log(user.email);
 
  user.password = req.body.password;
 console.log(user.password);
  // save the user and check for errors
  user.save(function(err) {
- 	console.log("I m here success");
- 
+ 	
  if (err) {
  	console.log(err);
  // duplicate entry
@@ -112,16 +120,12 @@ console.log(user.password);
  res.json("Account creation successful!");
  });
 
-
-
-
 })
 
 
 .get(function(req, res) {
 //Build a RESTful Node API 70
 
-console.log("inside get users");
 console.log(req.body);
 //User.find({ 'username': username,'email':email }, function(err, user) {
 
@@ -142,8 +146,7 @@ apiRouter.route('/users/:email/:password')
 //get the user with that ID
 //accessed at http://localhost:8080/api/users/:userid
 .get(function(req,res) {
-	console.log("inside get datase 2");
-	console.log(req.params.password);
+	//console.log(req.params.password);
 	User.find({ "email": req.params.email}, function(err, user) {
 //User.findById(req.params.email,function(err,user){
 if(err) res.send(err);
@@ -154,6 +157,39 @@ res.json(user);
 })
 
 //database2
+apiRouter.route('/forms')
+.post(function(req, res) {
+	console.log("I m here inside post of forms");
+ 
+ // create a new instance of the User model
+ var userinfo = new personalinfo();
+
+ // set the users information (comes from the request)
+userinfo.fname=req.body.fname;
+userinfo.lname=req.body.lname;
+userinfo.bday=req.body.bday;
+userinfo.gender=req.body.gender;
+userinfo.phone=req.body.phone;
+userinfo.address=req.body.address;
+userinfo.zipcode=req.body.zipcode;
+
+ // save the user and check for errors
+ userinfo.save(function(err) {
+ 	console.log("I m here inside save function");
+ 
+ if (err) {
+ 	console.log("error here in server.js");
+ 	console.log(err);
+ 
+ }
+
+ res.json("records inserted successfuly");
+ });
+
+})
+//database3
+
+//database3
 app.listen(port);
 console.log('listening to port' +port);
 //setting public folder

@@ -4,7 +4,8 @@ var Schema = mongoose.Schema;
 var bcrypt = require('bcrypt-nodejs');
 
 // mongoose.connect('localhost:27017/test');
-mongoose.connect('mongodb://sindhura:sindhu@ds019480.mlab.com:19480/mediclick')
+//mongoose.connect('mongodb://sindhura:sindhu@ds019480.mlab.com:19480/mediclick')
+mongoose.createConnection('mongodb://sindhura:sindhu@ds019480.mlab.com:19480/mediclick')
 var schema=mongoose.schema;
  console.log("iam testing register inside users.js");
  // user schema

@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 // mongoose.connect('localhost:27017/test');
-mongoose.createConnection('mongodb://sindhura:sindhu@ds019480.mlab.com:19480/mediclick')
+mongoose.connect('mongodb://sindhura:sindhu@ds019480.mlab.com:19480/mediclick')
 var schema=mongoose.schema;
  console.log("iam testing register inside personalinfo.js");
  // user schema

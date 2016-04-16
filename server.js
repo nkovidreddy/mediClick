@@ -10,7 +10,7 @@ var mongoose = require('mongoose'); // for working w/ our database
 
 
 var User = require(__dirname+'/public/js/users.js');//database
-var personalinfo = require(__dirname+'/public/js/personalinfo.js');//database
+var Personalinfo = require(__dirname+'/public/js/personalinfos.js');//database
 
 var port=process.env.PORT || 3000;
 
@@ -162,7 +162,7 @@ apiRouter.route('/forms')
 	console.log("I m here inside post of forms");
  
  // create a new instance of the User model
- var userinfo = new personalinfo();
+ var userinfo = new Personalinfo();
 
  // set the users information (comes from the request)
 userinfo.fname=req.body.fname;
@@ -178,11 +178,10 @@ userinfo.zipcode=req.body.zipcode;
  	console.log("I m here inside save function");
  
  if (err) {
- 	console.log("error here in server.js");
- 	console.log(err);
- 
+ 	console.log("error here in /personalinfo.js");
+ 	console.log(err); 
  }
-
+console.log("SUCCESSFUL");
  res.json("records inserted successfuly");
  });
 

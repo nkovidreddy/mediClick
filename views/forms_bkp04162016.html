@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html ng-app="masters">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>MediClick Registration Form</title>
+
+<!--angular routes-->
+
+ <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+ <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-route.js"></script>
+ <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-animate.js"></script>
+ <script src="../public/js/app.routes.js"></script>
+ <script src="../public/js/app.js"></script>
+ 
+        <!-- CSS -->
+          <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link rel="stylesheet" href="../public/assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../public/assets/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../public/assets/css/form-elements.css">
+        <link rel="stylesheet" href="../public/assets/css/style.css">
+
+  <link rel="shortcut icon" href="../public/assets/ico/favicon.png">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../public/assets/ico/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../public/assets/ico/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../public/assets/ico/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="../public/assets/ico/apple-touch-icon-57-precomposed.png">
+
+    </head>
+
+
+<body ng-controller="formsController as forms ">
+<!--<h3> Email {{emailTest.name}} </h3>
+ <label for="registerMessage">{{emailTest.name}}</label> -->
+		<!-- Top menu -->
+		<nav class="navbar navbar-inverse navbar-no-bg" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="index.html">MediClick Registration Form</a>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				
+		</nav>
+             
+                 <h2><strong>Mediclick</strong> Registration Form</h1>
+                         
+        <!-- Top content -->
+        <div class="top-content">
+        	
+            <div class="inner-bg">
+                <div class="container">
+
+                    <div class="row" >
+                          <div class="col-sm-12 text">
+                          
+                                <a class="btn btn-link-1">Personal Details</a>
+                                <a class="btn btn-link-2">Medical History</a>
+                                <a class="btn btn-link-2">Emergency Contacts</a>
+                          
+                        </div>
+
+                        </div>
+                         <div class="row" id="form1" style="display:block;">
+                        <div class=" col-sm-8 form-box">
+                        	<div class="form-top">
+                        		<div class="form-top-left">
+                        			<h3>Personal Details</h3>
+                            		<p>Fill in your personal and contact details to get alerts and notifications</p>
+                        		</div>
+                        		<div class="form-top-right">
+                        			<i class="fa fa-pencil"></i>
+                        		</div>
+                            </div>
+                            <div class="form-bottom">
+			                    <form role="form" ng-submit="forms.personalInfo()" class="registration-form">
+                                <div class="form-inline">
+                                  <div class="form-group">
+                                        <label  for="firstName">Name</label>
+                                        <input type="text" name="firstName" placeholder="FirstName..."  id="firstName" ng-model="forms.fname">
+                                    </div>
+                                    <div class="form-group">
+                                       
+                                        <input type="text" name="LastName" placeholder="LastName..."  id="LastName" ng-model="forms.lname">
+                                    </div>
+                                    </div>
+                                    <div class="form-inline">
+                                                                       
+                                   </div>
+                                    <div class="form-group">
+                                     <label for="inlineRadio1">Date Of Birth </label>
+                                        <input type="date" name="bday" ng-model="forms.bday">
+                                   </div>
+                                    <div class="form-group">
+                                        <label for="inlineRadio1">Gender </label>
+                                        <label ><input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" ng-model="forms.gender"> Male
+                                       </label>
+                                        <label>
+                                        <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" ng-model="forms.gender"> Female
+                                        </label>
+                                   </div>
+                                   <div class="form-group">
+                                        <label for="phone">Phone</label>
+                                        <input type="tel" name="phone" placeholder="" id="phone" ng-model="forms.phone">
+                                    </div>
+                                    <div class="form-group">
+                                    <label for="address">Address</label>
+                                    <textarea name="address"class="col-sm-7 form-control" rows="3" ng-model="forms.address"></textarea>
+                                    </div>
+                                     <div class="form-group">
+                                        <label  for="ZipCode">ZipCode</label>
+                                        <input type="text" name="ZipCode" placeholder=""  id="firstName"ng-model="forms.zipcode">
+                                    </div>
+                                      <button type="submit" class="btn" value="Done" >Done</button>                                
+                                </form>
+                                    </div>
+		                    </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+
+        <!-- Javascript -->
+            <script src="../public/assets/js/jquery-1.11.1.min.js"></script>
+        <script src="../public/assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="../public/assets/js/jquery.backstretch.min.js"></script>
+        <script src="../public/assets/js/retina-1.1.0.min.js"></script>
+        <script src="../public/assets/js/scripts.js"></script>
+        
+        <script type="text/javascript">
+        function togglediv(id) {
+    var div = document.getElementById(id);
+    div.style.display = div.style.display == "none" ? "block" : "none";
+    console.log("hi");
+}
+</script>
+        <!--[if lt IE 10]>
+            <script src="assets/js/placeholder.js"></script>
+        <![endif]-->
+
+    </body>
+
+</html>

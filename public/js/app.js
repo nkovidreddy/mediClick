@@ -1,4 +1,4 @@
-angular.module('masters',['routerRoutes'])
+angular.module('masters',['routerRoutes','ngStorage'])
 
 .service('userem', function() {
  //Dev Sample
@@ -42,15 +42,20 @@ var vm=this;
 
 
 //.controller('registerController',['$scope','userem', function($scope,userem,$http){
-.controller('registerController', function($http){
+.controller('registerController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
 	console.log("inside regoster cotroller");
 	var vm=this;
 	//$scope.emailTest=userem;
+	 
 
 	vm.register=function(){
 		console.log('Testing Register Function');
-		
+		$localStorage.$reset();
 		var email=vm.email;
+
+		$scope.$storage = $localStorage.$default({
+          userId: email
+        });
 		var password=vm.password;
 		var cpassword=vm.confirmpassword;
 		console.log(email);
@@ -75,14 +80,19 @@ var vm=this;
 	
 }
 
-})
+}])
 
 
 
 //.controller('formsController', ['$scope','userem',function($scope,userem){
-	.controller('formsController', function($http){
+	.controller('formsController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
 	var vm=this;
 	console.log("inside forms controller");
+	console.log($localStorage);
+	$scope.$storage1 = $localStorage.userId;
+	var userIdFromStorage = $localStorage.userId;
+		console.log("Local Storage Email");
+		console.log(userIdFromStorage);
 	vm.personalInfo=function(){
 		console.log("inisde personal info function");
 		var fname=vm.fname;
@@ -111,7 +121,7 @@ var vm=this;
 	//console.log($scope);
 	//$scope.emailTest=userem;
 	
-	})
+	}])
 
 .controller('medicalController',function(){
 	var vm=this;

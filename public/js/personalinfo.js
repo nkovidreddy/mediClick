@@ -7,7 +7,11 @@ mongoose.createConnection('mongodb://sindhura:sindhu@ds019480.mlab.com:19480/med
 var schema=mongoose.schema;
  console.log("iam testing register inside personalinfo.js");
  // user schema
+<<<<<<< Updated upstream
  var personalinfoSchema = new Schema({
+=======
+ var personalinfoschema = new Schema({
+>>>>>>> Stashed changes
  fname: {type: String},
  lname: {type: String},
  bday: {type: String},
@@ -15,6 +19,7 @@ var schema=mongoose.schema;
  phone: {type: String},
  address: {type: String},
  zipcode: {type: String}
+<<<<<<< Updated upstream
  });
 
  
@@ -23,10 +28,25 @@ var schema=mongoose.schema;
  personalinfoSchema.pre('save', function(next) {
  console.log("In save function personalinfo"); 	
  next();
+=======
+
+// email: { type: String, required: true, index: { unique: true }},
+ });
+
+
+ personalinfoschema.pre('save', function(next) {
+ console.log("inside personalinfo.js save function");	
+  //var personalinfo = this;
+ return next();
+>>>>>>> Stashed changes
  });
 
  
  //closing db connection
 //mongoose.connection.close();
  // return the model
+<<<<<<< Updated upstream
  module.exports = mongoose.model('Personalinfo', personalinfoSchema);
+=======
+ module.exports = mongoose.model('Personalinfo', personalinfoschema);
+>>>>>>> Stashed changes

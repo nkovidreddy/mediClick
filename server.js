@@ -10,10 +10,7 @@ var mongoose = require('mongoose'); // for working w/ our database
 
 
 var User = require(__dirname+'/public/js/users.js');//database
-//Updated upstream
 var Personalinfo = require(__dirname+'/public/js/personalinfos.js');//database
-//=======
-
 
 var port=process.env.PORT || 3000;
 

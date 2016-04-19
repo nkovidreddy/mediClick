@@ -13,6 +13,13 @@ var schema=mongoose.schema;
  //name: String,
  email: { type: String, required: true, index: { unique: true }},
  password: { type: String, required: true, select: false },
+ fname: {type: String},
+ lname: {type: String},
+ bday: {type: String},
+ gender: {type: String},
+ phone: {type: String},
+ address: {type: String},
+ zipcode: {type: String}
  });
  console.log("iam testing register inside users.js 1");
  // hash the password before the user is saved

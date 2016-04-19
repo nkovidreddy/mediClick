@@ -179,11 +179,11 @@ function callback (err, numAffected) {
 }; */
 
 var query = { email: 'test@gmail.com' };
-User.findOneAndUpdate(query, { name: 'jason borne' }, options, callback)
+//User.findOneAndUpdate(query, { email: 'tested@gmail.com' }, options, callback)
 
 
-var conditions = { email: 'test@gmail.com' };
-var update = { $set: { newval: "f" }};
+var conditions = { email: 'tested@gmail.com' };
+var update = { $set: {fname: "Test First Name",lname:"Tested"}};
 var options = { upsert: true };
 
 User.update(conditions, update, options, callback);

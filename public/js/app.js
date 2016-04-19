@@ -88,13 +88,16 @@ var vm=this;
 	.controller('formsController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
 	var vm=this;
 	console.log("inside forms controller");
-	console.log($localStorage);
+	console.log($localStorage.userId);
 	$scope.$storage1 = $localStorage.userId;
 	var userIdFromStorage = $localStorage.userId;
 		console.log("Local Storage Email");
 		console.log(userIdFromStorage);
 	vm.personalInfo=function(){
 		console.log("inisde personal info function");
+		var emailId= $localStorage.userId;
+		var url = '/api/users/' +emailId;
+       console.log("sindhuupdate"+emailId);
 		var fname=vm.fname;
 		var lname=vm.lname;
 		var bday=vm.bday;
@@ -103,14 +106,17 @@ var vm=this;
 		var address=vm.address;
 		var zipcode=vm.zipcode;
 
-		var req = {
-      url: '/api/forms', // No need of IP address
-      method: 'POST',
+		//var req = { sindhuupdated
+			var reqpersonalinfo={
+     // url: '/api/forms', // No need of IP address //sindhuupdate
+     url: url,
+      method: 'PUT',
       data: {'fname':vm.fname, 'lname':vm.lname, 'bday':vm.bday, 'gender':vm.gender, 'phone':vm.phone, 'address':vm.address, 'zipcode':vm.zipcode},
-      headers: {'Content-Type': 'application/json'}
+      //headers: {'Content-Type': 'application/json'} //sindhuupdate
+        //params: {'emailId':vm.emailId}
 	}
 
-		$http(req).then(function(data){
+		$http(reqpersonalinfo).then(function(data){
    
       	//vm.registerMessage=data.data;
       

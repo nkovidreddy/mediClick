@@ -139,6 +139,65 @@ console.log(req.body);
  res.json(users);
  });
  });
+
+
+//sindhuupdate
+apiRouter.route('/users/:email')
+
+.put(function(req, res) {
+// use our user model to find the user we want
+// var personalInfo = new Personalinfo();
+// (req.body.fname) personalInfo.fname = req.body.fname;
+// User.findById(req.params.email, function(err, users){
+// 	if (err) res.send(err);
+// 	// update the users info only if its new
+// })
+//Testing Mongoose
+
+/*var reg_handler = function (err) {
+  User.update([{email: 'test@gmail.com'}], { $set: { lname: 'sindhu' } }, { upsert: true }, function(){
+ res.json("done");
+
+  });
+
+};*/
+/*{ name: 'sindhu',
+  mygender:'female' }*/
+
+  
+/*var conditions = { email: 'test@gmail.com' }
+  , update = {email:'testupdatedd@gmail.com'},
+   {$set:{gender: "female",age: 25,}}
+  , options = { multi: true };
+
+User.update(conditions, update, options, callback);
+
+function callback (err, numAffected) {
+  // numAffected is the number of updated documents
+  console.log("Playing");
+  res.json(numAffected);
+}; */
+
+var query = { email: 'test@gmail.com' };
+User.findOneAndUpdate(query, { name: 'jason borne' }, options, callback)
+
+
+var conditions = { email: 'test@gmail.com' };
+var update = { $set: { newval: "f" }};
+var options = { upsert: true };
+
+User.update(conditions, update, options, callback);
+function callback (err, numAffected) {
+  // numAffected is the number of updated documents
+  console.log("Playing");
+  res.json(numAffected);
+}; 
+
+})
+//End
+
+
+
 //database
 //database2
 apiRouter.route('/users/:email/:password')
@@ -155,6 +214,30 @@ console.log(user);
 res.json(user);
 });
 })
+
+//sindhuupdate
+apiRouter.route('/users1')
+.get(function(req, res) {
+// use our user model to find the user we want
+console.log("sindhuupdate inside the correct apiroutes");
+console.log("sindhuupdate"+email);
+/*User.findById(req.params.email, function(err, user){
+	if (err) res.send(err);
+	// update the users info only if its new
+if (req.body.name) user.name = req.body.name;
+if (req.body.username) user.username = req.body.username; 
+if (req.body.password) user.password = req.body.password;
+
+// save the user
+user.save(function(err) {
+if (err) res.send(err);
+
+// return a message
+res.json({ message: 'User updated!' });
+});
+}); */
+});
+
 
 //database2
 apiRouter.route('/forms')

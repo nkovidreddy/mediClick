@@ -12,7 +12,7 @@ var schema=mongoose.schema;
  var UserSchema = new Schema({
  //name: String,
  email: { type: String, required: true, index: { unique: true }},
- password: { type: String, required: true, select: false }
+ password: { type: String, required: true, select: false },
  });
  console.log("iam testing register inside users.js 1");
  // hash the password before the user is saved

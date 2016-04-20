@@ -1,0 +1,921 @@
+<!doctype html>
+<!--[if lt IE 7]><html lang="en" class="no-js ie6"><![endif]-->
+<!--[if IE 7]><html lang="en" class="no-js ie7"><![endif]-->
+<!--[if IE 8]><html lang="en" class="no-js ie8"><![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" class="no-js">
+<!--<![endif]-->
+
+<head>
+     <meta charset="UTF-8">
+    <title>MediClick</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="shortcut icon" href="favicon.png">
+
+<!--angular routes-->
+ <script src="../public/js/app.routes.js"></script>
+ <script src="../public/js/app.js"></script>
+ <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+ <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-route.js"></script>
+ <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-animate.js"></script>
+
+
+    <link rel="stylesheet" href="../public/css2/bootstrap.css">
+    
+    <link rel="stylesheet" href="../public/css2/animate.css">
+    <link rel="stylesheet" href="../public/css2/font-awesome.min.css">
+    <link rel="stylesheet" href="../public/css2/slick.css">
+    <link rel="stylesheet" href="../public/js2/rs-plugin/css/settings.css">
+
+    <script type="text/javascript" src="../public/js2/modernizr.custom.32033.js"></script>
+    
+    <link rel="stylesheet" href="../public/css2/eco.css">
+    <script src="../public/js2/scripts.js"></script>
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+</head>
+<body ng-app="masters" ng-controller="remediesController as remedies ">
+
+    <div class="pre-loader">
+        <div class="load-con">
+            <img src="../public/images/logo.png" alt="" class="logo">
+            <div class="spinner">
+              <div class="bounce1"></div>
+              <div class="bounce2"></div>
+              <div class="bounce3"></div>
+            </div>
+        </div>
+    </div>
+   
+    <header>
+        
+          <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="fa fa-bars fa-lg"></span>
+                        </button>
+                        <a class="navbar-brand" href="index.html">
+                            <img src="../public/images/logo.png" alt="" class="logo">
+                        </a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="#about">Home</a>
+                            </li>
+                            <li><a href="#features">features</a>
+                            </li>
+                            <li><a href="#reviews">Symptom Checker</a>
+                            </li>
+                            <li><a href="remedies.html">Remedies</a>
+                            </li>
+                            <li><a href="#demo">Doctor</a>
+                            </li>
+                            <li><a class="getApp" data-toggle="modal" data-target="#myModal">Sign In</a>
+                            </li>
+                            <li><a href="register.html">Register</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /.navbar-collapse -->
+                </div>
+                <!-- /.container-->
+        </nav>
+
+        
+        <!--RevSlider-->
+       
+
+        <section id="getApp">
+            <div class="container-fluid">
+                <div class="section-heading inverse scrollpoint sp-effect3">
+                    <h1>Symptom Checker</h1>
+                    <div class="divider"></div>
+                    <p>Choose your native platform and get started!</p>
+                </div>
+                
+             <div class="col-md-12">
+
+           
+<div id="malefront" class="col-md-3" style="display: block;">
+
+<img id="vegetables" src="../public/img/eco/body.gif" width="300px" alt="Insert Alt" usemap="#veg">
+<map id="veg_map" name="veg">
+  
+    <area shape="poly" name="head" coords=" 161,32, 161,21, 163,11, 170,5, 178,2, 190,6, 198,14, 198,23, 198,31, 201,29, 202,38, 197,43, 193,51, 187,57, 178,59, 173,58, 166,51, 163,43, 159,41, 157,31, 161,35" href="#" alt="red hotspot"/>
+    <area shape="poly" name="neck" coords=" 167,53, 173,58, 184,59, 193,51, 193,63, 201,68, 194,75, 183,81, 171,79, 161,68, 165,65, 166,54" href="#" alt="green hotspot"/>
+    <area shape="poly" name="hand" coords=" 142,77, 130,77, 121,83, 111,99, 88,113, 82,113, 41,143, 23,152, 3,168, 0,171, 6,172, 22,162, 29,161, 35,160, 45,152, 77,142, 97,130, 134,113, 141,105, 147,95, 144,80, 217,77, 228,77, 241,89, 247,99, 264,111, 280,116, 304,133, 320,145, 338,155, 356,168, 356,175, 334,163, 322,161, 314,157, 314,155, 281,144, 261,132, 224,115, 219,104, 229,82" href="#" alt="yellow hotspot"/>
+    <area shape="poly" name="c" coords=" 137,99, 147,88, 162,84, 198,85, 218,98, 217,113, 216,125, 203,123, 186,118, 171,119, 150,124, 146,125, 139,103, 136,100" href="#" alt="olive hotspot"/>
+    <area shape="poly" name="a" coords=" 181,111, 166,116, 157,119, 151,122, 145,126, 143,131, 149,146, 147,161, 156,168, 166,182, 177,188, 188,187, 201,172, 210,162, 211,149, 211,143, 221,126, 213,119, 201,119, 193,116, 185,111, 184,112" href="#" alt="teal hotspot"/>
+    <area shape="poly" name="p" coords=" 146,163, 143,168, 143,177, 147,182, 158,195, 165,209, 171,219, 178,224, 186,216, 194,203, 202,187, 210,179, 213,172, 211,167, 211,163, 209,165, 198,178, 192,188, 184,193, 173,194, 165,190, 157,180, 154,174, 148,166" href="#" alt="brown hotspot"/>
+    <area shape="poly" name="leg" coords=" 147,184, 144,180, 136,217, 136,251, 141,278, 141,300, 136,317, 142,351, 141,371, 142,382, 140,391, 131,412, 130,418, 144,419, 151,419, 158,410, 155,407, 158,399, 160,388, 158,376, 158,348, 165,327, 162,304, 171,269, 178,228, 149,188, 180,227, 212,187, 213,186, 222,226, 220,266, 214,292, 221,316, 213,360, 210,374, 215,386, 215,394, 225,414, 222,422, 203,422, 198,417, 201,408, 196,397, 197,393, 195,388, 198,369, 197,352, 190,331, 193,305, 182,262, 180,234, 181,230" href="#" alt="blue hotspot"/>
+</map>
+<img class="img-responsive"  onclick="maletog();" id="back" width="20px" src="../public/img/eco/back.png" style="cursor: pointer;">
+</div>
+
+<div id="mback" class="col-md-3" width="300px" style="display: none;">
+
+<img id="maleback" src="../public/img/eco/mb.gif" width="276" height="319" alt="Insert Alt" usemap="#mb">
+<map id="mb_map" name="mb">
+  <area shape="poly" name="gluteals" coords=" 113,125, 164,126, 170,152, 171,159, 106,158, 109,145, 111,125" href="#" alt="green hotspot"/>
+    <area shape="poly" name="backbone" coords=" 135,37, 135,120, 138,123, 142,119, 142,39, 142,36, 139,33, 138,35, 137,36" href="#" alt="purple hotspot"/>
+    <area shape="poly" name="back" coords=" 103,76, 117,105, 113,124, 165,125, 162,111, 174,76, 173,49, 151,40, 127,39, 109,49, 104,75" href="#" alt="purple hotspot"/>
+    <area shape="poly" name="neck" coords=" 129,30, 129,29, 127,36, 149,37, 150,29, 128,28" href="#" alt="purple hotspot"/>
+    <area shape="poly" name="hand" coords=" 107,49, 98,51, 90,57, 84,65, 70,75, 57,79, 40,93, 29,105, 5,124, 11,125, 23,118, 30,116, 37,111, 38,107, 59,99, 72,89, 102,75, 106,54, 107,52, 177,51, 183,53, 195,67, 217,77, 250,105, 275,124, 275,127, 266,125, 251,116, 249,119, 243,108, 226,100, 219,99, 203,89, 197,85, 177,76, 177,55" href="#" alt="purple hotspot"/>
+    <area shape="poly" name="leg" coords=" 105,161, 103,185, 108,208, 108,217, 101,238, 107,279, 103,300, 101,307, 107,315, 115,315, 121,311, 121,305, 120,300, 121,297, 119,289, 121,266, 126,249, 125,225, 139,170, 141,188, 145,201, 150,221, 152,228, 148,243, 153,260, 156,275, 155,290, 152,296, 154,301, 154,311, 160,317, 168,315, 175,309, 173,304, 166,287, 169,263, 176,242, 169,220, 173,182, 173,162, 109,161, 108,161" href="#" alt="purple hotspot"/>
+</map>
+<img onclick="maletog();" id="back" href"#" width="20px" src="../public/img/eco/back.png" style="cursor: pointer;">
+</div>
+
+<div id="femalefront" class="col-md-3" style="display: none">
+<img id="female" src="../public/img/eco/femfro.gif"  width="290" height="345" usemap="#fem">
+<map id="fem_map" name="fem">
+  
+    <area shape="poly" name="head" coords=" 191,65, 183,56, 181,50, 178,51, 174,41, 175,36, 178,38, 181,16, 185,9, 195,5, 202,4, 209,6, 217,13, 221,19, 221,35, 224,36, 226,40, 226,45, 223,50, 220,51, 217,57, 213,62, 207,66, 203,66, 194,66" href="#" alt="red hotspot"/>
+    <area shape="poly" name="neck" coords=" 189,65, 186,78, 178,81, 191,89, 202,91, 213,89, 220,84, 214,79, 212,62, 201,68, 190,63" href="#" alt="green hotspot"/>
+    <area shape="poly" name="hand" coords=" 160,120, 114,150, 103,159, 95,163, 55,185, 51,191, 13,214, 9,213, 45,183, 78,153, 90,142, 106,135, 147,100, 154,93, 158,90, 162,119, 238,119, 240,91, 251,96, 262,110, 281,125, 288,130, 298,138, 306,140, 319,154, 330,163, 348,179, 356,187, 386,212, 386,215, 382,215, 354,195, 351,194, 344,189, 338,186, 305,166, 294,160, 285,148, 275,144, 260,130, 250,123, 244,119, 242,119" href="#" alt="yellow hotspot"/>
+    <area shape="poly" name="chest" coords=" 168,87, 174,91, 177,91, 182,91, 188,92, 193,92, 198,94, 201,94, 204,93, 207,91, 216,91, 220,90, 223,89, 226,87, 229,89, 230,93, 233,99, 236,107, 238,113, 240,119, 242,124, 242,130, 242,135, 241,140, 238,144, 237,148, 235,150, 233,151, 230,151, 164,151, 163,146, 162,144, 161,142, 160,140, 159,136, 159,132, 159,127, 161,121, 164,117, 166,114, 167,110, 167,107, 168,104, 168,99, 168,96, 168,91" href="#" alt="olive hotspot"/>
+    <area shape="poly" name="abdomen" coords=" 163,152, 169,171, 169,181, 165,192, 171,202, 182,211, 197,215, 214,212, 229,205, 238,200, 230,181, 230,173, 235,159, 237,153, 228,151, 216,148, 206,147, 194,147, 183,148, 172,150, 166,152" href="#" alt="teal hotspot"/>
+    <area shape="poly" name="pelvis" coords=" 160,206, 160,204, 158,211, 156,218, 155,220, 168,232, 180,241, 186,248, 191,252, 196,254, 203,255, 209,251, 213,245, 219,241, 227,235, 232,231, 243,223, 245,222, 242,209, 241,204" href="#" alt="brown hotspot"/>
+    <area shape="poly" name="leg" coords=" 154,224, 151,236, 150,256, 151,276, 155,297, 159,319, 160,337, 160,362, 160,384, 164,400, 168,418, 168,436, 168,449, 165,460, 161,470, 156,482, 159,487, 164,489, 171,491, 178,491, 181,488, 182,484, 183,479, 183,472, 181,467, 186,463, 186,458, 185,453, 185,449, 185,441, 184,435, 184,426, 185,408, 186,392, 188,376, 188,369, 188,361, 188,356, 190,351, 191,346, 192,337, 192,326, 192,318, 192,311, 193,301, 194,291, 194,284, 195,274, 196,266, 197,259, 198,257, 201,260, 203,268, 204,283, 205,298, 205,318, 205,331, 205,343, 210,356, 208,367, 208,377, 210,392, 213,406, 213,415, 213,424, 212,439, 210,447, 211,452, 208,456, 208,461, 211,465, 214,471, 214,478, 216,486, 218,490, 227,491, 232,488, 238,487, 241,485, 240,478, 236,473, 233,467, 229,454, 229,445, 228,434, 228,422, 231,410, 234,398, 235,391, 238,380, 238,370, 238,356, 236,348, 238,339, 238,331, 239,323, 241,315, 245,295, 248,275, 248,265, 248,248, 247,233, 245,227" href="#" alt="blue hotspot"/>
+</map>
+<img onclick="femtog();" id="back" width="20px" src="../public/img/eco/back.png" style="cursor: pointer;">
+</div>
+
+<div id="femaleback" class="col-md-3" style="display: none">
+<img id="femback" src="../public/img/eco/femb.gif" width="290" height="345" alt="Insert Alt" usemap="#f_map" border="0">
+
+<map name="f_map" id="f_map">
+    
+    <area name= "neck" shape="poly" coords=" 97,32, 101,29, 107,30, 113,32, 112,36, 115,45, 107,49, 99,48, 96,45, 98,43, 98,36, 97,34" href="#" alt="green hotspot"/>
+    <area name= "back" shape="poly" coords=" 85,50, 80,72, 88,100, 86,107, 97,111, 109,112, 124,109, 122,100, 132,73, 131,52, 118,47, 108,52, 101,52, 95,48, 93,47, 87,49" href="#" alt="purple hotspot"/>
+    <area name= "gluteals" shape="poly" coords=" 83,117, 127,119, 132,132, 134,147, 132,153, 118,153, 87,152, 76,144, 82,118" href="#" alt="yellow hotspot"/>
+    <area name= "hand" shape="poly" coords=" 84,50, 76,52, 69,60, 47,79, 38,83, 13,109, 0,119, 0,124, 15,115, 19,111, 43,98, 57,86, 79,72, 83,54, 133,51, 162,79, 179,92, 207,121, 203,121, 192,115, 187,110, 165,97, 151,85, 135,72, 134,55" href="#" alt="olive hotspot"/>
+    <area name= "leg" shape="poly" coords=" 76,148, 78,162, 83,185, 84,200, 83,211, 83,221, 88,241, 87,254, 82,258, 88,271, 95,272, 98,268, 98,231, 99,219, 98,205, 100,200, 100,171, 101,165, 101,155, 104,144, 108,152, 109,178, 110,201, 111,231, 112,255, 112,268, 117,272, 122,270, 123,267, 124,260, 123,256, 123,241, 127,220, 125,191, 128,177, 132,156, 107,143, 75,147" href="#" alt="teal hotspot"/>
+    <area name= "head" shape="poly" coords=" 96,31, 94,28, 91,28, 90,20, 93,19, 92,12, 95,4, 100,0, 106,0, 112,1, 118,5, 119,17, 122,20, 117,28, 116,31, 107,28, 100,28" href="#" alt="brown hotspot"/>
+</map>
+<img onclick="femtog();" id="back" width="20px" src="../public/img/eco/back.png" style="cursor: pointer;">
+</div>
+
+<div id="headzoom" class="col-md-3" style="display: none">
+<img id="headz" src="../public/img/eco/mhead.png" alt="Insert Alt" usemap="#h_map" border="0">
+
+<map name="h_map" id="h_map">
+    
+   <area name="head" shape="poly" coords=" 63,108, 63,59, 71,35, 88,20, 115,11, 141,11, 164,16, 180,26, 193,37, 199,54, 201,76, 200,97, 192,90, 181,87, 166,87, 148,88, 130,91, 119,90, 109,89, 97,88, 87,87, 79,87, 66,103" href="http://image-mapper.com" alt="green hotspot"/>
+    <area name="eyes" shape="poly" coords=" 70,111, 84,98, 100,97, 115,101, 122,106, 128,109, 136,106, 146,100, 159,97, 173,99, 184,103, 189,111, 183,120, 174,124, 165,128, 154,127, 145,124, 138,121, 131,118, 124,120, 116,123, 105,128, 90,128, 80,126, 76,122, 70,116, 70,114" href="http://image-mapper.com" alt="purple hotspot"/>
+    <area name="nose" shape="poly" coords=" 124,124, 124,141, 115,146, 110,150, 110,157, 115,161, 123,164, 130,166, 139,164, 145,159, 148,155, 145,150, 139,147, 135,144, 135,123, 128,122, 127,124" href="http://image-mapper.com" alt="yellow hotspot"/>
+    <area name="mouth" shape="poly" coords=" 97,187, 122,181, 128,185, 133,181, 154,185, 161,189, 142,198, 124,200, 113,200, 100,192, 97,190" href="http://image-mapper.com" alt="olive hotspot"/>
+    <area name="leftear" shape="poly" coords=" 62,110, 55,105, 51,107, 56,125, 57,130, 61,141, 65,155, 69,156, 63,113" href="http://image-mapper.com" alt="teal hotspot"/>
+    <area name="rightear" shape="poly" coords=" 201,110, 209,107, 211,112, 206,132, 201,143, 198,153, 196,156, 193,154, 200,111" href="http://image-mapper.com" alt="red hotspot"/>
+    <area name="jaw" shape="poly" coords=" 70,159, 69,160, 72,172, 75,182, 78,192, 83,199, 99,212, 115,220, 148,223, 167,210, 180,194, 189,176, 192,156, 186,159, 180,164, 173,176, 169,186, 164,192, 157,198, 153,203, 148,204, 141,203, 131,203, 122,203, 115,205, 105,201, 96,194, 90,184, 89,177, 87,171, 73,161" href="http://image-mapper.com" alt="brown hotspot"/>
+    <area name="throat" shape="poly" coords=" 107,220, 107,249, 145,249, 149,226, 110,221" href="http://image-mapper.com" alt="blue hotspot"/>
+</map>
+<img onclick="zoomout('headzoom');" id="back" width="20px" src="../public/img/eco/zoomout.png" style="cursor: pointer;">
+</div>
+
+<!--abdomen-->
+
+<div id="abdzoom" class="col-md-3" style="display: none">
+<img id="abdz" src="../public/img/eco/abd.gif" alt="Insert Alt" usemap="#ab_map" border="0">
+
+<map name="ab_map" id="ab_map">
+    
+<area name="habd" shape="poly" coords=" 74,51, 94,38, 112,35, 133,33, 146,32, 164,33, 183,35, 194,36, 205,38, 211,42, 215,45, 218,51, 216,61, 212,72, 208,79, 206,88, 205,98, 206,106, 202,112, 195,116, 182,119, 171,122, 157,126, 139,125, 126,124, 114,120, 102,117, 93,114, 84,110, 85,88, 80,79, 75,54" href="#" alt="green hotspot"/>
+    <area name="labd" shape="poly" coords=" 83,114, 80,125, 98,139, 115,151, 137,156, 164,156, 182,152, 195,141, 206,131, 210,123, 208,115, 198,120, 187,124, 170,129, 158,132, 142,131, 132,129, 118,128, 107,125, 95,122, 87,115" href="#" alt="purple hotspot"/>
+
+</map>
+<img onclick="zoomout('abdzoom');" id="back" width="20px" src="../public/img/eco/zoomout.png" style="cursor: pointer;">
+</div>
+
+<!--legs-->
+
+<div id="lzoom" class="col-md-3" style="display: none">
+<img id="mleg" src="../public/img/eco/mlegs.gif" alt="Insert Alt" usemap="#ml_map" border="0">
+
+<map name="ml_map" id="ml_map">
+    
+<area name="thigh" shape="poly" coords=" 72,123, 68,118, 63,114, 55,112, 47,113, 40,116, 35,120, 34,112, 28,93, 24,64, 25,25, 26,12, 28,0, 52,-1, 65,6, 86,34, 110,0, 141,-1, 145,1, 149,33, 149,63, 144,97, 138,114, 131,110, 124,108, 118,110, 112,114, 107,121, 102,128, 98,110, 92,86, 89,69, 88,49, 87,39, 83,66, 81,87, 77,103, 75,108, 73,120" href="#" alt="red hotspot"/>
+    <area name="knees" shape="poly" coords=" 70,131, 64,122, 56,120, 44,120, 38,124, 33,131, 36,139, 43,145, 54,145, 64,143, 71,134, 103,134, 108,143, 120,146, 134,144, 137,139, 137,131, 129,127, 120,125, 110,128, 105,133, 73,133, 104,132, 70,134" href="#" alt="green hotspot"/>
+    <area name="calves" shape="poly" coords=" 32,146, 26,163, 38,212, 59,212, 69,177, 66,152, 67,148, 33,145, 106,148, 100,172, 110,198, 112,208, 113,212, 133,211, 134,205, 144,167, 139,147, 130,151, 121,152, 114,152, 109,148" href="#" alt="purple hotspot"/>
+    <area name="ankles" shape="poly" coords=" 59,235, 54,239, 49,239, 44,239, 40,238, 37,244, 37,251, 37,255, 44,257, 53,258, 61,255, 63,249, 62,246, 61,238, 111,235, 110,240, 107,244, 109,249, 115,252, 124,253, 129,253, 134,249, 133,244, 131,240, 130,236, 125,235, 119,236, 114,235, 62,237" href="#" alt="yellow hotspot"/>
+    <area name="foot" shape="poly" coords=" 59,265, 35,261, 26,274, 33,278, 46,280, 57,282, 56,275, 56,270, 60,268, 114,265, 120,259, 131,258, 135,260, 145,274, 133,277, 124,280, 117,283, 115,281, 117,276, 117,273, 115,268, 62,267, 118,267" href="#" alt="olive hotspot"/>
+    <area name="toes" shape="poly" coords=" 57,285, 23,281, 21,285, 20,295, 31,297, 37,302, 40,299, 49,303, 53,298, 54,291, 60,285, 118,287, 119,291, 121,298, 125,301, 132,300, 134,297, 140,297, 146,296, 150,293, 151,289, 147,277, 121,287, 60,284" href="#" alt="teal hotspot"/>
+</map>
+<img onclick="zoomout('lzoom');" id="back" width="20px" src="../public/img/eco/zoomout.png" style="cursor: pointer;">
+</div>
+
+<!--hands-->
+
+<div id="hzoom" class="col-md-3" style="display: none">
+<img id="mhand" src="../public/img/eco/mhand.gif" width="273" height="230" alt="Insert Alt" usemap="#mh_map" border="0">
+
+<map name="mh_map" id="mh_map">
+    
+<area name="shoulder" shape="poly" coords=" 258,4, 241,6, 230,11, 217,19, 210,27, 202,43, 198,51, 209,47, 226,41, 236,34, 247,27, 252,19, 258,7" href="#" alt="red hotspot"/>
+    <area name="armpit" shape="poly" coords=" 239,50, 228,67, 230,87, 243,95, 263,84, 262,68, 257,58, 242,51" href="#" alt="green hotspot"/>
+    <area name="bicep" shape="poly" coords=" 198,54, 170,71, 174,83, 178,91, 190,91, 202,85, 214,77, 220,67, 218,60, 218,53, 211,51, 202,55, 201,54" href="#" alt="purple hotspot"/>
+    <area name="tricep" shape="poly" coords=" 227,82, 222,87, 205,95, 195,101, 191,96, 198,88, 208,82, 220,75, 226,77, 227,80" href="#" alt="yellow hotspot"/>
+    <area name="elbow" shape="poly" coords=" 154,76, 145,84, 149,103, 155,111, 162,121, 172,115, 171,103, 164,88, 156,79" href="#" alt="olive hotspot"/>
+    <area name="forearm" shape="poly" coords=" 136,91, 159,126, 143,131, 108,151, 88,137, 134,91" href="#" alt="teal hotspot"/>
+    <area name="wrist" shape="poly" coords=" 72,151, 89,166, 101,153, 85,140, 73,149" href="#" alt="teal hotspot"/>
+    <area name="palm" shape="poly" coords=" 64,158, 74,173, 51,191, 38,193, 34,187, 62,159" href="#" alt="teal hotspot"/>
+    <area name="fingers" shape="poly" coords=" 31,190, 3,218, 6,223, 11,221, 16,223, 47,196, 62,189, 60,195, 62,201, 67,196, 75,191, 90,169, 81,170, 62,187, 46,195, 34,192" href="#" alt="teal hotspot"/>
+</map>
+<img onclick="zoomout('hzoom');" id="back" width="20px" src="../public/img/eco/zoomout.png" style="cursor: pointer;">
+</div>
+     <div class="col-md-4" style="background-color: rgba(125, 63, 152, 0.35);margin-left: 4%;">
+    <h3>Symptom Checker</h3>
+<form>
+
+   <div class="form-group">
+  
+    <input type="text" class="form-control" id="Age" placeholder="Age">
+  </div>
+      <label for="gender">Select a gender</label>
+  <div class="radio">
+   <label>
+      <input type="radio" name="optionsRadios" id="optionsRadios1" value="1" checked>
+      Male
+    </label>
+    <br>
+    <label>
+      <input type="radio" name="optionsRadios" id="optionsRadios2" value="2">
+     Female
+    </label>
+  </div>
+  <fieldset class="form-group">
+    <label for="exampleSelect1">Selected body part:</label>
+    <input type="text" class="form-control"  id="selections" placeholder="...">
+ 
+  </fieldset>
+  <fieldset class="form-group">
+    <label for="exampleSelect1">Select a specific body part</label>
+    <input type="text" class="form-control"  id="specific" placeholder="...">
+        
+  </fieldset>  
+ 
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+</div>             
+            
+    <div class="col-md-4" style="background-color: rgba(125, 63, 152, 0.35);margin-left: 2%;">
+    <h3>List of Symptoms</h3>
+<form>
+         
+ <div class="list-group">
+    <a href="#" class="list-group-item">Cold</a>
+    <a href="#" class="list-group-item">HeadAche</a>
+    <a href="#" class="list-group-item">Migraine</a>
+  </div> 
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+  </div>          
+            </div>
+        </section>
+    </div>
+    <script src="../public/js2/jquery-1.11.1.min.js"></script>
+    <script src="../public/js2/bootstrap.min.js"></script>
+    <script src="../public/js2/slick.min.js"></script>
+    <script src="../public/js2/placeholdem.min.js"></script>
+    <script src="../public/js2/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+    <script src="../public/js2/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+    <script src="../public/js2/waypoints.min.js"></script>
+    <script src="../public/js2/scripts.js"></script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script src="../public/js2/jquery.imagemapster.js"></script>
+<script type="text/javascript">
+    function maletog()
+    {
+       var e=document.getElementById('malefront');
+       if(e.style.display=='none')
+      {
+        e.style.display='block';
+        document.getElementById('mback').style.display='none';
+      }
+      else{
+        e.style.display='none';
+       document.getElementById('mback').style.display='block';
+       }
+    }
+
+       function zoomout(a)
+    {
+       var e=document.getElementById(a);
+        e.style.display='none';
+        document.getElementById('malefront').style.display='block';
+    }
+
+
+    function femtog()
+    {
+       var e=document.getElementById('femalefront');
+       if(e.style.display=='none')
+      {
+        e.style.display='block';
+        document.getElementById('femaleback').style.display='none';
+      }
+      else{
+        e.style.display='none';
+       document.getElementById('femaleback').style.display='block';
+       }
+    }
+</script>
+
+    <script>
+    $('input[name="optionsRadios"]').bind('change',function(){
+    var showOrHide = ($(this).val());
+    if(showOrHide==1)
+    {
+      $('#femalefront').hide();
+      $('#malefront').show();
+      
+    }
+    else
+    {
+       $('#femalefront').show();
+      $('#malefront').hide();
+     
+    }
+    
+    
+ });
+        $(document).ready(function() {
+            appMaster.preLoader();
+        });
+    </script>
+
+    <script language="javascript">
+
+  var mxref = {
+        head: "Head",
+        neck: "Neck",
+        hand: "Hand",
+        c: "Chest",
+        a: "Abdomen",
+        p: "Pelvis" ,
+        leg: "Leg"        
+    };      
+
+   var image = $('#vegetables');
+
+   image.mapster({
+     fillOpacity: 0.4,
+     fillColor: "d42e16",
+     stroke: false,
+     strokeColor: "3320FF",
+     strokeOpacity: 0.8,
+     strokeWidth: 1,
+     singleSelect: true,
+     mapKey: 'name',
+     listKey: 'name',
+       onClick: function (e) {
+                       
+            // update text depending on area selected
+            $('#specific').val('');
+            $('#selections').val(mxref[e.key]);
+            if(e.key=='head')
+                {
+                    $('#malefront').hide();
+                    $('#headzoom').show();
+
+                }
+            else if(e.key=='a')
+                {
+                    $('#malefront').hide();
+                    $('#abdzoom').show();
+
+                }
+            else if(e.key=='leg')
+                {
+                    $('#malefront').hide();
+                    $('#lzoom').show();
+
+                }
+            else if(e.key=='hand')
+                {
+                    $('#malefront').hide();
+                    $('#hzoom').show();
+
+                }
+            else if(e.key=='neck'||e.key=='c')
+            {
+                  $('#selections').val(mxref[e.key]); 
+                  $('#specific').val(mxref[e.key]);      
+            }
+        },
+     toolTipContainer: '<div></div>',
+     showToolTip: true,
+     toolTipClose: ["area-mouseout", "area-click"],
+     areas: [{
+       key: "head",
+       toolTip: "head"
+     },
+     {
+       key: "neck",
+       toolTip: "neck"
+     },
+     {
+       key: "hand",
+       toolTip: "hand"
+     },
+     {
+       key: "leg",
+       toolTip: "leg"
+     },
+     {
+       key: "p",
+       toolTip: "pelvis"
+     },
+     {
+       key: "c",
+       toolTip: "chest"
+     },
+     {
+       key: "a",
+       toolTip: "abdomen"
+     } 
+     ]
+   });
+    </script>
+
+<!--head-->
+    <script language="javascript">
+
+  var xref1 = {
+        head: "Head",
+        eyes: "Eyes",
+        mouth: "Mouth",
+        leftear: "Left Ear",
+        nose: "Nose",
+        rightear: "Right Ear",
+        jaw: "Jaw" ,
+        throat: "Throat"        
+    };
+      
+
+   var image = $('#headz');
+
+   image.mapster({
+     fillOpacity: 0.4,
+     fillColor: "d42e16",
+     stroke: false,
+     strokeColor: "3320FF",
+     strokeOpacity: 0.8,
+     strokeWidth: 1,
+     singleSelect: true,
+     mapKey: 'name',
+     listKey: 'name',
+       onClick: function (e) {
+                       
+            // update text depending on area selected
+            $('#specific').val(xref1[e.key]);
+                     
+        },
+     toolTipContainer: '<div></div>',
+     showToolTip: true,
+     toolTipClose: ["area-mouseout", "area-click"],
+     areas: [{
+       key: "head",
+       toolTip: "head"
+     },
+     {
+       key: "nose",
+       toolTip: "nose"
+     },
+     {
+       key: "eyes",
+       toolTip: "eyes"
+     },
+     {
+       key: "leftear",
+       toolTip: "left ear"
+     },
+     {
+       key: "rightear",
+       toolTip: "right ear"
+     },
+     {
+       key: "mouth",
+       toolTip: "mouth"
+     },
+     {
+       key: "jaws",
+       toolTip: "jaw"
+     },
+     {
+       key: "throat",
+       toolTip: "throat"
+     } 
+     ]
+   });
+    </script>
+
+    <!--abdomen-->
+       <script language="javascript">
+
+  var axref = {
+        labd: "Lower Abdomen",
+        habd: "Higher Abdomen"               
+    };
+      
+
+   var image = $('#abdz');
+
+   image.mapster({
+     fillOpacity: 0.4,
+     fillColor: "d42e16",
+     stroke: false,
+     strokeColor: "3320FF",
+     strokeOpacity: 0.8,
+     strokeWidth: 1,
+     singleSelect: true,
+     mapKey: 'name',
+     listKey: 'name',
+       onClick: function (e) {
+                       
+            // update text depending on area selected
+            $('#specific').val(axref[e.key]);
+                     
+        },
+     toolTipContainer: '<div></div>',
+     showToolTip: true,
+     toolTipClose: ["area-mouseout", "area-click"],
+     areas: [{
+       key: "labd",
+       toolTip: "lower abdomen"
+     },
+        {
+       key: "habd",
+       toolTip: "higher abdomen"
+     } 
+     ]
+   });
+    </script>
+   
+    <script>
+        $(document).ready(function() {
+            appMaster.preLoader();
+        });
+    </script>
+
+     <!--mlegs-->
+       <script language="javascript">
+
+  var mlxref = {
+        thigh: "Thigh",
+        knees: "Knees",
+        calves: "Calves",  
+        ankles: "Ankles",   
+        foot: "Foot",
+        toes: "Toes"          
+    };
+      
+
+   var image = $('#mleg');
+
+   image.mapster({
+     fillOpacity: 0.4,
+     fillColor: "d42e16",
+     stroke: false,
+     strokeColor: "3320FF",
+     strokeOpacity: 0.8,
+     strokeWidth: 1,
+     singleSelect: true,
+     mapKey: 'name',
+     listKey: 'name',
+       onClick: function (e) {
+                       
+            // update text depending on area selected
+            $('#specific').val(mlxref[e.key]);
+                     
+        },
+     toolTipContainer: '<div></div>',
+     showToolTip: true,
+     toolTipClose: ["area-mouseout", "area-click"],
+     areas: [{
+       key: "thigh",
+       toolTip: "thigh"
+     },
+        {
+       key: "knees",
+       toolTip: "Knees"
+     },
+     {
+       key: "calves",
+       toolTip: "calves"
+     },
+     {
+       key: "ankles",
+       toolTip: "ankles"
+     },
+     {
+       key: "foot",
+       toolTip: "foot"
+     },
+     {
+       key: "toes",
+       toolTip: "toes"
+     }
+
+     ]
+   });
+    </script>
+   
+ <!--mhands-->
+       <script language="javascript">
+
+  var mhxref = {
+        shoulder: "Shoulder",
+        armpit: "Arm pit",
+        bicep: "Bicep",  
+        tricep: "Tricep",   
+        elbow: "Elbow",
+        forearm: "Forearm",
+        wrist: "Wrist",
+        palm: "Palm",
+        fingers: "Fingers"          
+    };
+      
+
+   var image = $('#mhand');
+
+   image.mapster({
+     fillOpacity: 0.4,
+     fillColor: "d42e16",
+     stroke: false,
+     strokeColor: "3320FF",
+     strokeOpacity: 0.8,
+     strokeWidth: 1,
+     singleSelect: true,
+     mapKey: 'name',
+     listKey: 'name',
+       onClick: function (e) {
+                       
+            // update text depending on area selected
+            $('#specific').val(mhxref[e.key]);
+                     
+        },
+     toolTipContainer: '<div></div>',
+     showToolTip: true,
+     toolTipClose: ["area-mouseout", "area-click"],
+     areas: [{
+       key: "shoulder",
+       toolTip: "shoulder"
+     },
+        {
+       key: "armpit",
+       toolTip: "armpit"
+     },
+     {
+       key: "bicep",
+       toolTip: "bicep"
+     },
+     {
+       key: "tricep",
+       toolTip: "tricep"
+     },
+     {
+       key: "elbow",
+       toolTip: "elbow"
+     },
+     {
+       key: "forearm",
+       toolTip: "forearm"
+     },
+     {
+       key: "wrist",
+       toolTip: "wrist"
+     },
+     {
+       key: "palm",
+       toolTip: "palm"
+     },
+     {
+       key: "fingers",
+       toolTip: "fingers"
+     }
+
+     ]
+   });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            appMaster.preLoader();
+        });
+    </script>
+
+    <script language="javascript">
+
+  var xref2 = {
+        head: "Head",
+        neck: "Neck",
+        hand: "Hand",
+        chest: "Chest",
+        abdomen: "Abdomen",
+        pelvis: "Pelvis" ,
+        leg: "Leg"        
+    };      
+
+   var image = $('#female');
+
+   image.mapster({
+     fillOpacity: 0.4,
+     fillColor: "d42e16",
+     stroke: false,
+     strokeColor: "3320FF",
+     strokeOpacity: 0.8,
+     strokeWidth: 1,
+     singleSelect: true,
+     mapKey: 'name',
+     listKey: 'name',
+       onClick: function (e) {
+                       
+            // update text depending on area selected
+            $('#selections').val(xref2[e.key]);
+            
+          
+        },
+     toolTipContainer: '<div></div>',
+     showToolTip: true,
+     toolTipClose: ["area-mouseout", "area-click"],
+     areas: [{
+       key: "head",
+       toolTip: "head"
+     },
+     {
+       key: "neck",
+       toolTip: "neck"
+     },
+     {
+       key: "hand",
+       toolTip: "hand"
+     },
+     {
+       key: "leg",
+       toolTip: "leg"
+     },
+     {
+       key: "pelvis",
+       toolTip: "pelvis"
+     },
+     {
+       key: "chest",
+       toolTip: "chest"
+     },
+     {
+       key: "abdomen",
+       toolTip: "abdomen"
+     } 
+     ]
+   });
+    </script>
+
+     <script>
+        $(document).ready(function() {
+            appMaster.preLoader();
+        });
+    </script>
+
+    <script language="javascript">
+
+  var xref = {
+        head: "Head",
+        neck: "Neck",
+        hand: "Hand",
+        back: "Back",
+        backbone: "Backbone",
+        gluteals: "Gluteals" ,
+        leg: "Leg"        
+    };      
+
+   var image = $('#maleback');
+
+   image.mapster({
+     fillOpacity: 0.4,
+     fillColor: "d42e16",
+     stroke: false,
+     strokeColor: "3320FF",
+     strokeOpacity: 0.8,
+     strokeWidth: 1,
+     singleSelect: true,
+     mapKey: 'name',
+     listKey: 'name',
+       onClick: function (e) {
+                       
+            // update text depending on area selected
+            $('#selections').val(xref[e.key]);
+            
+          
+        },
+     toolTipContainer: '<div></div>',
+     showToolTip: true,
+     toolTipClose: ["area-mouseout", "area-click"],
+     areas: [{
+       key: "head",
+       toolTip: "head"
+     },
+     {
+       key: "neck",
+       toolTip: "neck"
+     },
+     {
+       key: "hand",
+       toolTip: "hand"
+     },
+     {
+       key: "leg",
+       toolTip: "leg"
+     },
+     {
+       key: "back",
+       toolTip: "back"
+     },
+     {
+       key: "backbone",
+       toolTip: "backbone"
+     },
+     {
+       key: "gluteals",
+       toolTip: "gluteals"
+     } 
+     ]
+   });
+    </script>
+
+        <script language="javascript">
+
+  var xref = {
+        head: "Head",
+        neck: "Neck",
+        hand: "Hand",
+        back: "Back",
+        gluteals: "Gluteals" ,
+        leg: "Leg"        
+    };      
+
+   var image = $('#femback');
+
+   image.mapster({
+     fillOpacity: 0.4,
+     fillColor: "d42e16",
+     stroke: false,
+     strokeColor: "3320FF",
+     strokeOpacity: 0.8,
+     strokeWidth: 1,
+     singleSelect: true,
+     mapKey: 'name',
+     listKey: 'name',
+       onClick: function (e) {
+                       
+            // update text depending on area selected
+            $('#selections').val(xref[e.key]);
+            
+          
+        },
+     toolTipContainer: '<div></div>',
+     showToolTip: true,
+     toolTipClose: ["area-mouseout", "area-click"],
+     areas: [{
+       key: "head",
+       toolTip: "head"
+     },
+     {
+       key: "neck",
+       toolTip: "neck"
+     },
+     {
+       key: "hand",
+       toolTip: "hand"
+     },
+     {
+       key: "leg",
+       toolTip: "leg"
+     },
+     {
+       key: "back",
+       toolTip: "back"
+     },
+          {
+       key: "gluteals",
+       toolTip: "gluteals"
+     } 
+     ]
+   });
+    </script>
+</body>
+
+</html>

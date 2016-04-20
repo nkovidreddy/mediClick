@@ -601,9 +601,9 @@ form .form-control {
   height: 40px;
   line-height: 40px;
   padding: 20px;
-  color: #cfcfcf;
+  color: black;
   border: 2px solid #cccccc;
-  font-weight: 300;
+  font-weight: 600;
   margin-bottom: 10px;
 }
 form textarea.form-control {

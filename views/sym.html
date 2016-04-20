@@ -97,10 +97,10 @@
 
         <section id="getApp">
             <div class="container-fluid">
-                <div class="section-heading inverse scrollpoint sp-effect3">
+                <div class="section-heading inverse scrollpoint sp-effect3 active animated fadeInDown">
                     <h1>Symptom Checker</h1>
                     <div class="divider"></div>
-                    <p>Choose your native platform and get started!</p>
+                    <p>Select a body part and enter your symptoms for diagnosis</p>
                 </div>
                 
              <div class="col-md-12">
@@ -233,26 +233,37 @@
 </map>
 <img onclick="zoomout('hzoom');" id="back" width="20px" src="../public/img/eco/zoomout.png" style="cursor: pointer;">
 </div>
-     <div class="col-md-4" style="background-color: rgba(125, 63, 152, 0.35);margin-left: 4%;">
-    <h3>Symptom Checker</h3>
+     <div class="col-md-4" style="background-color: rgba(125, 63, 152, 0.35);margin-left: 4%;padding: 15px;border: solid 1px whitesmoke;border-radius: 15px;">
+    <h3 style="color:white">Symptom Checker</h3>
 <form>
-
    <div class="form-group">
-  
-    <input type="text" class="form-control" id="Age" placeholder="Age">
+  <label for="Age">Enter you age:</label>
+    <select class="form-control" id="Age">
+      <option value="">Choose one</option>
+        <option value="1">0-2 years</option>
+        <option value="4">3-6 years</option>
+        <option value="8">7-12 years</option>
+        <option value="14">13-17 years</option>
+        <option value="20">18-24 years</option>
+        <option value="30">25-34 years</option>
+        <option value="40">35-44 years</option>
+        <option value="50">45-54 years</option>
+        <option value="60">55-64 years</option>
+        <option value="65">Over 65</option>
+    </select>
   </div>
+   <fieldset class="form-group">
       <label for="gender">Select a gender</label>
-  <div class="radio">
-   <label>
+    <label style="width: 27%;">
       <input type="radio" name="optionsRadios" id="optionsRadios1" value="1" checked>
       Male
     </label>
-    <br>
-    <label>
+    
+    <label style="width: 27%;">
       <input type="radio" name="optionsRadios" id="optionsRadios2" value="2">
      Female
     </label>
-  </div>
+  </fieldset>
   <fieldset class="form-group">
     <label for="exampleSelect1">Selected body part:</label>
     <input type="text" class="form-control"  id="selections" placeholder="...">
@@ -260,8 +271,7 @@
   </fieldset>
   <fieldset class="form-group">
     <label for="exampleSelect1">Select a specific body part</label>
-    <input type="text" class="form-control"  id="specific" placeholder="...">
-        
+    <input type="text" class="form-control"  id="specific" placeholder="...">        
   </fieldset>  
  
   <button type="submit" class="btn btn-primary">Submit</button>
@@ -269,7 +279,7 @@
 
 </div>             
             
-    <div class="col-md-4" style="background-color: rgba(125, 63, 152, 0.35);margin-left: 2%;">
+    <div class="col-md-4" style="background-color: rgba(125, 63, 152, 0.35);margin-left: 2%;padding: 15px">
     <h3>List of Symptoms</h3>
 <form>
          

@@ -26,21 +26,7 @@ app.use(bodyParser.json());
  });
 
  app.use(morgan('dev'));
- // get an instance of the express router
-
-/*app.get('/', function(req, res) {
- res.send('Welcome to the home page!');
- });*/
-
-
-
-
- // test route to make sure everything is working
-/* accessed at GET http://localhost:8080/api
-apiRouter.get('/', function(req, res) {
- res.json({ message: 'hooray! welcome to our api!' });
- });*/
-
+ 
 
  // REGISTER OUR ROUTES -------------------------------
  // all of our routes will be prefixed with /api
@@ -72,17 +58,15 @@ app.get('/MedicalHistory',function(req,res){
  	res.sendFile(path.join(__dirname+'/views/MedicalHistory.html'))
  	//next();
  });
-
+app.get('/EmCon',function(req,res){
+  res.sendFile(path.join(__dirname+'/views/EmCon.html'))
+ });
 app.get('/Symptoms',function(req,res){
- 	//res.send('index',{title:'hey',message:'Hello there!'});
  	res.sendFile(path.join(__dirname+'/views/Symptoms.html'))
- 	//next();
  });
 
 app.get('/Remedies',function(req,res){
- 	//res.send('index',{title:'hey',message:'Hello there!'});
  	res.sendFile(path.join(__dirname+'/views/Rem.html'))
- 	//next();
  });
 app.get('/gmaps',function(req,res){
  	//res.send('index',{title:'hey',message:'Hello there!'});
@@ -145,45 +129,24 @@ console.log(req.body);
 apiRouter.route('/users/:email')
 
 .put(function(req, res) {
-// use our user model to find the user we want
-// var personalInfo = new Personalinfo();
-// (req.body.fname) personalInfo.fname = req.body.fname;
-// User.findById(req.params.email, function(err, users){
-// 	if (err) res.send(err);
-// 	// update the users info only if its new
-// })
-//Testing Mongoose
-
-/*var reg_handler = function (err) {
-  User.update([{email: 'test@gmail.com'}], { $set: { lname: 'sindhu' } }, { upsert: true }, function(){
- res.json("done");
-
-  });
-
-};*/
-/*{ name: 'sindhu',
-  mygender:'female' }*/
-
-  
-/*var conditions = { email: 'test@gmail.com' }
-  , update = {email:'testupdatedd@gmail.com'},
-   {$set:{gender: "female",age: 25,}}
-  , options = { multi: true };
-
-User.update(conditions, update, options, callback);
-
-function callback (err, numAffected) {
-  // numAffected is the number of updated documents
-  console.log("Playing");
-  res.json(numAffected);
-}; */
-
-var query = { email: 'test@gmail.com' };
+  var email=req.params.email
+  console.log("testing inside sindhuupdate"+email);
+//var user = new User();
+ var fname = req.body.fname;
+ var lname = req.body.lname;
+ var bday=req.body.bday;
+ var gender=req.body.gender;
+ var phone=req.body.phone;
+ var address=req.body.address;
+ var zipcode=req.body.zipcode;
+//var query = { email: 'sindhu@gmail.com' };
 //User.findOneAndUpdate(query, { email: 'tested@gmail.com' }, options, callback)
 
 
-var conditions = { email: 'tested@gmail.com' };
-var update = { $set: {fname: "Test First Name",lname:"Tested"}};
+var conditions = { email: email };
+//var update = { $set: {fname: "sindhu",lname:"vallabhaneni"}};
+var update = { $set: {fname: fname,lname:lname,bday:bday,gender:gender,phone:phone,address:address,zipcode:zipcode}};
+
 var options = { upsert: true };
 
 User.update(conditions, update, options, callback);
@@ -195,7 +158,6 @@ function callback (err, numAffected) {
 
 })
 //End
-
 
 
 //database
@@ -215,29 +177,67 @@ res.json(user);
 });
 })
 
-//sindhuupdate
-apiRouter.route('/users1')
-.get(function(req, res) {
-// use our user model to find the user we want
-console.log("sindhuupdate inside the correct apiroutes");
-console.log("sindhuupdate"+email);
-/*User.findById(req.params.email, function(err, user){
-	if (err) res.send(err);
-	// update the users info only if its new
-if (req.body.name) user.name = req.body.name;
-if (req.body.username) user.username = req.body.username; 
-if (req.body.password) user.password = req.body.password;
 
-// save the user
-user.save(function(err) {
-if (err) res.send(err);
+//sindhuupdate2
+apiRouter.route('/users/:email/:medical/:info')
 
-// return a message
-res.json({ message: 'User updated!' });
-});
-}); */
-});
+.put(function(req, res) {
+  var email=req.params.email
+  console.log("testing inside sindhuupdate22222"+email);
+//var user = new User();
+ var medicalConditions = req.body.conditions;
+ console.log(medicalConditions);
+ var pregnancy = req.body.pregnancy;
+ var addiction=req.body.addiction;
+ var lastVisit=req.body.lastVisit;
+ var visitReason=req.body.visitReason;
 
+var conditions = { email: email };
+var update = { $set: {medicalConditions: medicalConditions,pregnancy:pregnancy,addiction:addiction,lastVisit:lastVisit,visitReason:visitReason}};
+
+var options = { upsert: true };
+
+User.update(conditions, update, options, callback);
+function callback (err, numAffected) {
+  // numAffected is the number of updated documents
+  if(err) console.log(err);
+  console.log("Playing");
+  res.json(numAffected);
+}; 
+
+})
+//End
+
+//sindhuupdate2
+apiRouter.route('/users/:email/:emergency/:contacts/:info')
+
+.put(function(req, res) {
+  var email=req.params.email
+  console.log("testing inside emergency sindhu"+email);
+//var user = new User();
+    var efname1=req.body.efname1
+    var elname1=req.body.elname1;
+    var eemail1=req.body.eemail1;
+    var efname2=req.body.efname2;
+    var elname2=req.body.elname2;
+    var eemail2=req.body.eemail2;
+    var notifyT=req.body.notifyT;
+    var notifyE=req.body.notifyE;
+
+var conditions = { email: email };
+var update = { $set: {efname1: efname1,elname1:elname1,eemail1:eemail1,efname2:efname2,elname2:elname2,eemail2:eemail2,notifyT:notifyT,notifyE:notifyE}};
+
+var options = { upsert: true };
+
+User.update(conditions, update, options, callback);
+function callback (err, numAffected) {
+  // numAffected is the number of updated documents
+  console.log("emergency upadted");
+  res.json(numAffected);
+}; 
+
+})
+//End
 
 //database2
 apiRouter.route('/forms')

@@ -33,8 +33,14 @@ $routeProvider
 .when('/MedicalHistory', {
  	templateUrl : 'views/MedicalHistory.html',
  	controller : 'medicalController',
- 	controllerAs: 'medicalInfo'
+ 	controllerAs: 'medical'
  	})
+
+.when('/EmCon', {
+ 	templateUrl : 'views/EmCon.html',
+ 	controller : 'emergencyController',
+ 	controllerAs: 'emergency'
+  	})
 
  	.when('/Symptoms', {
  	templateUrl : 'views/Symptoms.html',

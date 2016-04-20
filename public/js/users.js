@@ -7,8 +7,7 @@ var bcrypt = require('bcrypt-nodejs');
 //mongoose.connect('mongodb://sindhura:sindhu@ds019480.mlab.com:19480/mediclick')
 mongoose.createConnection('mongodb://sindhura:sindhu@ds019480.mlab.com:19480/mediclick')
 var schema=mongoose.schema;
- console.log("iam testing register inside users.js");
- // user schema
+  // user schema
  var UserSchema = new Schema({
  //name: String,
  email: { type: String, required: true, index: { unique: true }},
@@ -19,9 +18,21 @@ var schema=mongoose.schema;
  gender: {type: String},
  phone: {type: String},
  address: {type: String},
- zipcode: {type: String}
- });
- console.log("iam testing register inside users.js 1");
+ zipcode: {type: String},
+medicalConditions: {type: Object},
+pregnancy: {type: Object},
+addiction: {type: Object},
+lastVisit: {type: String},
+visitReason: {type: String},
+efname1: {type: String},
+elname1: {type: String},
+eemail1: {type: String},
+efname2: {type: String},
+elname2: {type: String},
+eemail2: {type: String},
+notifyT: {type: String},
+notifyE: {type: String}
+});
  // hash the password before the user is saved
  UserSchema.pre('save', function(next) {
  	

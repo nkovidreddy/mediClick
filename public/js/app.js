@@ -6,12 +6,7 @@ angular.module('masters',['routerRoutes','ngStorage'])
  	name: ''
  };
  return emailTest;
- //
-  // private variable
-  //var _email = "test@gmail.com";
- /*var _email={};
-  // public API
-  this.useremail = _email;*/
+
 })
 
 .controller('indexController',function($http,$scope){
@@ -87,17 +82,13 @@ var vm=this;
 //.controller('formsController', ['$scope','userem',function($scope,userem){
 	.controller('formsController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
 	var vm=this;
-	console.log("inside forms controller");
-	console.log($localStorage.userId);
-	$scope.$storage1 = $localStorage.userId;
+    $scope.$storage1 = $localStorage.userId;
 	var userIdFromStorage = $localStorage.userId;
-		console.log("Local Storage Email");
-		console.log(userIdFromStorage);
 	vm.personalInfo=function(){
-		console.log("inisde personal info function");
+	//	console.log("inisde personal info function");
 		var emailId= $localStorage.userId;
 		var url = '/api/users/' +emailId;
-       console.log("sindhuupdate"+emailId);
+      // console.log("sindhuupdate"+emailId);
 		var fname=vm.fname;
 		var lname=vm.lname;
 		var bday=vm.bday;
@@ -106,34 +97,123 @@ var vm=this;
 		var address=vm.address;
 		var zipcode=vm.zipcode;
 
-		//var req = { sindhuupdated
-			var reqpersonalinfo={
-     // url: '/api/forms', // No need of IP address //sindhuupdate
-     url: url,
+	  var reqpersonalinfo={
+      url: url,
       method: 'PUT',
       data: {'fname':vm.fname, 'lname':vm.lname, 'bday':vm.bday, 'gender':vm.gender, 'phone':vm.phone, 'address':vm.address, 'zipcode':vm.zipcode},
-      //headers: {'Content-Type': 'application/json'} //sindhuupdate
-        //params: {'emailId':vm.emailId}
-	}
-
+      	}
 		$http(reqpersonalinfo).then(function(data){
-   
-      	//vm.registerMessage=data.data;
-      
-      	window.location.href = '/forms';
+      	window.location.href = '/MedicalHistory';
 
       })
 	}
-	//console.log($scope);
-	//$scope.emailTest=userem;
-	
 	}])
 
-.controller('medicalController',function(){
+
+.controller('medicalController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
+
 	var vm=this;
-	vm.message = 'my forms page.';
+	//console.log("inside medicalController controller");
+	//console.log($localStorage.userId);
+	$scope.$storage1 = $localStorage.userId;
+	//$scope.$passemail = $localStorage.userId;
+	$scope.conditions = {};
+	$scope.addictions = {};
+	$scope.pregnancy = {};
+	var userIdFromStorage = $localStorage.userId;
+		vm.medicalInfo=function(){
+		var medical="medical";
+		var info="info";
+		console.log("inisde personal info function");
+		var emailId= $localStorage.userId;
+	    var url = '/api/users/' +emailId+'/'+medical+'/'+info;
+	    console.log("sindhuupdate"+emailId);
+	     var conditions=$scope.conditions;
+		 var addictions=$scope.addictions;
+		var pregnancy=$scope.pregnancy;
+		//var addiction=vm.addiction;
+		var lastVisit=vm.lastVisit;
+		var visitReason=vm.visitReason;
+		//var req = { sindhuupdated
+			var medicalInfo={
+     // url: '/api/forms', // No need of IP address //sindhuupdate
+      url: url,
+      method: 'PUT',
+      data: {'conditions':conditions, 'pregnancy':pregnancy, 'addiction':addictions, 'lastVisit':vm.lastVisit, 'visitReason':vm.visitReason},
+   
+      }
+      console.log(medicalInfo.data.conditions);
+
+		$http(medicalInfo).then(function(data){
+     	window.location.href = '/EmCon';
+
+      })
+	}
 	
+}])
+
+
+.controller('emergencyController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
+	console.log("Test Emergency Controller");
+	var vm=this;
+	console.log("inside emergencyController controller");
+	console.log($localStorage.userId);
+	$scope.$storage1 = $localStorage.userId;
+	//$scope.$passemail = $localStorage.userId;
+	var userIdFromStorage = $localStorage.userId;
+		console.log("Local Storage Email");
+		console.log(userIdFromStorage);
+		
+	vm.emergencyInfo=function(){
+		var emergency="emergency";
+		var contacts="contacts";
+		var info="info";
+		console.log("inisde personal info function");
+		var emailId= $localStorage.userId;
+	    var url = '/api/users/' +emailId+'/'+emergency+'/'+contacts+'/'+info;
+	    console.log(url);
+		//var url = '/api/users/' +emailId+medical;
+       console.log("sindhuupdate"+emailId);
+		var efname1=vm.efname1;
+		var elname1=vm.elname1;
+		var eemail1=vm.eemail1;
+		var efname2=vm.efname2;
+		var elname2=vm.elname2;
+		var eemail2=vm.eemail2;
+		var notifyT=vm.notifyT;
+		var notifyE=vm.notifyE;
+		//var req = { sindhuupdated
+			var medicalInfo={
+     // url: '/api/forms', // No need of IP address //sindhuupdate
+      url: url,
+      method: 'PUT',
+      data: {'efname1':vm.efname1, 'elname1':vm.elname1, 'eemail1':vm.eemail1, 'efname2':vm.efname2, 'elname2':vm.elname2 , 'elname2':vm.elname2 , 'eemail2':vm.eemail2 , 'notifyT':vm.notifyT , 'notifyE':vm.notifyE},
+   
+      }
+
+		$http(medicalInfo).then(function(data){
+     	window.location.href = '/index';
+
+      })
+	}
+	
+}])
+
+//symptom checker
+.controller('symptomsController',function(){
+	var vm=this;
+	vm.message = 'my symptoms page.';
+	//vm.regSubmit = $http.post("http://localhost:3000/saveUser");
+
 })
+//remedies Controller
+
+.controller('remediesController',function(){
+	var vm=this;
+	vm.message = 'my remedy page.';
+	//vm.regSubmit = $http.post("http://localhost:3000/saveUser");
+
+});
 
 /*.controller('loginController', function($http) {
 console.log('inside login 1');
@@ -190,20 +270,4 @@ vm.computerData = {};
  };
 
 })*/
-//symptom checker
-.controller('symptomsController',function(){
-	var vm=this;
-	vm.message = 'my symptoms page.';
-	//vm.regSubmit = $http.post("http://localhost:3000/saveUser");
-
-})
-//remedies Controller
-
-.controller('remediesController',function(){
-	var vm=this;
-	vm.message = 'my remedy page.';
-	//vm.regSubmit = $http.post("http://localhost:3000/saveUser");
-
-});
-
 

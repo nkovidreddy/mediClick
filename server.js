@@ -62,13 +62,13 @@ app.get('/EmCon',function(req,res){
   res.sendFile(path.join(__dirname+'/views/EmCon.html'))
  });
 app.get('/Symptoms',function(req,res){
-<<<<<<< HEAD
+
  	res.sendFile(path.join(__dirname+'/views/Symptoms.html'))
-=======
+
  	//res.send('index',{title:'hey',message:'Hello there!'});
  	res.sendFile(path.join(__dirname+'/views/sym.html'))
  	//next();
->>>>>>> origin/master
+
  });
 
 app.get('/Remedies',function(req,res){

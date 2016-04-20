@@ -119,7 +119,7 @@ var vm=this;
 	//$scope.$passemail = $localStorage.userId;
 	$scope.conditions = {};
 	$scope.addictions = {};
-	$scope.pregnancy = {};
+	
 	var userIdFromStorage = $localStorage.userId;
 		vm.medicalInfo=function(){
 		var medical="medical";
@@ -130,7 +130,7 @@ var vm=this;
 	    console.log("sindhuupdate"+emailId);
 	     var conditions=$scope.conditions;
 		 var addictions=$scope.addictions;
-		var pregnancy=$scope.pregnancy;
+		var pregnancy=vm.pregnancy;
 		//var addiction=vm.addiction;
 		var lastVisit=vm.lastVisit;
 		var visitReason=vm.visitReason;
@@ -139,7 +139,7 @@ var vm=this;
      // url: '/api/forms', // No need of IP address //sindhuupdate
       url: url,
       method: 'PUT',
-      data: {'conditions':conditions, 'pregnancy':pregnancy, 'addiction':addictions, 'lastVisit':vm.lastVisit, 'visitReason':vm.visitReason},
+      data: {'conditions':conditions, 'pregnancy':vm.pregnancy, 'addiction':addictions, 'lastVisit':vm.lastVisit, 'visitReason':vm.visitReason},
    
       }
       console.log(medicalInfo.data.conditions);
@@ -163,7 +163,7 @@ var vm=this;
 	var userIdFromStorage = $localStorage.userId;
 		console.log("Local Storage Email");
 		console.log(userIdFromStorage);
-		
+	
 	vm.emergencyInfo=function(){
 		var emergency="emergency";
 		var contacts="contacts";
@@ -180,14 +180,14 @@ var vm=this;
 		var efname2=vm.efname2;
 		var elname2=vm.elname2;
 		var eemail2=vm.eemail2;
-		var notifyT=vm.notifyT;
-		var notifyE=vm.notifyE;
+		var notify=vm.notify;
+		//console.log(notify);
 		//var req = { sindhuupdated
 			var medicalInfo={
      // url: '/api/forms', // No need of IP address //sindhuupdate
       url: url,
       method: 'PUT',
-      data: {'efname1':vm.efname1, 'elname1':vm.elname1, 'eemail1':vm.eemail1, 'efname2':vm.efname2, 'elname2':vm.elname2 , 'elname2':vm.elname2 , 'eemail2':vm.eemail2 , 'notifyT':vm.notifyT , 'notifyE':vm.notifyE},
+      data: {'efname1':vm.efname1, 'elname1':vm.elname1, 'eemail1':vm.eemail1, 'efname2':vm.efname2, 'elname2':vm.elname2 , 'elname2':vm.elname2 , 'eemail2':vm.eemail2 , 'notify':notify},
    
       }
 

@@ -227,11 +227,10 @@ apiRouter.route('/users/:email/:emergency/:contacts/:info')
     var efname2=req.body.efname2;
     var elname2=req.body.elname2;
     var eemail2=req.body.eemail2;
-    var notifyT=req.body.notifyT;
-    var notifyE=req.body.notifyE;
+    var notify=req.body.notify;
 
 var conditions = { email: email };
-var update = { $set: {efname1: efname1,elname1:elname1,eemail1:eemail1,efname2:efname2,elname2:elname2,eemail2:eemail2,notifyT:notifyT,notifyE:notifyE}};
+var update = { $set: {efname1: efname1,elname1:elname1,eemail1:eemail1,efname2:efname2,elname2:elname2,eemail2:eemail2,notify:notify}};
 
 var options = { upsert: true };
 

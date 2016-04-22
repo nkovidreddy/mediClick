@@ -64,13 +64,40 @@
 						</li>
 					</ul>
 				</div>
-			</div>--!
+			</div>
 		</nav>
 
-        <!-- Top content -->
-        <div class="top-content">
-        	
-          
+        <div class="form-bottom">
+                               <form class="form-inline" ng-submit="bhealth.getDoctors()">
+                               <h3>Choose your insurance Id</h3>
+                                 <!-- MULTIPLE CHECKBOXES -->
+                                        <div class="form-group">
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" name="diseaseName" ng-model="insproviders.blueshield"> Blue Shield Of California
+                                            </label>
+                                            </div>
+                               <h3>{{insproviders}}</h3>
+                                    <div>
+                                    </div>
+                                <button type="submit" class="btn btn-success">Done</button>
+                                <!--<button type="submit" class="btn" value="Done">Done</button>  --> 
+
+                               </form>
+                               <div>
+       <div ng-repeat="doctor in bhealth.doctors" >
+       <h2>
+       <a href='{{doctor.profile.image_url}}'>{{doctor.profile.title}}</a>
+       </h2>
+       <div class='time'>{{doctor.profile.first_name}}  {{doctor.profile.last_name}} </div>
+       <p>{{doctor.profile.bio}}</p>
+       <img ng-src="{{doctor.profile.image_url}}" />
+       </div>    
+    </div>
+                              </div>
+       
+   
+                            
+                
             
         </div>
 

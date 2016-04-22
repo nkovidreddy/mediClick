@@ -216,12 +216,38 @@ var vm=this;
 
 //remedies Controller
 
-.controller('bhealthController',function(){
+.controller('bhealthController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
 	var vm=this;
 	vm.message = 'Better Health';
+	$scope.insproviders = {};
 	//vm.regSubmit = $http.post("http://localhost:3000/saveUser");
+	var api_key = '84595b9ae71e28e06f8414fafac6938e'; // Get your API key at developer.betterdoctor.com
 
+	var insurance_uid='blueshieldofcalifornia-blueshieldcabasicppobronzelevelhix';
+//Sample URL Format https://api.betterdoctor.com/2016-03-01/doctors?location=37.773%2C-122.413%2C100&user_location=37.773%2C-122.413&skip=0&limit=10&user_key=84595b9ae71e28e06f8414fafac6938e&insurance_uid=blueshieldofcalifornia-blueshieldcabasicppobronzelevelhix
+	
+	
+	vm.getDoctors=function(){
+		if($scope.insproviders.blueshield==true){
+			insurance_uid='blueshieldofcalifornia-blueshieldcabasicppobronzelevelhix';
+		}
+		console.log(insurance_uid);
+		var resource_url = 'https://api.betterdoctor.com/2016-03-01/doctors?location=37.773%2C-122.413%2C100&user_location=37.773%2C-122.413&skip=0&limit=10&user_key=' + api_key+'&insurance_uid='+insurance_uid;
+		console.log(resource_url);
+	
+		$.get(resource_url, function (data) {
+    // data: { meta: {<metadata>}, data: {<array[Doctor]>} }
+    console.log("Testing API");
+    //console.log(data);
+    vm.doctors=data.data;
+    console.log(vm.doctors);
+    
+    // var template = Handlebars.compile(document.getElementById('docs-template').innerHTML);
+    // document.getElementById('content-placeholder').innerHTML = template(data);
 });
+}
+
+}]);
 
 /*.controller('loginController', function($http) {
 console.log('inside login 1');

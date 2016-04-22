@@ -58,9 +58,16 @@ app.get('/MedicalHistory',function(req,res){
  	res.sendFile(path.join(__dirname+'/views/MedicalHistory.html'))
  	//next();
  });
+
 app.get('/EmCon',function(req,res){
   res.sendFile(path.join(__dirname+'/views/EmCon.html'))
  });
+
+app.get('/betterhealth',function(req,res){
+  res.sendFile(path.join(__dirname+'/views/betterhealth.html'))
+ });
+
+
 app.get('/Symptoms',function(req,res){
 
  	res.sendFile(path.join(__dirname+'/views/Symptoms.html'))

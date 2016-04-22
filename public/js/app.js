@@ -206,11 +206,19 @@ var vm=this;
 	//vm.regSubmit = $http.post("http://localhost:3000/saveUser");
 
 })
+
+.controller('symptomsController',function(){
+	var vm=this;
+	vm.message = 'my symptoms page.';
+	//vm.regSubmit = $http.post("http://localhost:3000/saveUser");
+
+})
+
 //remedies Controller
 
-.controller('remediesController',function(){
+.controller('bhealthController',function(){
 	var vm=this;
-	vm.message = 'my remedy page.';
+	vm.message = 'Better Health';
 	//vm.regSubmit = $http.post("http://localhost:3000/saveUser");
 
 });

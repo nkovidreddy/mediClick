@@ -220,6 +220,7 @@ var vm=this;
 	var vm=this;
 	vm.message = 'Better Health';
 	$scope.insproviders = {};
+	$scope.doctors={};
 	//vm.regSubmit = $http.post("http://localhost:3000/saveUser");
 	var api_key = '84595b9ae71e28e06f8414fafac6938e'; // Get your API key at developer.betterdoctor.com
 
@@ -235,16 +236,34 @@ var vm=this;
 		var resource_url = 'https://api.betterdoctor.com/2016-03-01/doctors?location=37.773%2C-122.413%2C100&user_location=37.773%2C-122.413&skip=0&limit=10&user_key=' + api_key+'&insurance_uid='+insurance_uid;
 		console.log(resource_url);
 	
-		$.get(resource_url, function (data) {
-    // data: { meta: {<metadata>}, data: {<array[Doctor]>} }
-    console.log("Testing API");
-    //console.log(data);
-    vm.doctors=data.data;
-    console.log(vm.doctors);
+	var getDocReq = {
+      //url: '/api/users/'+vm.email, // No need of IP address
+      url: resource_url,
+      method: 'GET'
+      //params: {'email':vm.email,'password':vm.password}
+      //headers: {'Content-Type': 'application/json'}
+	}
+
+	$http(getDocReq).then(function(data){
+		//console.log("displayng data in get method index"); 
+		//console.log(data.data[0].email);
+		console.log("Testing API");
+    	//console.log(data);
+   	 	$scope.doctors=data.data.data;
+    	console.log($scope.doctors);
+      })
+
+//Keeping Below Code for resolving future refreshing behaviours, use above code instead of below code anywhere - kovid
+// 	$.get(resource_url, function (data) {
+//     // data: { meta: {<metadata>}, data: {<array[Doctor]>} }
+//     console.log("Testing API");
+//     //console.log(data);
+//     $scope.doctors=data.data;
+//     console.log($scope.doctors);
     
-    // var template = Handlebars.compile(document.getElementById('docs-template').innerHTML);
-    // document.getElementById('content-placeholder').innerHTML = template(data);
-});
+//     // var template = Handlebars.compile(document.getElementById('docs-template').innerHTML);
+//     // document.getElementById('content-placeholder').innerHTML = template(data);
+// });
 }
 
 }]);

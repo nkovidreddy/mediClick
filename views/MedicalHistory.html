@@ -92,11 +92,7 @@
                             <div class="form-bottom">
 			                    <form role="form" ng-submit="medical.medicalInfo()" method="post" class="registration-form">
 
-                                <!-- <div class="form-group">
-                                <label>Name</label>
-                                <input type="text" class="form-control" name="name" ng-model="conditions.name.test">
-                                </div> -->
-
+                               
                                  <!-- MULTIPLE CHECKBOXES -->
                                         <div class="form-group">
                                             <label class="checkbox-inline">
@@ -124,18 +120,18 @@
                                         </div>
                                
                                     <div>
-                                            <h4> {{ conditions }}</h4>
+                                            <!--<h4> {{ conditions }}</h4>-->
                                     </div>
-                                    <div class="form-group">
-                                       <p >If you are a woman, do you experience pregnancy at the moment?
-                                        </p>
-                                        <label ><input type="radio" name="pregnancy" id="inlineRadio1" value="option1" ng-model="pregnancy.pregnancy" ng-value="'Yes'"> Yes
+                                       <div class="form-group">
+                                        <p >If you are a woman, do you experience pregnancy at the moment?</p>
+                                        <label for="inlineRadio1">Gender </label>
+                                        <label ><input type="radio" name="pregnancy" id="inlineRadio1" value="option1" ng-model="medical.pregnancy" ng-value="'Yes'"> Yes
+
                                        </label>
                                         <label>
-                                        <input type="radio" name="pregnancy" id="inlineRadio2" value="option2"  ng-model="pregnancy.pregnancy" ng-value="'No'"> No
+                                        <input type="radio" name="gender" id="inlineRadio2" value="option2" ng-model="medical.pregnancy" ng-value="'No'"> No
                                         </label>
-                                        <h4> {{ pregnancy }}</h4>
-                                    </div>
+                                   </div>
 
                                     <div class="form-group">
                                         <p >Check if you are addicted to:</p>
@@ -154,7 +150,7 @@
                                       
                         <label class="checkbox-inline">
                         <input type="checkbox" name="addiction" ng-model="addictions.caffeine">Caffeine</label>
-                        <h4> {{ addictions }}</h4>                         
+                                                
                                        
                                     </div>
 
@@ -199,9 +195,7 @@
     console.log("hi");
 }
 </script>
-        <!--[if lt IE 10]>
-            <script src="assets/js/placeholder.js"></script>
-        <![endif]-->
+       
 
     </body>
 

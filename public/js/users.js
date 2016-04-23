@@ -20,7 +20,7 @@ var schema=mongoose.schema;
  address: {type: String},
  zipcode: {type: String},
 medicalConditions: {type: Object},
-pregnancy: {type: Object},
+pregnancy: {type: String},
 addiction: {type: Object},
 lastVisit: {type: String},
 visitReason: {type: String},
@@ -30,8 +30,7 @@ eemail1: {type: String},
 efname2: {type: String},
 elname2: {type: String},
 eemail2: {type: String},
-notifyT: {type: String},
-notifyE: {type: String}
+notify: {type: String}
 });
  // hash the password before the user is saved
  UserSchema.pre('save', function(next) {

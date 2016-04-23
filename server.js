@@ -11,6 +11,7 @@ var mongoose = require('mongoose'); // for working w/ our database
 
 var User = require(__dirname+'/public/js/users.js');//database
 var Personalinfo = require(__dirname+'/public/js/personalinfos.js');//database
+var facts = require(__dirname+'/public/js/facts.js');//database
 
 var port=process.env.PORT || 3000;
 
@@ -58,17 +59,20 @@ app.get('/MedicalHistory',function(req,res){
  	res.sendFile(path.join(__dirname+'/views/MedicalHistory.html'))
  	//next();
  });
+
 app.get('/EmCon',function(req,res){
   res.sendFile(path.join(__dirname+'/views/EmCon.html'))
  });
+
+app.get('/betterhealth',function(req,res){
+  res.sendFile(path.join(__dirname+'/views/betterhealth.html'))
+ });
+
+
 app.get('/Symptoms',function(req,res){
 
- 	res.sendFile(path.join(__dirname+'/views/Symptoms.html'))
-
- 	//res.send('index',{title:'hey',message:'Hello there!'});
  	res.sendFile(path.join(__dirname+'/views/sym.html'))
- 	//next();
-
+ 
  });
 
 app.get('/Remedies',function(req,res){
@@ -227,11 +231,10 @@ apiRouter.route('/users/:email/:emergency/:contacts/:info')
     var efname2=req.body.efname2;
     var elname2=req.body.elname2;
     var eemail2=req.body.eemail2;
-    var notifyT=req.body.notifyT;
-    var notifyE=req.body.notifyE;
+    var notify=req.body.notify;
 
 var conditions = { email: email };
-var update = { $set: {efname1: efname1,elname1:elname1,eemail1:eemail1,efname2:efname2,elname2:elname2,eemail2:eemail2,notifyT:notifyT,notifyE:notifyE}};
+var update = { $set: {efname1: efname1,elname1:elname1,eemail1:eemail1,efname2:efname2,elname2:elname2,eemail2:eemail2,notify:notify}};
 
 var options = { upsert: true };
 
@@ -276,6 +279,25 @@ console.log("SUCCESSFUL");
 
 })
 //database3
+
+//getdiseaseinfo
+
+apiRouter.route('/diseaseinfo')
+
+//get the user with that ID
+//accessed at http://localhost:8080/api/users/:userid
+.get(function(req,res) {
+  console.log(req.params.bodypart);
+  console.log(req.params.specificbodypart);
+    console.log(req.params.symptom);
+  facts.find({ "fact": req.params.symptom}, function(err, user) {
+//User.findById(req.params.email,function(err,user){
+if(err) res.send(err);
+//returing that user only
+console.log(user);
+res.json(user);
+});
+})
 
 //database3
 app.listen(port);

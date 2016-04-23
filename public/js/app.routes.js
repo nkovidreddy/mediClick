@@ -45,7 +45,7 @@ $routeProvider
  	.when('/Symptoms', {
  	templateUrl : 'views/Symptoms.html',
  	controller : 'symptomsController',
- 	controllerAs: 'Symptoms'
+ 	controllerAs: 'symptoms'
  	})
 
  	.when('/Remedies', {
@@ -53,6 +53,13 @@ $routeProvider
  	controller : 'remediesController',
  	controllerAs: 'Remedies'
  	})
+
+ 	.when('/betterhealth', {
+ 	templateUrl : 'views/betterhealth.html',
+ 	controller : 'bhealthController',
+ 	controllerAs: 'bhealth'
+ 	})
+
 	.when('/gmaps', {
  	templateUrl : 'views/gmaps.html',
  	controller : 'gmapsController',

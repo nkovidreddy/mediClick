@@ -119,7 +119,7 @@ var vm=this;
 	//$scope.$passemail = $localStorage.userId;
 	$scope.conditions = {};
 	$scope.addictions = {};
-	$scope.pregnancy = {};
+	
 	var userIdFromStorage = $localStorage.userId;
 		vm.medicalInfo=function(){
 		var medical="medical";
@@ -130,7 +130,7 @@ var vm=this;
 	    console.log("sindhuupdate"+emailId);
 	     var conditions=$scope.conditions;
 		 var addictions=$scope.addictions;
-		var pregnancy=$scope.pregnancy;
+		var pregnancy=vm.pregnancy;
 		//var addiction=vm.addiction;
 		var lastVisit=vm.lastVisit;
 		var visitReason=vm.visitReason;
@@ -139,7 +139,7 @@ var vm=this;
      // url: '/api/forms', // No need of IP address //sindhuupdate
       url: url,
       method: 'PUT',
-      data: {'conditions':conditions, 'pregnancy':pregnancy, 'addiction':addictions, 'lastVisit':vm.lastVisit, 'visitReason':vm.visitReason},
+      data: {'conditions':conditions, 'pregnancy':vm.pregnancy, 'addiction':addictions, 'lastVisit':vm.lastVisit, 'visitReason':vm.visitReason},
    
       }
       console.log(medicalInfo.data.conditions);
@@ -163,7 +163,7 @@ var vm=this;
 	var userIdFromStorage = $localStorage.userId;
 		console.log("Local Storage Email");
 		console.log(userIdFromStorage);
-		
+	
 	vm.emergencyInfo=function(){
 		var emergency="emergency";
 		var contacts="contacts";
@@ -180,14 +180,14 @@ var vm=this;
 		var efname2=vm.efname2;
 		var elname2=vm.elname2;
 		var eemail2=vm.eemail2;
-		var notifyT=vm.notifyT;
-		var notifyE=vm.notifyE;
+		var notify=vm.notify;
+		//console.log(notify);
 		//var req = { sindhuupdated
 			var medicalInfo={
      // url: '/api/forms', // No need of IP address //sindhuupdate
       url: url,
       method: 'PUT',
-      data: {'efname1':vm.efname1, 'elname1':vm.elname1, 'eemail1':vm.eemail1, 'efname2':vm.efname2, 'elname2':vm.elname2 , 'elname2':vm.elname2 , 'eemail2':vm.eemail2 , 'notifyT':vm.notifyT , 'notifyE':vm.notifyE},
+      data: {'efname1':vm.efname1, 'elname1':vm.elname1, 'eemail1':vm.eemail1, 'efname2':vm.efname2, 'elname2':vm.elname2 , 'elname2':vm.elname2 , 'eemail2':vm.eemail2 , 'notify':notify},
    
       }
 
@@ -200,20 +200,99 @@ var vm=this;
 }])
 
 //symptom checker
+.controller('symptomsController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
+	var vm=this;
+   
+   vm.getsymptoms=function(){
+		 var url = '/api/diseaseinfo';
+	   console.log("inside getsymptoms function");
+		var bodypart=vm.bodypart;
+		var specificbodypart=vm.specificbodypart;
+		var symptom=vm.symptom;
+		console.log(vm.bodypart);
+		
+				var symptomInfo={
+     // url: '/api/forms', // No need of IP address //sindhuupdate
+      url: url,
+      method: 'GET',
+      params: {'bodypart':vm.bodypart, 'specificbodypart':vm.specificbodypart, 'symptom':vm.symptom},
+   
+      }
+
+		$http(symptomInfo).then(function(data){
+     	window.location.href = '/index';
+
+      })
+	}
+	}])
+
+
+
+<<<<<<< Updated upstream
+})
+
 .controller('symptomsController',function(){
 	var vm=this;
 	vm.message = 'my symptoms page.';
 	//vm.regSubmit = $http.post("http://localhost:3000/saveUser");
 
 })
+
+=======
+>>>>>>> Stashed changes
 //remedies Controller
 
-.controller('remediesController',function(){
+.controller('bhealthController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
 	var vm=this;
-	vm.message = 'my remedy page.';
+	vm.message = 'Better Health';
+	$scope.insproviders = {};
+	$scope.doctors={};
 	//vm.regSubmit = $http.post("http://localhost:3000/saveUser");
+	var api_key = '84595b9ae71e28e06f8414fafac6938e'; // Get your API key at developer.betterdoctor.com
 
-});
+	var insurance_uid='blueshieldofcalifornia-blueshieldcabasicppobronzelevelhix';
+//Sample URL Format https://api.betterdoctor.com/2016-03-01/doctors?location=37.773%2C-122.413%2C100&user_location=37.773%2C-122.413&skip=0&limit=10&user_key=84595b9ae71e28e06f8414fafac6938e&insurance_uid=blueshieldofcalifornia-blueshieldcabasicppobronzelevelhix
+	
+	
+	vm.getDoctors=function(){
+		if($scope.insproviders.blueshield==true){
+			insurance_uid='blueshieldofcalifornia-blueshieldcabasicppobronzelevelhix';
+		}
+		console.log(insurance_uid);
+		var resource_url = 'https://api.betterdoctor.com/2016-03-01/doctors?location=37.773%2C-122.413%2C100&user_location=37.773%2C-122.413&skip=0&limit=10&user_key=' + api_key+'&insurance_uid='+insurance_uid;
+		console.log(resource_url);
+	
+	var getDocReq = {
+      //url: '/api/users/'+vm.email, // No need of IP address
+      url: resource_url,
+      method: 'GET'
+      //params: {'email':vm.email,'password':vm.password}
+      //headers: {'Content-Type': 'application/json'}
+	}
+
+	$http(getDocReq).then(function(data){
+		//console.log("displayng data in get method index"); 
+		//console.log(data.data[0].email);
+		console.log("Testing API");
+    	//console.log(data);
+   	 	$scope.doctors=data.data.data;
+    	console.log($scope.doctors);
+      })
+
+//Keeping Below Code for resolving future refreshing behaviours, use above code instead of below code anywhere - kovid
+// 	$.get(resource_url, function (data) {
+//     // data: { meta: {<metadata>}, data: {<array[Doctor]>} }
+//     console.log("Testing API");
+//     //console.log(data);
+//     $scope.doctors=data.data;
+//     console.log($scope.doctors);
+    
+//     // var template = Handlebars.compile(document.getElementById('docs-template').innerHTML);
+//     // document.getElementById('content-placeholder').innerHTML = template(data);
+// });
+}
+
+}]);
 
 /*.controller('loginController', function($http) {
 console.log('inside login 1');

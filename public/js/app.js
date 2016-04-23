@@ -228,7 +228,7 @@ var vm=this;
 
 
 
-<<<<<<< Updated upstream
+
 })
 
 .controller('symptomsController',function(){
@@ -238,8 +238,7 @@ var vm=this;
 
 })
 
-=======
->>>>>>> Stashed changes
+
 //remedies Controller
 
 .controller('bhealthController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){

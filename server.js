@@ -11,7 +11,7 @@ var mongoose = require('mongoose'); // for working w/ our database
 
 var User = require(__dirname+'/public/js/users.js');//database
 var Personalinfo = require(__dirname+'/public/js/personalinfos.js');//database
-var facts = require(__dirname+'/public/js/facts.js');//database
+var Fact = require(__dirname+'/public/js/facts.js');//database
 
 var port=process.env.PORT || 3000;
 
@@ -284,19 +284,28 @@ console.log("SUCCESSFUL");
 
 apiRouter.route('/diseaseinfo')
 
+
 //get the user with that ID
 //accessed at http://localhost:8080/api/users/:userid
 .get(function(req,res) {
-  console.log(req.params.bodypart);
-  console.log(req.params.specificbodypart);
-    console.log(req.params.symptom);
-  facts.find({ "fact": req.params.symptom}, function(err, user) {
+  //var factRecord = new Fact();
+    Fact.find({ "fact": "Race"}, function(err, user) {
 //User.findById(req.params.email,function(err,user){
 if(err) res.send(err);
 //returing that user only
 console.log(user);
 res.json(user);
 });
+  console.log(req.params.bodypart);
+  console.log(req.params.specificbodypart);
+    console.log(req.params.symptom);
+// facts.find({ "fact": req.params.symptom}, function(err, user) {
+// //User.findById(req.params.email,function(err,user){
+// if(err) res.send(err);
+// //returing that user only
+// console.log(user);
+// res.json(user);
+// });
 })
 
 //database3

@@ -202,12 +202,13 @@ var vm=this;
 //symptom checker
 .controller('symptomsController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
 	var vm=this;
-   
+   console.log("Test Input");
+		
    vm.getsymptoms=function(){
 		 var url = '/api/diseaseinfo';
 	   console.log("inside getsymptoms function");
 		var bodypart=vm.bodypart;
-		var specificbodypart=vm.specificbodypart;
+   		var specificbodypart=vm.specificbodypart;
 		var symptom=vm.symptom;
 		console.log(vm.bodypart);
 		
@@ -215,7 +216,7 @@ var vm=this;
      // url: '/api/forms', // No need of IP address //sindhuupdate
       url: url,
       method: 'GET',
-      params: {'bodypart':vm.bodypart, 'specificbodypart':vm.specificbodypart, 'symptom':vm.symptom},
+      params: {'bodypart':bodypart, 'specificbodypart':specificbodypart, 'symptom':symptom},
    
       }
 
@@ -227,6 +228,7 @@ var vm=this;
 	}])
 
 
+<<<<<<< Updated upstream
 .controller('symptomsController',function(){
 	var vm=this;
 	vm.message = 'my symptoms page.';
@@ -235,6 +237,11 @@ var vm=this;
 })
 
 
+=======
+
+
+
+>>>>>>> Stashed changes
 //remedies Controller
 
 .controller('bhealthController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
@@ -242,6 +249,7 @@ var vm=this;
 	vm.message = 'Better Health';
 	$scope.insproviders = {};
 	$scope.doctors={};
+	//$scope.practices={};
 	//vm.regSubmit = $http.post("http://localhost:3000/saveUser");
 	var api_key = '84595b9ae71e28e06f8414fafac6938e'; // Get your API key at developer.betterdoctor.com
 
@@ -271,7 +279,9 @@ var vm=this;
 		console.log("Testing API");
     	//console.log(data);
    	 	$scope.doctors=data.data.data;
+   	 	//$scope.practices=data.data.data;
     	console.log($scope.doctors);
+    	
       })
 
 //Keeping Below Code for resolving future refreshing behaviours, use above code instead of below code anywhere - kovid

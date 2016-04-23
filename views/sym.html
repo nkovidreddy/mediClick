@@ -295,9 +295,13 @@
 
   <fieldset class="form-group">
     <label for="exampleSelect1">Selected body part:</label>
-    <input type="text" class="form-control"  id="selections" placeholder="..."> 
-  </fieldset>
 
+    <input type="text" class="form-control"  id="selections" placeholder="..."> 
+
+    <input type="text" class="form-control"  name="bodypart" id="selections" placeholder="..."  ng-value="name" ng-model="symptoms.text"> 
+
+  </fieldset>
+    <h3>{{symptoms.bodypart}}</h3>
   <fieldset class="form-group">
     <label for="exampleSelect1">Select a specific body part</label>
     <input type="text" class="form-control"  id="specific" placeholder="...">        

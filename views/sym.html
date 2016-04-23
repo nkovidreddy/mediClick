@@ -263,7 +263,7 @@
 
      <div class="col-md-4" style="background-color: rgba(125, 63, 152, 0.35);margin-left: 4%;padding: 15px;border: solid 1px whitesmoke;border-radius: 15px;">
     <h3 style="color:white">Symptom Checker</h3>
-<form>
+<form ng-submit="symptoms.getsymptoms()" method="post" class="registration-form">
    <div class="form-group">
   <label for="Age">Enter you age:</label>
     <select class="form-control" id="Age">
@@ -294,13 +294,10 @@
 
   <fieldset class="form-group">
     <label for="exampleSelect1">Selected body part:</label>
-
-    <input type="text" class="form-control"  id="selections" placeholder="..."> 
-
-    <input type="text" class="form-control"  name="bodypart" id="selections" placeholder="..."  ng-value="name" ng-model="symptoms.text"> 
-
+    <!--<input type="text" class="form-control"  name="bodypart" id="selections" placeholder="..."  ng-value="name" ng-model="selections"> -->
+    <input id="selections" ng-model="selections">
   </fieldset>
-    <h3>{{symptoms.bodypart}}</h3>
+    <h3>{{selections}}</h3>
   <fieldset class="form-group">
     <label for="exampleSelect1">Select a specific body part</label>
     <input type="text" class="form-control"  id="specific" placeholder="...">        

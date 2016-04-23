@@ -200,11 +200,35 @@ var vm=this;
 }])
 
 //symptom checker
-.controller('symptomsController',function(){
+.controller('symptomsController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
 	var vm=this;
-	vm.message = 'my symptoms page.';
-	//vm.regSubmit = $http.post("http://localhost:3000/saveUser");
+   
+   vm.getsymptoms=function(){
+		 var url = '/api/diseaseinfo';
+	   console.log("inside getsymptoms function");
+		var bodypart=vm.bodypart;
+		var specificbodypart=vm.specificbodypart;
+		var symptom=vm.symptom;
+		console.log(vm.bodypart);
+		
+				var symptomInfo={
+     // url: '/api/forms', // No need of IP address //sindhuupdate
+      url: url,
+      method: 'GET',
+      params: {'bodypart':vm.bodypart, 'specificbodypart':vm.specificbodypart, 'symptom':vm.symptom},
+   
+      }
 
+		$http(symptomInfo).then(function(data){
+     	window.location.href = '/index';
+
+      })
+	}
+	}])
+
+
+
+<<<<<<< Updated upstream
 })
 
 .controller('symptomsController',function(){
@@ -214,6 +238,8 @@ var vm=this;
 
 })
 
+=======
+>>>>>>> Stashed changes
 //remedies Controller
 
 .controller('bhealthController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){

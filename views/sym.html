@@ -1,9 +1,6 @@
 <!doctype html>
-<!--[if lt IE 7]><html lang="en" class="no-js ie6"><![endif]-->
-<!--[if IE 7]><html lang="en" class="no-js ie7"><![endif]-->
-<!--[if IE 8]><html lang="en" class="no-js ie8"><![endif]-->
-<!--[if gt IE 8]><!-->
-<html lang="en" class="no-js">
+
+<html ng-app="masters">
 <!--<![endif]-->
 
 <head>
@@ -14,12 +11,14 @@
     <link rel="shortcut icon" href="favicon.png">
 
 <!--angular routes-->
- <script src="../public/js/app.routes.js"></script>
- <script src="../public/js/app.js"></script>
+
  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-route.js"></script>
  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-animate.js"></script>
-
+ <script src="../public/js2/ngStorage.min.js"></script>
+ <script src="../public/js/app.routes.js"></script>
+ <script src="../public/js/app.js"></script>
+ 
 
  <link rel="stylesheet" href="../public/css2/bootstrap.css">
     
@@ -52,7 +51,7 @@
     
     
 </head>
-<body ng-app="masters" ng-controller="remediesController as remedies ">
+<body ng-controller="symptomsController as symptoms ">
 
     <div class="pre-loader">
         <div class="load-con">

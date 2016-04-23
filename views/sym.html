@@ -3,7 +3,8 @@
 <!--[if IE 7]><html lang="en" class="no-js ie7"><![endif]-->
 <!--[if IE 8]><html lang="en" class="no-js ie8"><![endif]-->
 <!--[if gt IE 8]><!-->
-<html ng-app="masters"><!--<![endif]-->
+<html lang="en" class="no-js">
+<!--<![endif]-->
 
 <head>
      <meta charset="UTF-8">
@@ -13,14 +14,14 @@
     <link rel="shortcut icon" href="favicon.png">
 
 <!--angular routes-->
+ <script src="../public/js/app.routes.js"></script>
+ <script src="../public/js/app.js"></script>
  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-route.js"></script>
  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-animate.js"></script>
- <script src="../public/js2/ngStorage.min.js"></script>
- <script src="../public/js/app.routes.js"></script>
- <script src="../public/js/app.js"></script>
- 
-    <link rel="stylesheet" href="../public/css2/bootstrap.css">
+
+
+ <link rel="stylesheet" href="../public/css2/bootstrap.css">
     
     <link rel="stylesheet" href="../public/css2/animate.css">
     <link rel="stylesheet" href="../public/css2/font-awesome.min.css">
@@ -30,11 +31,28 @@
     <script type="text/javascript" src="../public/js2/modernizr.custom.32033.js"></script>
     
     <link rel="stylesheet" href="../public/css2/eco.css">
-    <script src="../public/js2/scripts.js"></script>
+    
+        <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+      <script src="../public/js2/jquery-1.11.1.min.js"></script>
 
-     
+    <script src="../public/js2/bootstrap.min.js"></script>
+    <script src="../public/js2/slick.min.js"></script>
+    <script src="../public/js2/placeholdem.min.js"></script>
+    <script src="../public/js2/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+    <script src="../public/js2/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+
+    <script src="../public/js2/waypoints.min.js"></script>
+        <script src="../public/js2/scripts.js"></script>
+
+<script src="../public/js2/jquery.imagemapster.js"></script>
+    
+    
 </head>
-<body ng-controller="symptomsController as symptoms ">
+<body ng-app="masters" ng-controller="remediesController as remedies ">
 
     <div class="pre-loader">
         <div class="load-con">
@@ -87,15 +105,14 @@
         </nav>
 
         
-        <!--RevSlider-->
-       
+        <!--RevSlider-->       
 
         <section id="getApp">
             <div class="container-fluid">
-                <div class="section-heading inverse scrollpoint sp-effect3 active animated fadeInDown">
+                <div class="section-heading inverse scrollpoint sp-effect3">
                     <h1>Symptom Checker</h1>
                     <div class="divider"></div>
-                    <p>Select a body part and enter your symptoms for diagnosis</p>
+                 <!--   <p>Select a body part and enter your symptoms for diagnosis</p>-->
                 </div>
                 
              <div class="col-md-12">
@@ -135,13 +152,13 @@
 <img id="female" src="../public/img/eco/femfro.gif"  width="290" height="345" usemap="#fem">
 <map id="fem_map" name="fem">
   
-    <area shape="poly" name="head" coords=" 191,65, 183,56, 181,50, 178,51, 174,41, 175,36, 178,38, 181,16, 185,9, 195,5, 202,4, 209,6, 217,13, 221,19, 221,35, 224,36, 226,40, 226,45, 223,50, 220,51, 217,57, 213,62, 207,66, 203,66, 194,66" href="#" alt="red hotspot"/>
-    <area shape="poly" name="neck" coords=" 189,65, 186,78, 178,81, 191,89, 202,91, 213,89, 220,84, 214,79, 212,62, 201,68, 190,63" href="#" alt="green hotspot"/>
-    <area shape="poly" name="hand" coords=" 160,120, 114,150, 103,159, 95,163, 55,185, 51,191, 13,214, 9,213, 45,183, 78,153, 90,142, 106,135, 147,100, 154,93, 158,90, 162,119, 238,119, 240,91, 251,96, 262,110, 281,125, 288,130, 298,138, 306,140, 319,154, 330,163, 348,179, 356,187, 386,212, 386,215, 382,215, 354,195, 351,194, 344,189, 338,186, 305,166, 294,160, 285,148, 275,144, 260,130, 250,123, 244,119, 242,119" href="#" alt="yellow hotspot"/>
-    <area shape="poly" name="chest" coords=" 168,87, 174,91, 177,91, 182,91, 188,92, 193,92, 198,94, 201,94, 204,93, 207,91, 216,91, 220,90, 223,89, 226,87, 229,89, 230,93, 233,99, 236,107, 238,113, 240,119, 242,124, 242,130, 242,135, 241,140, 238,144, 237,148, 235,150, 233,151, 230,151, 164,151, 163,146, 162,144, 161,142, 160,140, 159,136, 159,132, 159,127, 161,121, 164,117, 166,114, 167,110, 167,107, 168,104, 168,99, 168,96, 168,91" href="#" alt="olive hotspot"/>
-    <area shape="poly" name="abdomen" coords=" 163,152, 169,171, 169,181, 165,192, 171,202, 182,211, 197,215, 214,212, 229,205, 238,200, 230,181, 230,173, 235,159, 237,153, 228,151, 216,148, 206,147, 194,147, 183,148, 172,150, 166,152" href="#" alt="teal hotspot"/>
-    <area shape="poly" name="pelvis" coords=" 160,206, 160,204, 158,211, 156,218, 155,220, 168,232, 180,241, 186,248, 191,252, 196,254, 203,255, 209,251, 213,245, 219,241, 227,235, 232,231, 243,223, 245,222, 242,209, 241,204" href="#" alt="brown hotspot"/>
-    <area shape="poly" name="leg" coords=" 154,224, 151,236, 150,256, 151,276, 155,297, 159,319, 160,337, 160,362, 160,384, 164,400, 168,418, 168,436, 168,449, 165,460, 161,470, 156,482, 159,487, 164,489, 171,491, 178,491, 181,488, 182,484, 183,479, 183,472, 181,467, 186,463, 186,458, 185,453, 185,449, 185,441, 184,435, 184,426, 185,408, 186,392, 188,376, 188,369, 188,361, 188,356, 190,351, 191,346, 192,337, 192,326, 192,318, 192,311, 193,301, 194,291, 194,284, 195,274, 196,266, 197,259, 198,257, 201,260, 203,268, 204,283, 205,298, 205,318, 205,331, 205,343, 210,356, 208,367, 208,377, 210,392, 213,406, 213,415, 213,424, 212,439, 210,447, 211,452, 208,456, 208,461, 211,465, 214,471, 214,478, 216,486, 218,490, 227,491, 232,488, 238,487, 241,485, 240,478, 236,473, 233,467, 229,454, 229,445, 228,434, 228,422, 231,410, 234,398, 235,391, 238,380, 238,370, 238,356, 236,348, 238,339, 238,331, 239,323, 241,315, 245,295, 248,275, 248,265, 248,248, 247,233, 245,227" href="#" alt="blue hotspot"/>
+    <area shape="poly" name="head" coords=" 133,25, 132,20, 133,14, 135,8, 140,4, 147,1, 155,3, 162,8, 166,15, 165,25, 168,27, 165,35, 163,37, 159,42, 150,49, 142,46, 135,39, 135,34, 132,33, 129,27, 130,24" href="#" alt="red hotspot"/>
+    <area shape="poly" name="neck" coords=" 139,46, 139,53, 134,57, 139,62, 148,64, 155,63, 161,59, 163,57, 160,54, 159,52, 158,47, 152,52, 148,52, 142,49" href="#" alt="green hotspot"/>
+    <area shape="poly" name="hand" coords=" 118,62, 106,72, 90,86, 73,96, 60,105, 43,120, 29,130, 8,147, 29,138, 40,130, 66,116, 78,110, 85,104, 90,100, 118,85, 119,66, 179,65, 179,71, 182,83, 184,87, 209,103, 213,107, 227,117, 255,132, 262,137, 285,151, 288,149, 272,136, 259,126, 239,109, 228,101, 220,95, 181,63" href="#" alt="yellow hotspot"/>
+    <area shape="poly" name="chest" coords=" 131,59, 120,62, 120,81, 118,87, 119,95, 123,99, 131,101, 141,101, 156,101, 171,103, 177,99, 179,94, 180,84, 177,80, 176,62, 166,59, 160,64, 155,67, 147,67, 141,66, 137,64, 134,60" href="#" alt="olive hotspot"/>
+    <area shape="poly" name="abdomen" coords=" 122,102, 123,109, 125,117, 125,126, 122,134, 128,142, 142,148, 155,148, 165,146, 176,142, 178,140, 171,124, 172,119, 175,112, 177,103, 167,106, 147,105, 131,105, 125,103" href="#" alt="teal hotspot"/>
+    <area shape="poly" name="pelvis" coords=" 121,138, 118,146, 115,155, 138,168, 142,174, 146,177, 152,177, 163,164, 175,159, 182,157, 179,144, 162,150, 142,151, 130,146, 124,140" href="#" alt="brown hotspot"/>
+    <area shape="poly" name="leg" coords=" 114,158, 112,172, 112,195, 115,209, 120,228, 121,246, 117,258, 121,272, 125,304, 123,311, 125,314, 116,334, 123,342, 132,343, 134,332, 138,320, 136,313, 136,289, 139,264, 140,259, 139,251, 141,241, 145,181, 150,181, 153,207, 153,242, 155,248, 155,254, 155,261, 157,289, 157,303, 156,312, 156,320, 159,327, 160,341, 171,341, 176,339, 177,334, 170,321, 168,302, 175,266, 175,250, 177,227, 185,176, 183,160, 151,180, 144,180, 117,160" href="#" alt="blue hotspot"/>
 </map>
 <img onclick="femtog();" id="back" width="20px" src="../public/img/eco/back.png" style="cursor: pointer;">
 </div>
@@ -228,10 +245,26 @@
 </map>
 <img onclick="zoomout('hzoom');" id="back" width="20px" src="../public/img/eco/zoomout.png" style="cursor: pointer;">
 </div>
+
+<!--pelvis-->
+
+<div id="pzoom" class="col-md-3" style="display: none">
+<img id="mpel" src="../public/img/eco/pelvis.gif" alt="Insert Alt" usemap="#mp_map" border="0">
+
+<map name="mp_map" id="mp_map">
+    
+<area name="hips" shape="poly" coords=" 31,39, 46,59, 47,78, 46,98, 32,118, 23,123, 11,126, 26,70, 22,63, 26,44, 31,38, 229,38, 220,57, 216,67, 215,86, 218,104, 226,119, 240,124, 246,126, 234,71, 236,63, 233,40, 232,39" href="#" alt="red hotspot"/>
+    <area name="groin" shape="poly" coords=" 62,107, 84,125, 98,146, 113,167, 127,180, 140,175, 150,167, 162,151, 172,135, 186,121, 194,115, 194,127, 190,140, 182,163, 170,175, 149,183, 134,186, 132,187, 128,184, 113,186, 98,175, 86,164, 74,150, 66,136, 62,117, 61,111" href="#" alt="green hotspot"/>
+    <area name="pelvis" shape="poly" coords=" 90,103, 115,117, 131,119, 158,116, 173,105, 178,100, 183,106, 176,111, 172,119, 162,127, 154,135, 145,138, 138,141, 125,138, 112,134, 96,124, 89,111, 86,108, 87,103" href="#" alt="purple hotspot"/>
+    <area name="genitals" shape="poly" coords=" 116,152, 150,153, 132,175, 117,155" href="#" alt="yellow hotspot"/>
+    
+</map>
+<img onclick="zoomout('pzoom');" id="back" width="20px" src="../public/img/eco/zoomout.png" style="cursor: pointer;">
+</div>
+
      <div class="col-md-4" style="background-color: rgba(125, 63, 152, 0.35);margin-left: 4%;padding: 15px;border: solid 1px whitesmoke;border-radius: 15px;">
     <h3 style="color:white">Symptom Checker</h3>
-
-    <form role="form" ng-submit="symptoms.getsymptoms()" method="post" >
+<form>
    <div class="form-group">
   <label for="Age">Enter you age:</label>
     <select class="form-control" id="Age">
@@ -262,17 +295,17 @@
 
   <fieldset class="form-group">
     <label for="exampleSelect1">Selected body part:</label>
-    <input type="text" class="form-control"  id="selections" placeholder="..." ng-model="symptoms.bodypart"> 
+    <input type="text" class="form-control"  id="selections" placeholder="..."> 
   </fieldset>
 
   <fieldset class="form-group">
     <label for="exampleSelect1">Select a specific body part</label>
-    <input type="text" class="form-control"  id="specific" placeholder="..." ng-model="symptoms.specificbodypart">        
+    <input type="text" class="form-control"  id="specific" placeholder="...">        
   </fieldset>  
 
   <fieldset class="form-group">
     <label for="exampleSelect1">Enter Symptom</label>
-    <input type="text" class="form-control"  id="symptom" placeholder="..." ng-model="symptoms.symptom">        
+    <input type="text" class="form-control"  id="symptom" placeholder="...">        
   </fieldset>  
  
   <button type="submit" class="btn btn-primary">Submit</button>
@@ -292,18 +325,31 @@
   </div>          
             </div>
         </section>
-    </div>
-    <script src="../public/js2/jquery-1.11.1.min.js"></script>
-    <script src="../public/js2/bootstrap.min.js"></script>
-    <script src="../public/js2/slick.min.js"></script>
-    <script src="../public/js2/placeholdem.min.js"></script>
-    <script src="../public/js2/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
-    <script src="../public/js2/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
-    <script src="../public/js2/waypoints.min.js"></script>
-    <script src="../public/js2/scripts.js"></script>
+</body>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-<script src="../public/js2/jquery.imagemapster.js"></script>
+   <script>
+    $('input[name="optionsRadios"]').bind('change',function(){
+    var showOrHide = ($(this).val());
+    if(showOrHide==1)
+    {
+      $('#femalefront').hide();
+      $('#malefront').show();
+      
+    }
+    else
+    {
+       $('#femalefront').show();
+      $('#malefront').hide();
+     
+    }
+    
+    
+ });
+        $(document).ready(function() {
+            appMaster.preLoader();
+        });
+    </script>
+
 <script type="text/javascript">
     function maletog()
     {
@@ -341,29 +387,7 @@
        }
     }
 </script>
-
-    <script>
-    $('input[name="optionsRadios"]').bind('change',function(){
-    var showOrHide = ($(this).val());
-    if(showOrHide==1)
-    {
-      $('#femalefront').hide();
-      $('#malefront').show();
-      
-    }
-    else
-    {
-       $('#femalefront').show();
-      $('#malefront').hide();
-     
-    }
-    
-    
- });
-        $(document).ready(function() {
-            appMaster.preLoader();
-        });
-    </script>
+ 
 
     <script language="javascript">
 
@@ -410,6 +434,12 @@
                 {
                     $('#malefront').hide();
                     $('#lzoom').show();
+
+                }
+            else if(e.key=='p')
+                {
+                    $('#malefront').hide();
+                    $('#pzoom').show();
 
                 }
             else if(e.key=='hand')
@@ -720,6 +750,56 @@
    });
     </script>
 
+    <!--pelvis-->
+       <script language="javascript">
+
+  var mpxref = {
+        hips: "Hips",
+        groin: "Groin",
+        genitals: "Genitals",  
+        pelvis: "Pelvis" 
+                 
+    };
+      
+
+   var image = $('#mpel');
+
+   image.mapster({
+     fillOpacity: 0.4,
+     fillColor: "d42e16",
+     stroke: false,
+     strokeColor: "3320FF",
+     strokeOpacity: 0.8,
+     strokeWidth: 1,
+     singleSelect: true,
+     mapKey: 'name',
+     listKey: 'name',
+       onClick: function (e) {
+                       
+            // update text depending on area selected
+            $('#specific').val(mpxref[e.key]);
+                     
+        },
+     toolTipContainer: '<div></div>',
+     showToolTip: true,
+     toolTipClose: ["area-mouseout", "area-click"],
+     areas: [{
+       key: "hips",
+       toolTip: "hips"
+     },
+        {
+       key: "groin",
+       toolTip: "groin"
+     },
+     {
+       key: "genitals",
+       toolTip: "genitals"
+     }
+
+     ]
+   });
+    </script>
+
     <script>
         $(document).ready(function() {
             appMaster.preLoader();
@@ -864,8 +944,7 @@
    });
     </script>
 
-        <script language="javascript">
-
+<script language="javascript">
   var xref = {
         head: "Head",
         neck: "Neck",
@@ -924,6 +1003,5 @@
      ]
    });
     </script>
-</body>
 
 </html>

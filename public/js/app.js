@@ -227,10 +227,6 @@ var vm=this;
 	}])
 
 
-
-
-})
-
 .controller('symptomsController',function(){
 	var vm=this;
 	vm.message = 'my symptoms page.';

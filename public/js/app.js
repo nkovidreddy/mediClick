@@ -203,14 +203,17 @@ var vm=this;
 .controller('symptomsController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
 	var vm=this;
    console.log("Test Input");
-		
+	$scope.bodypart = {};
+	//$scope.addictions = {};	
    vm.getsymptoms=function(){
 		 var url = '/api/diseaseinfo';
 	   console.log("inside getsymptoms function");
-		var bodypart=vm.bodypart;
-   		var specificbodypart=vm.specificbodypart;
-		var symptom=vm.symptom;
-		console.log(vm.bodypart);
+	   var bodypart=$scope.bodypart;
+	console.log(bodypart);
+		//var bodypart=vm.bodypart;
+   		//var specificbodypart=vm.specificbodypart;
+		//var symptom=vm.symptom;
+	
 		
 				var symptomInfo={
      // url: '/api/forms', // No need of IP address //sindhuupdate
@@ -229,12 +232,7 @@ var vm=this;
 
 
 
-.controller('symptomsController',function(){
-	var vm=this;
-	vm.message = 'my symptoms page.';
-	//vm.regSubmit = $http.post("http://localhost:3000/saveUser");
 
-})
 
 
 //remedies Controller
@@ -292,7 +290,33 @@ var vm=this;
 // });
 }
 
-}]);
+}])
+
+
+
+.controller('emailController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
+var vm=this;
+	console.log("inside sendemail");
+			vm.sendemail=function(){
+	
+		var email=vm.email;
+		console.log(email);
+
+	
+			var emailinfo={
+      url: '/api/sendemail', // No need of IP address //sindhuupdate
+      method: 'POST',
+      data: {'email':email},
+       headers: {'Content-Type': 'application/json'}
+   
+      }
+      	$http(emailinfo).then(function(data){
+     	window.location.href = '/index';
+
+      })
+	}
+	
+}])
 
 /*.controller('loginController', function($http) {
 console.log('inside login 1');

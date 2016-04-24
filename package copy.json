@@ -1,0 +1,29 @@
+{
+  "name": "masters",
+  "version": "1.0.0",
+  "main": "server.js",
+  "dependencies": {
+    "angular": "^1.5.3",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "mongoose": "^4.4.11",
+    "morgan": "^1.7.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "Sindhura",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sindhurav18/mediClick.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sindhurav18/mediClick/issues"
+  },
+  "homepage": "https://github.com/sindhurav18/mediClick#readme",
+  "description": ""
+}

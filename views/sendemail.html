@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html ng-app="masters">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>MediClick Registration Form</title>
+
+<!--angular routes-->
+
+ <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+ <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-route.js"></script>
+ <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-animate.js"></script>
+ <script src="../public/js2/ngStorage.min.js"></script>
+ <script src="../public/js/app.routes.js"></script>
+ <script src="../public/js/app.js"></script>
+ 
+        <!-- CSS -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link rel="stylesheet" href="../public/assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../public/assets/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../public/assets/css/form-elements.css">
+        <link rel="stylesheet" href="../public/assets/css/style.css">
+
+
+        <!-- Favicon and touch icons -->
+<link rel="shortcut icon" href="../public/assets/ico/favicon.png">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../public/assets/ico/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../public/assets/ico/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../public/assets/ico/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="../public/assets/ico/apple-touch-icon-57-precomposed.png">
+
+    </head>
+ <body ng-controller="emailController as email ">
+   <form role="form" ng-submit="email.sendemail()" class="registration-form">
+                                     <input type="text" name="email" placeholder="FirstName..." ng-model="email.email">
+                                   <button type="submit" class="btn" value="Done" >Done</button>
+
+                                 </form>
+        
+</body>
+
+</html>

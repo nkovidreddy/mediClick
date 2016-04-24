@@ -5,6 +5,9 @@ var path=require('path');
 var bodyParser = require('body-parser'); // get body-parser
 var morgan = require('morgan'); // used to see requests
 var mongoose = require('mongoose'); // for working w/ our database
+var nodemailer = require('nodemailer'); //nodemailer
+var transporter = nodemailer.createTransport(); //create transport
+var TelCarrier = require('tel-carrier'); //telcarrier
 
  var apiRouter = express.Router();
 
@@ -82,6 +85,12 @@ app.get('/gmaps',function(req,res){
  	//res.send('index',{title:'hey',message:'Hello there!'});
  	res.sendFile(path.join(__dirname+'/views/gmaps.html'))
  	//next();
+ });
+
+app.get('/sendemail',function(req,res){
+  //res.send('index',{title:'hey',message:'Hello there!'});
+  res.sendFile(path.join(__dirname+'/views/sendemail.html'))
+  //next();
  });
 //database
 apiRouter.route('/users')
@@ -296,17 +305,85 @@ if(err) res.send(err);
 console.log(user);
 res.json(user);
 });
-  console.log(req.params.bodypart);
-  console.log(req.params.specificbodypart);
-    console.log(req.params.symptom);
-// facts.find({ "fact": req.params.symptom}, function(err, user) {
-// //User.findById(req.params.email,function(err,user){
-// if(err) res.send(err);
-// //returing that user only
-// console.log(user);
-// res.json(user);
-// });
+ 
 })
+
+
+//sendemail
+
+apiRouter.route('/sendemail')
+
+ .post(function(req, res) {
+var email="test@gmail.com";
+//'57180996415faebf1ae8cf24'
+  User.find({"email":"test@gmail.com"}, function(error, users) {
+
+ if(error){
+            console.log(error);
+        }else{
+            console.log(users);            
+              }
+
+ // return the users
+ console.log("outside");
+ console.log(users.email);
+ res.json(users);
+ });
+ 
+/*telCarrier = TelCarrier.create({
+  service: "data24-7.com"
+, username: "sindhura"
+, password: "sindhu77"
+});
+
+telCarrier.lookup('4796573469', function (err, data) {
+  if (err) {
+    console.error(err);
+  } else {
+    console.log('data');
+    console.log(data.smsGateway);
+  }
+var sendtextto=data.smsGateway;
+
+
+//var sendto = req.body.email;
+
+var sendto = data.smsGateway;
+console.log("send text to" +sendto);
+//var sendto='6692478234@tmomail.net';
+//var sendto='4796573469@txt.att.net';
+  
+    //create reusable transporter object using SMTP transport
+    var transporter = nodemailer.createTransport({
+        service: 'Gmail',
+        auth: {
+            user: 'sindhurav18790@gmail.com',
+            pass: 'Sindhu@7'
+        }
+    });
+
+    
+    var mailOptions = {
+        from: 'Sindhu<sindhurav18790@gmail.com>', // sender address
+        to: sendto, // list of receivers
+        subject: 'Emergencyyyy!', // Subject line
+        text: 'Testing my code', // plaintext body
+        html: '<b>hahaha</b>' // html body
+    };
+
+    // send mail with defined transport object
+    transporter.sendMail(mailOptions, function(error, info){
+        if(error){
+            console.log(error);
+        }else{
+            console.log('Message sent: ' + info.response);            
+              }
+                transporter.close(); 
+    });
+
+    });*/
+    })
+
 
 //database3
 app.listen(port);

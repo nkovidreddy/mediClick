@@ -311,7 +311,8 @@ apiRouter.route('/diseaseinfo')
         console.log(err);
       }else{
         var values=[];
-        for(i=0;i<data.length;i++){
+        var dataLen=data.length;
+        for(i=0;i<dataLen;i++){
            var o= JSON.stringify(data[i]);
            var json = JSON.parse(o);
            values.push(json["id"]);

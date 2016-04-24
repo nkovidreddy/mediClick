@@ -15,6 +15,7 @@ var TelCarrier = require('tel-carrier'); //telcarrier
 var User = require(__dirname+'/public/js/users.js');//database
 var Personalinfo = require(__dirname+'/public/js/personalinfos.js');//database
 var Fact = require(__dirname+'/public/js/facts.js');//database
+var Disease = require(__dirname+'/public/js/disease.js');//database
 
 var port=process.env.PORT || 3000;
 
@@ -298,14 +299,65 @@ apiRouter.route('/diseaseinfo')
 //accessed at http://localhost:8080/api/users/:userid
 .get(function(req,res) {
   //var factRecord = new Fact();
-    Fact.find({ "fact": "Race"}, function(err, user) {
+  console.log("inside disease");
+  
+
+               Fact.find({ $text: { $search: "head \"headache\""  } },{_id:0}, function(err, user) {
 //User.findById(req.params.email,function(err,user){
-if(err) res.send(err);
 //returing that user only
 console.log(user);
 res.json(user);
+
 });
  
+
+//id=user;
+//Disease.find({"id":id},{name:1,_id:0},function(err, u) {
+//User.findById(req.params.email,function(err,user){
+//returing that user only
+//console.log(u);
+//});
+}).limit(1);
+
+
+
+  /*var reduce = function(key, values) {
+                var outs={ firstname:null , lastname:null , department:null}
+                values.forEach(function(v){
+                    if(outs.firstname ==null){
+                        outs.firstname = v.firstname
+                    }
+                    if(outs.lastname ==null){
+                        outs.lastname = v.lastname
+                    }
+                    if(outs.department ==null){
+                        outs.department = v.department
+                    }
+                     
+                });
+                return outs;
+            };*/
+
+   // Fact.find({ "fact": "Race"}, function(err, user) {
+//User.findById(req.params.email,function(err,user){
+//if(err) res.send(err);
+//returing that user only
+//console.log(user);
+//res.json(user);
+//});
+  console.log(req.params.bodypart);
+  console.log(req.params.specificbodypart);
+    console.log(req.params.symptom);
+
+
+// facts.find({ "fact": req.params.symptom}, function(err, user) {
+// //User.findById(req.params.email,function(err,user){
+// if(err) res.send(err);
+// //returing that user only
+// console.log(user);
+// res.json(user);
+// });
+
 })
 
 
@@ -328,9 +380,9 @@ var email="test@gmail.com";
  console.log("outside");
  console.log(users.email);
  res.json(users);
- });
+
  
-/*telCarrier = TelCarrier.create({
+telCarrier = TelCarrier.create({
   service: "data24-7.com"
 , username: "sindhura"
 , password: "sindhu77"
@@ -381,7 +433,8 @@ console.log("send text to" +sendto);
                 transporter.close(); 
     });
 
-    });*/
+    });
+     });
     })
 
 

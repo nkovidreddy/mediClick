@@ -294,20 +294,24 @@
 
   <fieldset class="form-group">
     <label for="exampleSelect1">Selected body part:</label>
+
     <input type="text" class="form-control"  name="bodypart" id="selections" placeholder="..."  ng-value="name" ng-model="bodypart">
    <!-- <input id="selections" ng-model="selections">-->
   </fieldset>
     <h3>{{bodypart}}</h3>
-  <fieldset class="form-group">
-    <label for="exampleSelect1">Select a specific body part</label>
-    <input type="text" class="form-control"  id="specific" placeholder="...">        
-  </fieldset>  
+
+    <!--<input type="text" class="form-control"  name="bodypart" id="selections" placeholder="..."  ng-value="name" ng-model="selections"> -->
+    <input id="selections" value="" ng-model="selBodyValue">
+  </fieldset>
 
   <fieldset class="form-group">
-    <label for="exampleSelect1">Enter Symptom</label>
-    <input type="text" class="form-control"  id="symptom" placeholder="...">        
+    <label for="exampleSelect1">Select a specific body part</label>
+    <input type="text" class="form-control"  id="specific" placeholder="..." ng-model="selBodyPartValue">        
   </fieldset>  
- 
+  <fieldset class="form-group">
+    <label for="exampleSelect1">Enter Symptom</label>
+    <input type="text" class="form-control"  id="symptom" placeholder="..." ng-model="selSymptomValue">        
+  </fieldset>  
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 </div>    
@@ -329,7 +333,22 @@
         </section>
 
 
+
  <script>
+
+</body>
+<script>
+  $('button').on('click', function(){
+    var scope = angular.element($("select")).scope();
+    scope.$apply(function(){
+        scope.selBodyValue = $('#selections').val();
+        scope.selBodyPartValue = $('#specific').val();
+        scope.selSymptomValue = $('#symptom').val(); 
+    });
+})
+</script>
+   <script>
+
     $('input[name="optionsRadios"]').bind('change',function(){
     var showOrHide = ($(this).val());
     if(showOrHide==1)

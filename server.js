@@ -361,7 +361,7 @@ res.json(user);
 apiRouter.route('/sendemail')
 
  .post(function(req, res) {
-var email="test@gmail.com";
+/*var email="test@gmail.com";
 //'57180996415faebf1ae8cf24'
   User.find({"email":"test@gmail.com"}, function(error, users) {
 
@@ -375,15 +375,16 @@ var email="test@gmail.com";
  console.log("outside");
  console.log(users.email);
  res.json(users);
-})
+//put the remaining functons with in this
+*/
  
-/*telCarrier = TelCarrier.create({
+telCarrier = TelCarrier.create({
   service: "data24-7.com"
 , username: "sindhura"
 , password: "sindhu77"
 });
 
-telCarrier.lookup('4796573469', function (err, data) {
+telCarrier.lookup('6692240664', function (err, data) {
   if (err) {
     console.error(err);
   } else {
@@ -429,7 +430,8 @@ console.log("send text to" +sendto);
     });
 
     });
-     });*/
+     //});
+
     })
 
 

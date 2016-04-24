@@ -248,6 +248,7 @@ var vm=this;
 	vm.message = 'Better Health';
 	$scope.insproviders = {};
 	$scope.doctors={};
+	$scope.insurance={};
 	//$scope.practices={};
 	//vm.regSubmit = $http.post("http://localhost:3000/saveUser");
 	var api_key = '84595b9ae71e28e06f8414fafac6938e'; // Get your API key at developer.betterdoctor.com
@@ -296,7 +297,37 @@ var vm=this;
 // });
 }
 
+vm.getInsurance=function(){
+		
+		console.log(insurance_uid);
+		var resource_url = 'https://api.betterdoctor.com/2016-03-01/insurances?user_key=a9aa06bc3085770371b20e2a52c76733';
+		console.log(resource_url);
+	
+	var getInsReq = {
+      //url: '/api/users/'+vm.email, // No need of IP address
+      url: resource_url,
+      method: 'GET'
+      //params: {'email':vm.email,'password':vm.password}
+      //headers: {'Content-Type': 'application/json'}
+	}
+
+	$http(getInsReq).then(function(data){
+		//console.log("displayng data in get method index"); 
+		//console.log(data.data[0].email);
+		console.log("Testing API");
+    	//console.log(data);
+   	 	$scope.insurance=data.data.data;
+   	 	//$scope.practices=data.data.data;
+    	console.log($scope.insurance);
+    	
+      })
+
+
+}
+
 }])
+
+
 
 
 
@@ -322,7 +353,7 @@ var vm=this;
       })
 	}
 	
-}])
+}]);
 
 /*.controller('loginController', function($http) {
 console.log('inside login 1');

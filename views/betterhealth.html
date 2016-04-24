@@ -116,9 +116,48 @@
                                 <!--<button type="submit" class="btn" value="Done">Done</button>  --> 
 
                                </form>
+
+                                <form class="form-inline" ng-submit="bhealth.getInsurance()">
+                                <br>
+                                <br>
+                                <br>
+                               <h3>Choose your insurance name</h3>
+                                 <!-- MULTIPLE CHECKBOXES -->
+                                        <div class="form-group">
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" name="insName" ng-model="insurance.aetna"> aetna
+                                            </label>
+                                            </div>
+                               <h3>{{insproviders}}</h3>
+                                    <div>
+                                    </div>
+                                <button type="submit" class="btn btn-success">Done</button>
+                                <!--<button type="submit" class="btn" value="Done">Done</button>  --> 
+
+                               </form>
                 </div>
                 </div>                    
         </section>
+
+ <section id="screens">
+            <div class="container">
+
+              <select>
+      <option ng-repeat="ins in insurance" value="{{ins.name}}">{{ins.name}}</option>
+    </select> 
+               
+           </div>    
+   <!--    <div ng-repeat="ins in insurance" >
+       <h2>
+      {{ins.name}} </a>
+       </h2>       
+</div>-->
+  
+        </section>
+
+
+
+
                <section id="screens">
             <div class="container">
 

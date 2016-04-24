@@ -203,39 +203,30 @@ var vm=this;
 .controller('symptomsController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
 	var vm=this;
    console.log("Test Input");
-		
+	vm.selectValue="test";	
+
    vm.getsymptoms=function(){
 		 var url = '/api/diseaseinfo';
+		 console.log(url);
+		 console.log(vm.selectValue);
 	   console.log("inside getsymptoms function");
-		var bodypart=vm.bodypart;
-   		var specificbodypart=vm.specificbodypart;
-		var symptom=vm.symptom;
-		console.log(vm.bodypart);
-		
-				var symptomInfo={
+	   var bodypart=$scope.selBodyValue;
+	   var specificbodypart=$scope.selBodyPartValue;
+	   var symptom=$scope.selSymptomValue;
+	   console.log(bodypart);
+	   console.log(specificbodypart);
+	   console.log(symptom);
+    	var symptomInfo={
      // url: '/api/forms', // No need of IP address //sindhuupdate
       url: url,
       method: 'GET',
       params: {'bodypart':bodypart, 'specificbodypart':specificbodypart, 'symptom':symptom},
-   
       }
-
 		$http(symptomInfo).then(function(data){
-     	window.location.href = '/index';
-
+     	//window.location.href = '/index';
       })
 	}
 	}])
-
-
-
-.controller('symptomsController',function(){
-	var vm=this;
-	vm.message = 'my symptoms page.';
-	//vm.regSubmit = $http.post("http://localhost:3000/saveUser");
-
-})
-
 
 //remedies Controller
 

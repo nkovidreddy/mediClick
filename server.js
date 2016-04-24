@@ -320,7 +320,8 @@ apiRouter.route('/diseaseinfo')
         console.log(json["id"]); 
         var diseaseQuery={};
         diseaseQuery["$or"]=[];
-        for(j=0;j<values.length;j++){
+        var valLen = values.length;
+        for(j=0;j<valLen;j++){
           diseaseQuery["$or"].push({"id":values[j]});
         }
        //Sample Database find query below

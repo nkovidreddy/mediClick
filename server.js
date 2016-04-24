@@ -299,17 +299,45 @@ apiRouter.route('/diseaseinfo')
 //accessed at http://localhost:8080/api/users/:userid
 .get(function(req,res) {
   //var factRecord = new Fact();
-  console.log("inside disease");
-  
+  console.log("inside diseaseInfo API");
 
-               Fact.find({ $text: { $search: "head \"headache\""  } },{_id:0}, function(err, user) {
-//User.findById(req.params.email,function(err,user){
-//returing that user only
-console.log(user);
-res.json(user);
-
+  Fact.find({$text:{$search: "head \"headache\"" }},{id:1,_id:0}, function(err, data) {
+    // for(i=0;i<1;i++){
+    //   var idval="id";
+    //   console.log(data[i]);
+    // }
+     if(err){
+      console.log(err);
+     } 
+     callback1(data);
+    //res.json(data);
+    });
+    function callback1(data,err){
+      if(err){
+        console.log(err);
+      }else{
+        var values=[];
+        for(i=0;i<data.length;i++){
+           var o= JSON.stringify(data[i]);
+           var json = JSON.parse(o);
+           values.push(json["id"]);
+        }
+        //console.log(values);
+        var idValue = json["id"];
+        console.log(json["id"]); 
+        //var finalValues=[];
+        var test="{\"id\":181},{\"id\":1}";
+        var endq="{name:1,_id:0}";
+        var q="Disease.find({$or:["+test+","+endq;
+        Disease.find({$or:[test]},function(err, u) {
+          //console.log(idValue);
+          console.log(u);
+       });
+      res.json(values);
+      }
+      
+    };
 })
-             })
  
 
 //id=user;

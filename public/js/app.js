@@ -262,7 +262,7 @@ var vm=this;
 			insurance_uid='blueshieldofcalifornia-blueshieldcabasicppobronzelevelhix';
 		}
 		console.log(insurance_uid);
-		var resource_url = 'https://api.betterdoctor.com/2016-03-01/doctors?location=37.773%2C-122.413%2C100&user_location=37.773%2C-122.413&skip=0&limit=10&user_key=' + api_key+'&insurance_uid='+insurance_uid;
+		var resource_url = 'https://api.betterdoctor.com/2016-03-01/doctors?query=stomach%20ache&user_location=37.773%2C-122.413&skip=0&limit=10&user_key=' + api_key+'&insurance_uid='+insurance_uid;
 		console.log(resource_url);
 	
 	var getDocReq = {
@@ -283,6 +283,7 @@ var vm=this;
     	console.log($scope.doctors);
     	
       })
+	
 
 //Keeping Below Code for resolving future refreshing behaviours, use above code instead of below code anywhere - kovid
 // 	$.get(resource_url, function (data) {

@@ -7,9 +7,9 @@ mongoose.createConnection('mongodb://sindhura:sindhu@ds019480.mlab.com:19480/med
 var schema=mongoose.schema;
  console.log("iam testing register inside detdieaseinfo.js");
  // user schema
-var disease = new Schema({
+var facts = new Schema({
 
  });
 
  // return the model
- module.exports = mongoose.model('disease', disease);
+ module.exports = mongoose.model('facts', facts);

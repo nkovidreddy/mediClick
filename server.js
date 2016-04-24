@@ -308,7 +308,8 @@ apiRouter.route('/diseaseinfo')
 console.log(user);
 res.json(user);
 
-});
+})
+             })
  
 
 //id=user;
@@ -317,7 +318,7 @@ res.json(user);
 //returing that user only
 //console.log(u);
 //});
-}).limit(1);
+
 
 
 
@@ -345,9 +346,6 @@ res.json(user);
 //console.log(user);
 //res.json(user);
 //});
-  console.log(req.params.bodypart);
-  console.log(req.params.specificbodypart);
-    console.log(req.params.symptom);
 
 
 // facts.find({ "fact": req.params.symptom}, function(err, user) {
@@ -357,9 +355,6 @@ res.json(user);
 // console.log(user);
 // res.json(user);
 // });
-
-})
-
 
 //sendemail
 
@@ -380,9 +375,9 @@ var email="test@gmail.com";
  console.log("outside");
  console.log(users.email);
  res.json(users);
-
+})
  
-telCarrier = TelCarrier.create({
+/*telCarrier = TelCarrier.create({
   service: "data24-7.com"
 , username: "sindhura"
 , password: "sindhu77"
@@ -434,7 +429,7 @@ console.log("send text to" +sendto);
     });
 
     });
-     });
+     });*/
     })
 
 

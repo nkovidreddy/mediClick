@@ -298,14 +298,8 @@ apiRouter.route('/diseaseinfo')
 //get the user with that ID
 //accessed at http://localhost:8080/api/users/:userid
 .get(function(req,res) {
-  //var factRecord = new Fact();
-  console.log("inside diseaseInfo API");
-
+  console.log("Calling Disease Info API");
   Fact.find({$text:{$search: "head \"headache\"" }},{id:1,_id:0}, function(err, data) {
-    // for(i=0;i<1;i++){
-    //   var idval="id";
-    //   console.log(data[i]);
-    // }
      if(err){
       console.log(err);
      } 
@@ -322,35 +316,25 @@ apiRouter.route('/diseaseinfo')
            var json = JSON.parse(o);
            values.push(json["id"]);
         }
-        //console.log(values);
         var idValue = json["id"];
         console.log(json["id"]); 
-        //var finalValues=[];
-        var test="{\"id\":181},{\"id\":1}";
-        var endq="{name:1,_id:0}";
-        var q="Disease.find({$or:["+test+","+endq;
-        Disease.find({$or:[test]},function(err, u) {
-          //console.log(idValue);
-          console.log(u);
+        var diseaseQuery={};
+        diseaseQuery["$or"]=[];
+        for(j=0;j<values.length;j++){
+          diseaseQuery["$or"].push({"id":values[j]});
+        }
+       //Sample Database find query below
+       //Disease.find({$or:[{'id':181},{'id':1}]},{name:1,_id:0},function(err, u)
+      Disease.find(diseaseQuery,{name:1,_id:0},function(err, u) {
+         res.json(u);
        });
-      res.json(values);
       }
       
     };
 })
  
 
-//id=user;
-//Disease.find({"id":id},{name:1,_id:0},function(err, u) {
-//User.findById(req.params.email,function(err,user){
-//returing that user only
-//console.log(u);
-//});
-
-
-
-
-  /*var reduce = function(key, values) {
+/*var reduce = function(key, values) {
                 var outs={ firstname:null , lastname:null , department:null}
                 values.forEach(function(v){
                     if(outs.firstname ==null){
@@ -389,7 +373,7 @@ apiRouter.route('/diseaseinfo')
 apiRouter.route('/sendemail')
 
  .post(function(req, res) {
-/*var email="test@gmail.com";
+var email="test@gmail.com";
 //'57180996415faebf1ae8cf24'
   User.find({"email":"test@gmail.com"}, function(error, users) {
 
@@ -403,16 +387,15 @@ apiRouter.route('/sendemail')
  console.log("outside");
  console.log(users.email);
  res.json(users);
-//put the remaining functons with in this
-*/
+})
  
-telCarrier = TelCarrier.create({
+/*telCarrier = TelCarrier.create({
   service: "data24-7.com"
 , username: "sindhura"
 , password: "sindhu77"
 });
 
-telCarrier.lookup('6692240664', function (err, data) {
+telCarrier.lookup('4796573469', function (err, data) {
   if (err) {
     console.error(err);
   } else {
@@ -458,8 +441,7 @@ console.log("send text to" +sendto);
     });
 
     });
-     //});
-
+     });*/
     })
 
 

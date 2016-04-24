@@ -220,11 +220,7 @@ var vm=this;
 		//var bodypart=vm.bodypart;
    		//var specificbodypart=vm.specificbodypart;
 		//var symptom=vm.symptom;
-	
-		
-				var symptomInfo={
-
-	   var bodypart=$scope.selBodyValue;
+		   var bodypart=$scope.selBodyValue;
 	   var specificbodypart=$scope.selBodyPartValue;
 	   var symptom=$scope.selSymptomValue;
 	   console.log(bodypart);

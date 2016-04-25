@@ -258,11 +258,16 @@ var vm=this;
 	
 	
 	vm.getDoctors=function(){
-		if($scope.insproviders.blueshield==true){
-			insurance_uid='blueshieldofcalifornia-blueshieldcabasicppobronzelevelhix';
-		}
+		var sym = encodeURI(vm.symptomVal);
+		console.log(vm.uid);
+		var uid=vm.uid;
+		// if($scope.insproviders.blueshield==true){
+		// 	insurance_uid='blueshieldofcalifornia-blueshieldcabasicppobronzelevelhix';
+		// }
+		insurance_uid=uid;
 		console.log(insurance_uid);
-		var resource_url = 'https://api.betterdoctor.com/2016-03-01/doctors?query=stomach%20ache&user_location=37.773%2C-122.413&skip=0&limit=10&user_key=' + api_key+'&insurance_uid='+insurance_uid;
+		console.log(sym);
+		var resource_url = 'https://api.betterdoctor.com/2016-03-01/doctors?query='+sym+'&user_location=37.773%2C-122.413&skip=0&limit=10&user_key=' + api_key+'&insurance_uid='+insurance_uid;
 		console.log(resource_url);
 	
 	var getDocReq = {
@@ -317,10 +322,20 @@ vm.getInsurance=function(){
 		//console.log(data.data[0].email);
 		console.log("Testing API");
     	//console.log(data);
-   	 	$scope.insurance=data.data.data;
+   	 	var insurances=data.data.data;
    	 	//$scope.practices=data.data.data;
-    	console.log($scope.insurance);
+    	console.log(insurances);
+    	var plans=[];
+    	for(i=0;i<insurances.length;i++){
+    		//console.log(insurances.length);
+    		for(plan=0;plan<insurances[i].plans.length;plan++){
+    			//console.log(insurances[i].plans.length);
+    			plans.push(insurances[i].plans[plan]);
+    		}
+    	};
     	
+    	$scope.insurance=plans;
+    	console.log($scope.insurance);
       })
 
 

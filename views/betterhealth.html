@@ -97,81 +97,43 @@
   <section id="reviews">
             <div class="container">
                 <div class="section-heading inverse scrollpoint sp-effect3">
+                <br>
+                <br>
+                <br>
+               <h1>Contact Doctors</h1>
+                    <div class="divider"></div>
 
-                                <form class="form-inline" ng-submit="bhealth.getDoctors()">
-                                <br>
-                                <br>
-                                <br>
-                               <h3>Choose your insurance Id</h3>
-                                 <!-- MULTIPLE CHECKBOXES -->
-                                        <div class="form-group">
-                                            <label class="checkbox-inline">
-                                                <input type="checkbox" name="diseaseName" ng-model="insproviders.blueshield"> Blue Shield Of California
-                                            </label>
-                                            </div>
-                               <h3>{{insproviders}}</h3>
-                                    <div>
-                                    </div>
-                                <button type="submit" class="btn btn-success">Done</button>
-                                <!--<button type="submit" class="btn" value="Done">Done</button>  --> 
-
-                               </form>
-
-                                <form class="form-inline" ng-submit="bhealth.getInsurance()">
-                                <br>
-                                <br>
-                                <br>
-                               <h3>Choose your insurance name</h3>
-                                 <!-- MULTIPLE CHECKBOXES -->
-                                        <div class="form-group">
-                                            <label class="checkbox-inline">
-                                                <input type="checkbox" name="insName" ng-model="insurance.aetna"> aetna
-                                            </label>
-                                            </div>
-                               <h3>{{insproviders}}</h3>
-                                    <div>
-                                    </div>
-                                <button type="submit" class="btn btn-success">Done</button>
-                                <!--<button type="submit" class="btn" value="Done">Done</button>  --> 
-
-                               </form>
+                               
                 </div>
+                
+                 
+                <form role="form"  class="registration-form col-md-4" >
+                
+                 <fieldset class="form-group">
+                 <input type="text" class="form-control"  id="symptom" placeholder="Enter symptom" ng-model="bhealth.symptomVal"> 
+
+                 <button class="btn btn-success" ng-click="bhealth.getInsurance()" onclick="show();" ng-model="insurance.aetna">Select an Insurance Plan</button>      
+                 </fieldset> 
+
+                <div class="form-group" id="insurance" style="display:none;">
+
+                 <select id="ins" class="form-control" ng-model="bhealth.uid">
+                 <option selected="selected">Select Insurance Provider</option>
+                 <option ng-repeat="ins in insurance" value="{{ins.uid}}" >{{ins.name}}</option>
+                 
+                 </select> 
+                 <h3>{{bhealth.uid}}</h3>
+                 </div>
+                 <button type="submit" class="btn btn-success"ng-click="bhealth.getDoctors()" >Get Doctors</button>           
+            </form>
+           
                 </div>                    
         </section>
 
- <section id="screens">
-            <div class="container">
-
-              <select>
-      <option ng-repeat="ins in insurance" value="{{ins.name}}">{{ins.name}}</option>
-    </select> 
-               
-           </div>    
-   <!--    <div ng-repeat="ins in insurance" >
-       <h2>
-      {{ins.name}} </a>
-       </h2>       
-</div>-->
-  
-        </section>
-
-
-
+ 
 
                <section id="screens">
-            <div class="container">
-
-                <div class="section-heading scrollpoint sp-effect3">
-                    <h1>Contact Doctors</h1>
-                    <div class="divider"></div>
-                </div>
-
-                <div class="filter scrollpoint sp-effect3">
-                    <a href="javascript:void(0)" class="button js-filter-all active">All Screens</a>
-                    <a href="javascript:void(0)" class="button js-filter-one">User Access</a>
-                    <a href="javascript:void(0)" class="button js-filter-two">Social Network</a>
-                    <a href="javascript:void(0)" class="button js-filter-three">Media Players</a>
-                </div>
+            <div class="container">             
 
                  <div >
        <div ng-repeat="doctor in doctors" >
@@ -258,6 +220,10 @@
         });
     </script>
     <script type="text/javascript">
+    function show()
+    {
+      document.getElementById('insurance').style.display='block';
+    }
         function togglediv(id) {
     var div = document.getElementById(id);
     div.style.display = div.style.display == "none" ? "block" : "none";

@@ -17,6 +17,14 @@ var Personalinfo = require(__dirname+'/public/js/personalinfos.js');//database
 var Fact = require(__dirname+'/public/js/facts.js');//database
 var Disease = require(__dirname+'/public/js/disease.js');//database
 
+//using for concept extraction, entity extraction and sentiment analysis.
+var AYLIENTextAPI = require('aylien_textapi');
+var textapi = new AYLIENTextAPI({
+  application_id: "25f2f254",
+  application_key: "2ccfd981db69522c822a59a57eb5e0f7"
+});
+
+
 var port=process.env.PORT || 3000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -299,6 +307,25 @@ apiRouter.route('/diseaseinfo')
 //accessed at http://localhost:8080/api/users/:userid
 .get(function(req,res) {
   console.log("Calling Disease Info API");
+  //Fetch user entered symptom input text box
+
+
+  //Applying Concept Extraction
+  var text="cold and head ache";
+  textapi.entities({
+    'text': text
+  }, function(error,response){
+    if(error){
+      res.json(error);
+    }
+    else{
+      text=response;
+      console.log(text);
+    }
+    
+  });
+
+
   Fact.find({$text:{$search: "head \"headache\"" }},{id:1,_id:0}, function(err, data) {
      if(err){
       console.log(err);
@@ -447,6 +474,54 @@ console.log("send text to" +sendto);
     })
 
 
+function responseCheck(error, response) {
+    if (error === null) {
+      
+
+      textapi.entities({
+    'text': response.text
+  }, function(err,resdata){
+
+
+   
+      console.log("In response block method2")
+      console.log(resdata);
+      //res.json(response);
+
+  });
+
+      console.log('functruion response',response);
+      console.log("In response block method")
+      console.log(response);
+        //res.json(response);
+    }
+  };
+   
+
+apiRouter.route('/textapi')
+  .get(function(req,res){
+  // console.log('Kovid Testing');
+  // console.log(req.body);
+  // console.log(req.body.data);
+  // //console.log(req.params);
+  //Unable to get the req.body.data from code level
+  // var text=req.body.data;
+   console.log('Dev Testing API Results');
+  //console.log(text);
+  var text="cold and head ache";
+  textapi.entities({
+    'text': text
+  }, function(error,response){
+    if(error){
+      res.json(error);
+    }
+    else{
+      res.json(response);
+    }
+    
+  });
+
+  })
 //database3
 app.listen(port);
 console.log('listening to port' +port);

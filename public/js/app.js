@@ -226,14 +226,17 @@ var vm=this;
 	   console.log(bodypart);
 	   console.log(specificbodypart);
 	   console.log(symptom);
-    	var symptomInfo={
 
+     //kovid update appending params to url to be consumed in nodejs
+     url = url+'/'+bodypart+'/'+specificbodypart+'/'+symptom;
+     console.log(url);
+     var symptomInfo={
      // url: '/api/forms', // No need of IP address //sindhuupdate
       url: url,
       method: 'GET',
-      params: {'bodypart':bodypart, 'specificbodypart':specificbodypart, 'symptom':symptom},
+      //params: {'bodypart':bodypart, 'specificbodypart':specificbodypart, 'symptom':symptom},
       }
-		$http(symptomInfo).then(function(data){
+	$http(symptomInfo).then(function(data){
      	//window.location.href = '/index';
      	console.log(data);
       })

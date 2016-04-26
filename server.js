@@ -430,6 +430,18 @@ apiRouter.route('/diseaseinfo/:bodypart/:specbodypart/:symptom')
       //Fact.find(JSON.stringify(searchString), function(err, data) {
       
     */
+
+    /*Sample DB Query to be sent:*/
+    // db.facts.find({
+    //  '$or' : [
+    //      { '$and' :[{description:/.*migraine.*/},{'description':/.*head.*/},{'description':/.*headache.*/}]},
+    //      { '$and' :[{description:/.*fever.*/},{'description':/.*head.*/},{'description':/.*headache.*/}]},
+    //       { '$and' :[{description:/.*cold.*/},{'description':/.*head.*/},{'description':/.*headache.*/}]}
+    //  ]
+    // }).count()
+    /* End of Sample DB Query */
+
+
     Fact.find({$text:{$search: searchStr}},{id:1,_id:0}, function(err, data) {
      if(err){
       console.log(err);

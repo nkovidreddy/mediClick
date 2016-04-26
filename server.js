@@ -423,8 +423,8 @@ apiRouter.route('/diseaseinfo/:bodypart/:specbodypart/:symptom')
         }
        //Sample Database find query below
        //Disease.find({$or:[{'id':181},{'id':1}]},{name:1,_id:0},function(err, u)
-      Disease.find(diseaseQuery,{name:1,_id:0},function(err, u) {
-         res.json(u);
+      Disease.find(diseaseQuery,{name:1,_id:0},function(err, conditions) {
+         res.json(conditions);
        });
       }
       

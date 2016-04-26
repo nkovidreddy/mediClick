@@ -448,11 +448,15 @@
     <div class="col-md-4" style="background-color: rgba(125, 63, 152, 0.35);margin-left: 2%;padding: 15px;border: solid 1px whitesmoke;border-radius: 15px;">
     <h3 style="color:white">Possible conditions</h3>
 <form style="overflow-y: scroll;">         
- <div class="list-group">
+ <div class="list-group" ng-repeat="conditions in posConditions">
+    <a href="#" class="list-group-item">{{conditions.name}}</a>
+    <!-- Sample List
     <a href="#" class="list-group-item">Cold</a>
     <a href="#" class="list-group-item">HeadAche</a>
     <a href="#" class="list-group-item">Migraine</a>
-  </div> 
+   -->
+ </div> 
+ 
 </form>
 </div>
   </div>          

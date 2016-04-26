@@ -26,6 +26,7 @@ var textapi = new AYLIENTextAPI({
 });
 
 
+var _ = require('underscore');
 
 var port=process.env.PORT || 3000;
 
@@ -372,6 +373,8 @@ apiRouter.route('/diseaseinfo')
       
     };
 })
+
+
  
 
 apiRouter.route('/diseaseinfo/:bodypart/:specbodypart/:symptom')
@@ -386,7 +389,7 @@ apiRouter.route('/diseaseinfo/:bodypart/:specbodypart/:symptom')
 
   //Applying Concept Extraction
   var conceptString="";
-  var text=bodypartVal+" "+specbodypartVal+" "+symbodypartVal; 
+  var text=symbodypartVal; 
   textapi.entities({
     'text': text
   }, function(error,response){
@@ -394,17 +397,61 @@ apiRouter.route('/diseaseinfo/:bodypart/:specbodypart/:symptom')
       res.json(error);
     }
     else{
-      console.log("Calling Text API");
+      var empty={};
       text=response;
-      textKeywords = text.entities.keyword;
+      console.log(text);
+      var entitiesObj=text.entities;
+      var boolVal=_.isEqual(entitiesObj, empty);
+
+      if(boolVal){
+     
+       conceptString=text.text; 
+       console.log("in if condition");
+        /* Kovid Changes Test for Query String Dynamically
+         var searchString={};
+         searchString["$or"]=[];
+         var arraySymptoms=[]; */
+       //var test1 = "/.*"+symbodypartVal+".*/";
+       //arraySymptoms.push({"description":test1});
+       //searchString["$or"].push({"$and":arraySymptoms});
+       /* Kovid Changes */
+      }else{
+        console.log("In else condition");
+        textKeywords = text.entities.keyword;
       var textLength=text.entities.keyword.length;
       for(var con=0;con<textLength;con++){
         conceptString=conceptString+" "+textKeywords[con];
-        
+        }
       }
-  var searchStr="\""+bodypartVal+"\""+"\""+specbodypartVal+"\""+conceptString;
-  //console.log("Search String" +searchStr);
-  Fact.find({$text:{$search: searchStr }},{id:1,_id:0}, function(err, data) {
+
+     //Kovid Changes - Dynamic Search 
+    // conceptStringFinal=bodypartVal+" "+specbodypartVal+" "+conceptString;
+    // console.log("concept string" +conceptString);
+    // console.log(" conceptStringFinal" +conceptStringFinal);
+  
+    //Comment Below for other execution
+    var searchStr="\""+bodypartVal+"\""+"\""+specbodypartVal+"\""+"\""+conceptString;
+    
+
+    /* 
+      Test for building query string dynamically
+      //console.log("Search String" +searchStr);
+      //Fact.find(JSON.stringify(searchString), function(err, data) {
+      
+    */
+
+    /*Sample DB Query to be sent:*/
+    // db.facts.find({
+    //  '$or' : [
+    //      { '$and' :[{description:/.*migraine.*/},{'description':/.*head.*/},{'description':/.*headache.*/}]},
+    //      { '$and' :[{description:/.*fever.*/},{'description':/.*head.*/},{'description':/.*headache.*/}]},
+    //       { '$and' :[{description:/.*cold.*/},{'description':/.*head.*/},{'description':/.*headache.*/}]}
+    //  ]
+    // }).count()
+    /* End of Sample DB Query */
+
+    //Comment below for new execution and add a new line
+    Fact.find({$text:{$search: searchStr}},{id:1,_id:0}, function(err, data) {
      if(err){
       console.log(err);
      } 
@@ -431,13 +478,12 @@ apiRouter.route('/diseaseinfo/:bodypart/:specbodypart/:symptom')
         }
        //Sample Database find query below
        //Disease.find({$or:[{'id':181},{'id':1}]},{name:1,_id:0},function(err, u)
-      Disease.find(diseaseQuery,{name:1,_id:0},function(err, conditions) {
+         Disease.find(diseaseQuery,{name:1,_id:0},function(err, conditions) {
          res.json(conditions);
        });
       }
       
     };
-
     }
   });
   
@@ -636,28 +682,7 @@ var todoctor= "You are recieving this email because you have registered with med
  
 
 
-function responseCheck(error, response) {
-    if (error === null) {
-      
 
-      textapi.entities({
-    'text': response.text
-  }, function(err,resdata){
-
-
-   
-      console.log("In response block method2")
-      console.log(resdata);
-      //res.json(response);
-
-  });
-
-      console.log('functruion response',response);
-      console.log("In response block method")
-      console.log(response);
-        //res.json(response);
-    }
-  };
    
 
 apiRouter.route('/textapi')

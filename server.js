@@ -27,6 +27,7 @@ var textapi = new AYLIENTextAPI({
 =======
 >>>>>>> Stashed changes
 
+var _ = require('underscore');
 
 var port=process.env.PORT || 3000;
 
@@ -367,6 +368,8 @@ apiRouter.route('/diseaseinfo')
       
     };
 })
+
+
  
 
 apiRouter.route('/diseaseinfo/:bodypart/:specbodypart/:symptom')
@@ -381,7 +384,7 @@ apiRouter.route('/diseaseinfo/:bodypart/:specbodypart/:symptom')
 
   //Applying Concept Extraction
   var conceptString="";
-  var text=bodypartVal+" "+specbodypartVal+" "+symbodypartVal; 
+  var text=symbodypartVal; 
   textapi.entities({
     'text': text
   }, function(error,response){
@@ -389,15 +392,30 @@ apiRouter.route('/diseaseinfo/:bodypart/:specbodypart/:symptom')
       res.json(error);
     }
     else{
-      console.log("Calling Text API");
+      var empty={};
       text=response;
-      textKeywords = text.entities.keyword;
+      console.log(text);
+      var entitiesObj=text.entities;
+      var boolVal=_.isEqual(entitiesObj, empty);
+      console.log(boolVal);
+      if(boolVal){
+       conceptString=text.text; 
+       console.log("in if condition");
+      }else{
+        console.log("In else condition");
+        textKeywords = text.entities.keyword;
       var textLength=text.entities.keyword.length;
       for(var con=0;con<textLength;con++){
         conceptString=conceptString+" "+textKeywords[con];
-        
+        }
       }
-  var searchStr="\""+bodypartVal+"\""+"\""+specbodypartVal+"\""+conceptString;
+    conceptStringFinal=bodypartVal+" "+specbodypartVal+" "+conceptString;
+    console.log("concept string" +conceptString);
+    console.log(" conceptStringFinal" +conceptStringFinal);
+  
+    var searchStr="\""+bodypartVal+"\""+"\""+specbodypartVal+"\""+conceptString;
+  //var searchStr="\""+bodypartVal+"\""+"\""+specbodypartVal+"\""+"\""+"cold"+"\"";
+  
   //console.log("Search String" +searchStr);
   Fact.find({$text:{$search: searchStr }},{id:1,_id:0}, function(err, data) {
      if(err){
@@ -629,28 +647,7 @@ var todoctor= "You are recieving this email because you have registered with med
  
 
 
-function responseCheck(error, response) {
-    if (error === null) {
-      
 
-      textapi.entities({
-    'text': response.text
-  }, function(err,resdata){
-
-
-   
-      console.log("In response block method2")
-      console.log(resdata);
-      //res.json(response);
-
-  });
-
-      console.log('functruion response',response);
-      console.log("In response block method")
-      console.log(response);
-        //res.json(response);
-    }
-  };
    
 
 apiRouter.route('/textapi')

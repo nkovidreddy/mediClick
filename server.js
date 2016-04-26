@@ -17,15 +17,14 @@ var Personalinfo = require(__dirname+'/public/js/personalinfos.js');//database
 var Fact = require(__dirname+'/public/js/facts.js');//database
 var Disease = require(__dirname+'/public/js/disease.js');//database
 
-<<<<<<< Updated upstream
+
 //using for concept extraction, entity extraction and sentiment analysis.
 var AYLIENTextAPI = require('aylien_textapi');
 var textapi = new AYLIENTextAPI({
   application_id: "25f2f254",
   application_key: "2ccfd981db69522c822a59a57eb5e0f7"
 });
-=======
->>>>>>> Stashed changes
+
 
 
 var port=process.env.PORT || 3000;

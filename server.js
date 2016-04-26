@@ -200,9 +200,15 @@ apiRouter.route('/users/:email/:password')
 	//console.log(req.params.password);
 	User.find({ "email": req.params.email}, function(err, user) {
 //User.findById(req.params.email,function(err,user){
-if(err) res.send(err);
-//returing that user only
-console.log(user);
+if(err){
+      //res.json(err);
+      console.log(err);
+    }
+    else {
+
+      console.log("user exits 1");
+      
+    }
 res.json(user);
 });
 })

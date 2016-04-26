@@ -9,10 +9,12 @@ angular.module('masters',['routerRoutes','ngStorage'])
 
 })
 
-.controller('indexController',function($http,$scope){
+//.controller('indexController',function($http,$scope){
+	.controller('indexController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
 var vm=this;
 		vm.login=function(){
 			//console.log("Email=" +vm.email);
+		$localStorage.$reset();
 			var url = '/api/users/' +vm.email+'/'+vm.password;
 			console.log(url);
 			console.log('Towards sending request');
@@ -21,19 +23,37 @@ var vm=this;
       url: url,
       method: 'GET',
       params: {'email':vm.email,'password':vm.password}
-      //headers: {'Content-Type': 'application/json'}
+      
 	}
 	$http(getReq1).then(function(data){
 		//console.log("displayng data in get method index"); 
-		//console.log(data.data[0].email);
-		vm.useremail=data.data[0].email;
-    $scope.email=data.data[0].email;
-    console.log($scope.email);
-      })
+		
+
+if((data.data[0] != null) && (data.data[0].email==vm.email))
+{
+	vm.email=data.data[0].email;
+	vm.fname=data.data[0].fname;
+	var fname=data.data[0].fname;
+	console.log(fname);
+	$scope.$storage = $localStorage.$default({
+          fname: fname
+        });
+$scope.email=vm.email;
+$scope.fname=vm.fname;
+window.alert("Login Successful");
 
 	}
+	else
+	{
+window.alert("please enter correct credentials");
+	}
 
-})
+
+      })
+    }
+ 
+
+}])
 
 
 //.controller('registerController',['$scope','userem', function($scope,userem,$http){
@@ -42,7 +62,7 @@ var vm=this;
 	var vm=this;
 	//$scope.emailTest=userem;
 	 
-
+  //$scope.$storagefname = $localStorage.fname;
 	vm.register=function(){
 		console.log('Testing Register Function');
 		$localStorage.$reset();

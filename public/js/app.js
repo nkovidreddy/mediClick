@@ -238,8 +238,8 @@ var vm=this;
       }
 	$http(symptomInfo).then(function(data){
      	//window.location.href = '/index';
-     	console.log(data);
-      })
+     	$scope.posConditions=data.data;
+     	})
 	}
 	}])
 

@@ -157,7 +157,7 @@ console.log(req.body);
 apiRouter.route('/users/:email')
 
 .put(function(req, res) {
-  var email=req.params.email
+  var email=req.params.email;
   console.log("testing inside sindhuupdate"+email);
 //var user = new User();
  var fname = req.body.fname;
@@ -240,10 +240,10 @@ function callback (err, numAffected) {
 apiRouter.route('/users/:email/:emergency/:contacts/:info')
 
 .put(function(req, res) {
-  var email=req.params.email
+  var email=req.params.email;
   console.log("testing inside emergency sindhu"+email);
 //var user = new User();
-    var efname1=req.body.efname1
+    var efname1=req.body.efname1;
     var elname1=req.body.elname1;
     var eemail1=req.body.eemail1;
     var efname2=req.body.efname2;
@@ -305,10 +305,13 @@ apiRouter.route('/diseaseinfo')
 
 //get the user with that ID
 //accessed at http://localhost:8080/api/users/:userid
+
 .get(function(req,res) {
   console.log("Calling Disease Info API");
   //Fetch user entered symptom input text box
-
+  console.log("Requested Body Part");
+  console.log(req.body);
+  
 
   //Applying Concept Extraction
   var text="cold and head ache";
@@ -362,6 +365,81 @@ apiRouter.route('/diseaseinfo')
     };
 })
  
+
+apiRouter.route('/diseaseinfo/:bodypart/:specbodypart/:symptom')
+
+.get(function(req,res) {
+  console.log("Calling Disease Info API");
+  //Fetch user entered symptom input text box
+  
+  var bodypartVal=req.params.bodypart;
+  var specbodypartVal=req.params.specbodypart;
+  var symbodypartVal=req.params.symptom;
+
+  //Applying Concept Extraction
+  var conceptString="";
+  var text=bodypartVal+" "+specbodypartVal+" "+symbodypartVal; 
+  textapi.entities({
+    'text': text
+  }, function(error,response){
+    if(error){
+      res.json(error);
+    }
+    else{
+      console.log("Calling Text API");
+      text=response;
+      textKeywords = text.entities.keyword;
+      var textLength=text.entities.keyword.length;
+      for(var con=0;con<textLength;con++){
+        conceptString=conceptString+" "+textKeywords[con];
+        
+      }
+  var searchStr="\""+bodypartVal+"\""+"\""+specbodypartVal+"\""+conceptString;
+  //console.log("Search String" +searchStr);
+  Fact.find({$text:{$search: searchStr }},{id:1,_id:0}, function(err, data) {
+     if(err){
+      console.log(err);
+     } 
+     callback1(data);
+    //res.json(data);
+    });
+    function callback1(data,err){
+      if(err){
+        console.log(err);
+      }else{
+        var values=[];
+        var dataLen=data.length;
+        console.log(dataLen);
+        for(i=0;i<dataLen;i++){
+           var o= JSON.stringify(data[i]);
+           var json = JSON.parse(o);
+           values.push(json["id"]);
+        }
+        var diseaseQuery={};
+        diseaseQuery["$or"]=[];
+        var valLen = values.length;
+        for(j=0;j<valLen;j++){
+          diseaseQuery["$or"].push({"id":values[j]});
+        }
+       //Sample Database find query below
+       //Disease.find({$or:[{'id':181},{'id':1}]},{name:1,_id:0},function(err, u)
+      Disease.find(diseaseQuery,{name:1,_id:0},function(err, u) {
+         res.json(u);
+       });
+      }
+      
+    };
+
+    }
+  });
+  
+
+//Format for search as string and sample find below "\"ssl certificate\" authority key"
+//Fact.find({$text:{$search: "head \"headache\"" }},{id:1,_id:0}, function(err, data) {
+
+//var searchStr="\""+"head"+"\""+"headache";
+  
+})
 
 /*var reduce = function(key, values) {
                 var outs={ firstname:null , lastname:null , department:null}

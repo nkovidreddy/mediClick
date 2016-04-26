@@ -267,10 +267,17 @@ var vm=this;
 		// if($scope.insproviders.blueshield==true){
 		// 	insurance_uid='blueshieldofcalifornia-blueshieldcabasicppobronzelevelhix';
 		// }
+
 		insurance_uid=uid;
 		console.log(insurance_uid);
 		console.log(sym);
+
+		if(insurance_uid=="No Plan"){
+		var resource_url = 'https://api.betterdoctor.com/2016-03-01/doctors?query='+sym+'&user_location=37.773%2C-122.413&skip=0&limit=10&user_key=' + api_key;
+		}
+		else{
 		var resource_url = 'https://api.betterdoctor.com/2016-03-01/doctors?query='+sym+'&user_location=37.773%2C-122.413&skip=0&limit=10&user_key=' + api_key+'&insurance_uid='+insurance_uid;
+		}
 		console.log(resource_url);
 	
 	var getDocReq = {

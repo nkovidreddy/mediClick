@@ -432,9 +432,11 @@ apiRouter.route('/diseaseinfo/:bodypart/:specbodypart/:symptom')
     //Comment Below for other execution
 
     //"\"ssl certificate\" authority key"
-    var searchStr="\""+bodypartVal+"\""+" "+conceptString+"\""+specbodypartVal+"\"";
-    
+ //   var searchStr="\""+bodypartVal+"\""+" "+conceptString+"\""+specbodypartVal+"\"";
 
+     var searchStr=""+conceptString+"\""+specbodypartVal+"\"";
+    
+    
     /* 
       Test for building query string dynamically
       //console.log("Search String" +searchStr);
@@ -458,6 +460,7 @@ apiRouter.route('/diseaseinfo/:bodypart/:specbodypart/:symptom')
       console.log(err);
      } 
      callback1(data);
+     console.log(searchStr);
     //res.json(data);
     });
     function callback1(data,err){

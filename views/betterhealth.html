@@ -161,7 +161,7 @@
         <div class="col-md-6" ng-show="showAdd"> 
         <div class="row">
         <div class="col-md-6 " ng-repeat="p in doctor.practices" >
-        <h4>{{p.name}}: <a href="/gmaps/{{p.visit_address.street}}" class="button js-filter-all active"><img style="width: 10%;" src="../public/img/eco/navigation.png"></a></h4>
+        <h4>{{p.name}}: <a href="/gmaps/{{p.visit_address.lat}},{{p.visit_address.lon}}" class="button js-filter-all active"><img style="width: 10%;" src="../public/img/eco/navigation.png"></a></h4>
          <p> {{p.visit_address.street}}, </p>
          <p> {{p.visit_address.city}}, </p>
          <p> {{p.visit_address.state}},{{p.visit_address.zip}} </p>

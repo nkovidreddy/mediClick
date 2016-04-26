@@ -351,6 +351,34 @@ vm.getInsurance=function(){
 
 }
 
+vm.bookAppointment=function(){
+		console.log("inside book appt");
+		var fname=vm.fname;
+		var lname=vm.lname;
+		var email=vm.email;
+		var visitregarding=vm.visitregarding;
+		var month=vm.month;
+		var day=vm.day;
+		var time=vm.time;
+		var msg=vm.msg;
+		
+	var bookappreq = {
+      url: '/api/bookappointment', // No need of IP address
+      method: 'POST',
+      data: {'fname':vm.fname,'lname':vm.lname,'email':vm.email,'visitregarding':vm.visitregarding,'month':vm.month,'day':vm.day,'time':vm.time,'msg':vm.msg},
+      headers: {'Content-Type': 'application/json'}
+	}
+
+	$http(bookappreq).then(function(data){
+      		
+      	window.alert("appointment scheduled!");
+      	window.location.href = '/betterhealth';
+//res.sendFile(path.join(__dirname+'/views/forms.html'))
+ 
+      })
+
+}
+
 }])
 
 

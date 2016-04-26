@@ -17,12 +17,15 @@ var Personalinfo = require(__dirname+'/public/js/personalinfos.js');//database
 var Fact = require(__dirname+'/public/js/facts.js');//database
 var Disease = require(__dirname+'/public/js/disease.js');//database
 
+<<<<<<< Updated upstream
 //using for concept extraction, entity extraction and sentiment analysis.
 var AYLIENTextAPI = require('aylien_textapi');
 var textapi = new AYLIENTextAPI({
   application_id: "25f2f254",
   application_key: "2ccfd981db69522c822a59a57eb5e0f7"
 });
+=======
+>>>>>>> Stashed changes
 
 
 var port=process.env.PORT || 3000;
@@ -550,6 +553,80 @@ console.log("send text to" +sendto);
     });
      });*/
     })
+
+//bookappointment
+
+apiRouter.route('/bookappointment')
+
+ .post(function(req, res) {
+console.log("inside book app server.js");
+  var fname=req.body.fname;
+  var lname=req.body.lname;
+  var email=req.body.email;
+  var visitregarding=req.body.visitregarding;
+  var month=req.body.month;
+  var day=req.body.day;
+  var time=req.body.time;
+  var msg=req.body.msg;
+  var docname="mediclick";
+  console.log(time);
+//var text= "You are recieving this email from Mediclick."
+var sendtodoctor="vallabhanenisindhura85@gmail.com";
+var todoctor= "You are recieving this email because you have registered with mediclick's schedule appointment service."+" "+ fname+" "+lname+" "+" has scheduled and appointment with you on" + " "+ month+ " "+day+" "+ "at" + time +" "+ "Users Message: "+msg;
+ var sendtouser ="sindhura.vallabhaneni@sjsu.edu";
+ var touser= "Thank you for scheduling your doctor's appointment through mediclick. Please find the details of your appointment. "+ "Docname" + docname + "Appointment Time: " +  + " "+ month+ " "+day+" "+ "at" + time +" " + "Make you you arrive on time";
+//create reusable transporter object using SMTP transport
+    var transporter = nodemailer.createTransport({
+        service: 'Gmail',
+        auth: {
+            user: 'sindhurav18790@gmail.com',
+            pass: 'Sindhu@7'
+        }
+    });
+
+    
+    var mailOptions = {
+        from: 'Sindhu<sindhurav18790@gmail.com>', // sender address
+        to: sendtouser, // list of receivers
+        subject: 'Confirmation of your appointment!', // Subject line
+        text: touser
+        
+       // html: '<b>second line</b><br>'
+
+    };
+
+    // send mail with defined transport object
+    transporter.sendMail(mailOptions, function(error, info){
+        if(error){
+            console.log(error);
+        }else{
+            console.log('Message sent: ' + info.response);            
+              }
+               // transporter.close(); 
+    });
+
+    var mailOptions = {
+        from: 'Sindhu<sindhurav18790@gmail.com>', // sender address
+        to: sendtodoctor, // list of receivers
+        subject: 'Regading an appointment!', // Subject line
+        text: todoctor
+        
+       // html: '<b>second line</b><br>'
+
+    };
+
+    // send mail with defined transport object
+    transporter.sendMail(mailOptions, function(error, info){
+        if(error){
+            console.log(error);
+        }else{
+            console.log('Message sent: ' + info.response);            
+              }
+                transporter.close(); 
+    });
+
+})
+ 
 
 
 function responseCheck(error, response) {

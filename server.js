@@ -405,7 +405,7 @@ apiRouter.route('/diseaseinfo/:bodypart/:specbodypart/:symptom')
          var searchString={};
          searchString["$or"]=[];
          var arraySymptoms=[]; */
-       //var test1 = "/.*"+bodypartVal+".*/";
+       //var test1 = "/.*"+symbodypartVal+".*/";
        //arraySymptoms.push({"description":test1});
        //searchString["$or"].push({"$and":arraySymptoms});
        /* Kovid Changes */
@@ -423,7 +423,10 @@ apiRouter.route('/diseaseinfo/:bodypart/:specbodypart/:symptom')
     // console.log("concept string" +conceptString);
     // console.log(" conceptStringFinal" +conceptStringFinal);
   
+    //Comment Below for other execution
     var searchStr="\""+bodypartVal+"\""+"\""+specbodypartVal+"\""+"\""+conceptString;
+    
+
     /* 
       Test for building query string dynamically
       //console.log("Search String" +searchStr);
@@ -441,7 +444,7 @@ apiRouter.route('/diseaseinfo/:bodypart/:specbodypart/:symptom')
     // }).count()
     /* End of Sample DB Query */
 
-
+    //Comment below for new execution and add a new line
     Fact.find({$text:{$search: searchStr}},{id:1,_id:0}, function(err, data) {
      if(err){
       console.log(err);

@@ -266,9 +266,19 @@ window.alert("please enter correct credentials");
 
 //remedies Controller
 
+.controller('gmapsController',['$scope','$localStorage','$http','$location', function($scope,$localStorage,$http,$location){
+	var vm=this;
+	var searchObject = $location.search();
+	console.log(searchObject);
+   }])
+
+
 .controller('bhealthController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
 	var vm=this;
+	
+	
 	vm.message = 'Better Health';
+	//User Location - Kovid Insert
 	vm.userLocation="";
 		if (navigator.geolocation) {
    		 navigator.geolocation.getCurrentPosition(function(position){

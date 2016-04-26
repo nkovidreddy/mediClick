@@ -93,7 +93,7 @@ app.get('/Symptoms',function(req,res){
 app.get('/Remedies',function(req,res){
  	res.sendFile(path.join(__dirname+'/views/Rem.html'))
  });
-app.get('/gmaps',function(req,res){
+app.get('/gmaps/:streetaddr',function(req,res){
  	//res.send('index',{title:'hey',message:'Hello there!'});
  	res.sendFile(path.join(__dirname+'/views/gmaps.html'))
  	//next();
@@ -430,7 +430,9 @@ apiRouter.route('/diseaseinfo/:bodypart/:specbodypart/:symptom')
     // console.log(" conceptStringFinal" +conceptStringFinal);
   
     //Comment Below for other execution
-    var searchStr="\""+bodypartVal+"\""+"\""+specbodypartVal+"\""+"\""+conceptString;
+
+    //"\"ssl certificate\" authority key"
+    var searchStr="\""+bodypartVal+"\""+" "+conceptString+"\""+specbodypartVal+"\"";
     
 
     /* 

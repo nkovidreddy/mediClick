@@ -624,6 +624,8 @@ var todoctor= "You are recieving this email because you have registered with med
                 transporter.close(); 
     });
 
+    res.json("Appointment scheduled!");
+
 })
  
 

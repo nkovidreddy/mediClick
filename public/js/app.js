@@ -372,7 +372,7 @@ vm.bookAppointment=function(){
 	$http(bookappreq).then(function(data){
       		
       	window.alert("appointment scheduled!");
-      	window.location.href = '/betterhealth';
+      	//window.location.href = '/betterhealth';
 //res.sendFile(path.join(__dirname+'/views/forms.html'))
  
       })

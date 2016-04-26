@@ -269,6 +269,18 @@ window.alert("please enter correct credentials");
 .controller('bhealthController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
 	var vm=this;
 	vm.message = 'Better Health';
+	vm.userLocation="";
+		if (navigator.geolocation) {
+   		 navigator.geolocation.getCurrentPosition(function(position){
+      	$scope.$apply(function(){
+        $scope.position = position;
+        console.log("Position:");
+        console.log($scope.position.coords.latitude);
+		userLocation=$scope.position.coords.latitude+","+$scope.position.coords.longitude;
+		console.log(userLocation);
+      });
+    });
+  }
 	$scope.insproviders = {};
 	$scope.doctors={};
 	$scope.insurance={};
@@ -281,6 +293,7 @@ window.alert("please enter correct credentials");
 	
 	
 	vm.getDoctors=function(){
+	
 		var sym = encodeURI(vm.symptomVal);
 		console.log(vm.uid);
 		var uid=vm.uid;
@@ -293,10 +306,10 @@ window.alert("please enter correct credentials");
 		console.log(sym);
 
 		if(insurance_uid=="No Plan"){
-		var resource_url = 'https://api.betterdoctor.com/2016-03-01/doctors?query='+sym+'&user_location=37.773%2C-122.413&skip=0&limit=10&user_key=' + api_key;
+		var resource_url = 'https://api.betterdoctor.com/2016-03-01/doctors?query='+sym+'&user_location='+userLocation+'&skip=0&limit=10&user_key=' + api_key;
 		}
 		else{
-		var resource_url = 'https://api.betterdoctor.com/2016-03-01/doctors?query='+sym+'&user_location=37.773%2C-122.413&skip=0&limit=10&user_key=' + api_key+'&insurance_uid='+insurance_uid;
+		var resource_url = 'https://api.betterdoctor.com/2016-03-01/doctors?query='+sym+'&user_location='+userLocation+'&skip=0&limit=10&user_key=' + api_key+'&insurance_uid='+insurance_uid;
 		}
 		console.log(resource_url);
 	

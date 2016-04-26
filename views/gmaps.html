@@ -108,63 +108,43 @@
                     <div class="divider"></div>
                     <p>Get to us</p>
                 </div>
-            
-                  <table id="choose-address-table" class="ui-widget ui-widget-content">
-                    <thead>
-        
-    </thead>
-    <tbody>
-        <tr>
-           
-                <button id="routeGo1" onClick="calcGoogleRoute()">Route</button>
-            </td>
-        </tr>
-        <tr>
-                <button id="routeGo2" onClick="calcGoogleRoute()">Route</button>
-            </td>
-        </tr>
-    </tbody>
-</table>
- <input type="text" id="routeFrom" name="routeFrom" value="" />
-                <label for="routeFrom">From</label>
-                 <br />
-                 <input type="text" id="routeTo" name="routeTo" value="" />
-                  <label for="routeTo">To</label>
-                   <br />
+                  
+                  <label for="routeFrom">From</label>
+                 <input class="form-group" type="text" id="routeFrom" name="routeFrom" value="" />
+                <label for="routeTo">To</label>
+                 <input class="form-group" type="text" id="routeTo" name="routeTo" value="" />
+                  <label for="routeMode">Mode</label>
                    <select id="routeMode" name="routeMode">
                     <option value="DRIVING">Driving</option>
                      <option value="WALKING">Walking</option>
                       <option value="BICYCLING">Bicycling</option>
                     <option value="TRANSIT">Transit</option>
                      </select>
-                    <label for="routeMode">Mode</label>
-                    <br />
-                    <div class="textcenter">
-                   <button id="routeGo">Route</button>
-                  <button id="routeClear">Clear Route</button>
-                 </div>
+                    
+                    
+                   <button  id="routeGo" class="btn btn-success">Route</button> 
+                 <button id="routeClear" class="btn btn-success">Clear Route</button> 
+                
+               
 
-                 <form role="form"  class="registration-form col-md-8" >
-
-                 <div class="form-inline">
+            <!--      <div class="form-inline">
                  <fieldset class="form-group">
-                 <label for="from">From:</label>
-                 <input type="text" class="form-control"  id="from" >   
-                 <label for="to">To:</label>
-                 <input type="text" class="form-control"  id="to" >                
+                 <label for="routeFrom">From:</label>
+                 <input type="text" class="form-control" id="routeFrom" name="routeFrom">   
+                 <label for="routeTo">To:</label>
+                 <input type="text" class="form-control"  id="routeTo" name="routeTo" >                
                  </fieldset> 
-                 <fieldset class="form-group">
+                
                  <select class="form-control" id="routeMode" name="routeMode">
                     <option value="DRIVING">Driving</option>
                      <option value="WALKING">Walking</option>
                       <option value="BICYCLING">Bicycling</option>
                     <option value="TRANSIT">Transit</option>
-                     </select>
-                     </fieldset>                     
-                 <button type="submit" class="btn btn-success"id="routeGo">Route</button> 
-                 <button id="routeClear">Clear Route</button>    
-                 </div>      
-            </form>
+                     </select>                  
+                 <button  id="routeGo" >Route</button> 
+                 <button id="routeClear" class="btn btn-success">Clear Route</button>    
+                 </div>    -->   
+         
         </section>
 
     <div class="wrapper">

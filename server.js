@@ -17,15 +17,14 @@ var Personalinfo = require(__dirname+'/public/js/personalinfos.js');//database
 var Fact = require(__dirname+'/public/js/facts.js');//database
 var Disease = require(__dirname+'/public/js/disease.js');//database
 
-<<<<<<< Updated upstream
+
 //using for concept extraction, entity extraction and sentiment analysis.
 var AYLIENTextAPI = require('aylien_textapi');
 var textapi = new AYLIENTextAPI({
   application_id: "25f2f254",
   application_key: "2ccfd981db69522c822a59a57eb5e0f7"
 });
-=======
->>>>>>> Stashed changes
+
 
 var _ = require('underscore');
 
@@ -397,10 +396,19 @@ apiRouter.route('/diseaseinfo/:bodypart/:specbodypart/:symptom')
       console.log(text);
       var entitiesObj=text.entities;
       var boolVal=_.isEqual(entitiesObj, empty);
-      console.log(boolVal);
+
       if(boolVal){
+     
        conceptString=text.text; 
        console.log("in if condition");
+        /* Kovid Changes Test for Query String Dynamically
+         var searchString={};
+         searchString["$or"]=[];
+         var arraySymptoms=[]; */
+       //var test1 = "/.*"+bodypartVal+".*/";
+       //arraySymptoms.push({"description":test1});
+       //searchString["$or"].push({"$and":arraySymptoms});
+       /* Kovid Changes */
       }else{
         console.log("In else condition");
         textKeywords = text.entities.keyword;
@@ -409,15 +417,20 @@ apiRouter.route('/diseaseinfo/:bodypart/:specbodypart/:symptom')
         conceptString=conceptString+" "+textKeywords[con];
         }
       }
-    conceptStringFinal=bodypartVal+" "+specbodypartVal+" "+conceptString;
-    console.log("concept string" +conceptString);
-    console.log(" conceptStringFinal" +conceptStringFinal);
+
+     //Kovid Changes - Dynamic Search 
+    // conceptStringFinal=bodypartVal+" "+specbodypartVal+" "+conceptString;
+    // console.log("concept string" +conceptString);
+    // console.log(" conceptStringFinal" +conceptStringFinal);
   
-    var searchStr="\""+bodypartVal+"\""+"\""+specbodypartVal+"\""+conceptString;
-  //var searchStr="\""+bodypartVal+"\""+"\""+specbodypartVal+"\""+"\""+"cold"+"\"";
-  
-  //console.log("Search String" +searchStr);
-  Fact.find({$text:{$search: searchStr }},{id:1,_id:0}, function(err, data) {
+    var searchStr="\""+bodypartVal+"\""+"\""+specbodypartVal+"\""+"\""+conceptString;
+    /* 
+      Test for building query string dynamically
+      //console.log("Search String" +searchStr);
+      //Fact.find(JSON.stringify(searchString), function(err, data) {
+      
+    */
+    Fact.find({$text:{$search: searchStr}},{id:1,_id:0}, function(err, data) {
      if(err){
       console.log(err);
      } 
@@ -444,13 +457,12 @@ apiRouter.route('/diseaseinfo/:bodypart/:specbodypart/:symptom')
         }
        //Sample Database find query below
        //Disease.find({$or:[{'id':181},{'id':1}]},{name:1,_id:0},function(err, u)
-      Disease.find(diseaseQuery,{name:1,_id:0},function(err, conditions) {
+         Disease.find(diseaseQuery,{name:1,_id:0},function(err, conditions) {
          res.json(conditions);
        });
       }
       
     };
-
     }
   });
   

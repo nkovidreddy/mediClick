@@ -161,11 +161,23 @@
         <div class="col-md-6" ng-show="showAdd"> 
         <div class="row">
         <div class="col-md-6 " ng-repeat="p in doctor.practices" >
+<<<<<<< Updated upstream
         <h4>{{p.name}}: <a href="/gmaps/{{p.visit_address.lat}},{{p.visit_address.lon}}" class="button js-filter-all active"><img style="width: 10%;" src="../public/img/eco/navigation.png"></a></h4>
          <p> {{p.visit_address.street}}, </p>
+=======
+        <h4>{{p.name}}: <!--<a href="/gmaps" ng-click="bhealth.getDoctors()" class="button js-filter-all active"><img style="width: 10%;" src="../public/img/eco/navigation.png"></a>-->
+
+
+        </h4>
+        <form ng-submit="bhealth.getDoctors()">
+         <input type="submit"  class="button js-filter-all active"><img style="width: 10%;" src="../public/img/eco/navigation.png"></input>
+        <input id="street" type="text" value="{{p.visit_address.street}}" ng-model="bhealth.street"/>
+        <p>{{p.visit_address.street}}, </p>
+>>>>>>> Stashed changes
          <p> {{p.visit_address.city}}, </p>
          <p> {{p.visit_address.state}},{{p.visit_address.zip}} </p>
          <p> Distance: {{p.distance}} </p>
+       </form>
        </div>
        </div> 
        </div>

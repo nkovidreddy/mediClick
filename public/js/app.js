@@ -294,6 +294,7 @@ window.alert("please enter correct credentials");
 	$scope.insproviders = {};
 	$scope.doctors={};
 	$scope.insurance={};
+	$scope.adress = {};
 	//$scope.practices={};
 	//vm.regSubmit = $http.post("http://localhost:3000/saveUser");
 	var api_key = '84595b9ae71e28e06f8414fafac6938e'; // Get your API key at developer.betterdoctor.com
@@ -307,6 +308,11 @@ window.alert("please enter correct credentials");
 		var sym = encodeURI(vm.symptomVal);
 		console.log(vm.uid);
 		var uid=vm.uid;
+		console.log("tryng to get address");
+	 
+   console.log(vm.street);
+   console.log("tryng to get address 1");
+   console.log(vm.p);
 		// if($scope.insproviders.blueshield==true){
 		// 	insurance_uid='blueshieldofcalifornia-blueshieldcabasicppobronzelevelhix';
 		// }
@@ -338,7 +344,8 @@ window.alert("please enter correct credentials");
     	//console.log(data);
    	 	$scope.doctors=data.data.data;
    	 	//$scope.practices=data.data.data;
-    	console.log($scope.doctors);
+    	//console.log($scope.doctors);
+
     	
       })
 	

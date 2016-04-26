@@ -59,7 +59,8 @@
    
     <header>
 
-      <label for="useremail">{{index.useremail}}</label> 
+      <label for="useremail">{{index.email}}</label> 
+      <label for="useremail">{{index.fname}}</label> 
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
                 <div class="container">
                     <!-- Brand and toggle get grouped for better mobile display -->
@@ -76,22 +77,21 @@
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="#about">Home</a>
-                            </li>
+                            
                             <li><a href="#features">features</a>
                             </li>
                             <li><a href="/Symptoms">Symptom Checker</a>
                             </li>
                             <li><a href="/Remedies">Remedies</a>
                             </li>
-                            <li><a href="#demo">Doctor</a>
+                            <li><a href="/betterhealth">Doctor</a>
                             </li>
                             <li><a class="getApp" data-toggle="modal" data-target="#myModal">Sign In</a>
                             </li>
                             <li><a href="/register">Register</a>
                             </li>
-                            <li><a href="/betterhealth">Better Health</a>
-                            </li>
+
+                           
 
                         </ul>
                     </div>
@@ -264,9 +264,9 @@
 
                 <div class="row">
                     <div class="col-md-3 col-sm-3 col-xs-6">
-                        <div class="about-item scrollpoint sp-effect2">
+                        <div class="about-item scrollpoint sp-effect2" >
                           <!--  <i class="fa fa-download fa-2x"></i>-->
-                          <img src="../public/img/eco/sym.png">
+                          <a href="/Symptoms"><img src="../public/img/eco/sym.png"></a>
                             <h3>Symptom Checker</h3>
                             <p>Get a diagnosis of your symptoms</p>
                         </div>
@@ -274,7 +274,7 @@
                     <div class="col-md-3 col-sm-3 col-xs-6" >
                         <div class="about-item scrollpoint sp-effect5">
                          <!--   <i class="fa fa-mobile fa-2x"></i>-->
-                         <img src="../public/img/eco/rem.png">
+                        <a href="/Remedies"> <img src="../public/img/eco/rem.png"></a>
                             <h3>Get Remedies</h3>
                             <p>Get remedies for your illness</p>
                         </div>
@@ -282,7 +282,7 @@
                     <div class="col-md-3 col-sm-3 col-xs-6" >
                         <div class="about-item scrollpoint sp-effect5">
                          <!--   <i class="fa fa-users fa-2x"></i>-->
-                         <img src="../public/img/eco/d.png">
+                          <a href="/betterhealth"> <img src="../public/img/eco/d.png"></a>
                             <h3>Contact Doctor</h3>
                             <p>Contact a doctor and schedule appointments</p>
                         </div>
@@ -290,7 +290,7 @@
                     <div class="col-md-3 col-sm-3 col-xs-6" >
                         <div class="about-item scrollpoint sp-effect1">
                           <!--  <i class="fa fa-sliders fa-2x"></i>-->
-                          <img src="../public/img/eco/more.png">
+                          <a href="/Remedies">  <img src="../public/img/eco/more.png"></a>
                             <h3>Get More</h3>
                             <p>Access additional features such as Calorimeter</p>
                         </div>

@@ -407,6 +407,40 @@ apiRouter.route('/diseaseinfo/:bodypart/:specbodypart/:symptom')
      
        conceptString=text.text; 
        console.log("in if condition");
+           /*Sankirthi -Query using regex
+
+
+
+query["date_created"]="whatever";
+
+     db.facts.find({
+     '$or' : [
+         { 
+             '$and' :[
+             {
+                 description:
+                 {
+                     $regex :'migraine'
+                  }
+              },
+              {
+                  description:
+                  {
+                      $regex :'head'
+                  }
+              },
+              {
+                  description:
+                  {
+                      $regex :'headache'
+                  }
+              }
+              ]
+          }
+     ]
+    }).count()
+
+     */
         /* Kovid Changes Test for Query String Dynamically
          var searchString={};
          searchString["$or"]=[];
@@ -454,14 +488,34 @@ apiRouter.route('/diseaseinfo/:bodypart/:specbodypart/:symptom')
     // }).count()
     /* End of Sample DB Query */
 
+
+
     //Comment below for new execution and add a new line
-    Fact.find({$text:{$search: searchStr}},{id:1,_id:0}, function(err, data) {
+    var query = {};
+var query2 = {};
+var query3 = {};
+query2["$and"]=[];
+
+query["$or"]=[];
+query["$or"].push(query2);
+
+// query3["description"].push({$regex:'migraine'});
+// query3["description"].push({$regex:'head'});
+// query3["description"].push({$regex:'headache'});
+
+query2["$and"].push({description:{$regex:'migraine'}});
+query2["$and"].push({description:{$regex:'head'}});
+query2["$and"].push({description:{$regex:'headache'}});
+console.log(query);
+   // Fact.find({$text:{$search: searchStr}},{id:1,_id:0}, function(err, data) {
+    Fact.find({query},{id:1,_id:0}, function(err, data) {
      if(err){
       console.log(err);
      } 
+     
      callback1(data);
-     console.log(searchStr);
-    //res.json(data);
+
+    res.json(data);
     });
     function callback1(data,err){
       if(err){

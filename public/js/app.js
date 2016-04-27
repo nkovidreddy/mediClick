@@ -15,33 +15,37 @@ var vm=this;
 		vm.login=function(){
 			//console.log("Email=" +vm.email);
 		$localStorage.$reset();
-			var url = '/api/users/' +vm.email+'/'+vm.password;
-			console.log(url);
-			console.log('Towards sending request');
+	    var url = '/api/users/' +vm.email+'/'+vm.password;
+		console.log(url);
+		console.log('Towards sending request');
 		var getReq1 = {
-      //url: '/api/users/'+vm.email, // No need of IP address
+        //url: '/api/users/'+vm.email, // No need of IP address
       url: url,
       method: 'GET',
       params: {'email':vm.email,'password':vm.password}
       
 	}
 	$http(getReq1).then(function(data){
-		//console.log("displayng data in get method index"); 
 		
 
 if((data.data[0] != null) && (data.data[0].email==vm.email))
 {
 	vm.email=data.data[0].email;
 	vm.fname=data.data[0].fname;
+	vm.notify= data.data[0].notify;
 	var fname=data.data[0].fname;
+	var notify = data.data[0].notify;
 	console.log(fname);
+	console.log(notify);
 	$scope.$storage = $localStorage.$default({
-          fname: fname
+          fname: fname,
+          notify: notify
         });
 $scope.email=vm.email;
 $scope.fname=vm.fname;
+$scope.notify=vm.notify;
 window.alert("Login Successful");
-
+//window.location.href = '/';
 	}
 	else
 	{
@@ -52,6 +56,31 @@ window.alert("please enter correct credentials");
       })
     }
  
+vm.notify=function(){
+		console.log("inside notify");
+
+$scope.$fname = $localStorage.fname;
+$scope.$notify = $localStorage.notify;
+
+var email=$localStorage.email;
+		console.log(email);
+var fname= $localStorage.fname;
+	console.log(fname);
+	var notify= $localStorage.notify;
+	console.log(notify);
+		/*	var emailinfo={
+      url: '/api/sendemail', // No need of IP address //sindhuupdate
+      method: 'POST',
+      data: {'email':email},
+       headers: {'Content-Type': 'application/json'}
+   
+      }
+      	$http(emailinfo).then(function(data){
+     	window.location.href = '/index';
+
+      })*/
+    }
+
 
 }])
 
@@ -430,10 +459,6 @@ vm.bookAppointment=function(){
 }
 
 }])
-
-
-
-
 
 .controller('emailController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
 var vm=this;

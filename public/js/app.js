@@ -316,6 +316,8 @@ var fname= $localStorage.fname;
         console.log("Position:");
         console.log($scope.position.coords.latitude);
 		userLocation=$scope.position.coords.latitude+","+$scope.position.coords.longitude;
+		$localStorage.user_locationBrow=userLocation;
+		console.log($localStorage.user_locationBrow);
 		console.log(userLocation);
       });
     });

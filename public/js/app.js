@@ -57,7 +57,7 @@ window.alert("please enter correct credentials");
       })
     }
  
-vm.notify=function(){
+$scope.notifyTest=function(){
 		console.log("inside notify");
 
 $scope.$fname = $localStorage.fname;

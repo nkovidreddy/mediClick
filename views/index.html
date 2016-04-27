@@ -44,7 +44,7 @@
     
 </head>
 
-<body ng-app="masters" ng-controller="indexController as index">
+<body ng-controller="indexController as index">
 
     <div class="pre-loader">
         <div class="load-con">
@@ -113,7 +113,7 @@
       <label class="checkbox" >
         <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
       </label>
-      <button class="btn btn-lg btn-primary btn-block" type="button">Login</button>   
+      <button class="btn btn-lg btn-primary btn-block" type="submit" >Login</button>   
     </form>
   </div>
   <!--end-->
@@ -166,10 +166,12 @@
                         </div>
                         <div class="tp-caption sfr" data-x="730" data-y="center" data-hoffset="0" data-voffset="85" data-speed="1500" data-start="1900" data-easing="Power4.easeOut">
                             <a href="#getApp" class="btn btn-default btn-lg hidden-xs">Sign In</a>
-<form ng-submit="index.notify()">
-                            <!--<a href="" ng-click="notify()" value=""><img src="../public/img/eco/amb.gif" border="0" style="width:30%" ></a>-->
-                            <input type="image" src="../public/img/eco/amb.gif" border="0" style="width:30%">
-</form>
+
+                            
+                           <a value=""><img src="../public/img/eco/amb.gif" ng-click="notifyTest()" border="0" style="width:30%" ></a>
+                          
+                           <!-- <img src="../public/img/eco/amb.gif" border="0" style="width:30%" ng-click="index.notify()">-->
+
                         </div>
 
 

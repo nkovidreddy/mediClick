@@ -14,6 +14,7 @@ angular.module('masters',['routerRoutes','ngStorage'])
 var vm=this;
 		vm.login=function(){
 			//console.log("Email=" +vm.email);
+			console.log("inside login");
 		$localStorage.$reset();
 			var url = '/api/users/' +vm.email+'/'+vm.password;
 			console.log(url);
@@ -51,6 +52,24 @@ window.alert("please enter correct credentials");
 
       })
     }
+ 
+$scope.notifyTest=function(){
+		console.log("inside notify");
+
+$scope.$fname = $localStorage.fname;
+$scope.$notify = $localStorage.notify;
+
+
+		console.log(vm.email);
+var fname= $localStorage.fname;
+	console.log(fname);
+	var notify= $localStorage.notify;
+	console.log(notify);
+			var emailinfo={
+      url: '/api/sendemail', // No need of IP address //sindhuupdate
+      method: 'POST',
+      data: {'email':vm.email,'fname':fname,'notify':notify},
+       headers: {'Content-Type': 'application/json'}
 
    
 	//User Location - Kovid Insert
@@ -90,6 +109,10 @@ window.alert("please enter correct credentials");
       //params: {'email':vm.email,'password':vm.password}
       //headers: {'Content-Type': 'application/json'}
 	}
+
+      })
+    }
+
 
 	$http(getDocReq).then(function(data){
 		//console.log("displayng data in get method index"); 
@@ -371,6 +394,8 @@ var userloc = vm.userloc;
         console.log("Position:");
         console.log($scope.position.coords.latitude);
 		userLocation=$scope.position.coords.latitude+","+$scope.position.coords.longitude;
+		$localStorage.user_locationBrow=userLocation;
+		console.log($localStorage.user_locationBrow);
 		console.log(userLocation);
       });
     });
@@ -516,10 +541,10 @@ vm.bookAppointment=function(){
 }])
 
 
-
-
-
 .controller('emailController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
+
+/*.controller('emailController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
+>>>>>>> origin/master
 var vm=this;
 	console.log("inside sendemail");
 			vm.sendemail=function(){
@@ -541,7 +566,7 @@ var vm=this;
       })
 	}
 	
-}]);
+}]);*/
 
 /*.controller('loginController', function($http) {
 console.log('inside login 1');

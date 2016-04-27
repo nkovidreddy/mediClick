@@ -14,6 +14,7 @@ angular.module('masters',['routerRoutes','ngStorage'])
 var vm=this;
 		vm.login=function(){
 			//console.log("Email=" +vm.email);
+			console.log("inside login");
 		$localStorage.$reset();
 	    var url = '/api/users/' +vm.email+'/'+vm.password;
 		console.log(url);

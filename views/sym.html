@@ -439,17 +439,13 @@
 </div>    
     <div class="col-md-4" style="background-color: rgba(125, 63, 152, 0.35);margin-left: 2%;overflow-y: scroll;padding: 15px;border: solid 1px whitesmoke;border-radius: 15px;height: 513px;">
     <h3 style="color:white">Possible conditions</h3>
-<form ng-submit="symptoms.gotoRem()">         
+<form >         
  <div class="list-group" ng-repeat="conditions in posConditions">
    <!-- <a href="/Remedies" class="list-group-item" >{{conditions.name}}</a>-->
      <a href="/Remedies/{{conditions.id}}" class="list-group-item">{{conditions.name}}</a>
-
-
-    
-        <input type="text" ng-model="conditions.factid" >{{conditions.id}}"
     }
     }
-    <button type="submit">Submit</button>
+   
  </div> 
  
 </form>
@@ -574,9 +570,9 @@ zoomout('pzoom');
 
   var mxref = {
         head: "Head",
-        neck: "Neck",
+        neck: "neck",
         hand: "Hand",
-        c: "Chest",
+        c: "chest",
         a: "Abdomen",
         p: "Pelvis" ,
         leg: "Leg"        
@@ -674,15 +670,15 @@ zoomout('pzoom');
     <script language="javascript">
 
   var xref1 = {
-        scalp: "Scalp",
+        scalp: "scalp",
         head: "head",
-        eyes: "Eyes",
-        mouth: "Mouth",
-        leftear: "Ear",
-        nose: "Nose",
-        rightear: "Ear",
-        jaw: "Jaw" ,
-        throat: "Throat"        
+        eyes: "eyes",
+        mouth: "mouth",
+        leftear: "ear",
+        nose: "nose",
+        rightear: "ear",
+        jaw: "jaw" ,
+        throat: "throat"        
     };
       
 
@@ -750,15 +746,15 @@ zoomout('pzoom');
     <script language="javascript">
 
   var xref1 = {
-        scalp: "Scalp",
-        head: "Head",
-        eyes: "Eyes",
-        mouth: "Mouth",
-        leftear: "Ear",
-        nose: "Nose",
-        rightear: "Ear",
-        jaw: "Jaw" ,
-        throat: "Throat"        
+        scalp: "scalp",
+        head: "head",
+        eyes: "eyes",
+        mouth: "mouth",
+        leftear: "ear",
+        nose: "nose",
+        rightear: "ear",
+        jaw: "jaw" ,
+        throat: "throat"        
     };
       
 
@@ -827,8 +823,8 @@ zoomout('pzoom');
        <script language="javascript">
 
   var axref = {
-        labd: "Lower Abdomen",
-        habd: "Higher Abdomen"               
+        labd: "lower abdomen",
+        habd: "higher abdomen"               
     };
       
 
@@ -875,8 +871,8 @@ zoomout('pzoom');
        <script language="javascript">
 
   var faxref = {
-        labd: "Lower Abdomen",
-        habd: "Higher Abdomen"               
+        labd: "lower abdomen",
+        habd: "higher abdomen"               
     };
       
 
@@ -923,12 +919,12 @@ zoomout('pzoom');
        <script language="javascript">
 
   var mlxref = {
-        thigh: "Thigh",
-        knees: "Knees",
-        calves: "Calves",  
-        ankles: "Ankles",   
-        foot: "Foot",
-        toes: "Toes"          
+        thigh: "thigh",
+        knees: "knees",
+        calves: "calves",  
+        ankles: "ankles",   
+        foot: "foot",
+        toes: "toes"          
     };
       
 
@@ -986,12 +982,12 @@ zoomout('pzoom');
        <script language="javascript">
 
   var flxref = {
-        thigh: "Thigh",
-        knees: "Knees",
-        calves: "Calves",  
-        ankles: "Ankles",   
-        foot: "Foot",
-        toes: "Toes"          
+        thigh: "thigh",
+        knees: "knees",
+        calves: "calves",  
+        ankles: "ankles",   
+        foot: "foot",
+        toes: "toes"          
     };
       
 
@@ -1049,15 +1045,15 @@ zoomout('pzoom');
        <script language="javascript">
 
   var mhxref = {
-        shoulder: "Shoulder",
-        armpit: "Arm pit",
-        bicep: "Bicep",  
-        tricep: "Tricep",   
-        elbow: "Elbow",
-        forearm: "Forearm",
-        wrist: "Wrist",
-        palm: "Palm",
-        fingers: "Fingers"          
+        shoulder: "shoulder",
+        armpit: "arm pit",
+        bicep: "bicep",  
+        tricep: "tricep",   
+        elbow: "elbow",
+        forearm: "forearm",
+        wrist: "wrist",
+        palm: "palm",
+        fingers: "fingers"          
     };
       
 
@@ -1127,15 +1123,15 @@ zoomout('pzoom');
        <script language="javascript">
 
   var fhxref = {
-        shoulder: "Shoulder",
-        armpit: "Arm pit",
-        bicep: "Bicep",  
-        tricep: "Tricep",   
-        elbow: "Elbow",
-        forearm: "Forearm",
-        wrist: "Wrist",
-        palm: "Palm",
-        fingers: "Fingers"          
+        shoulder: "shoulder",
+        armpit: "arm pit",
+        bicep: "bicep",  
+        tricep: "tricep",   
+        elbow: "elbow",
+        forearm: "forearm",
+        wrist: "wrist",
+        palm: "palm",
+        fingers: "fingers"          
     };
       
 
@@ -1205,10 +1201,10 @@ zoomout('pzoom');
        <script language="javascript">
 
   var mpxref = {
-        hips: "Hips",
-        groin: "Groin",
-        genitals: "Genitals",  
-        pelvis: "Pelvis" 
+        hips: "hips",
+        groin: "groin",
+        genitals: "genitals",  
+        pelvis: "pelvis" 
                  
     };
       
@@ -1259,10 +1255,10 @@ zoomout('pzoom');
        <script language="javascript">
 
   var fpxref = {
-        hips: "Hips",
-        groin: "Groin",
-        genitals: "Genitals",  
-        pelvis: "Pelvis" 
+        hips: "hips",
+        groin: "groin",
+        genitals: "genitals",  
+        pelvis: "pelvis" 
                  
     };
       
@@ -1313,8 +1309,8 @@ zoomout('pzoom');
        <script language="javascript">
 
   var fcxref = {
-        breast: "Breast",
-        chest: "Chest"      
+        breast: "breast",
+        chest: "chest"      
                  
     };
       
@@ -1362,13 +1358,13 @@ zoomout('pzoom');
     <script language="javascript">
 
   var xref2 = {
-        head: "Head",
-        neck: "Neck",
-        hand: "Hand",
-        chest: "Chest",
-        abdomen: "Abdomen",
-        pelvis: "Pelvis" ,
-        leg: "Leg"        
+        head: "head",
+        neck: "neck",
+        hand: "hand",
+        chest: "chest",
+        abdomen: "abdomen",
+        pelvis: "pelvis" ,
+        leg: "leg"        
     };      
 
    var image = $('#female');
@@ -1474,12 +1470,12 @@ zoomout('pzoom');
     <script language="javascript">
 
   var xref = {
-        head: "Head",
-        hand: "Hand",
-        back: "Back",
-        backbone: "Backbone",
-        gluteals: "Gluteals" ,
-        leg: "Leg"        
+        head: "head",
+        hand: "hand",
+        back: "back",
+        backbone: "backbone",
+        gluteals: "gluteals" ,
+        leg: "leg"        
     };      
 
    var image = $('#maleback');
@@ -1534,12 +1530,12 @@ zoomout('pzoom');
 
 <script language="javascript">
   var xref = {
-        head: "Head",
-        neck: "Neck",
-        hand: "Hand",
-        back: "Back",
-        gluteals: "Gluteals" ,
-        leg: "Leg"        
+        head: "head",
+        neck: "neck",
+        hand: "hand",
+        back: "back",
+        gluteals: "gluteals" ,
+        leg: "leg"        
     };      
 
    var image = $('#femback');

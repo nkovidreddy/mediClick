@@ -403,10 +403,33 @@ apiRouter.route('/diseaseinfo/:bodypart/:specbodypart/:symptom')
       var entitiesObj=text.entities;
       var boolVal=_.isEqual(entitiesObj, empty);
 
+      //Building Query
+      var query = {};
+      var query2 = {};
+      var query3 = {};
+      
+      query["$or"]=[];
+
+
       if(boolVal){
      
        conceptString=text.text; 
+       var textUser = conceptString;
+       textUser=textUser.split(/[ ,]+/).filter(Boolean);
        console.log("in if condition");
+       console.log(textUser.length);
+       var textLen = textUser.length;
+       for(inp=0;inp<textLen;inp++){
+        query2["$and"]=[];
+        query2["$and"].push({description:{$regex:textUser[inp]}});
+        //query2["$and"].push({description:{$regex:bodypartVal}});
+        query2["$and"].push({description:{$regex:specbodypartVal}});
+        query["$or"].push(query2);
+       }
+       
+          
+
+
            /*Sankirthi -Query using regex
 
 
@@ -454,8 +477,14 @@ query["date_created"]="whatever";
         textKeywords = text.entities.keyword;
       var textLength=text.entities.keyword.length;
       for(var con=0;con<textLength;con++){
-        conceptString=conceptString+" "+textKeywords[con];
+        //conceptString=conceptString+" "+textKeywords[con];
+        query2["$and"]=[];
+        query2["$and"].push({description:{$regex:textKeywords[con]}});
+        //query2["$and"].push({description:{$regex:bodypartVal}});
+        query2["$and"].push({description:{$regex:specbodypartVal}});
+        query["$or"].push(query2);
         }
+        
       }
 
      //Kovid Changes - Dynamic Search 
@@ -465,7 +494,7 @@ query["date_created"]="whatever";
   
     //Comment Below for other execution
 
-    //"\"ssl certificate\" authority key"
+   
  //   var searchStr="\""+bodypartVal+"\""+" "+conceptString+"\""+specbodypartVal+"\"";
 
      var searchStr=""+conceptString+"\""+specbodypartVal+"\"";
@@ -491,24 +520,18 @@ query["date_created"]="whatever";
 
 
     //Comment below for new execution and add a new line
-    var query = {};
-var query2 = {};
-var query3 = {};
-query2["$and"]=[];
 
-query["$or"]=[];
 
 
 // query3["description"].push({$regex:'migraine'});
 // query3["description"].push({$regex:'head'});
 // query3["description"].push({$regex:'headache'});
 
-query2["$and"].push({description:{$regex:'migraine'}});
-query2["$and"].push({description:{$regex:'head'}});
-query2["$and"].push({description:{$regex:'headache'}});
-query["$or"].push(query2);
-console.log("hi");
-console.log(query);
+// query2["$and"].push({description:{$regex:'migraine'}});
+// query2["$and"].push({description:{$regex:'head'}});
+// query2["$and"].push({description:{$regex:'headache'}});
+// query["$or"].push(query2);
+console.log(JSON.stringify(query));
    // Fact.find({$text:{$search: searchStr}},{id:1,_id:0}, function(err, data) {
     Fact.find(query, function(err, data) {
      if(err){
@@ -525,7 +548,7 @@ console.log(query);
       }else{
         var values=[];
         var dataLen=data.length;
-        console.log(dataLen);
+        console.log("Results Count=" +dataLen);
         for(i=0;i<dataLen;i++){
            var o= JSON.stringify(data[i]);
            var json = JSON.parse(o);

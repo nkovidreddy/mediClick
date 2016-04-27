@@ -7,9 +7,9 @@ var map;
 
 
 
-$(".use-address").click(function() {
-    calcRoute();
-});
+// $(".use-address").click(function() {
+//     calcRoute();
+// });
 
 $(window).load(function() {
   var myOptions = {

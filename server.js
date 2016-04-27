@@ -497,7 +497,7 @@ var query3 = {};
 query2["$and"]=[];
 
 query["$or"]=[];
-query["$or"].push(query2);
+
 
 // query3["description"].push({$regex:'migraine'});
 // query3["description"].push({$regex:'head'});
@@ -506,16 +506,18 @@ query["$or"].push(query2);
 query2["$and"].push({description:{$regex:'migraine'}});
 query2["$and"].push({description:{$regex:'head'}});
 query2["$and"].push({description:{$regex:'headache'}});
+query["$or"].push(query2);
+console.log("hi");
 console.log(query);
    // Fact.find({$text:{$search: searchStr}},{id:1,_id:0}, function(err, data) {
-    Fact.find({query},{id:1,_id:0}, function(err, data) {
+    Fact.find(query, function(err, data) {
      if(err){
       console.log(err);
      } 
      
      callback1(data);
 
-    res.json(data);
+    // res.json(data);
     });
     function callback1(data,err){
       if(err){

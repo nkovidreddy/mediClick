@@ -351,10 +351,10 @@ var fname= $localStorage.fname;
 		console.log(sym);
 
 		if(insurance_uid=="No Plan"){
-		var resource_url = 'https://api.betterdoctor.com/2016-03-01/doctors?query='+sym+'&user_location='+userLocation+'&skip=0&limit=10&user_key=' + api_key;
+		var resource_url = 'https://api.betterdoctor.com/2016-03-01/doctors?query='+sym+'&user_location='+userLocation+'&sort=distance-asc&skip=0&limit=10&user_key=' + api_key;
 		}
 		else{
-		var resource_url = 'https://api.betterdoctor.com/2016-03-01/doctors?query='+sym+'&user_location='+userLocation+'&skip=0&limit=10&user_key=' + api_key+'&insurance_uid='+insurance_uid;
+		var resource_url = 'https://api.betterdoctor.com/2016-03-01/doctors?query='+sym+'&user_location='+userLocation+'&sort=distance-asc&skip=0&limit=10&user_key=' + api_key+'&insurance_uid='+insurance_uid;
 		}
 		console.log(resource_url);
 	

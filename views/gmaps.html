@@ -41,10 +41,19 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script>
+    function startup() {
+        alert("Starting Trouble :) ");
+        var userLoc=localStorage.getItem("ngStorage-user_locationBrow");
+        userLoc=userLoc.replace(/["']/g, "");
+        alert(userLoc);
+        document.getElementById('routeFromUnique').value = userLoc;
+    }
+    </script>
     
 </head>
 
-<body ng-controller="gmapsController as gmaps ">
+<body ng-controller="gmapsController as gmaps" onload="startup();">
 
     <div class="pre-loader">
         <div class="load-con">
@@ -111,7 +120,7 @@
                 </div>
                   
                   <label for="routeFrom">From</label>
-                 <input class="form-group" type="text" id="routeFrom" name="routeFrom" value="" />
+                 <input class="form-group" type="text" id="routeFromUnique" name="routeFrom" value="12,23" />
                 <label for="routeTo">To</label>
                  <input class="form-group" type="text" id="routeTo" name="routeTo" value="" />
                   <label for="routeMode">Mode</label>

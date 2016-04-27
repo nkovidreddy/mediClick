@@ -73,58 +73,58 @@ var fname= $localStorage.fname;
 
    
 	//User Location - Kovid Insert
-	vm.userLocation="";
-		if (navigator.geolocation) {
-   		 navigator.geolocation.getCurrentPosition(function(position){
-      	$scope.$apply(function(){
-        $scope.position = position;
-        console.log("Position:");
-        console.log($scope.position.coords.latitude);
-		userLocation=$scope.position.coords.latitude+","+$scope.position.coords.longitude;
-		console.log(userLocation);
-      });
-    });
-  }
+	// vm.userLocation="";
+	// 	if (navigator.geolocation) {
+ //   		 navigator.geolocation.getCurrentPosition(function(position){
+ //      	$scope.$apply(function(){
+ //        $scope.position = position;
+ //        console.log("Position:");
+ //        console.log($scope.position.coords.latitude);
+	// 	userLocation=$scope.position.coords.latitude+","+$scope.position.coords.longitude;
+	// 	console.log(userLocation);
+ //      });
+ //    });
+ //  }
 	
-	$scope.hospitals={};
+	// $scope.hospitals={};
 	
 	//$scope.practices={};
 	//vm.regSubmit = $http.post("http://localhost:3000/saveUser");
-	var api_key = '84595b9ae71e28e06f8414fafac6938e'; // Get your API key at developer.betterdoctor.com
+	// var api_key = '84595b9ae71e28e06f8414fafac6938e'; // Get your API key at developer.betterdoctor.com
 
 	//Sample URL Format https://api.betterdoctor.com/2016-03-01/doctors?location=37.773%2C-122.413%2C100&user_location=37.773%2C-122.413&skip=0&limit=10&user_key=84595b9ae71e28e06f8414fafac6938e&insurance_uid=blueshieldofcalifornia-blueshieldcabasicppobronzelevelhix
 	
 	
-	vm.getHospital=function(){
+	// vm.getHospital=function(){
 			
 		
-		var resource_url = 'https://api.betterdoctor.com/2016-03-01/practices?location=37.773%2C-122.413%2C100&user_location='+userLocation+'&sort=distance-asc&skip=0&limit=10&user_key=84595b9ae71e28e06f8414fafac6938e';
+	// 	var resource_url = 'https://api.betterdoctor.com/2016-03-01/practices?location=37.773%2C-122.413%2C100&user_location='+userLocation+'&sort=distance-asc&skip=0&limit=10&user_key=84595b9ae71e28e06f8414fafac6938e';
 		
-		console.log(resource_url);
+	// 	console.log(resource_url);
 	
-	var getDocReq = {
-      //url: '/api/users/'+vm.email, // No need of IP address
-      url: resource_url,
-      method: 'GET'
-      //params: {'email':vm.email,'password':vm.password}
-      //headers: {'Content-Type': 'application/json'}
-	}
+	// var getDocReq = {
+ //      //url: '/api/users/'+vm.email, // No need of IP address
+ //      url: resource_url,
+ //      method: 'GET'
+ //      //params: {'email':vm.email,'password':vm.password}
+ //      //headers: {'Content-Type': 'application/json'}
+	// }
 
-      })
+ //      })
     }
 
 
-	$http(getDocReq).then(function(data){
-		//console.log("displayng data in get method index"); 
-		//console.log(data.data[0].email);
-		console.log("Testing API");
-    	//console.log(data);
-   	 	$scope.hospitals=data.data.data;
-   	 	//$scope.practices=data.data.data;
-    	//console.log($scope.doctors);
+	// $http(getDocReq).then(function(data){
+	// 	//console.log("displayng data in get method index"); 
+	// 	//console.log(data.data[0].email);
+	// 	console.log("Testing API");
+ //    	//console.log(data);
+ //   	 	$scope.hospitals=data.data.data;
+ //   	 	//$scope.practices=data.data.data;
+ //    	//console.log($scope.doctors);
 
     	
-      })
+ //      })
 }
  
 
@@ -541,7 +541,7 @@ vm.bookAppointment=function(){
 }])
 
 
-.controller('emailController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
+// .controller('emailController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
 
 /*.controller('emailController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
 >>>>>>> origin/master

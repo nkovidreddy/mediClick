@@ -611,17 +611,9 @@ console.log(JSON.stringify(query));
 apiRouter.route('/sendemail')
 
  .post(function(req, res) {
-//var email="test@gmail.com";
-var email=req.body.email;
-var fname=req.body.fname;
-var notify=req.body.notify;
-var email1=req.body.email1;
-//var sendtextto;
+var email="test@gmail.com";
 //'57180996415faebf1ae8cf24'
-console.log("inside send email");
-console.log(email);
-//console.log(notify=="Email");
-  User.find({"email":email}, function(error, users) {
+  User.find({"email":"test@gmail.com"}, function(error, users) {
 
  if(error){
             console.log(error);
@@ -631,95 +623,64 @@ console.log(email);
 
  // return the users
  console.log("outside");
- console.log(users[0].email);
- var sendvia = users[0].notify;
- var phone = users[0].phone;
- console.log(sendvia);
- //res.json(users);
- if(sendvia == 'Email')
- {
-  telCarrier = TelCarrier.create({
+ console.log(users.email);
+ res.json(users);
+})
+ 
+/*telCarrier = TelCarrier.create({
   service: "data24-7.com"
 , username: "sindhura"
 , password: "sindhu77"
 });
 
-telCarrier.lookup(phone, function (err, data) {
+telCarrier.lookup('4796573469', function (err, data) {
   if (err) {
     console.error(err);
   } else {
     console.log('data');
     console.log(data.smsGateway);
   }
- var sendtextto=data.smsGateway;
-console.log(sendtextto);
-     //create reusable transporter object using SMTP transport
-    var transporter = nodemailer.createTransport({
-        service: 'Gmail',
-        auth: {
-            user: 'sindhurav18790@gmail.com',
-            pass: 'Sindhu@7'
-        }
-    });
+var sendtextto=data.smsGateway;
 
-    
-    var mailOptions = {
-        from: 'Sindhu<sindhurav18790@gmail.com>', // sender address
-        to: sendtextto, // list of receivers
-        subject: 'Emergencyyyy!', // Subject line
-        text: 'Testing my code', // plaintext body
-        html: '<b>hahaha</b>' // html body
-    };
 
-    // send mail with defined transport object
-    transporter.sendMail(mailOptions, function(error, info){
-        if(error){
-            console.log(error);
-        }else{
-            console.log('Message sent: ' + info.response);            
-              }
-                transporter.close(); 
-    });
-})
-}
-else
-{
-  var sendemailto=email;
-  console.log(sendtextto);
-      //create reusable transporter object using SMTP transport
-    var transporter = nodemailer.createTransport({
-        service: 'Gmail',
-        auth: {
-            user: 'sindhurav18790@gmail.com',
-            pass: 'Sindhu@7'
-        }
-    });
+//var sendto = req.body.email;
 
-    
-    var mailOptions = {
-        from: 'Sindhu<sindhurav18790@gmail.com>', // sender address
-        to: sendtextto, // list of receivers
-        subject: 'Emergencyyyy!', // Subject line
-        text: 'Testing my code', // plaintext body
-        html: '<b>hahaha</b>' // html body
-    };
-
-    // send mail with defined transport object
-    transporter.sendMail(mailOptions, function(error, info){
-        if(error){
-            console.log(error);
-        }else{
-            console.log('Message sent: ' + info.response);            
-              }
-                transporter.close(); 
-    });
-}
-
+var sendto = data.smsGateway;
+console.log("send text to" +sendto);
+//var sendto='6692478234@tmomail.net';
+//var sendto='4796573469@txt.att.net';
   
+    //create reusable transporter object using SMTP transport
+    var transporter = nodemailer.createTransport({
+        service: 'Gmail',
+        auth: {
+            user: 'sindhurav18790@gmail.com',
+            pass: 'Sindhu@7'
+        }
+    });
 
+    
+    var mailOptions = {
+        from: 'Sindhu<sindhurav18790@gmail.com>', // sender address
+        to: sendto, // list of receivers
+        subject: 'Emergencyyyy!', // Subject line
+        text: 'Testing my code', // plaintext body
+        html: '<b>hahaha</b>' // html body
+    };
 
+    // send mail with defined transport object
+    transporter.sendMail(mailOptions, function(error, info){
+        if(error){
+            console.log(error);
+        }else{
+            console.log('Message sent: ' + info.response);            
+              }
+                transporter.close(); 
+    });
+
+    });
+     });*/
     })
-})
 
 //bookappointment
 

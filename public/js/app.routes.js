@@ -63,7 +63,7 @@ $routeProvider
 	.when('/gmaps', {
  	templateUrl : 'views/gmaps.html',
  	controller : 'gmapsController',
- 	controllerAs: 'gmaps'
+ 	controllerAs: 'Remedies'
  	})
 
 	.when('/sendemail', {

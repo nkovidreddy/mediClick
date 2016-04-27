@@ -15,33 +15,37 @@ var vm=this;
 		vm.login=function(){
 			//console.log("Email=" +vm.email);
 		$localStorage.$reset();
-			var url = '/api/users/' +vm.email+'/'+vm.password;
-			console.log(url);
-			console.log('Towards sending request');
+	    var url = '/api/users/' +vm.email+'/'+vm.password;
+		console.log(url);
+		console.log('Towards sending request');
 		var getReq1 = {
-      //url: '/api/users/'+vm.email, // No need of IP address
+        //url: '/api/users/'+vm.email, // No need of IP address
       url: url,
       method: 'GET',
       params: {'email':vm.email,'password':vm.password}
       
 	}
 	$http(getReq1).then(function(data){
-		//console.log("displayng data in get method index"); 
 		
 
 if((data.data[0] != null) && (data.data[0].email==vm.email))
 {
 	vm.email=data.data[0].email;
 	vm.fname=data.data[0].fname;
+	vm.notify= data.data[0].notify;
 	var fname=data.data[0].fname;
+	var notify = data.data[0].notify;
 	console.log(fname);
+	console.log(notify);
 	$scope.$storage = $localStorage.$default({
-          fname: fname
+          fname: fname,
+          notify: notify
         });
 $scope.email=vm.email;
 $scope.fname=vm.fname;
+$scope.notify=vm.notify;
 window.alert("Login Successful");
-
+//window.location.href = '/';
 	}
 	else
 	{
@@ -51,59 +55,32 @@ window.alert("please enter correct credentials");
 
       })
     }
-
-   
-	//User Location - Kovid Insert
-	vm.userLocation="";
-		if (navigator.geolocation) {
-   		 navigator.geolocation.getCurrentPosition(function(position){
-      	$scope.$apply(function(){
-        $scope.position = position;
-        console.log("Position:");
-        console.log($scope.position.coords.latitude);
-		userLocation=$scope.position.coords.latitude+","+$scope.position.coords.longitude;
-		console.log(userLocation);
-      });
-    });
-  }
-	
-	$scope.hospitals={};
-	
-	//$scope.practices={};
-	//vm.regSubmit = $http.post("http://localhost:3000/saveUser");
-	var api_key = '84595b9ae71e28e06f8414fafac6938e'; // Get your API key at developer.betterdoctor.com
-
-	//Sample URL Format https://api.betterdoctor.com/2016-03-01/doctors?location=37.773%2C-122.413%2C100&user_location=37.773%2C-122.413&skip=0&limit=10&user_key=84595b9ae71e28e06f8414fafac6938e&insurance_uid=blueshieldofcalifornia-blueshieldcabasicppobronzelevelhix
-	
-	
-	vm.getHospital=function(){
-			
-		
-		var resource_url = 'https://api.betterdoctor.com/2016-03-01/practices?location=37.773%2C-122.413%2C100&user_location='+userLocation+'&sort=distance-asc&skip=0&limit=10&user_key=84595b9ae71e28e06f8414fafac6938e';
-		
-		console.log(resource_url);
-	
-	var getDocReq = {
-      //url: '/api/users/'+vm.email, // No need of IP address
-      url: resource_url,
-      method: 'GET'
-      //params: {'email':vm.email,'password':vm.password}
-      //headers: {'Content-Type': 'application/json'}
-	}
-
-	$http(getDocReq).then(function(data){
-		//console.log("displayng data in get method index"); 
-		//console.log(data.data[0].email);
-		console.log("Testing API");
-    	//console.log(data);
-   	 	$scope.hospitals=data.data.data;
-   	 	//$scope.practices=data.data.data;
-    	//console.log($scope.doctors);
-
-    	
-      })
-}
  
+vm.notify=function(){
+		console.log("inside notify");
+
+$scope.$fname = $localStorage.fname;
+$scope.$notify = $localStorage.notify;
+
+var email=$localStorage.email;
+		console.log(email);
+var fname= $localStorage.fname;
+	console.log(fname);
+	var notify= $localStorage.notify;
+	console.log(notify);
+		/*	var emailinfo={
+      url: '/api/sendemail', // No need of IP address //sindhuupdate
+      method: 'POST',
+      data: {'email':email},
+       headers: {'Content-Type': 'application/json'}
+   
+      }
+      	$http(emailinfo).then(function(data){
+     	window.location.href = '/index';
+
+      })*/
+    }
+
 
 }])
 
@@ -278,7 +255,7 @@ window.alert("please enter correct credentials");
 
 	$scope.bodypart = {};
 	//$scope.addictions = {};	
-	$scope.facts = {};
+
 	vm.selectValue="test";	
 
    vm.getsymptoms=function(){
@@ -299,8 +276,6 @@ window.alert("please enter correct credentials");
 	   console.log(specificbodypart);
 	   console.log(symptom);
 
-	   var factid=vm.factid;
-
      //kovid update appending params to url to be consumed in nodejs
      url = url+'/'+bodypart+'/'+specificbodypart+'/'+symptom;
      console.log(url);
@@ -313,47 +288,17 @@ window.alert("please enter correct credentials");
 	$http(symptomInfo).then(function(data){
      	//window.location.href = '/index';
      	$scope.posConditions=data.data;
-     	console.log(factid);
      	})
 	}
-
-   vm.gotoRem=function(){
-	console.log("inside go to rem");
-	$scope.posConditions=[{factid:'12'}];
-
-	 //var factid=$scope.facts.factid;
-	//var factid=vm.factid;	 
-	console.log($scope.posConditions);
-	}
-
 	}])
+
 
 //remedies Controller
 
-.controller('gmapsController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
+.controller('gmapsController',['$scope','$localStorage','$http','$location', function($scope,$localStorage,$http,$location){
 	var vm=this;
-	
-	console.log("inside gmap");
-  vm.getLoc=function(){
-		vm.userLocation="";
-var userloc = vm.userloc;
-		if (navigator.geolocation) {
-   		 navigator.geolocation.getCurrentPosition(function(position){
-      	$scope.$apply(function(){
-        $scope.position = position;
-        console.log("Position:");
-        console.log($scope.position.coords.latitude);
-		userLocation=$scope.position.coords.latitude+","+$scope.position.coords.longitude;
-		
-		//var userloc=userLocation;
-		console.log("midnight test");
-		$scope.userloc=userLocation;
-		
-		console.log($scope.userloc);
-      });
-    });
-  }
-}
+	var searchObject = $location.search();
+	console.log(searchObject);
    }])
 
 
@@ -514,10 +459,6 @@ vm.bookAppointment=function(){
 }
 
 }])
-
-
-
-
 
 .controller('emailController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
 var vm=this;

@@ -421,6 +421,13 @@ apiRouter.route('/diseaseinfo/:bodypart/:specbodypart/:symptom')
        var textLen = textUser.length;
        for(inp=0;inp<textLen;inp++){
         query2["$and"]=[];
+        query2["$and"].push({description:{$regex:textUser[inp]}});
+        //query2["$and"].push({description:{$regex:bodypartVal}});
+        query2["$and"].push({description:{$regex:specbodypartVal}});
+        query["$or"].push(query2);
+       }
+       
+          
 
 
            /*Sankirthi -Query using regex
@@ -555,7 +562,7 @@ console.log(JSON.stringify(query));
         }
        //Sample Database find query below
        //Disease.find({$or:[{'id':181},{'id':1}]},{name:1,_id:0},function(err, u)
-         Disease.find(diseaseQuery,{name:1,id:1,_id:0},function(err, conditions) {
+         Disease.find(diseaseQuery,{name:1,_id:0},function(err, conditions) {
          res.json(conditions);
        });
       }

@@ -10,10 +10,11 @@ angular.module('masters',['routerRoutes','ngStorage'])
 })
 
 //.controller('indexController',function($http,$scope){
-	.controller('indexController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
+.controller('indexController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
 var vm=this;
 		vm.login=function(){
 			//console.log("Email=" +vm.email);
+			console.log("inside login");
 		$localStorage.$reset();
 	    var url = '/api/users/' +vm.email+'/'+vm.password;
 		console.log(url);
@@ -56,31 +57,26 @@ window.alert("please enter correct credentials");
       })
     }
  
-vm.notify=function(){
+$scope.notifyTest=function(){
 		console.log("inside notify");
 
 $scope.$fname = $localStorage.fname;
 $scope.$notify = $localStorage.notify;
 
-var email=$localStorage.email;
-		console.log(email);
+
+console.log(vm.email);
 var fname= $localStorage.fname;
 	console.log(fname);
 	var notify= $localStorage.notify;
 	console.log(notify);
-		/*	var emailinfo={
+			var emailinfo={
       url: '/api/sendemail', // No need of IP address //sindhuupdate
       method: 'POST',
-      data: {'email':email},
+      data: {'email':vm.email,'fname':fname,'notify':notify},
        headers: {'Content-Type': 'application/json'}
-   
-      }
-      	$http(emailinfo).then(function(data){
-     	window.location.href = '/index';
+   }
 
-      })*/
-    }
-
+}
 
 }])
 

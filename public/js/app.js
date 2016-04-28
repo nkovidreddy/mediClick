@@ -299,10 +299,8 @@ $http(emailinfo).then(function(data){
 
    vm.gotoRem=function(){
 	console.log("inside go to rem");
-	$scope.posConditions=[{factid:'12'}];
+	$scope.posConditions=[{factid:id}];
 
-	 //var factid=$scope.facts.factid;
-	//var factid=vm.factid;	 
 	console.log($scope.posConditions);
 	}
 

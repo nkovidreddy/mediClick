@@ -51,7 +51,7 @@ $routeProvider
  	.when('/Remedies', {
  	templateUrl : 'views/Rem.html',
  	controller : 'remediesController',
- 	controllerAs: 'Remedies'
+ 	controllerAs: 'remedies'
  	})
 
  	.when('/betterhealth', {

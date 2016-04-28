@@ -611,6 +611,34 @@ console.log(JSON.stringify(query));
 
 //sendemail
 
+apiRouter.route('/conditions')
+
+.get(function(req,res){
+
+})
+
+
+apiRouter.route('/conditions/:idVal')
+
+.get(function(req,res){
+  var idFact = req.params.idVal;
+  console.log(idFact);
+  idFact=parseInt(idFact);
+  console.log(idFact);
+  Fact.find({"id":idFact},{fact:1,description:1,_id:0},function(error,condData){
+    if(error){
+      res.json(error);
+    }else{
+      res.json(condData);
+    }
+
+  })
+  
+})
+
+
+
+
 apiRouter.route('/sendemail')
 
  .post(function(req, res) {

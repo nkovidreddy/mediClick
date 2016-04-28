@@ -307,6 +307,14 @@ $http(emailinfo).then(function(data){
 	}])
 
 //remedies Controller
+.controller('remediesController',['$scope','$localStorage','$http','$location', function($scope,$localStorage,$http,$location){
+	var vm=this;
+	vm.getRemedies=function(){
+		var searchObject = $location.search();
+		console.log(searchObject);
+	}
+	
+}])
 
 .controller('gmapsController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
 	var vm=this;
@@ -314,7 +322,7 @@ $http(emailinfo).then(function(data){
 	console.log("inside gmap");
   vm.getLoc=function(){
 		vm.userLocation="";
-var userloc = vm.userloc;
+		var userloc = vm.userloc;
 		if (navigator.geolocation) {
    		 navigator.geolocation.getCurrentPosition(function(position){
       	$scope.$apply(function(){

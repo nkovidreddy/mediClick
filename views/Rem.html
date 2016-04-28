@@ -5,7 +5,7 @@
 <!--[if gt IE 8]><!-->
 <html lang="en" class="no-js">
 <!--<![endif]-->
-
+<base href="/">
 <head>
     <meta charset="UTF-8">
     <title>MediClick</title>
@@ -127,7 +127,7 @@
 
 
     <div class="wrapper">
-    <section id="about">
+    <section id="about" ng-init="remedies.getRemedies()">
             <div class="container">
                 
                 <div class="section-heading scrollpoint sp-effect3">
@@ -135,9 +135,11 @@
                     <div class="divider"></div>
 
                 </div>
-                 <div ng-repeat="" >
+                 <div ng-repeat="i in remediesData">
                           <h3>Fact Name</h3>
+                          {{i.fact}}
                           <div><p>Fact Description</p></div>
+                          {{i.description}}
             </div>
         </section>
  </div>

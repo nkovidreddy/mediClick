@@ -10,43 +10,42 @@ angular.module('masters',['routerRoutes','ngStorage'])
 })
 
 //.controller('indexController',function($http,$scope){
-.controller('indexController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
-var vm=this;
+	.controller('indexController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
+      var vm=this;
 		vm.login=function(){
 			//console.log("Email=" +vm.email);
 			console.log("inside login");
 		$localStorage.$reset();
-	    var url = '/api/users/' +vm.email+'/'+vm.password;
-		console.log(url);
-		console.log('Towards sending request');
+			var url = '/api/users/' +vm.email+'/'+vm.password;
+			console.log(url);
+			console.log('Towards sending request');
 		var getReq1 = {
-        //url: '/api/users/'+vm.email, // No need of IP address
+      //url: '/api/users/'+vm.email, // No need of IP address
       url: url,
       method: 'GET',
       params: {'email':vm.email,'password':vm.password}
       
 	}
 	$http(getReq1).then(function(data){
-		
-
+	
 if((data.data[0] != null) && (data.data[0].email==vm.email))
 {
 	vm.email=data.data[0].email;
 	vm.fname=data.data[0].fname;
-	vm.notify= data.data[0].notify;
 	var fname=data.data[0].fname;
-	var notify = data.data[0].notify;
+	var notify=data.data[0].notify;
+	var email=data.data[0].email;
 	console.log(fname);
-	console.log(notify);
 	$scope.$storage = $localStorage.$default({
           fname: fname,
-          notify: notify
+          notify:notify,
+          email:email
+
         });
 $scope.email=vm.email;
 $scope.fname=vm.fname;
-$scope.notify=vm.notify;
 window.alert("Login Successful");
-//window.location.href = '/';
+
 	}
 	else
 	{
@@ -58,25 +57,33 @@ window.alert("please enter correct credentials");
     }
  
 $scope.notifyTest=function(){
-		console.log("inside notify");
-
+console.log("inside notify");
 $scope.$fname = $localStorage.fname;
 $scope.$notify = $localStorage.notify;
+$scope.$email = $localStorage.email;
 
-
-console.log(vm.email);
+		
 var fname= $localStorage.fname;
-	console.log(fname);
-	var notify= $localStorage.notify;
-	console.log(notify);
-			var emailinfo={
+var email = $localStorage.email;
+var notify = $localStorage.notify;
+console.log(fname);
+console.log(email);
+console.log(notify);
+console.log("before sendemail");
+var emailinfo={
       url: '/api/sendemail', // No need of IP address //sindhuupdate
       method: 'POST',
-      data: {'email':vm.email,'fname':fname,'notify':notify},
-       headers: {'Content-Type': 'application/json'}
-   }
+      data: {'email':email,'fname':fname,'notify':notify},
+      headers: {'Content-Type': 'application/json'}
+    }
+
+console.log(emailinfo);
+$http(emailinfo).then(function(data){
+     	window.location.href = '/index';
+     })
 
 }
+ 
 
 }])
 
@@ -251,7 +258,7 @@ var fname= $localStorage.fname;
 
 	$scope.bodypart = {};
 	//$scope.addictions = {};	
-
+	$scope.facts = {};
 	vm.selectValue="test";	
 
    vm.getsymptoms=function(){
@@ -272,6 +279,8 @@ var fname= $localStorage.fname;
 	   console.log(specificbodypart);
 	   console.log(symptom);
 
+	   var factid=vm.factid;
+
      //kovid update appending params to url to be consumed in nodejs
      url = url+'/'+bodypart+'/'+specificbodypart+'/'+symptom;
      console.log(url);
@@ -284,17 +293,47 @@ var fname= $localStorage.fname;
 	$http(symptomInfo).then(function(data){
      	//window.location.href = '/index';
      	$scope.posConditions=data.data;
+     	console.log(factid);
      	})
 	}
-	}])
 
+   vm.gotoRem=function(){
+	console.log("inside go to rem");
+	$scope.posConditions=[{factid:'12'}];
+
+	 //var factid=$scope.facts.factid;
+	//var factid=vm.factid;	 
+	console.log($scope.posConditions);
+	}
+
+	}])
 
 //remedies Controller
 
-.controller('gmapsController',['$scope','$localStorage','$http','$location', function($scope,$localStorage,$http,$location){
+.controller('gmapsController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
 	var vm=this;
-	var searchObject = $location.search();
-	console.log(searchObject);
+	
+	console.log("inside gmap");
+  vm.getLoc=function(){
+		vm.userLocation="";
+var userloc = vm.userloc;
+		if (navigator.geolocation) {
+   		 navigator.geolocation.getCurrentPosition(function(position){
+      	$scope.$apply(function(){
+        $scope.position = position;
+        console.log("Position:");
+        console.log($scope.position.coords.latitude);
+		userLocation=$scope.position.coords.latitude+","+$scope.position.coords.longitude;
+		
+		//var userloc=userLocation;
+		console.log("midnight test");
+		$scope.userloc=userLocation;
+		
+		console.log($scope.userloc);
+      });
+    });
+  }
+}
    }])
 
 
@@ -312,6 +351,8 @@ var fname= $localStorage.fname;
         console.log("Position:");
         console.log($scope.position.coords.latitude);
 		userLocation=$scope.position.coords.latitude+","+$scope.position.coords.longitude;
+		$localStorage.user_locationBrow=userLocation;
+		console.log($localStorage.user_locationBrow);
 		console.log(userLocation);
       });
     });
@@ -456,83 +497,4 @@ vm.bookAppointment=function(){
 
 }])
 
-.controller('emailController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
-var vm=this;
-	console.log("inside sendemail");
-			vm.sendemail=function(){
-	
-		var email=vm.email;
-		console.log(email);
-
-	
-			var emailinfo={
-      url: '/api/sendemail', // No need of IP address //sindhuupdate
-      method: 'POST',
-      data: {'email':email},
-       headers: {'Content-Type': 'application/json'}
-   
-      }
-      	$http(emailinfo).then(function(data){
-     	window.location.href = '/index';
-
-      })
-	}
-	
-}]);
-
-/*.controller('loginController', function($http) {
-console.log('inside login 1');
-var vm = this;
-// get info if a person is logged in
-  vm.loggedIn = Auth.isLoggedIn();
-  // check to see if a user is logged in on every request
-$rootScope.$on('$routeChangeStart', function() { vm.loggedIn = Auth.isLoggedIn();
-    // get user information on route change
-Auth.getUser() .success(function(data) {
-        vm.user = data;
-      });
-});
-  // function to handle login form
-vm.doLogin = function() {
-	console.log('inside login');
-    // call the Auth.login() function
-Auth.login(vm.loginData.username, vm.loginData.password) .success(function(data) {
-        // if a user successfully logs in, redirect to users page
-        $location.path('/Remedies');
-      });
-}
-})*/
-
-
-/*.controller('indexController',function(){
-// bind this to vm (view-model)
-var vm = this;
-
-// define variables and objects on this
-// this lets them be available to our views
-// define a basic variable
-vm.message="hello i want this message to be displyed on home";
-//list
-vm.computers = [
- { name: 'Macbook Pro', color: 'Silver', nerdness: 7 },
- { name: 'Yoga 2 Pro', color: 'Gray', nerdness: 6 },
- { name: 'Chromebook', color: 'Black', nerdness: 5 }
- ];
-
- // information that comes from our form
-vm.computerData = {};
-
- vm.addComputer = function() {
- // add a computer to the list
- vm.computers.push({
- name: vm.computerData.name,
- color: vm.computerData.color,
- nerdness: vm.computerData.nerdness
- });
-
- // after our computer has been added, clear the form
- vm.computerData = {};
- };
-
-})*/
 

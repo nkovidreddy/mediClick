@@ -63,14 +63,10 @@ $routeProvider
 	.when('/gmaps', {
  	templateUrl : 'views/gmaps.html',
  	controller : 'gmapsController',
- 	controllerAs: 'Remedies'
+ 	controllerAs: 'gmaps'
  	})
 
-	.when('/sendemail', {
- 	templateUrl : 'views/sendemail.html',
- 	controller : 'emailController',
- 	controllerAs: 'email'
- 	})
+	
  // set our app up to have pretty URLS
 $locationProvider.html5Mode(true);
 });

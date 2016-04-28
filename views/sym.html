@@ -439,24 +439,17 @@
 </div>    
     <div class="col-md-4" style="background-color: rgba(125, 63, 152, 0.35);margin-left: 2%;overflow-y: scroll;padding: 15px;border: solid 1px whitesmoke;border-radius: 15px;height: 513px;">
     <h3 style="color:white">Possible conditions</h3>
-<form >         
+<form ng-submit="symptoms.gotoRem()">         
  <div class="list-group" ng-repeat="conditions in posConditions">
-
-   <!-- <a href="/Remedies" class="list-group-item" >{{conditions.name}}</a>-->
-     <a href="/Remedies/{{conditions.id}}" class="list-group-item">{{conditions.name}}</a>
-   
-    <!-- <a href="/Remedies" class="list-group-item">{{conditions.name}}</a> -->
-    <!-- Sample List
-    <a href="#" class="list-group-item">Cold</a>
-    <a href="#" class="list-group-item">HeadAche</a>
-    <a href="#" class="list-group-item">Migraine</a>
-   -->
-
+      <a href="/Remedies/{{conditions.id}}" class="list-group-item">{{conditions.name}}</a>
+        <input type="text" ng-model="conditions.factid" >{{conditions.id}}"
+    <button type="submit">Submit</button>
  </div> 
  
 </form>
 </div>
-  </div>          
+  </div> 
+
             </div>
         </section>
 
@@ -574,13 +567,13 @@ zoomout('pzoom');
     <script language="javascript">
 
   var mxref = {
-        head: "Head",
+        head: "head",
         neck: "neck",
-        hand: "Hand",
+        hand: "hand",
         c: "chest",
-        a: "Abdomen",
-        p: "Pelvis" ,
-        leg: "Leg"        
+        a: "abdomen",
+        p: "pelvis" ,
+        leg: "leg"        
     };      
 
    var image = $('#vegetables');
@@ -1592,9 +1585,6 @@ zoomout('pzoom');
      ]
    });
     </script>
-
-
-
 
 </body>
 

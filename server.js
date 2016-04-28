@@ -99,11 +99,7 @@ app.get('/gmaps/:streetaddr',function(req,res){
  	//next();
  });
 
-app.get('/sendemail',function(req,res){
-  //res.send('index',{title:'hey',message:'Hello there!'});
-  res.sendFile(path.join(__dirname+'/views/sendemail.html'))
-  //next();
- });
+
 //database
 apiRouter.route('/users')
 
@@ -618,11 +614,12 @@ console.log(JSON.stringify(query));
 apiRouter.route('/sendemail')
 
  .post(function(req, res) {
-
+console.log("inside sendemail");
 var email=req.body.email;
 var fname=req.body.fname;
 var notify=req.body.notify;
 var email1=req.body.email1;
+ var sendtextto;
  User.find({"email":email}, function(error, users) {
  if(error){
             console.log(error);
@@ -633,13 +630,12 @@ var email1=req.body.email1;
  // return the users
  console.log("outside");
  console.log(users.email);
- res.json(users);
  console.log(users[0].email);
  var sendvia = users[0].notify;
  var phone = users[0].phone;
  console.log(sendvia);
  //res.json(users);
-})
+
  if(sendvia == 'Email')
  {
   telCarrier = TelCarrier.create({
@@ -653,11 +649,10 @@ var email1=req.body.email1;
   } else {
     console.log('data');
     console.log(data.smsGateway);
-  }
-})
-
-  var sendtextto=data.smsGateway;
+     sendtextto=data.smsGateway;
 console.log(sendtextto);
+  }
+
      //create reusable transporter object using SMTP transport
     var transporter = nodemailer.createTransport({
         service: 'Gmail',
@@ -680,14 +675,18 @@ var mailOptions = {
         }else{
             console.log('Message sent: ' + info.response);            
               }
-                transporter.close(); 
+    transporter.close(); 
+    res.json("in if success");
     });
+    })
 }
+
 
 else
 {
+  console.log("In Else Block");
    var sendemailto=email;
-  console.log(sendtextto);
+  console.log(sendemailto);
      //create reusable transporter object using SMTP transport
     var transporter = nodemailer.createTransport({
         service: 'Gmail',
@@ -713,12 +712,14 @@ else
         }else{
             console.log('Message sent: ' + info.response);            
               }
-                transporter.close(); 
+    transporter.close(); 
+    res.json("in else success");
     });
 
 
      }
-   })
+  })
+})
  
 
 //bookappointment

@@ -90,7 +90,7 @@ app.get('/Symptoms',function(req,res){
  
  });
 
-app.get('/Remedies/:id',function(req,res){
+app.get('/Remedies/:id/:conName',function(req,res){
  	res.sendFile(path.join(__dirname+'/views/Rem.html'))
 });
 

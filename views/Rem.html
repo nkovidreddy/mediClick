@@ -102,7 +102,7 @@
                     <p>Get a description of your condition based on your symptoms</p>
                       <div class="row" col-md-10>
                       <div class="col-md-3">
-                            <p><a href="#" ng-click="remedies.getFacts()"><img  src="../public/img/eco/know1.png"></a></p>
+                            <p><a href="" onclick="show();" ng-click="remedies.getFacts()"><img  src="../public/img/eco/know1.png"></a></p>
                      </div>
                      <div class="col-md-3" style="float:right">
                         <p>  <a href="/betterhealth"><img  src="../public/img/eco/doc.png"></a> </p>  
@@ -127,19 +127,21 @@
 
 
     <div class="wrapper">
-    <section id="about" ng-init="remedies.getRemedies()">
-            <div class="container">
+    <section ng-init="remedies.getRemedies()">
+            <div id="about" class="container" style="display:none">
                 
                 <div class="section-heading scrollpoint sp-effect3">
-                    <h1>Condition Name</h1>
+                    <h1>{{cond}}</h1>
                     <div class="divider"></div>
 
                 </div>
-                 <div ng-repeat="i in remediesData">
-                          <h3>Fact Name</h3>
-                          {{i.fact}}
-                          <div><p>Fact Description</p></div>
-                          {{i.description}}
+                <div class="col-md-6">
+                 <div  ng-repeat="i in remediesData">
+                          <h3>{{i.fact}}</h3>
+                          
+                          <div><p>{{i.description}}</p></div>
+                          
+            </div>
             </div>
         </section>
  </div>
@@ -177,6 +179,13 @@
         $(document).ready(function() {
             appMaster.preLoader();
         });
+    </script>
+
+      <script type="text/javascript">
+    function show()
+    {
+      document.getElementById('about').style.display='block';
+    }
     </script>
 </body>
 

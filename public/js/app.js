@@ -312,6 +312,8 @@ $http(emailinfo).then(function(data){
 	vm.getRemedies=function(){
 		//var searchObject = $location.search();
 		var factId = $location.$$url.split('/')[2];
+		var cName= $location.$$url.split('/')[3];
+		$scope.cond=decodeURIComponent(cName);
 		var remurl= '/api/conditions/'+factId;
 		console.log(factId);
 		var getRemRequest = {

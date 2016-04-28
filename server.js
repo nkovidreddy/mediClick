@@ -90,9 +90,10 @@ app.get('/Symptoms',function(req,res){
  
  });
 
-app.get('/Remedies',function(req,res){
+app.get('/Remedies/:id',function(req,res){
  	res.sendFile(path.join(__dirname+'/views/Rem.html'))
- });
+});
+
 app.get('/gmaps/:streetaddr',function(req,res){
  	//res.send('index',{title:'hey',message:'Hello there!'});
  	res.sendFile(path.join(__dirname+'/views/gmaps.html'))

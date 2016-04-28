@@ -79,7 +79,7 @@ var emailinfo={
 
 console.log(emailinfo);
 $http(emailinfo).then(function(data){
-     	window.location.href = '/index';
+     	window.location.href = '/';
      })
 
 }

@@ -310,10 +310,21 @@ $http(emailinfo).then(function(data){
 .controller('remediesController',['$scope','$localStorage','$http','$location', function($scope,$localStorage,$http,$location){
 	var vm=this;
 	vm.getRemedies=function(){
-		var searchObject = $location.search();
-		console.log(searchObject);
+		//var searchObject = $location.search();
+		var factId = $location.$$url.split('/')[2];
+		var remurl= '/api/conditions/'+factId;
+		console.log(factId);
+		var getRemRequest = {
+	    url:remurl,
+	    method: 'GET'
+	   }
+
+	$http(getRemRequest).then(function(data){
+		console.log("Testing Remedies:");
+		console.log(data);
+    	$scope.remediesData=data.data;
+   	  })
 	}
-	
 }])
 
 .controller('gmapsController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){

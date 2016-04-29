@@ -105,12 +105,12 @@
                 </div>
                 
                  
-                <form role="form"  class="registration-form col-md-4" >
+                <form role="form" ng-submit="bhealth.getInsurance()"  class="registration-form col-md-4" >
                 
                  <fieldset class="form-group">
                  <input type="text" class="form-control"  id="symptom" placeholder="Enter symptom" ng-model="bhealth.symptomVal"> 
 
-                 <button class="btn btn-success" ng-click="bhealth.getInsurance()" onclick="show();" ng-model="insurance.aetna">Select an Insurance Plan</button>      
+                 <button class="btn btn-success"  onclick="show();" ng-model="insurance.aetna">Select an Insurance Plan</button>      
                  </fieldset> 
 
                 <div class="form-group" id="insurance" style="display:none;">

@@ -131,8 +131,8 @@
 <img   onclick="selectSkin();" id="skin" width="20px" src="../public/img/eco/plus.png" style="cursor: pointer; float:right">
 </div>
 <div class="col-md-11">
-<p style="float:left">Back View</p>
-<p style="float:right">Select Skin</p>
+<p style="float:left; color:white;">Back View</p>
+<p style="float:right; color:white;">Select Skin</p>
 </div>
 </div>
 
@@ -152,8 +152,8 @@
 <img   onclick="selectSkin();" id="skin" width="20px" src="../public/img/eco/plus.png" style="cursor: pointer; float:right">
 </div>
 <div class="col-md-11">
-<p style="float:left">Back View</p>
-<p style="float:right">Select Skin</p>
+<p style="float:left; color:white;">Back View</p>
+<p style="float:right; color:white;">Select Skin</p>
 </div>
 </div>
 
@@ -174,8 +174,8 @@
 <img   onclick="selectSkin();" id="skin" width="20px" src="../public/img/eco/plus.png" style="cursor: pointer; float:right">
 </div>
 <div class="col-md-11">
-<p style="float:left">Back View</p>
-<p style="float:right">Select Skin</p>
+<p style="float:left; color:white;">Back View</p>
+<p style="float:right; color:white;">Select Skin</p>
 </div>
 </div>
 
@@ -196,8 +196,8 @@
 <img   onclick="selectSkin();" id="skin" width="20px" src="../public/img/eco/plus.png" style="cursor: pointer; float:right">
 </div>
 <div class="col-md-11">
-<p style="float:left">Back View</p>
-<p style="float:right">Select Skin</p>
+<p style="float:left; color:white;">Back View</p>
+<p style="float:right; color:white;">Select Skin</p>
 </div>
 </div>
 
@@ -422,7 +422,7 @@
   <fieldset class="form-group">
     <label for="exampleSelect1">Selected body part:</label>
 
-    <input type="text" class="form-control"  name="bodypart" id="selections" placeholder="..."  ng-value="name" ng-model="bodypart">
+    <input type="text" class="form-control"  name="bodypart" id="selections" placeholder="..." ng-value="name" ng-model="bodypart">
    <!-- <input id="selections" ng-model="selections">-->
   </fieldset>
 
@@ -431,25 +431,26 @@
 
   <fieldset class="form-group">
     <label for="exampleSelect1">Select a specific body part</label>
-    <input type="text" class="form-control"  id="specific" placeholder="..." ng-model="selBodyPartValue">        
+  <a href="" data-toggle="tooltip" data-placement="left" title="Type a specific body part, if not found on the model">  <input type="text" class="form-control"  id="specific" placeholder="..." ng-model="selBodyPartValue"></a>   
   </fieldset>  
   <fieldset class="form-group">
     <label for="exampleSelect1">Enter Symptom</label>
-    <input type="text" class="form-control"  id="symptom" placeholder="..." ng-model="selSymptomValue">        
+     <a href="" data-toggle="tooltip" data-placement="left" title="Type your symptom as a simple phrase"><input type="text" class="form-control"  id="symptom" placeholder="..." ng-model="selSymptomValue"></a>        
   </fieldset>  
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" onclick="convert();" class="btn btn-primary">Submit</button>
 </form>
 </div>    
-    <div class="col-md-4" style="background-color: rgba(125, 63, 152, 0.35);margin-left: 2%;overflow-y: scroll;padding: 15px;border: solid 1px whitesmoke;border-radius: 15px;height: 513px;">
+    <div class="col-md-4" style="background-color: rgba(125, 63, 152, 0.35);margin-left: 2%;padding: 15px;border: solid 1px whitesmoke;border-radius: 15px;height: 513px;">
     <h3 style="color:white">Possible conditions</h3>
+    <div style="overflow-y: scroll;height: 430px;">
 <form ng-submit="symptoms.gotoRem()">         
- <div class="list-group" ng-repeat="conditions in posConditions">
+ <div class="list-group" ng-repeat="conditions in posConditions" >
       <a href="/Remedies/{{conditions.id}}/{{conditions.name}}" class="list-group-item">{{conditions.name}}</a>
-       
-    
+           
  </div> 
  
 </form>
+</div>
 </div>
   </div> 
 
@@ -467,6 +468,10 @@
         scope.selSymptomValue = $('#symptom').val(); 
     });
 })
+
+  $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
 </script>
    <script>
 
@@ -517,6 +522,13 @@ zoomout('pzoom');
     </script>
 
 <script type="text/javascript">
+function convert()
+{
+    var bod=document.getElementById('specific').value;
+    var sym=document.getElementById('symptom').value;
+    $('#specific').val(bod.toLowerCase());
+    $('#symptom').val(sym.toLowerCase());
+}
     function maletog()
     {
        var e=document.getElementById('malefront');

@@ -92,7 +92,7 @@
                 <!-- /.container-->
         </nav>
 
-  <section id="reviews">
+  <section ng-init="bhealth.getInsurance()" id="reviews">
             <div class="container">
                 <div class="section-heading inverse scrollpoint sp-effect3">
                 <br>
@@ -105,7 +105,7 @@
                 </div>
                 
                  
-                <form role="form" ng-submit="bhealth.getInsurance()"  class="registration-form col-md-4" >
+                <form role="form" ng-submit="bhealth.getDoctors()" class="registration-form col-md-4" >
                 
                  <fieldset class="form-group">
                  <input type="text" class="form-control"  id="symptom" placeholder="Enter symptom" ng-model="bhealth.symptomVal"> 
@@ -121,7 +121,8 @@
                  
                  </select> 
                  </div>
-                 <button type="submit" class="btn btn-success" ng-click="bhealth.getDoctors()" >Get Doctors</button>           
+                 <button type="submit" class="btn btn-success" >Get Doctors</button>
+
             </form>
            
                 </div>                    

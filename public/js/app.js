@@ -244,7 +244,7 @@ $http(emailinfo).then(function(data){
       }
 
 		$http(medicalInfo).then(function(data){
-     	window.location.href = '/index';
+     	window.location.href = '/';
 
       })
 	}

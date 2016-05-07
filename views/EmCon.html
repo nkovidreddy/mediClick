@@ -88,32 +88,32 @@
                                     </div>
                                     <div class="form-group">
                                        <label  for="firstName">Phone</label>
-                                        <input type="text" name="LastName" placeholder=""  id="LastName"ng-model="emergency.elname1">
+                                        <input type="text" name="LastName" placeholder=""  id="LastName"ng-model="emergency.elname1" required pattern="[0-9]{10}">
                                     </div>
                                     <div class="form-group">
                                         <label for="form-email">Email</label>
-                                        <input type="email" name="form-email" placeholder="Email..." class="form-email form-control" id="form-email" ng-model="emergency.eemail1">
+                                        <input type="email" name="form-email" placeholder="Email..." class="form-email form-control" id="form-email" ng-model="emergency.eemail1" required>
                                     </div>
                                     </div>
                                    <div class="form-inline">
                                   <div class="form-group">
                                         <label  for="firstName">Emergency Contact #2 Name</label>
-                                        <input type="text" name="firstName" placeholder="Name..."  id="firstName" ng-model="emergency.efname2">
+                                        <input type="text" name="firstName" placeholder="Name..."  id="firstName" ng-model="emergency.efname2" required>
                                     </div>
                                     <div class="form-group">
                                        <label  for="firstName">Phone</label>
-                                        <input type="text" name="LastName" placeholder=""  id="LastName"ng-model="emergency.elname2">
+                                        <input type="text" name="LastName" placeholder=""  id="LastName"ng-model="emergency.elname2" required pattern="[0-9]{10}">
                                     </div>
                                     <div class="form-group">
                                         <label for="form-email">Email</label>
-                                        <input type="email" name="form-email" placeholder="Email..." class="form-email form-control" id="form-email" ng-model="emergency.eemail2">
+                                        <input type="email" name="form-email" placeholder="Email..." class="form-email form-control" id="form-email" ng-model="emergency.eemail2" required>
                                     </div>
                                     </div>                                   
                              
 
                                       <div class="form-group">
                                         <label for="inlineRadio1">Notification Type </label>
-                                        <label ><input type="radio" name="notify" id="inlineRadio1" value="option1" ng-model="emergency.notify" ng-value="'Text'"> Text
+                                        <label ><input type="radio" name="notify" id="inlineRadio1" value="option1" ng-model="emergency.notify" ng-value="'Text'" required> Text
 
                                        </label>
                                         <label>

@@ -99,19 +99,19 @@
 			                 <form role="form" ng-submit="register.register()" class="registration-form">
                                   <div class="form-group">
                                         <label class="sr-only" for="form-email">Email</label>
-                                        <input type="email" name="form-email" placeholder="Email..." class="form-email form-control" id="form-email" ng-model="register.email">
+                                        <input type="email" name="form-email" placeholder="Email..." class="form-email form-control" id="form-email" ng-model="register.email" required>
                                         <!--changed above ng-model="register.email" to emailTest.name -->
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only" for="form-first-name">Password</label>
-                                        <input type="password" name="form-first-name" placeholder="Password..." class="form-first-name form-control" id="form-first-name" ng-model="register.password">
+                                        <input type="password" name="form-first-name" placeholder="Password..." class="form-first-name form-control" id="form-first-name" ng-model="register.password" required pattern=".{5,}" title="Minmimum 5 alpha-numerals or characters.">
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only" for="form-last-name">Confirm Password</label>
-                                        <input type="password" name="form-last-name" placeholder="Confirm Password..." class="form-last-name form-control" id="form-last-name" ng-model="register.confirmpassword">
+                                        <input type="password" name="form-last-name" placeholder="Confirm Password..." class="form-last-name form-control" id="form-last-name" ng-model="register.confirmpassword" required>
                                     </div>
                                     <div>
-                                        <h3>{{$storage.userId}}</h3>
+                                       <!--  <h3>{{$storage.userId}}</h3> -->
                                     </div>
                                       <button type="submit" class="btn" value="Register" onsubmit="togglediv('form1')">Register</button>                                
                                 </form>

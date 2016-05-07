@@ -8,6 +8,7 @@ var mongoose = require('mongoose'); // for working w/ our database
 var nodemailer = require('nodemailer'); //nodemailer
 var transporter = nodemailer.createTransport(); //create transport
 var TelCarrier = require('tel-carrier'); //telcarrier
+var sanitize = require('mongo-sanitize');
 
  var apiRouter = express.Router();
 
@@ -112,10 +113,10 @@ apiRouter.route('/users')
 
  // set the users information (comes from the request)
 // console.log(req.body);
- user.email = req.body.email;
+ user.email = sanitize(req.body.email);
  console.log(user.email);
 
- user.password = req.body.password;
+ user.password = sanitize(req.body.password);
 console.log(user.password);
  // save the user and check for errors
  user.save(function(err) {
@@ -157,16 +158,16 @@ console.log(req.body);
 apiRouter.route('/users/:email')
 
 .put(function(req, res) {
-  var email=req.params.email;
+  var email=sanitize(req.params.email);
   console.log("testing inside sindhuupdate"+email);
 //var user = new User();
- var fname = req.body.fname;
- var lname = req.body.lname;
- var bday=req.body.bday;
- var gender=req.body.gender;
- var phone=req.body.phone;
- var address=req.body.address;
- var zipcode=req.body.zipcode;
+ var fname = sanitize(req.body.fname);
+ var lname = sanitize(req.body.lname);
+ var bday=sanitize(req.body.bday);
+ var gender=sanitize(req.body.gender);
+ var phone=sanitize(req.body.phone);
+ var address=sanitize(req.body.address);
+ var zipcode=sanitize(req.body.zipcode);
 //var query = { email: 'sindhu@gmail.com' };
 //User.findOneAndUpdate(query, { email: 'tested@gmail.com' }, options, callback)
 
@@ -180,7 +181,7 @@ var options = { upsert: true };
 User.update(conditions, update, options, callback);
 function callback (err, numAffected) {
   // numAffected is the number of updated documents
-  console.log("Playing");
+  //console.log("Playing");
   res.json(numAffected);
 }; 
 
@@ -196,7 +197,7 @@ apiRouter.route('/users/:email/:password')
 //accessed at http://localhost:8080/api/users/:userid
 .get(function(req,res) {
 	//console.log(req.params.password);
-	User.find({ "email": req.params.email}, function(err, user) {
+	User.find({ "email": sanitize(req.params.email)}, function(err, user) {
 //User.findById(req.params.email,function(err,user){
 if(err){
       //res.json(err);
@@ -216,15 +217,15 @@ res.json(user);
 apiRouter.route('/users/:email/:medical/:info')
 
 .put(function(req, res) {
-  var email=req.params.email
+  var email=sanitize(req.params.email);
   console.log("testing inside sindhuupdate22222"+email);
 //var user = new User();
- var medicalConditions = req.body.conditions;
+ var medicalConditions = sanitize(req.body.conditions);
  console.log(medicalConditions);
- var pregnancy = req.body.pregnancy;
- var addiction=req.body.addiction;
- var lastVisit=req.body.lastVisit;
- var visitReason=req.body.visitReason;
+ var pregnancy = sanitize(req.body.pregnancy);
+ var addiction=sanitize(req.body.addiction);
+ var lastVisit=sanitize(req.body.lastVisit);
+ var visitReason=sanitize(req.body.visitReason);
 
 var conditions = { email: email };
 var update = { $set: {medicalConditions: medicalConditions,pregnancy:pregnancy,addiction:addiction,lastVisit:lastVisit,visitReason:visitReason}};
@@ -246,16 +247,16 @@ function callback (err, numAffected) {
 apiRouter.route('/users/:email/:emergency/:contacts/:info')
 
 .put(function(req, res) {
-  var email=req.params.email;
+  var email=sanitize(req.params.email);
   console.log("testing inside emergency sindhu"+email);
 //var user = new User();
-    var efname1=req.body.efname1;
-    var elname1=req.body.elname1;
-    var eemail1=req.body.eemail1;
-    var efname2=req.body.efname2;
-    var elname2=req.body.elname2;
-    var eemail2=req.body.eemail2;
-    var notify=req.body.notify;
+    var efname1=sanitize(req.body.efname1);
+    var elname1=sanitize(req.body.elname1);
+    var eemail1=sanitize(req.body.eemail1);
+    var efname2=sanitize(req.body.efname2);
+    var elname2=sanitize(req.body.elname2);
+    var eemail2=sanitize(req.body.eemail2);
+    var notify=sanitize(req.body.notify);
 
 var conditions = { email: email };
 var update = { $set: {efname1: efname1,elname1:elname1,eemail1:eemail1,efname2:efname2,elname2:elname2,eemail2:eemail2,notify:notify}};
@@ -281,13 +282,13 @@ apiRouter.route('/forms')
  var userinfo = new Personalinfo();
 
  // set the users information (comes from the request)
-userinfo.fname=req.body.fname;
-userinfo.lname=req.body.lname;
-userinfo.bday=req.body.bday;
-userinfo.gender=req.body.gender;
-userinfo.phone=req.body.phone;
-userinfo.address=req.body.address;
-userinfo.zipcode=req.body.zipcode;
+userinfo.fname=sanitize(req.body.fname);
+userinfo.lname=sanitize(req.body.lname);
+userinfo.bday=sanitize(req.body.bday);
+userinfo.gender=sanitize(req.body.gender);
+userinfo.phone=sanitize(req.body.phone);
+userinfo.address=sanitize(req.body.address);
+userinfo.zipcode=sanitize(req.body.zipcode);
 
  // save the user and check for errors
  userinfo.save(function(err) {
@@ -313,13 +314,15 @@ apiRouter.route('/diseaseinfo')
 //accessed at http://localhost:8080/api/users/:userid
 
 .get(function(req,res) {
+
+  //This webservice is used as only part of testing and the below get function is used for dynamice response
   console.log("Calling Disease Info API");
   //Fetch user entered symptom input text box
   console.log("Requested Body Part");
   console.log(req.body);
   
 
-  //Applying Concept Extraction
+  //Applying Concept Extraction //Test webservice to test sample text
   var text="cold and head ache";
   textapi.entities({
     'text': text
@@ -380,9 +383,9 @@ apiRouter.route('/diseaseinfo/:bodypart/:specbodypart/:symptom')
   console.log("Calling Disease Info API");
   //Fetch user entered symptom input text box
   
-  var bodypartVal=req.params.bodypart;
-  var specbodypartVal=req.params.specbodypart;
-  var symbodypartVal=req.params.symptom;
+  var bodypartVal=sanitize(req.params.bodypart);
+  var specbodypartVal=sanitize(req.params.specbodypart);
+  var symbodypartVal=sanitize(req.params.symptom);
 
   //Applying Concept Extraction
   var conceptString="";
@@ -622,7 +625,7 @@ apiRouter.route('/conditions')
 apiRouter.route('/conditions/:idVal')
 
 .get(function(req,res){
-  var idFact = req.params.idVal;
+  var idFact = sanitize(req.params.idVal);
   console.log(idFact);
   idFact=parseInt(idFact);
   console.log(idFact);
@@ -644,10 +647,10 @@ apiRouter.route('/sendemail')
 
  .post(function(req, res) {
 console.log("inside sendemail");
-var email=req.body.email;
-var fname=req.body.fname;
-var notify=req.body.notify;
-var email1=req.body.email1;
+var email=sanitize(req.body.email);
+var fname=sanitize(req.body.fname);
+var notify=sanitize(req.body.notify);
+var email1=sanitize(req.body.email1);
  var sendtextto;
  User.find({"email":email}, function(error, users) {
  if(error){
@@ -757,14 +760,14 @@ apiRouter.route('/bookappointment')
 
  .post(function(req, res) {
 console.log("inside book app server.js");
-  var fname=req.body.fname;
-  var lname=req.body.lname;
-  var email=req.body.email;
-  var visitregarding=req.body.visitregarding;
-  var month=req.body.month;
-  var day=req.body.day;
-  var time=req.body.time;
-  var msg=req.body.msg;
+  var fname=sanitize(req.body.fname);
+  var lname=sanitize(req.body.lname);
+  var email=sanitize(req.body.email);
+  var visitregarding=sanitize(req.body.visitregarding);
+  var month=sanitize(req.body.month);
+  var day=sanitize(req.body.day);
+  var time=sanitize(req.body.time);
+  var msg=sanitize(req.body.msg);
   var docname="mediclick";
   console.log(time);
 //var text= "You are recieving this email from Mediclick."
@@ -830,7 +833,7 @@ var todoctor= "You are recieving this email because you have registered with med
 
 
    
-
+//As a part of testing web service with sample input
 apiRouter.route('/textapi')
   .get(function(req,res){
 

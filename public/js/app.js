@@ -109,6 +109,12 @@ $http(emailinfo).then(function(data){
 		console.log(password);
 		console.log(password);
 
+		if(password!=cpassword)
+		{
+				window.alert("Passwords donot match!");
+					window.location.href = '/';
+		}
+
 		 var req = {
       url: '/api/users', // No need of IP address
       method: 'POST',

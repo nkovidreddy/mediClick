@@ -92,20 +92,35 @@
                                 <div class="form-inline">
                                     <div class="form-group">
                                         <label  for="firstName">Name</label>
-                                        <input type="text" name="firstName" placeholder="FirstName..."  id="firstName" ng-model="forms.fname" required pattern="[a-zA-Z0-9\s\.]{1,30}" title="Please do not enter special characters">
+                                        <input type="text" name="firstName" placeholder="FirstName..."  id="firstName" ng-model="forms.fname" required ng-pattern="/[a-zA-Z\s\.]/" ng-minlength="1" ng-maxlength="30">
+                                        <div ng-messages="registerForm.firstName.$error">
+                                      
+                                      <div style="color:red" ng-message="minlength">First Name must be over 1 characters</div>
+                                      <div style="color:red" ng-message="maxlength">Max length is 30 characters</div>
+                                       <div style="color:red" ng-message="pattern">Please do not enter special characters</div>
+                                   </div>
                                     </div>
                                     <div class="form-group">
                                        
-                                        <input type="text" name="LastName" placeholder="LastName..."  id="LastName" ng-model="forms.lname" required pattern="[a-zA-Z0-9\s\.]{1,30}" title="Please do not enter special characters">
+                                        <input type="text" name="LastName" placeholder="LastName..."  id="LastName" ng-model="forms.lname" required ng-pattern="/[a-zA-Z0-9\s\.]/" title="Please do not enter special characters" ng-minlength="1" ng-maxlength="30">
                                     </div>
-                                    </div>
-                                    <div class="form-inline">
-                                                                       
+                                    <div style="color:red" ng-messages="registerForm.LastName.$error">
+                                      
+                                      <div ng-message="minlength">First Name must be over 1 characters</div>
+                                      <div ng-message="maxlength">Max length is 30 characters</div>
+                                       <div style="color:red" ng-message="pattern">Please do not enter special characters</div>
                                    </div>
+                                    </div>
+                                   
+                                    
                                     <div class="form-group">
                                      <label for="inlineRadio1">Date Of Birth </label>
                                         <input type="date" name="bday" ng-model="forms.bday" required>
                                    </div>
+                                    <div style="color:red" ng-messages="registerForm.bday.$error">
+                                     <div ng-message="required">This field is required</div>
+                                     </div>
+
                                     <div class="form-group">
                                         <label for="inlineRadio1">Gender </label>
                                      <label ><input type="radio" name="gender" id="inlineRadio1" value="option1" ng-model="forms.gender" ng-value="'Male'" required> Male
@@ -115,13 +130,23 @@
                                       <input type="radio" name="gender" id="inlineRadio2" value="option2" ng-model="forms.gender" ng-value="'Female'" required> Female
                                         </label>
                                    </div>
+                                   <div style="color:red" ng-messages="registerForm.gender.$error">
+                                     <div ng-message="required">This field is required</div>
+                                     </div>
+
                                    <div class="form-group">
                                         <label for="phone">Phone</label>
-                                        <input type="tel" name="phone" placeholder="4081111111" id="phone" ng-model="forms.phone" required pattern="[0-9]{10}">
+                                        <input type="tel" name="phone" placeholder="408xxxxxxx" id="phone"  ng-model="forms.phone" required ng-pattern="/^\d{10}$/">
                                     </div>
+                                     <div style="color:red" ng-messages="registerForm.phone.$error">
+                                      <!-- <div ng-message="required">This field is required</div>
+                                      <div ng-message="minlength">Message must be over 5 characters</div>
+                                      <div ng-message="maxlength">Message must not exceed 100 characters</div> -->
+                                       <div style="color:red" ng-message="pattern">Please enter a valid number</div>
+                                   </div>
                                     <div class="form-group">
                                     <label for="address">Address</label>
-                                    <textarea type="text" name="address"class="form-control" cols="4" rows="3" ng-model="forms.address" ng-minlength="5" ng-maxlength="100" ng-pattern="/^[a-zA-Z0-9\s,'-]*$/" >
+                                    <textarea type="text" name="address" class="form-control" cols="4" rows="3" ng-model="forms.address" ng-minlength="5" ng-maxlength="100" ng-pattern="/^[a-zA-Z0-9\s,'-]*$/" >
                                     </textarea>
                                    <div ng-messages="registerForm.address.$error">
                                       <!-- <div ng-message="required">This field is required</div>

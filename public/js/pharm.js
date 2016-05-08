@@ -12,7 +12,14 @@ $(window).load(function() {
    // mapTypeId: google.maps.MapTypeId.ROADMAP,
    // scrollwheel: false
   });
-
+ var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+  var marker = new google.maps.Marker({
+    position: document.getElementById("routeFrom").value,
+    map: map,
+    title: 'User Location',
+    icon: image
+  });
+  marker.setMap(map);
   // Specify location, radius and place types for your Places API search.
   var request = {
     location: pyrmont,
@@ -24,6 +31,7 @@ $(window).load(function() {
   // Handle the callback with an anonymous function.
   var service = new google.maps.places.PlacesService(map);
  var infowindow = new google.maps.InfoWindow();
+
   service.nearbySearch(request, function(results, status) {
     if (status == google.maps.places.PlacesServiceStatus.OK) {
       for (var i = 0; i < results.length; i++) {
@@ -56,6 +64,7 @@ $(window).load(function() {
 
      google.maps.event.addListener(marker,'mouseover', function() {
     infowindow.setContent(place.name);
+    
     infowindow.open(map, this);
 });
 
@@ -94,8 +103,10 @@ function calcRoute(res) {
   var directionsDisplay = new google.maps.DirectionsRenderer();
          map = new google.maps.Map(document.getElementById('map_canvas'), {
            zoom:7,
+
            mapTypeId: google.maps.MapTypeId.ROADMAP
          });
+
      directionsDisplay.setMap(map);
      directionsDisplay.setPanel(document.getElementById("directions"));
      
@@ -107,6 +118,7 @@ function calcRoute(res) {
     travelMode: google.maps.DirectionsTravelMode.DRIVING
 
   };
+ 
  // alert("Request Destination"+request.destination);
   directionsService.route(request, function(response, status) {
    //alert(status);

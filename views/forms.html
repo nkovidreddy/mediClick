@@ -160,11 +160,11 @@
 
                                      <div class="form-group">
                                         <label  for="ZipCode">ZipCode</label>
-                                        <input type="text" name="ZipCode" placeholder="95112" id="firstName"ng-model="forms.zipcode" ng-pattern="/[0-9]{5}/">
+                                        <input type="text" name="ZipCode" placeholder="95112" id="firstName"ng-model="forms.zipcode" ng-pattern="/[0-9]{5}/" ng-maxlength="5">
                                         <div ng-messages="registerForm.ZipCode.$error">
                                       <!-- <div ng-message="required">This field is required</div>
-                                      <div ng-message="minlength">Message must be over 5 characters</div>
-                                      <div ng-message="maxlength">Message must not exceed 100 characters</div> -->
+                                      <div ng-message="minlength">Message must be over 5 characters</div> -->
+                                      <div style="color:red" ng-message="maxlength">Only 5 digits please</div>
                                        <div style="color:red" ng-message="pattern">Please enter a valid zipcode</div>
                                    </div>
                                     </div>

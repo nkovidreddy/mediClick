@@ -14,12 +14,12 @@
 
  <!--angular routes-->
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-route.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-animate.js"></script>
+ <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-route.js"></script>
+ <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-animate.js"></script>
 <script src="../public/js2/angular-messages.js"></script>
 <script src="../public/js2/ngStorage.min.js"></script>
 <script src="../public/js/app.routes.js"></script>
-<script src="../public/js/app.js"></script>
+ <script src="../public/js/app.js"></script>
  
  
  
@@ -456,7 +456,7 @@
   <fieldset class="form-group">
     <label for="exampleSelect1">Selected body part:</label>
 
-    <input type="text" class="form-control"  name="bodypart" id="selections" placeholder="..."  ng-model="bodypart">
+    <input type="text" class="form-control"  name="bodypart" id="selections" placeholder="..." ng-value="name" ng-model="bodypart">
    <!-- <input id="selections" ng-model="selections">-->
   </fieldset>
 
@@ -465,11 +465,11 @@
 
   <fieldset class="form-group">
     <label for="exampleSelect1">Select a specific body part</label>
-  <a href="" data-toggle="tooltip" data-placement="top" title="Type a specific body part, if not found on the model">  <input type="text" class="form-control" spellcheck="true" id="specific" placeholder="..." ng-model="selBodyPartValue" spellcheck="true"></a>   
+  <a href="" data-toggle="tooltip" data-placement="left" title="Type a specific body part, if not found on the model">  <input type="text" class="form-control"  id="specific" placeholder="..." ng-model="selBodyPartValue"></a>   
   </fieldset>  
   <fieldset class="form-group">
     <label for="exampleSelect1">Enter Symptom</label>
-     <a href="" data-toggle="tooltip" data-placement="top" title="Type your symptom as a simple phrase"><input type="text" class="form-control"  id="symptom" placeholder="..." ng-model="selSymptomValue" spellcheck="true"></a>        
+     <a href="" data-toggle="tooltip" data-placement="left" title="Type your symptom as a simple phrase"><input type="text" class="form-control"  id="symptom" placeholder="..." ng-model="selSymptomValue"></a>        
   </fieldset>  
   <button type="submit" onclick="convert();" class="btn btn-primary">Submit</button>
 </form>

@@ -1,4 +1,4 @@
-angular.module('masters',['routerRoutes','ngStorage'])
+angular.module('masters',['routerRoutes','ngStorage','ngMessages'])
 
 .service('userem', function() {
  //Dev Sample

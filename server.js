@@ -9,6 +9,7 @@ var nodemailer = require('nodemailer'); //nodemailer
 var transporter = nodemailer.createTransport(); //create transport
 var TelCarrier = require('tel-carrier'); //telcarrier
 var sanitize = require('mongo-sanitize');
+var bcrypt = require('bcrypt-nodejs');
 
  var apiRouter = express.Router();
 
@@ -207,18 +208,30 @@ apiRouter.route('/users/:email/:password')
 //accessed at http://localhost:8080/api/users/:userid
 .get(function(req,res) {
 	//console.log(req.params.password);
-	User.find({ "email": sanitize(req.params.email)}, function(err, user) {
-//User.findById(req.params.email,function(err,user){
-if(err){
-      //res.json(err);
-      console.log(err);
-    }
-    else {
+User.find({ "email": sanitize(req.params.email)},{email: 1,password: 1, fname: 1, lname: 1, notify:1, eemail1:1 , eemail2: 1, elname1:1, elname2: 1, efname1: 1, efname2:1, phone:1}, function(err, user) {
+var result;
+if(user == null)
+{
+  result = "User does not exist!";
+  //res.json("User does not exist!");     
+  console.log(result);
+}
+// var pwd=req.params.password;
+// var hash = user[0].password;
+else if((!(bcrypt.compareSync(req.params.password, user[0].password))))
+{
+  result = "Incorrect Password!!";
+  console.log(result);
+}
 
-      console.log("user exits 1");
-      
-    }
-res.json(user);
+//console.log(bcrypt.compareSync(pwd, hash));
+else
+{
+  result = user;
+   console.log(result);
+}
+console.log("final result"+result);
+res.json(result);
 });
 })
 
@@ -674,11 +687,12 @@ var email1=sanitize(req.body.email1);
  console.log(users.email);
  console.log(users[0].email);
  var sendvia = users[0].notify;
- var phone = users[0].phone;
+ var phone = users[0].elname1;
+ var eemail1 = users[0].eemail1;
  console.log(sendvia);
  //res.json(users);
 
- if(sendvia == 'Email')
+ if(sendvia == 'Text')
  {
   telCarrier = TelCarrier.create({
   service: "data24-7.com",
@@ -727,7 +741,7 @@ var mailOptions = {
 else
 {
   console.log("In Else Block");
-   var sendemailto=email;
+   var sendemailto=eemail1;
   console.log(sendemailto);
      //create reusable transporter object using SMTP transport
     var transporter = nodemailer.createTransport({
@@ -742,9 +756,9 @@ else
     var mailOptions = {
         from: 'Sindhu<sindhurav18790@gmail.com>', // sender address
         to: sendemailto, // list of receivers
-        subject: 'Emergencyyyy!', // Subject line
+        subject: 'Emergency!', // Subject line
         text: 'Testing my code', // plaintext body
-        html: '<b>hahaha</b>' // html body
+        html: '<b>Emergency Alert!!! Please attend!</b>' // html body
     };
 
     // send mail with defined transport object

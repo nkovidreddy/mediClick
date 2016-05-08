@@ -27,6 +27,8 @@ angular.module('masters',['routerRoutes','ngStorage','ngMessages'])
       
 	}
 	$http(getReq1).then(function(data){
+
+
 	
 if((data.data[0] != null) && (data.data[0].email==vm.email))
 {
@@ -47,6 +49,7 @@ $scope.fname=vm.fname;
 window.alert("Login Successful");
 
 	}
+
 	else
 	{
 window.alert("please enter correct credentials");
@@ -109,18 +112,22 @@ $http(emailinfo).then(function(data){
 		console.log(password);
 		console.log(password);
 
+
 		if(password!=cpassword)
 		{
 				window.alert("Passwords donot match!");
 					window.location.href = '/register';
 		}
-
+	
+else
+{
 		 var req = {
       url: '/api/users', // No need of IP address
       method: 'POST',
       data: {'email':vm.email,'password':vm.password},
       headers: {'Content-Type': 'application/json'}
 	}
+}
 
 	$http(req).then(function(data){
       		console.log(data.data);

@@ -126,9 +126,16 @@ $http(emailinfo).then(function(data){
       		console.log(data.data);
       	vm.registerMessage=data.data;
       	window.alert(data.data);
-      	window.location.href = '/forms';
-//res.sendFile(path.join(__dirname+'/views/forms.html'))
- 
+      	var msg="Email Id already exists.";
+      	if(data.data == msg)
+      	{
+      		window.location.href = '/register';
+      	}
+      	else
+      	{
+      		window.location.href = '/forms';
+      	}
+
       })
 	
 }
@@ -361,6 +368,12 @@ $http(emailinfo).then(function(data){
 }
    }])
 
+.controller('pharmController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
+	var vm=this;
+	
+
+
+   }])
 
 .controller('bhealthController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
 	var vm=this;

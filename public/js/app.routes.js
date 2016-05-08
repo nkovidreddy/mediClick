@@ -66,6 +66,11 @@ $routeProvider
  	controllerAs: 'gmaps'
  	})
 
+	.when('/pharm', {
+ 	templateUrl : 'views/pharm.html',
+ 	controller : 'pharmController',
+ 	controllerAs: 'pharm'
+ 	})
 	
  // set our app up to have pretty URLS
 $locationProvider.html5Mode(true);

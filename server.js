@@ -101,6 +101,11 @@ app.get('/gmaps/:streetaddr',function(req,res){
  	//next();
  });
 
+app.get('/pharm',function(req,res){
+
+  res.sendFile(path.join(__dirname+'/views/pharm.html'))
+ 
+ });
 
 //database
 apiRouter.route('/users')

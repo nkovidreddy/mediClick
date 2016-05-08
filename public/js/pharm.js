@@ -91,12 +91,13 @@ $(window).load(function() {
 
 function calcRoute(res) {
   var directionsService = new google.maps.DirectionsService();
-         var directionsDisplay = new google.maps.DirectionsRenderer();
+  var directionsDisplay = new google.maps.DirectionsRenderer();
          map = new google.maps.Map(document.getElementById('map_canvas'), {
            zoom:7,
            mapTypeId: google.maps.MapTypeId.ROADMAP
          });
      directionsDisplay.setMap(map);
+     directionsDisplay.setPanel(document.getElementById("directions"));
      
   var request = {
       origin: document.getElementById("routeFrom").value, 

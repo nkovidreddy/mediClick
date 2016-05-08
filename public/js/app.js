@@ -112,7 +112,7 @@ $http(emailinfo).then(function(data){
 		if(password!=cpassword)
 		{
 				window.alert("Passwords donot match!");
-					window.location.href = '/';
+					window.location.href = '/register';
 		}
 
 		 var req = {

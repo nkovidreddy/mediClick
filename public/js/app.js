@@ -345,7 +345,10 @@ $http(emailinfo).then(function(data){
 .controller('gmapsController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
 	var vm=this;
 	
-	console.log("inside gmap");
+	console.log("inside gmap testing");
+	console.log($localStorage.user_locationBrow);
+	console.log("inside gmap testing going to getLoc function");
+	$scope.userloc=$localStorage.user_locationBrow;
   vm.getLoc=function(){
 		vm.userLocation="";
 		var userloc = vm.userloc;
@@ -371,7 +374,7 @@ $http(emailinfo).then(function(data){
 .controller('pharmController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
 	var vm=this;
 	
-
+	
 
    }])
 

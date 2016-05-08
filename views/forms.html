@@ -13,6 +13,7 @@
  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-route.js"></script>
  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-animate.js"></script>
+ <script src="../public/js2/angular-messages.js"></script>
  <script src="../public/js2/ngStorage.min.js"></script>
  <script src="../public/js/app.routes.js"></script>
  <script src="../public/js/app.js"></script>
@@ -84,7 +85,7 @@
                             </div>
 
                             <div class="form-bottom">
-			                    <form role="form" ng-submit="forms.personalInfo()" class="registration-form">
+			                    <form name="registerForm" role="form" ng-submit="forms.personalInfo()" class="registration-form">
                                  <div>
                                     <h3>Your Email is {{$storage1}}</h3>         
                                     </div>    
@@ -120,9 +121,16 @@
                                     </div>
                                     <div class="form-group">
                                     <label for="address">Address</label>
-                                    <textarea type="text" name="address"class="form-control" cols="4" rows="3" ng-model="forms.address" required pattern="[a-zA-Z0-9\s\.]{1,}" title="Please enter a valid address without using any invalid characters like '#$<>*' etc.">
+                                    <textarea type="text" name="address"class="form-control" cols="4" rows="3" ng-model="forms.address" ng-minlength="5" ng-maxlength="100" ng-pattern="/^[a-zA-Z0-9\s,'-]*$/" required>
                                     </textarea>
+                                   <div ng-messages="registerForm.address.$error">
+                                      <div ng-message="required">This field is required</div>
+                                      <div ng-message="minlength">Message must be over 5 characters</div>
+                                      <div ng-message="maxlength">Message must not exceed 100 characters</div>
+                                       <div ng-message="pattern">Please enter a valid address</div>
+                                   </div>
                                     </div>
+
                                      <div class="form-group">
                                         <label  for="ZipCode">ZipCode</label>
                                         <input type="text" name="ZipCode" placeholder="95112" id="firstName"ng-model="forms.zipcode" pattern="[0-9]{5}">

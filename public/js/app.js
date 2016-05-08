@@ -10,12 +10,12 @@ angular.module('masters',['routerRoutes','ngStorage','ngMessages'])
 })
 
 //.controller('indexController',function($http,$scope){
-	.controller('indexController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
+	.controller('indexController',['$scope','$sessionStorage','$http', function($scope,$sessionStorage,$http){
       var vm=this;
 		vm.login=function(){
 			//console.log("Email=" +vm.email);
 			console.log("inside login");
-		$localStorage.$reset();
+		$sessionStorage.$reset();
 			var url = '/api/users/' +vm.email+'/'+vm.password;
 			console.log(url);
 			console.log('Towards sending request');
@@ -38,7 +38,7 @@ if((data.data[0] != null) && (data.data[0].email==vm.email))
 	var notify=data.data[0].notify;
 	var email=data.data[0].email;
 	console.log(fname);
-	$scope.$storage = $localStorage.$default({
+	$scope.$storage = $sessionStorage.$default({
           fname: fname,
           notify:notify,
           email:email
@@ -61,27 +61,35 @@ window.alert("please enter correct credentials");
  
 $scope.notifyTest=function(){
 console.log("inside notify");
-$scope.$fname = $localStorage.fname;
-$scope.$notify = $localStorage.notify;
-$scope.$email = $localStorage.email;
+$scope.$fname = $sessionStorage.fname;
+$scope.$notify = $sessionStorage.notify;
+$scope.$email = $sessionStorage.email;
 
 		
-var fname= $localStorage.fname;
-var email = $localStorage.email;
-var notify = $localStorage.notify;
+var fname= $sessionStorage.fname;
+var email = $sessionStorage.email;
+var notify = $sessionStorage.notify;
 console.log(fname);
 console.log(email);
 console.log(notify);
 console.log("before sendemail");
+
+if (fname == null || email == null)
+{
+	window.alert("Please register to proceed!!");
+}
+else
+{
 var emailinfo={
       url: '/api/sendemail', // No need of IP address //sindhuupdate
       method: 'POST',
       data: {'email':email,'fname':fname,'notify':notify},
       headers: {'Content-Type': 'application/json'}
     }
-
+}
 console.log(emailinfo);
 $http(emailinfo).then(function(data){
+window.alert("Your contacts have been alerted");
      	window.location.href = '/';
      })
 
@@ -92,18 +100,18 @@ $http(emailinfo).then(function(data){
 
 
 //.controller('registerController',['$scope','userem', function($scope,userem,$http){
-.controller('registerController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
+.controller('registerController',['$scope','$sessionStorage','$http', function($scope,$sessionStorage,$http){
 	console.log("inside regoster cotroller");
 	var vm=this;
 	//$scope.emailTest=userem;
 	 
-  //$scope.$storagefname = $localStorage.fname;
+  //$scope.$storagefname = $sessionStorage.fname;
 	vm.register=function(){
 		console.log('Testing Register Function');
-		$localStorage.$reset();
+		$sessionStorage.$reset();
 		var email=vm.email;
 
-		$scope.$storage = $localStorage.$default({
+		$scope.$storage = $sessionStorage.$default({
           userId: email
         });
 		var password=vm.password;
@@ -152,13 +160,13 @@ else
 
 
 //.controller('formsController', ['$scope','userem',function($scope,userem){
-	.controller('formsController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
+	.controller('formsController',['$scope','$sessionStorage','$http', function($scope,$sessionStorage,$http){
 	var vm=this;
-    $scope.$storage1 = $localStorage.userId;
-	var userIdFromStorage = $localStorage.userId;
+    $scope.$storage1 = $sessionStorage.userId;
+	var userIdFromStorage = $sessionStorage.userId;
 	vm.personalInfo=function(){
 	//	console.log("inisde personal info function");
-		var emailId= $localStorage.userId;
+		var emailId= $sessionStorage.userId;
 		var url = '/api/users/' +emailId;
       // console.log("sindhuupdate"+emailId);
 		var fname=vm.fname;
@@ -182,22 +190,22 @@ else
 	}])
 
 
-.controller('medicalController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
+.controller('medicalController',['$scope','$sessionStorage','$http', function($scope,$sessionStorage,$http){
 
 	var vm=this;
 	//console.log("inside medicalController controller");
-	//console.log($localStorage.userId);
-	$scope.$storage1 = $localStorage.userId;
-	//$scope.$passemail = $localStorage.userId;
+	//console.log($sessionStorage.userId);
+	$scope.$storage1 = $sessionStorage.userId;
+	//$scope.$passemail = $sessionStorage.userId;
 	$scope.conditions = {};
 	$scope.addictions = {};
 	
-	var userIdFromStorage = $localStorage.userId;
+	var userIdFromStorage = $sessionStorage.userId;
 		vm.medicalInfo=function(){
 		var medical="medical";
 		var info="info";
 		console.log("inisde personal info function");
-		var emailId= $localStorage.userId;
+		var emailId= $sessionStorage.userId;
 	    var url = '/api/users/' +emailId+'/'+medical+'/'+info;
 	    console.log("sindhuupdate"+emailId);
 	     var conditions=$scope.conditions;
@@ -225,14 +233,14 @@ else
 }])
 
 
-.controller('emergencyController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
+.controller('emergencyController',['$scope','$sessionStorage','$http', function($scope,$sessionStorage,$http){
 	console.log("Test Emergency Controller");
 	var vm=this;
 	console.log("inside emergencyController controller");
-	console.log($localStorage.userId);
-	$scope.$storage1 = $localStorage.userId;
-	//$scope.$passemail = $localStorage.userId;
-	var userIdFromStorage = $localStorage.userId;
+	console.log($sessionStorage.userId);
+	$scope.$storage1 = $sessionStorage.userId;
+	//$scope.$passemail = $sessionStorage.userId;
+	var userIdFromStorage = $sessionStorage.userId;
 		console.log("Local Storage Email");
 		console.log(userIdFromStorage);
 	
@@ -241,7 +249,7 @@ else
 		var contacts="contacts";
 		var info="info";
 		console.log("inisde personal info function");
-		var emailId= $localStorage.userId;
+		var emailId= $sessionStorage.userId;
 	    var url = '/api/users/' +emailId+'/'+emergency+'/'+contacts+'/'+info;
 	    console.log(url);
 		//var url = '/api/users/' +emailId+medical;
@@ -272,7 +280,7 @@ else
 }])
 
 //symptom checker
-.controller('symptomsController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
+.controller('symptomsController',['$scope','$sessionStorage','$http', function($scope,$sessionStorage,$http){
 	var vm=this;
    console.log("Test Input");
 
@@ -327,7 +335,7 @@ else
 	}])
 
 //remedies Controller
-.controller('remediesController',['$scope','$localStorage','$http','$location', function($scope,$localStorage,$http,$location){
+.controller('remediesController',['$scope','$sessionStorage','$http','$location', function($scope,$sessionStorage,$http,$location){
 	var vm=this;
 	vm.getRemedies=function(){
 		//var searchObject = $location.search();
@@ -349,13 +357,13 @@ else
 	}
 }])
 
-.controller('gmapsController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
+.controller('gmapsController',['$scope','$sessionStorage','$http', function($scope,$sessionStorage,$http){
 	var vm=this;
 	
 	console.log("inside gmap testing");
-	console.log($localStorage.user_locationBrow);
+	console.log($sessionStorage.user_locationBrow);
 	console.log("inside gmap testing going to getLoc function");
-	$scope.userloc=$localStorage.user_locationBrow;
+	$scope.userloc=$sessionStorage.user_locationBrow;
   vm.getLoc=function(){
 		vm.userLocation="";
 		var userloc = vm.userloc;
@@ -378,12 +386,12 @@ else
 }
    }])
 
-.controller('pharmController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
+.controller('pharmController',['$scope','$sessionStorage','$http', function($scope,$sessionStorage,$http){
 	var vm=this;
 	
 console.log("inside pharm testing");
 	console.log("inside pharm testing going to getLoc function");
-	$scope.userloc=$localStorage.user_locationBrow;
+	$scope.userloc=$sessionStorage.user_locationBrow;
 	if(!$scope.userloc){
 		console.log("True");
 		vm.userLocation="";
@@ -395,7 +403,7 @@ console.log("inside pharm testing");
         console.log("Position:");
         console.log($scope.position.coords.latitude);
 		userLocation=$scope.position.coords.latitude+","+$scope.position.coords.longitude;
-		$localStorage.user_locationBrow=userLocation;
+		$sessionStorage.user_locationBrow=userLocation;
 		
 		//var userloc=userLocation;
 		$scope.userloc=userLocation;
@@ -410,14 +418,14 @@ console.log("inside pharm testing");
 
 
 
-.controller('aboutController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
+.controller('aboutController',['$scope','$sessionStorage','$http', function($scope,$sessionStorage,$http){
 	var vm=this;
 	
 
 
    }])
 
-.controller('bhealthController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
+.controller('bhealthController',['$scope','$sessionStorage','$http', function($scope,$sessionStorage,$http){
 	var vm=this;
 	
 	
@@ -431,8 +439,8 @@ console.log("inside pharm testing");
         console.log("Position:");
         console.log($scope.position.coords.latitude);
 		userLocation=$scope.position.coords.latitude+","+$scope.position.coords.longitude;
-		$localStorage.user_locationBrow=userLocation;
-		console.log($localStorage.user_locationBrow);
+		$sessionStorage.user_locationBrow=userLocation;
+		console.log($sessionStorage.user_locationBrow);
 		console.log(userLocation);
       });
     });

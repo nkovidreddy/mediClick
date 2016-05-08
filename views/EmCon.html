@@ -81,33 +81,56 @@
                         		</div>
                             </div>
                             <div class="form-bottom">
-			                    <form role="form" ng-submit="emergency.emergencyInfo()" method="post" class="registration-form">
+			                    <form  name="emcon" role="form" ng-submit="emergency.emergencyInfo()" method="post" class="registration-form">
                                 <div class="form-inline">
                                   <div class="form-group">
                                         <label  for="firstName">Emergency Contact #1 Name</label>
-                                        <input type="text" name="firstName" placeholder="Name..."  id="firstName" ng-model="emergency.efname1">
+                                        <input type="text" name="firstName" placeholder="Name..."  id="firstName" ng-model="emergency.efname1" required ng-pattern="/^[A-Za-z ,.'-]+$/">
+                                         <div ng-messages="emcon.firstName.$error">
+                                      
+                                       <div style="color:red" ng-message="pattern">Please do not enter special characters</div>
+                                   </div>
                                     </div>
                                     <div class="form-group">
                                        <label  for="firstName">Phone</label>
-                                        <input type="text" name="LastName" placeholder=""  id="LastName"ng-model="emergency.elname1" required pattern="[0-9]{10}">
+                                        
+                                         <input type="tel" name="phone" placeholder="408xxxxxxx" id="phone"  ng-model="emergency.elname1" required ng-pattern="/^\d{10}$/">
+                                         <div ng-messages="emcon.phone.$error">
+                                      
+                                       <div style="color:red" ng-message="pattern">Please enter a valid number</div>
+                                   </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="form-email">Email</label>
-                                        <input type="email" name="form-email" placeholder="Email..." class="form-email form-control" id="form-email" ng-model="emergency.eemail1" required>
+                                        <input type="email" name="email" placeholder="Email..." class="form-email form-control" id="form-email" ng-model="emergency.eemail1" required>
+                                        <div ng-messages="emcon.email.$error">
+                                      <div ng-message="email">This field must be a valid email address.</div>
+                                   </div>
                                     </div>
                                     </div>
                                    <div class="form-inline">
                                   <div class="form-group">
                                         <label  for="firstName">Emergency Contact #2 Name</label>
-                                        <input type="text" name="firstName" placeholder="Name..."  id="firstName" ng-model="emergency.efname2" required>
+                                        <input type="text" name="firstName2" placeholder="Name..."  id="firstName" ng-model="emergency.efname2" required ng-pattern="/^[A-Za-z ,.'-]+$/">
+                                        <div ng-messages="emcon.firstName2.$error">
+                                      
+                                       <div style="color:red" ng-message="pattern">Please do not enter special characters</div>
+                                   </div>
                                     </div>
                                     <div class="form-group">
                                        <label  for="firstName">Phone</label>
-                                        <input type="text" name="LastName" placeholder=""  id="LastName"ng-model="emergency.elname2" required pattern="[0-9]{10}">
+                                        <input type="tel" name="phone2" placeholder="408xxxxxxx" id="phone2"  ng-model="emergency.elname2" required ng-pattern="/^\d{10}$/">
+                                         <div ng-messages="emcon.phone2.$error">
+                                      
+                                       <div style="color:red" ng-message="pattern">Please enter a valid number</div>
+                                   </div>
                                     </div>
-                                    <div class="form-group">
+                                   <div class="form-group">
                                         <label for="form-email">Email</label>
-                                        <input type="email" name="form-email" placeholder="Email..." class="form-email form-control" id="form-email" ng-model="emergency.eemail2" required>
+                                        <input type="email" name="email" placeholder="Email..." class="form-email form-control" id="form-email" ng-model="emergency.eemail2" required>
+                                        <div ng-messages="emcon.email.$error">
+                                      <div ng-message="email">This field must be a valid email address.</div>
+                                   </div>
                                     </div>
                                     </div>                                   
                              

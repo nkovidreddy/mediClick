@@ -92,7 +92,7 @@
                                 <div class="form-inline">
                                     <div class="form-group">
                                         <label  for="firstName">Name</label>
-                                        <input type="text" name="firstName" placeholder="FirstName..."  id="firstName" ng-model="forms.fname" required ng-pattern="/[a-zA-Z\s\.]/" ng-minlength="1" ng-maxlength="30">
+                                        <input type="text" name="firstName" placeholder="FirstName..."  id="firstName" ng-model="forms.fname" required ng-pattern="/^[A-Za-z ,.'-]+$/" ng-minlength="1" ng-maxlength="30">
                                         <div ng-messages="registerForm.firstName.$error">
                                       
                                       <div style="color:red" ng-message="minlength">First Name must be over 1 characters</div>
@@ -102,7 +102,7 @@
                                     </div>
                                     <div class="form-group">
                                        
-                                        <input type="text" name="LastName" placeholder="LastName..."  id="LastName" ng-model="forms.lname" required ng-pattern="/[a-zA-Z0-9\s\.]/" title="Please do not enter special characters" ng-minlength="1" ng-maxlength="30">
+                                        <input type="text" name="LastName" placeholder="LastName..."  id="LastName" ng-model="forms.lname" required ng-pattern="/^[A-Za-z ,.'-]+$/" title="Please do not enter special characters" ng-minlength="1" ng-maxlength="30">
                                     </div>
                                     <div style="color:red" ng-messages="registerForm.LastName.$error">
                                       
@@ -116,10 +116,11 @@
                                     <div class="form-group">
                                      <label for="inlineRadio1">Date Of Birth </label>
                                         <input type="date" name="bday" ng-model="forms.bday" required>
-                                   </div>
-                                    <div style="color:red" ng-messages="registerForm.bday.$error">
-                                     <div ng-message="required">This field is required</div>
+                                        <div style="color:red" ng-messages="registerForm.bday.$error">
+                                     <div ng-message="required">*</div>
                                      </div>
+                                   </div>
+                                    
 
                                     <div class="form-group">
                                         <label for="inlineRadio1">Gender </label>
@@ -129,10 +130,11 @@
                                         <label>
                                       <input type="radio" name="gender" id="inlineRadio2" value="option2" ng-model="forms.gender" ng-value="'Female'" required> Female
                                         </label>
-                                   </div>
-                                   <div style="color:red" ng-messages="registerForm.gender.$error">
-                                     <div ng-message="required">This field is required</div>
+                                          <div style="color:red" ng-messages="registerForm.gender.$error">
+                                     <div ng-message="required">*</div>
                                      </div>
+                                   </div>
+                                 
 
                                    <div class="form-group">
                                         <label for="phone">Phone</label>
@@ -158,7 +160,13 @@
 
                                      <div class="form-group">
                                         <label  for="ZipCode">ZipCode</label>
-                                        <input type="text" name="ZipCode" placeholder="95112" id="firstName"ng-model="forms.zipcode" pattern="[0-9]{5}">
+                                        <input type="text" name="ZipCode" placeholder="95112" id="firstName"ng-model="forms.zipcode" ng-pattern="/[0-9]{5}/">
+                                        <div ng-messages="registerForm.ZipCode.$error">
+                                      <!-- <div ng-message="required">This field is required</div>
+                                      <div ng-message="minlength">Message must be over 5 characters</div>
+                                      <div ng-message="maxlength">Message must not exceed 100 characters</div> -->
+                                       <div style="color:red" ng-message="pattern">Please enter a valid zipcode</div>
+                                   </div>
                                     </div>
                                       <button type="submit" class="btn" value="Done" ng-disabled="!registerForm.$valid">Done</button>                                
                                 </form>

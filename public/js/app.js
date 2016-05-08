@@ -375,6 +375,15 @@ $http(emailinfo).then(function(data){
 
    }])
 
+
+
+.controller('aboutController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
+	var vm=this;
+	
+
+
+   }])
+
 .controller('bhealthController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
 	var vm=this;
 	

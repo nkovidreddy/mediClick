@@ -71,6 +71,12 @@ $routeProvider
  	controller : 'pharmController',
  	controllerAs: 'pharm'
  	})
+
+ 	.when('/about', {
+ 	templateUrl : 'views/about.html',
+ 	controller : 'aboutController',
+ 	controllerAs: 'about'
+ 	})
 	
  // set our app up to have pretty URLS
 $locationProvider.html5Mode(true);

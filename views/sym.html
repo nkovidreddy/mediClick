@@ -483,8 +483,10 @@
 <form ng-submit="symptoms.gotoRem()">         
  <div class="list-group" ng-repeat="conditions in posConditions" >
       <a href="/Remedies/{{conditions.id}}/{{conditions.name}}" class="list-group-item">{{conditions.name}}</a>
-           
  </div> 
+<span ng-if="!posConditions.length">
+  <h3>No Data Found for your request</h3>
+</span>
  
 </form>
 </div>

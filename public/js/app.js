@@ -374,9 +374,32 @@ $http(emailinfo).then(function(data){
 .controller('pharmController',['$scope','$localStorage','$http', function($scope,$localStorage,$http){
 	var vm=this;
 	
-	
-
-   }])
+console.log("inside pharm testing");
+	console.log("inside pharm testing going to getLoc function");
+	$scope.userloc=$localStorage.user_locationBrow;
+	if(!$scope.userloc){
+		console.log("True");
+		vm.userLocation="";
+		var userloc = vm.userloc;
+		if (navigator.geolocation) {
+   		 navigator.geolocation.getCurrentPosition(function(position){
+      	$scope.$apply(function(){
+        $scope.position = position;
+        console.log("Position:");
+        console.log($scope.position.coords.latitude);
+		userLocation=$scope.position.coords.latitude+","+$scope.position.coords.longitude;
+		$localStorage.user_locationBrow=userLocation;
+		
+		//var userloc=userLocation;
+		$scope.userloc=userLocation;
+		
+		console.log($scope.userloc);
+      });
+    });
+  }
+}
+  
+}])
 
 
 

@@ -424,8 +424,8 @@
 
      <div class="col-md-4" style="background-color: rgba(125, 63, 152, 0.35);margin-left: 4%;padding: 15px;border: solid 1px whitesmoke;border-radius: 15px;">
     <h3 style="color:white">Symptom Checker</h3>
-<form role="form" ng-submit="symptoms.getsymptoms()" class="registration-form">
-   <!-- <div class="form-group">
+<form role="form" ng-submit="symptoms.getsymptoms()" class="registration-form" name="symform">
+   <div class="form-group">
   <label for="Age">Enter you age:</label>
     <select class="form-control" id="Age">
       <option value="">Choose one</option>
@@ -440,13 +440,9 @@
         <option value="60">55-64 years</option>
         <option value="65">Over 65</option>
     </select>
-  </div> -->
-  <br>
-
+  </div>
    <fieldset class="form-group">
       <label for="gender">Select a gender</label>
-      <br>
-      <br>
     <label style="width: 27%;">
       <input type="radio" name="optionsRadios" id="optionsRadios1" value="1" checked>
       Male
@@ -470,10 +466,13 @@
   <fieldset class="form-group">
     <label for="exampleSelect1">Select a specific body part</label>
   <a href="" data-toggle="tooltip" data-placement="left" title="Type a specific body part, if not found on the model">  <input type="text" class="form-control"  id="specific" placeholder="..." ng-model="selBodyPartValue"></a>   
+
   </fieldset>  
   <fieldset class="form-group">
     <label for="exampleSelect1">Enter Symptom</label>
-     <a href="" data-toggle="tooltip" data-placement="left" title="Type your symptom as a simple phrase"><input type="text" class="form-control"  id="symptom" placeholder="..." ng-model="selSymptomValue"></a>        
+     <a href="" data-toggle="tooltip" data-placement="left" title="Type your symptom as a simple phrase">
+     <input name="symp" type="text" class="form-control"  id="symptom" placeholder="..." ng-model="selSymptomValue" ></a>     
+      
   </fieldset>  
   <button type="submit" onclick="convert();" class="btn btn-primary">Submit</button>
 </form>
@@ -765,6 +764,7 @@ function convert()
                        
             // update text depending on area selected
             $('#specific').val(xref1[e.key]);
+
                      
         },
      toolTipContainer: '<div></div>',
@@ -812,7 +812,7 @@ function convert()
     <!--fhead-->
     <script language="javascript">
 
-  var xref1 = {
+  var xref5 = {
         scalp: "scalp",
         head: "head",
         eyes: "eyes",
@@ -840,7 +840,7 @@ function convert()
        onClick: function (e) {
                        
             // update text depending on area selected
-            $('#specific').val(xref1[e.key]);
+            $('#specific').val(xref5[e.key]);
                      
         },
      toolTipContainer: '<div></div>',
@@ -1443,7 +1443,7 @@ function convert()
        onClick: function (e) {
                        
             // update text depending on area selected
-            $('#specific').val(mpxref[e.key]);
+            $('#specific').val(fpxref[e.key]);
                      
         },
      toolTipContainer: '<div></div>',
@@ -1724,7 +1724,7 @@ function convert()
                        
             // update text depending on area selected
            $('#specific').val('');
-            $('#selections').val(mbxref[e.key]);
+            $('#selections').val(xref[e.key]);
             if(e.key=='back')
                 {
                     $('#femaleback').hide();
@@ -1733,8 +1733,8 @@ function convert()
                 }
             else 
             {
-                  $('#selections').val(mxref[e.key]); 
-                  $('#specific').val(mxref[e.key]);      
+                  $('#selections').val(xref[e.key]); 
+                  $('#specific').val(xref[e.key]);      
             }
         },
      toolTipContainer: '<div></div>',

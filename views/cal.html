@@ -100,7 +100,260 @@
     height: 220px; 
 }
     </style>
-    
+  
+
+<script type="text/javascript">
+var activity = [{"Activity":"Cycling, mountain bike, bmx","wone":502,"wtwo":598,"wthree":695,"wfour":791},
+{"Activity":"Cycling, <10 mph, leisure bicycling","wone":236,"wtwo":281,"wthree":327,"wfour":372},
+{"Activity":"Cycling, >20 mph, racing","wone":944,"wtwo":1126,"wthree":1308,"wfour":1489},
+{"Activity":"Cycling, 10-11.9 mph, light","wone":354,"wtwo":422,"wthree":490,"wfour":558},
+{"Activity":"Cycling, 12-13.9 mph, moderate","wone":472,"wtwo":563,"wthree":654,"wfour":745},
+{"Activity":"Cycling, 14-15.9 mph, vigorous","wone":590,"wtwo":704,"wthree":817,"wfour":931},
+{"Activity":"Cycling, 16-19 mph, very fast, racing","wone":708,"wtwo":844,"wthree":981,"wfour":1117},
+{"Activity":"Unicycling","wone":295,"wtwo":352,"wthree":409,"wfour":465},
+{"Activity":"Stationary cycling, very light","wone":177,"wtwo":211,"wthree":245,"wfour":279},
+{"Activity":"Stationary cycling, light","wone":325,"wtwo":387,"wthree":449,"wfour":512},
+{"Activity":"Stationary cycling, moderate","wone":413,"wtwo":493,"wthree":572,"wfour":651},
+{"Activity":"Stationary cycling, vigorous","wone":620,"wtwo":739,"wthree":858,"wfour":977},
+{"Activity":"Stationary cycling, very vigorous","wone":738,"wtwo":880,"wthree":1022,"wfour":1163},
+{"Activity":"Calisthenics, vigorous, pushups, situps…","wone":472,"wtwo":563,"wthree":654,"wfour":745},
+{"Activity":"Calisthenics, light","wone":207,"wtwo":246,"wthree":286,"wfour":326},
+{"Activity":"Circuit training, minimal rest","wone":472,"wtwo":563,"wthree":654,"wfour":745},
+{"Activity":"Weight lifting, body building, vigorous","wone":354,"wtwo":422,"wthree":490,"wfour":558},
+{"Activity":"Weight lifting, light workout","wone":177,"wtwo":211,"wthree":245,"wfour":279},
+{"Activity":"Health club exercise","wone":325,"wtwo":387,"wthree":449,"wfour":512},
+{"Activity":"Stair machine","wone":531,"wtwo":633,"wthree":735,"wfour":838},
+{"Activity":"Rowing machine, light","wone":207,"wtwo":246,"wthree":286,"wfour":326},
+{"Activity":"Rowing machine, moderate","wone":413,"wtwo":493,"wthree":572,"wfour":651},
+{"Activity":"Rowing machine, vigorous","wone":502,"wtwo":598,"wthree":695,"wfour":791},
+{"Activity":"Rowing machine, very vigorous","wone":708,"wtwo":844,"wthree":981,"wfour":1117},
+{"Activity":"Ski machine","wone":413,"wtwo":493,"wthree":572,"wfour":651},
+{"Activity":"Aerobics, low impact","wone":295,"wtwo":352,"wthree":409,"wfour":465},
+{"Activity":"Aerobics, high impact","wone":413,"wtwo":493,"wthree":572,"wfour":651},
+{"Activity":"Aerobics, step aerobics","wone":502,"wtwo":598,"wthree":695,"wfour":791},
+{"Activity":"Aerobics, general","wone":384,"wtwo":457,"wthree":531,"wfour":605},
+{"Activity":"Jazzercise","wone":354,"wtwo":422,"wthree":490,"wfour":558},
+{"Activity":"Stretching, hatha yoga","wone":236,"wtwo":281,"wthree":327,"wfour":372},
+{"Activity":"Mild stretching","wone":148,"wtwo":176,"wthree":204,"wfour":233},
+{"Activity":"Instructing aerobic class","wone":354,"wtwo":422,"wthree":490,"wfour":558},
+{"Activity":"Water aerobics","wone":236,"wtwo":281,"wthree":327,"wfour":372},
+{"Activity":"Ballet, twist, jazz, tap","wone":266,"wtwo":317,"wthree":368,"wfour":419},
+{"Activity":"Ballroom dancing, slow","wone":177,"wtwo":211,"wthree":245,"wfour":279},
+{"Activity":"Ballroom dancing, fast","wone":325,"wtwo":387,"wthree":449,"wfour":512},
+{"Activity":"Running, 5 mph (12 minute mile)","wone":472,"wtwo":563,"wthree":654,"wfour":745},
+{"Activity":"Running, 5.2 mph (11.5 minute mile)","wone":531,"wtwo":633,"wthree":735,"wfour":838},
+{"Activity":"Running, 6 mph (10 min mile)","wone":590,"wtwo":704,"wthree":817,"wfour":931},
+{"Activity":"Running, 6.7 mph (9 min mile)","wone":649,"wtwo":774,"wthree":899,"wfour":1024},
+{"Activity":"Running, 7 mph (8.5 min mile)","wone":679,"wtwo":809,"wthree":940,"wfour":1070},
+{"Activity":"Running, 7.5mph (8 min mile)","wone":738,"wtwo":880,"wthree":1022,"wfour":1163},
+{"Activity":"Running, 8 mph (7.5 min mile)","wone":797,"wtwo":950,"wthree":1103,"wfour":1256},
+{"Activity":"Running, 8.6 mph (7 min mile)","wone":826,"wtwo":985,"wthree":1144,"wfour":1303},
+{"Activity":"Running, 9 mph (6.5 min mile)","wone":885,"wtwo":1056,"wthree":1226,"wfour":1396},
+{"Activity":"Running, 10 mph (6 min mile)","wone":944,"wtwo":1126,"wthree":1308,"wfour":1489},
+{"Activity":"Running, 10.9 mph (5.5 min mile)","wone":1062,"wtwo":1267,"wthree":1471,"wfour":1675},
+{"Activity":"Running, cross country","wone":531,"wtwo":633,"wthree":735,"wfour":838},
+{"Activity":"Running, general","wone":472,"wtwo":563,"wthree":654,"wfour":745},
+{"Activity":"Running, on a track, team practice","wone":590,"wtwo":704,"wthree":817,"wfour":931},
+{"Activity":"Running, stairs, up","wone":885,"wtwo":1056,"wthree":1226,"wfour":1396},
+{"Activity":"Track and field (shot, discus)","wone":236,"wtwo":281,"wthree":327,"wfour":372},
+{"Activity":"Track and field (high jump, pole vault)","wone":354,"wtwo":422,"wthree":490,"wfour":558},
+{"Activity":"Track and field (hurdles)","wone":590,"wtwo":704,"wthree":817,"wfour":931},
+{"Activity":"Archery","wone":207,"wtwo":246,"wthree":286,"wfour":326},
+{"Activity":"Badminton","wone":266,"wtwo":317,"wthree":368,"wfour":419},
+{"Activity":"Basketball game, competitive","wone":472,"wtwo":563,"wthree":654,"wfour":745},
+{"Activity":"Playing basketball, non game","wone":354,"wtwo":422,"wthree":490,"wfour":558},
+{"Activity":"Basketball, officiating","wone":413,"wtwo":493,"wthree":572,"wfour":651},
+{"Activity":"Basketball, shooting baskets","wone":266,"wtwo":317,"wthree":368,"wfour":419},
+{"Activity":"Basketball, wheelchair","wone":384,"wtwo":457,"wthree":531,"wfour":605},
+{"Activity":"Running, training, pushing wheelchair","wone":472,"wtwo":563,"wthree":654,"wfour":745},
+{"Activity":"Billiards","wone":148,"wtwo":176,"wthree":204,"wfour":233},
+{"Activity":"Bowling","wone":177,"wtwo":211,"wthree":245,"wfour":279},
+{"Activity":"Boxing, in ring","wone":708,"wtwo":844,"wthree":981,"wfour":1117},
+{"Activity":"Boxing, punching bag","wone":354,"wtwo":422,"wthree":490,"wfour":558},
+{"Activity":"Boxing, sparring","wone":531,"wtwo":633,"wthree":735,"wfour":838},
+{"Activity":"Coaching: football, basketball, soccer…","wone":236,"wtwo":281,"wthree":327,"wfour":372},
+{"Activity":"Cricket (batting, bowling)","wone":295,"wtwo":352,"wthree":409,"wfour":465},
+{"Activity":"Croquet","wone":148,"wtwo":176,"wthree":204,"wfour":233},
+{"Activity":"Curling","wone":236,"wtwo":281,"wthree":327,"wfour":372},
+{"Activity":"Darts (wall or lawn)","wone":148,"wtwo":176,"wthree":204,"wfour":233},
+{"Activity":"Fencing","wone":354,"wtwo":422,"wthree":490,"wfour":558},
+{"Activity":"Football, competitive","wone":531,"wtwo":633,"wthree":735,"wfour":838},
+{"Activity":"Football, touch, flag, general","wone":472,"wtwo":563,"wthree":654,"wfour":745},
+{"Activity":"Football or baseball, playing catch","wone":148,"wtwo":176,"wthree":204,"wfour":233},
+{"Activity":"Frisbee playing, general","wone":177,"wtwo":211,"wthree":245,"wfour":279},
+{"Activity":"Frisbee, ultimate frisbee","wone":472,"wtwo":563,"wthree":654,"wfour":745},
+{"Activity":"Golf, general","wone":266,"wtwo":317,"wthree":368,"wfour":419},
+{"Activity":"Golf, walking and carrying clubs","wone":266,"wtwo":317,"wthree":368,"wfour":419},
+{"Activity":"Golf, driving range","wone":177,"wtwo":211,"wthree":245,"wfour":279},
+{"Activity":"Golf, miniature golf","wone":177,"wtwo":211,"wthree":245,"wfour":279},
+{"Activity":"Golf, walking and pulling clubs","wone":254,"wtwo":303,"wthree":351,"wfour":400},
+{"Activity":"Golf, using power cart","wone":207,"wtwo":246,"wthree":286,"wfour":326},
+{"Activity":"Gymnastics","wone":236,"wtwo":281,"wthree":327,"wfour":372},
+{"Activity":"Hacky sack","wone":236,"wtwo":281,"wthree":327,"wfour":372},
+{"Activity":"Handball","wone":708,"wtwo":844,"wthree":981,"wfour":1117},
+{"Activity":"Handball, team","wone":472,"wtwo":563,"wthree":654,"wfour":745},
+{"Activity":"Hockey, field hockey","wone":472,"wtwo":563,"wthree":654,"wfour":745},
+{"Activity":"Hockey, ice hockey","wone":472,"wtwo":563,"wthree":654,"wfour":745},
+{"Activity":"Riding a horse, general","wone":236,"wtwo":281,"wthree":327,"wfour":372},
+{"Activity":"Horesback riding, saddling horse","wone":207,"wtwo":246,"wthree":286,"wfour":326},
+{"Activity":"Horseback riding, grooming horse","wone":207,"wtwo":246,"wthree":286,"wfour":326},
+{"Activity":"Horseback riding, trotting","wone":384,"wtwo":457,"wthree":531,"wfour":605},
+{"Activity":"Horseback riding, walking","wone":148,"wtwo":176,"wthree":204,"wfour":233},
+{"Activity":"Horse racing, galloping","wone":472,"wtwo":563,"wthree":654,"wfour":745},
+{"Activity":"Horse grooming, moderate","wone":354,"wtwo":422,"wthree":490,"wfour":558},
+{"Activity":"Horseshoe pitching","wone":177,"wtwo":211,"wthree":245,"wfour":279},
+{"Activity":"Jai alai","wone":708,"wtwo":844,"wthree":981,"wfour":1117},
+{"Activity":"Martial arts, judo, karate, jujitsu","wone":590,"wtwo":704,"wthree":817,"wfour":931},
+{"Activity":"Martial arts, kick boxing","wone":590,"wtwo":704,"wthree":817,"wfour":931},
+{"Activity":"Martial arts, tae kwan do","wone":590,"wtwo":704,"wthree":817,"wfour":931},
+{"Activity":"Krav maga training","wone":590,"wtwo":704,"wthree":817,"wfour":931},
+{"Activity":"Juggling","wone":236,"wtwo":281,"wthree":327,"wfour":372},
+{"Activity":"Kickball","wone":413,"wtwo":493,"wthree":572,"wfour":651},
+{"Activity":"Lacrosse","wone":472,"wtwo":563,"wthree":654,"wfour":745},
+{"Activity":"Orienteering","wone":531,"wtwo":633,"wthree":735,"wfour":838},
+{"Activity":"Playing paddleball","wone":354,"wtwo":422,"wthree":490,"wfour":558},
+{"Activity":"Paddleball, competitive","wone":590,"wtwo":704,"wthree":817,"wfour":931},
+{"Activity":"Polo","wone":472,"wtwo":563,"wthree":654,"wfour":745},
+{"Activity":"Racquetball, competitive","wone":590,"wtwo":704,"wthree":817,"wfour":931},
+{"Activity":"Playing racquetball","wone":413,"wtwo":493,"wthree":572,"wfour":651},
+{"Activity":"Rock climbing, ascending rock","wone":649,"wtwo":774,"wthree":899,"wfour":1024},
+{"Activity":"Rock climbing, rappelling","wone":472,"wtwo":563,"wthree":654,"wfour":745},
+{"Activity":"Jumping rope, fast","wone":708,"wtwo":844,"wthree":981,"wfour":1117},
+{"Activity":"Jumping rope, moderate","wone":590,"wtwo":704,"wthree":817,"wfour":931},
+{"Activity":"Jumping rope, slow","wone":472,"wtwo":563,"wthree":654,"wfour":745},
+{"Activity":"Rugby","wone":590,"wtwo":704,"wthree":817,"wfour":931},
+{"Activity":"Shuffleboard, lawn bowling","wone":177,"wtwo":211,"wthree":245,"wfour":279},
+{"Activity":"Skateboarding","wone":295,"wtwo":352,"wthree":409,"wfour":465},
+{"Activity":"Roller skating","wone":413,"wtwo":493,"wthree":572,"wfour":651},
+{"Activity":"Roller blading, in-line skating","wone":708,"wtwo":844,"wthree":981,"wfour":1117},
+{"Activity":"Sky diving","wone":177,"wtwo":211,"wthree":245,"wfour":279},
+{"Activity":"Soccer, competitive","wone":590,"wtwo":704,"wthree":817,"wfour":931},
+{"Activity":"Playing soccer","wone":413,"wtwo":493,"wthree":572,"wfour":651},
+{"Activity":"Softball or baseball","wone":295,"wtwo":352,"wthree":409,"wfour":465},
+{"Activity":"Softball, officiating","wone":236,"wtwo":281,"wthree":327,"wfour":372},
+{"Activity":"Softball, pitching","wone":354,"wtwo":422,"wthree":490,"wfour":558},
+{"Activity":"Squash","wone":708,"wtwo":844,"wthree":981,"wfour":1117},
+{"Activity":"Table tennis, ping pong","wone":236,"wtwo":281,"wthree":327,"wfour":372},
+{"Activity":"Tai chi","wone":236,"wtwo":281,"wthree":327,"wfour":372},
+{"Activity":"Playing tennis","wone":413,"wtwo":493,"wthree":572,"wfour":651},
+{"Activity":"Tennis, doubles","wone":354,"wtwo":422,"wthree":490,"wfour":558},
+{"Activity":"Tennis, singles","wone":472,"wtwo":563,"wthree":654,"wfour":745},
+{"Activity":"Trampoline","wone":207,"wtwo":246,"wthree":286,"wfour":326},
+{"Activity":"Volleyball, competitive","wone":472,"wtwo":563,"wthree":654,"wfour":745},
+{"Activity":"Playing volleyball","wone":177,"wtwo":211,"wthree":245,"wfour":279},
+{"Activity":"Volleyball, beach","wone":472,"wtwo":563,"wthree":654,"wfour":745},
+{"Activity":"Wrestling","wone":354,"wtwo":422,"wthree":490,"wfour":558},
+{"Activity":"Wallyball","wone":413,"wtwo":493,"wthree":572,"wfour":651},
+{"Activity":"Backpacking, Hiking with pack","wone":413,"wtwo":493,"wthree":572,"wfour":651},
+{"Activity":"Carrying infant, level ground","wone":207,"wtwo":246,"wthree":286,"wfour":326},
+{"Activity":"Carrying infant, upstairs","wone":295,"wtwo":352,"wthree":409,"wfour":465},
+{"Activity":"Carrying 16 to 24 lbs, upstairs","wone":354,"wtwo":422,"wthree":490,"wfour":558},
+{"Activity":"Carrying 25 to 49 lbs, upstairs","wone":472,"wtwo":563,"wthree":654,"wfour":745},
+{"Activity":"Standing, playing with children, light","wone":165,"wtwo":197,"wthree":229,"wfour":261},
+{"Activity":"Walk/run, playing with children, moderate","wone":236,"wtwo":281,"wthree":327,"wfour":372},
+{"Activity":"Walk/run, playing with children, vigorous","wone":295,"wtwo":352,"wthree":409,"wfour":465},
+{"Activity":"Carrying small children","wone":177,"wtwo":211,"wthree":245,"wfour":279},
+{"Activity":"Loading, unloading car","wone":177,"wtwo":211,"wthree":245,"wfour":279},
+{"Activity":"Climbing hills, carrying up to 9 lbs","wone":413,"wtwo":493,"wthree":572,"wfour":651},
+{"Activity":"Climbing hills, carrying 10 to 20 lb","wone":443,"wtwo":528,"wthree":613,"wfour":698},
+{"Activity":"Climbing hills, carrying 21 to 42 lb","wone":472,"wtwo":563,"wthree":654,"wfour":745},
+{"Activity":"Climbing hills, carrying over 42 lb","wone":531,"wtwo":633,"wthree":735,"wfour":838},
+{"Activity":"Walking downstairs","wone":177,"wtwo":211,"wthree":245,"wfour":279},
+{"Activity":"Hiking, cross country","wone":354,"wtwo":422,"wthree":490,"wfour":558},
+{"Activity":"Bird watching","wone":148,"wtwo":176,"wthree":204,"wfour":233},
+{"Activity":"Marching, rapidly, military","wone":384,"wtwo":457,"wthree":531,"wfour":605},
+{"Activity":"Children's games, hopscotch, dodgeball","wone":295,"wtwo":352,"wthree":409,"wfour":465},
+{"Activity":"Pushing stroller or walking with children","wone":148,"wtwo":176,"wthree":204,"wfour":233},
+{"Activity":"Pushing a wheelchair","wone":236,"wtwo":281,"wthree":327,"wfour":372},
+{"Activity":"Race walking","wone":384,"wtwo":457,"wthree":531,"wfour":605},
+{"Activity":"Rock climbing, mountain climbing","wone":472,"wtwo":563,"wthree":654,"wfour":745},
+{"Activity":"Walking using crutches","wone":295,"wtwo":352,"wthree":409,"wfour":465},
+{"Activity":"Walking the dog","wone":177,"wtwo":211,"wthree":245,"wfour":279},
+{"Activity":"Walking, under 2.0 mph, very slow","wone":118,"wtwo":141,"wthree":163,"wfour":186},
+{"Activity":"Walking 2.0 mph, slow","wone":148,"wtwo":176,"wthree":204,"wfour":233},
+{"Activity":"Walking 2.5 mph","wone":177,"wtwo":211,"wthree":245,"wfour":279},
+{"Activity":"Walking 3.0 mph, moderate","wone":195,"wtwo":232,"wthree":270,"wfour":307},
+{"Activity":"Walking 3.5 mph, brisk pace","wone":224,"wtwo":267,"wthree":311,"wfour":354},
+{"Activity":"Walking 3.5 mph, uphill","wone":354,"wtwo":422,"wthree":490,"wfour":558},
+{"Activity":"Walking 4.0 mph, very brisk","wone":295,"wtwo":352,"wthree":409,"wfour":465},
+{"Activity":"Walking 4.5 mph","wone":372,"wtwo":443,"wthree":515,"wfour":586},
+{"Activity":"Walking 5.0 mph","wone":472,"wtwo":563,"wthree":654,"wfour":745},
+{"Activity":"Boating, power, speed boat","wone":148,"wtwo":176,"wthree":204,"wfour":233},
+{"Activity":"Canoeing, camping trip","wone":236,"wtwo":281,"wthree":327,"wfour":372},
+{"Activity":"Canoeing, rowing, light","wone":177,"wtwo":211,"wthree":245,"wfour":279},
+{"Activity":"Canoeing, rowing, moderate","wone":413,"wtwo":493,"wthree":572,"wfour":651},
+{"Activity":"Canoeing, rowing, vigorous","wone":708,"wtwo":844,"wthree":981,"wfour":1117},
+{"Activity":"Crew, sculling, rowing, competition","wone":708,"wtwo":844,"wthree":981,"wfour":1117},
+{"Activity":"Kayaking","wone":295,"wtwo":352,"wthree":409,"wfour":465},
+{"Activity":"Paddle boat","wone":236,"wtwo":281,"wthree":327,"wfour":372},
+{"Activity":"Windsurfing, sailing","wone":177,"wtwo":211,"wthree":245,"wfour":279},
+{"Activity":"Sailing, competition","wone":295,"wtwo":352,"wthree":409,"wfour":465},
+{"Activity":"Sailing, yachting, ocean sailing","wone":177,"wtwo":211,"wthree":245,"wfour":279},
+{"Activity":"Skiing, water skiing","wone":354,"wtwo":422,"wthree":490,"wfour":558},
+{"Activity":"Ski mobiling","wone":413,"wtwo":493,"wthree":572,"wfour":651},
+{"Activity":"Skin diving, fast","wone":944,"wtwo":1126,"wthree":1308,"wfour":1489},
+{"Activity":"Skin diving, moderate","wone":738,"wtwo":880,"wthree":1022,"wfour":1163},
+{"Activity":"Skin diving, scuba diving","wone":413,"wtwo":493,"wthree":572,"wfour":651},
+{"Activity":"Snorkeling","wone":295,"wtwo":352,"wthree":409,"wfour":465},
+{"Activity":"Surfing, body surfing or board surfing","wone":177,"wtwo":211,"wthree":245,"wfour":279},
+{"Activity":"Whitewater rafting, kayaking, canoeing","wone":295,"wtwo":352,"wthree":409,"wfour":465},
+{"Activity":"Swimming laps, freestyle, fast","wone":590,"wtwo":704,"wthree":817,"wfour":931},
+{"Activity":"Swimming laps, freestyle, slow","wone":413,"wtwo":493,"wthree":572,"wfour":651},
+{"Activity":"Swimming backstroke","wone":413,"wtwo":493,"wthree":572,"wfour":651},
+{"Activity":"Swimming breaststroke","wone":590,"wtwo":704,"wthree":817,"wfour":931},
+{"Activity":"Swimming butterfly","wone":649,"wtwo":774,"wthree":899,"wfour":1024},
+{"Activity":"Swimming leisurely, not laps","wone":354,"wtwo":422,"wthree":490,"wfour":558},
+{"Activity":"Swimming sidestroke","wone":472,"wtwo":563,"wthree":654,"wfour":745},
+{"Activity":"Swimming synchronized","wone":472,"wtwo":563,"wthree":654,"wfour":745},
+{"Activity":"Swimming, treading water, fast, vigorous","wone":590,"wtwo":704,"wthree":817,"wfour":931},
+{"Activity":"Swimming, treading water, moderate","wone":236,"wtwo":281,"wthree":327,"wfour":372},
+{"Activity":"Water aerobics, water calisthenics","wone":236,"wtwo":281,"wthree":327,"wfour":372},
+{"Activity":"Water polo","wone":590,"wtwo":704,"wthree":817,"wfour":931},
+{"Activity":"Water volleyball","wone":177,"wtwo":211,"wthree":245,"wfour":279},
+{"Activity":"Water jogging","wone":472,"wtwo":563,"wthree":654,"wfour":745},
+{"Activity":"Diving, springboard or platform","wone":177,"wtwo":211,"wthree":245,"wfour":279},
+{"Activity":"Ice skating, < 9 mph","wone":325,"wtwo":387,"wthree":449,"wfour":512},
+{"Activity":"Ice skating, average speed","wone":413,"wtwo":493,"wthree":572,"wfour":651},
+{"Activity":"Ice skating, rapidly","wone":531,"wtwo":633,"wthree":735,"wfour":838},
+{"Activity":"Speed skating, ice, competitive","wone":885,"wtwo":1056,"wthree":1226,"wfour":1396},
+{"Activity":"Cross country snow skiing, slow","wone":413,"wtwo":493,"wthree":572,"wfour":651},
+{"Activity":"Cross country skiing, moderate","wone":472,"wtwo":563,"wthree":654,"wfour":745},
+{"Activity":"Cross country skiing, vigorous","wone":531,"wtwo":633,"wthree":735,"wfour":838},
+{"Activity":"Cross country skiing, racing","wone":826,"wtwo":985,"wthree":1144,"wfour":1303},
+{"Activity":"Cross country skiing, uphill","wone":974,"wtwo":1161,"wthree":1348,"wfour":1536},
+{"Activity":"Snow skiing, downhill skiing, light","wone":295,"wtwo":352,"wthree":409,"wfour":465},
+{"Activity":"Downhill snow skiing, moderate","wone":354,"wtwo":422,"wthree":490,"wfour":558},
+{"Activity":"Downhill snow skiing, racing","wone":472,"wtwo":563,"wthree":654,"wfour":745},
+{"Activity":"Sledding, tobagganing, luge","wone":413,"wtwo":493,"wthree":572,"wfour":651},
+{"Activity":"Snow shoeing","wone":472,"wtwo":563,"wthree":654,"wfour":745},
+{"Activity":"Snowmobiling","wone":207,"wtwo":246,"wthree":286,"wfour":326},
+{"Activity":"General housework","wone":207,"wtwo":246,"wthree":286,"wfour":326},
+{"Activity":"Cleaning gutters","wone":295,"wtwo":352,"wthree":409,"wfour":465},
+{"Activity":"Painting","wone":266,"wtwo":317,"wthree":368,"wfour":419},
+{"Activity":"Sit, playing with animals","wone":148,"wtwo":176,"wthree":204,"wfour":233},
+{"Activity":"Walk / run, playing with animals","wone":236,"wtwo":281,"wthree":327,"wfour":372},
+{"Activity":"Bathing dog","wone":207,"wtwo":246,"wthree":286,"wfour":326},
+{"Activity":"Mowing lawn, walk, power mower","wone":325,"wtwo":387,"wthree":449,"wfour":512},
+{"Activity":"Mowing lawn, riding mower","wone":148,"wtwo":176,"wthree":204,"wfour":233},
+{"Activity":"Walking, snow blower","wone":207,"wtwo":246,"wthree":286,"wfour":326},
+{"Activity":"Riding, snow blower","wone":177,"wtwo":211,"wthree":245,"wfour":279},
+{"Activity":"Shoveling snow by hand","wone":354,"wtwo":422,"wthree":490,"wfour":558},
+{"Activity":"Raking lawn","wone":254,"wtwo":303,"wthree":351,"wfour":400},
+{"Activity":"Gardening, general","wone":236,"wtwo":281,"wthree":327,"wfour":372},
+{"Activity":"Bagging grass, leaves","wone":236,"wtwo":281,"wthree":327,"wfour":372},
+{"Activity":"Watering lawn or garden","wone":89,"wtwo":106,"wthree":123,"wfour":140},
+{"Activity":"Weeding, cultivating garden","wone":266,"wtwo":317,"wthree":368,"wfour":419},
+{"Activity":"Carpentry, general","wone":207,"wtwo":246,"wthree":286,"wfour":326},
+{"Activity":"Carrying heavy loads","wone":472,"wtwo":563,"wthree":654,"wfour":745},
+{"Activity":"Carrying moderate loads upstairs","wone":472,"wtwo":563,"wthree":654,"wfour":745},
+{"Activity":"General cleaning","wone":207,"wtwo":246,"wthree":286,"wfour":326},
+{"Activity":"Cleaning, dusting","wone":148,"wtwo":176,"wthree":204,"wfour":233},
+{"Activity":"Taking out trash","wone":177,"wtwo":211,"wthree":245,"wfour":279},
+{"Activity":"Walking, pushing a wheelchair","wone":236,"wtwo":281,"wthree":327,"wfour":372},
+{"Activity":"Teach physical education,exercise class","wone":236,"wtwo":281,"wthree":327,"wfour":372},
+{"Activity":"Teach exercise classes (& participate)","wone":384,"wtwo":457,"wthree":531,"wfour":605}]
+</script>
+
 </head>
 
 <body  ng-controller="aboutController as about">
@@ -228,12 +481,12 @@
   <p style="font-size: medium;font-weight: 400;height:50px">Type Of Excercise</p>
   <select  id="excercise" style="float:left;border: 2px solid #66cc99;width: 100%;border-radius: 10px;padding: 5px;font-size: small;margin-bottom: 3%;">  
    
-  <option value="1">Option 1</option>
-  <option value="2">Option 2</option>
-   <option value="3">Option 3</option>  
-   <option value="4">Option 4</option> 
+  <option value="">Select</option>
+
 
   </select>  
+
+
 
   <p style="font-size: medium;font-weight: 400;height:50px">Duration Of Excercise</p>
   <select  id="time" style="float:left;border: 2px solid #66cc99;width: 100%;border-radius: 10px;padding: 5px;font-size: small;margin-bottom: 3%;">  
@@ -341,7 +594,38 @@ $(document).ready(function() {
     div.style.display = div.style.display == "none" ? "block" : "none";
     console.log("hi");
 }
+
+
+
+
+
+$(document).ready(function() {
+var range2;
+$.each(activity,function(key,value)
+         {
+             
+             var option = $('<option />').text(value.Activity).val(value.Activity);
+             range2 = value.wtwo;
+            
+        $("#excercise").append(option);
+
+  });
+
+   $("#excercise").change(function(){
+   
+        alert($(this).val());
+        alert("hello");
+    });
+
+  //});
+ 
+
+});
 </script>
+
+
+
+
 </body>
 
 </html>

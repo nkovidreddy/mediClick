@@ -33,6 +33,8 @@ $(window).load(function() {
   });
 
   $("#routeClear").on("click", function() {
+    $("#routeTo").val("");
+    $("#routeFrom").val("");
     directionsDisplay.setDirections({
       routes: []
     });

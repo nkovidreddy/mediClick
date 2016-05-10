@@ -10,8 +10,8 @@ var transporter = nodemailer.createTransport(); //create transport
 var TelCarrier = require('tel-carrier'); //telcarrier
 var sanitize = require('mongo-sanitize');
 var bcrypt = require('bcrypt-nodejs');
-//var http = require("http");
-var https = require("https");
+var http = require("http");
+//var https = require("https");
 var credentials = {
    key  : fs.readFileSync('server.key'),
    cert : fs.readFileSync('server.crt')
@@ -40,7 +40,7 @@ var _ = require('underscore');
 var port=process.env.PORT || 3000;
 
 
-var portHttp=process.env.PORT || 8888;
+//var portHttp=process.env.PORT || 8888;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -896,13 +896,13 @@ apiRouter.route('/textapi')
   })
 //database3
 
-//app.listen(port);
+app.listen(port);
 
 //var httpServer = http.createServer(app);
-var httpsServer = https.createServer(credentials, app);
+// var httpsServer = https.createServer(credentials, app);
 
-//httpServer.listen(portHttp);
-httpsServer.listen(port);
+// //httpServer.listen(portHttp);
+// httpsServer.listen(port);
 
 // https.createServer(credentials, app).listen(port, function () {
 //    console.log('Started!');

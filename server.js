@@ -12,11 +12,12 @@ var sanitize = require('mongo-sanitize');
 var bcrypt = require('bcrypt-nodejs');
 //var http = require("http");
 var https = require("https");
-var options = {
+var credentials = {
    key  : fs.readFileSync('server.key'),
    cert : fs.readFileSync('server.crt')
 };
 
+var methodOverride = require('method-override');
  var apiRouter = express.Router();
 
 
@@ -38,8 +39,13 @@ var _ = require('underscore');
 
 var port=process.env.PORT || 3000;
 
+
+var portHttp=process.env.PORT || 8888;
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(methodOverride('X-HTTP-Method-Override')); // override with the X-HTTP-Method-Override header in the request
+
 // configure our app to handle CORS requests
  app.use(function(req, res, next) {
  res.setHeader('Access-Control-Allow-Origin', '*');
@@ -891,8 +897,15 @@ apiRouter.route('/textapi')
 //database3
 
 //app.listen(port);
-https.createServer(options, app).listen(port, function () {
-   console.log('Started!');
-});
+
+var httpServer = http.createServer(app);
+var httpsServer = https.createServer(credentials, app);
+
+httpServer.listen(portHttp);
+httpsServer.listen(port);
+
+// https.createServer(credentials, app).listen(port, function () {
+//    console.log('Started!');
+// });
 console.log('listening to port' +port);
 //setting public folder

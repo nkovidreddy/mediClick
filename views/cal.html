@@ -435,15 +435,15 @@ var activity = [{"Activity":"Cycling, mountain bike, bmx","wone":502,"wtwo":598,
   <section class="col-md-4 col-xs-10" style="height: 250px;"> 
   <h4>Food Search</h4>
   <span class="form-inline">
-  <form id="food">
+  <form id="food" class="ng-pristine ng-valid">
   <input type="text" id="searchtext" title="Please enter a valid text" class="form-control " style="float: left;width: 80%;" pattern="^[A-Za-z ,.'-]+$">
   <button type="submit" id="getbtn" class="btn" style="background-color: #0e76bc;width: 10%;color: white;padding:2px;">ok</button>
   </form>
   </span>
   <br>
-  <select multiple="" id="select1" style="float:left;border: 4px solid #66cc99;width: 110%;border-radius: 10px;padding: 12px;font-size: small;margin-top: 2%;overflow-x: overlay;height: 150px;">  </select>  
+  <select multiple="" id="select1" style="float:left;border: 4px solid #66cc99;width: 100%;border-radius: 10px;padding: 12px;font-size: small;margin-top: 2%;overflow-x: overlay;height: 150px;">  </select>  
  </section>
- <section class="col-md-1 col-xs-4" style="margin-top: 9%;height: 30px;"> 
+ <section class="col-md-1 col-xs-4" style="margin-top: 9%;height: 30px;margin-left: -3%;"> 
  
 <a href="#"><img src="../public/img/eco/add.png" id="add" style="width: 60%;cursor: pointer;"></a>
 <br>
@@ -451,9 +451,15 @@ var activity = [{"Activity":"Cycling, mountain bike, bmx","wone":502,"wtwo":598,
  </section>
  <section class="col-md-4 col-xs-10" style="height: 260px;margin-left: -3%;"> 
  <h4>Meal</h4>
-  <select multiple="" id="select2" style="border: 4px solid #66cc99;width: 100%;border-radius: 10px;padding: 12px;height: 204px;font-size: small;"></select>  
+  <select multiple="" id="select2" style="border: 4px solid #66cc99;width: 110%;border-radius: 10px;padding: 12px;height: 204px;font-size: small;"></select>  
 </section>
-<section class="col-md-3 col-xs-10" style="height: 30px;"> 
+
+<section class="col-md-1 col-xs-4" style="margin-top: 9%;height: 30px;"> 
+
+<img src="../public/img/eco/eq.png" id="" style="width: 100%;cursor: pointer;"> 
+ </section>
+
+<section class="col-md-3 col-xs-10" style="height: 30px;margin-left: -3%;"> 
  <h4>Total Calories Consumed</h4>
   <input type="text" readonly="" value="123" class="form-control" style="color: #A30A0A;text-align: center;font-weight: 700;font-size: larger;border: none;box-shadow: none;background: white;cursor: auto;">
 </section>
@@ -509,11 +515,13 @@ var activity = [{"Activity":"Cycling, mountain bike, bmx","wone":502,"wtwo":598,
     
   </select>  
 </section>
-<section class="col-md-1 col-xs-4" style="margin-top: 9%;height: 30px;"> 
 
-<img src="../public/img/eco/adding.png" id="netECal" style="width: 65%;cursor: pointer;"> 
+<section class="col-md-1 col-xs-4" style="margin-top: 8%;height: 30px;"> 
+
+<img src="../public/img/eco/eq.png" id="netECal" style="width: 100%;cursor: pointer;"> 
  </section>
-<section class="col-md-4 col-xs-10"> 
+
+<section class="col-md-3 col-xs-10"> 
  <h4>Total Calories Spent</h4>
   <input type="text" readonly id="netExCal" value="123" class="form-control" style="color: #66cc99;text-align: center;font-weight: 700;font-size: larger;border: none;box-shadow: none;background: white;cursor: auto;">
 </section>
@@ -633,7 +641,7 @@ $.each(activity,function(key,value)
         var wt = String($('#weight').val());
         var tim = parseFloat($('#time').val());
         var cal=0;
-        alert(selectedVal+" "+ tim+" "+wt);
+        // alert(selectedVal+" "+ tim+" "+wt);
         //alert("The text has been changed."+wt);
              $.each(activity, function(i, v) {
 
@@ -643,27 +651,27 @@ $.each(activity,function(key,value)
           if(tim == 0.5 )
           {
              cal = parseFloat(v.wone)*(0.5);
-             alert("net cal ct is" +cal);
+             // alert("net cal ct is" +cal);
           }
            else if(tim == 0.75)
           {
              cal = parseFloat(v.wone)*(0.75);
-             alert("net cal ct is" +cal);
+             // alert("net cal ct is" +cal);
           }
           else if(tim == 1)
           {
              cal = parseFloat(v.wone);
-             alert("net cal ct is" +cal);
+             // alert("net cal ct is" +cal);
           }
            else if(tim == 1.5)
           {
              cal = parseFloat(v.wone)+ (parseFloat(v.wone)/2);
-             alert("net cal ct is" +cal);
+             // alert("net cal ct is" +cal);
           }
              else if(tim == 2)
           {
              cal = parseFloat(v.wone)+parseFloat(v.wone);
-             alert("net cal ct is" +cal);
+             // alert("net cal ct is" +cal);
           }
            
            // return;
@@ -674,27 +682,27 @@ $.each(activity,function(key,value)
           if(tim == 0.5 )
           {
              cal = parseFloat(v.wtwo)*(0.5);
-             alert("net cal ct is" +cal);
+             // alert("net cal ct is" +cal);
           }
            else if(tim == 0.75)
           {
              cal = parseFloat(v.wtwo)*(0.75);
-             alert("net cal ct is" +cal);
+             // alert("net cal ct is" +cal);
           }
           else if(tim == 1)
           {
              cal = parseFloat(v.wtwo);
-             alert("net cal ct is" +cal);
+             // alert("net cal ct is" +cal);
           }
            else if(tim == 1.5)
           {
              cal = parseFloat(v.wtwo)+ (parseFloat(v.wtwo)/2);
-             alert("net cal ct is" +cal);
+             // alert("net cal ct is" +cal);
           }
              else if(tim == 2)
           {
              cal = parseFloat(v.wtwo)+parseFloat(v.wtwo);
-             alert("net cal ct is" +cal);
+             // alert("net cal ct is" +cal);
           }
         }
         else if ((opt == selectedVal) && (wt == "wthree"))
@@ -703,27 +711,27 @@ $.each(activity,function(key,value)
           if(tim == 0.5 )
           {
              cal = parseFloat(v.wthree)*(0.5);
-             alert("net cal ct is" +cal);
+             // alert("net cal ct is" +cal);
           }
            else if(tim == 0.75)
           {
              cal = parseFloat(v.wthree)*(0.75);
-             alert("net cal ct is" +cal);
+             // alert("net cal ct is" +cal);
           }
           else if(tim == 1)
           {
              cal = parseFloat(v.wthree);
-             alert("net cal ct is" +cal);
+             // alert("net cal ct is" +cal);
           }
            else if(tim == 1.5)
           {
              cal = parseFloat(v.wthree)+ (parseFloat(v.wthree)/2);
-             alert("net cal ct is" +cal);
+             // alert("net cal ct is" +cal);
           }
              else if(tim == 2)
           {
              cal = parseFloat(v.wthree)+parseFloat(v.wthree);
-             alert("net cal ct is" +cal);
+             // alert("net cal ct is" +cal);
           }
         }
         else if ((opt == selectedVal) && (wt == "wfour"))
@@ -732,27 +740,27 @@ $.each(activity,function(key,value)
           if(tim == 0.5 )
           {
              cal = parseFloat(v.wfour)*(0.5);
-             alert("net cal ct is" +cal);
+             // alert("net cal ct is" +cal);
           }
            else if(tim == 0.75)
           {
              cal = parseFloat(v.wfour)*(0.75);
-             alert("net cal ct is" +cal);
+             // alert("net cal ct is" +cal);
           }
           else if(tim == 1)
           {
              cal = parseFloat(v.wfour);
-             alert("net cal ct is" +cal);
+             // alert("net cal ct is" +cal);
           }
            else if(tim == 1.5)
           {
              cal = parseFloat(v.wfour)+ (parseFloat(v.wfour)/2);
-             alert("net cal ct is" +cal);
+             // alert("net cal ct is" +cal);
           }
              else if(tim == 2)
           {
              cal = parseFloat(v.wfour)+parseFloat(v.wfour);
-             alert("net cal ct is" +cal);
+             // alert("net cal ct is" +cal);
           }
         }
         else
@@ -763,13 +771,13 @@ $.each(activity,function(key,value)
         // alert($(this).val());
         // alert("hello");
         var e=$('#excercise option:selected').html();
-      $('#ex').append("<option value=\"" + e + "Cal :" + cal + "\">" + e +"Cal :"+cal+ "</option>");
+      $('#ex').append("<option style='background: #66cc99;padding: 10px;cursor: pointer;color:white;margin: 3px;text-align:center' onclick='del();' value=\"" + e + "Cal :" + cal + "\">" + e +"Cal :"+cal+ "</option>");
 
     });
 
 
   $('#netECal').click(function() {
-   alert("inside netECal") ;
+   // alert("inside netECal") ;
 
   // var selectedValues = $('#ex option').each(function())
  //  var selectedValues[];
@@ -792,7 +800,7 @@ $('#ex option').each(function(i, selected){
 //console.log(selectedValues[x]);
 res = parseFloat(res) + parseFloat(selectedValues[x]);
   }
-  alert("final result is "+res);
+  // alert("final result is "+res);
 
 $('#netExCal').val(res);
   });

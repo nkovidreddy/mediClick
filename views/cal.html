@@ -246,14 +246,20 @@
   </select>  
 </form>
  </section>
+ <section class="col-md-1 col-xs-4" style="margin-top: 9%;height: 30px;"> 
+
+<img src="../public/img/eco/adding.png" onclick="addEx();" style="width: 65%;cursor: pointer;"> 
+ </section>
 
  <section class="col-md-4 col-xs-10" style="height: 220px;"> 
  <h4>Excercise</h4>
-  <select multiple="" id="select2" style="border: 4px solid #66cc99;width: 100%;border-radius: 10px;padding: 12px;height: 160px;font-size: small;"></select>  
+  <select multiple="" id="ex" style="border: 4px solid #66cc99;width: 100%;border-radius: 10px;padding: 12px;height: 160px;font-size: small;">
+    
+  </select>  
 </section>
 <section class="col-md-4 col-xs-10"> 
  <h4>Total Calories Spent</h4>
-  <input type="text" readonly value="123" class="form-control" style="color: #A30A0A;text-align: center;font-weight: 700;font-size: larger;border: none;box-shadow: none;background: white;cursor: auto;">
+  <input type="text" readonly value="123" class="form-control" style="color: #66cc99;text-align: center;font-weight: 700;font-size: larger;border: none;box-shadow: none;background: white;cursor: auto;">
 </section>
     </section>
 
@@ -318,10 +324,12 @@ $(document).ready(function() {
 
 
     <script type="text/javascript">
-    function show()
+    function addEx()
     {
-      document.getElementById('insurance').style.display='block';
+      var e=$('#excercise option:selected').html();
+     $('#ex').append("<option value=\"" + e + "\">" + e + "</option>");
     }
+
         function togglediv(id) {
     var div = document.getElementById(id);
     div.style.display = div.style.display == "none" ? "block" : "none";

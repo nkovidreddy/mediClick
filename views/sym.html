@@ -484,6 +484,9 @@
  <div class="list-group" ng-repeat="conditions in posConditions" >
       <a href="/Remedies/{{conditions.id}}/{{conditions.name}}" class="list-group-item">{{conditions.name}}</a>
  </div> 
+ <p class="text-center" ng-show="loading">
+<span class="fa fa-spinner fa-spin fa-3x"></span>
+ </p>
 <span ng-if="!posConditions.length">
   <h3 style="color:darkred;">No Data Found for your request</h3>
 </span>

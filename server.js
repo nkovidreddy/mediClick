@@ -71,12 +71,12 @@ app.use(express.static(__dirname+'/'));
 
 //Setup one route to index.html file
 
-// app.get('*',function(req,res,next){
-//   if(req.headers['x-forwarded-proto']!='https')
-//     res.redirect('https://mediclick.herokuapp.com');
-//   else
-//     next(); /* Continue to other routes if we're not redirecting */
-// })
+app.get('*',function(req,res,next){
+  if(req.headers['x-forwarded-proto']!='https')
+    res.redirect('https://mediclick.herokuapp.com');
+  else
+    next(); /* Continue to other routes if we're not redirecting */
+});
  
 app.get('/',function(req,res){
  	//res.send('index',{title:'hey',message:'Hello there!'});

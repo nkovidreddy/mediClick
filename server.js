@@ -54,6 +54,8 @@ app.use(methodOverride('X-HTTP-Method-Override')); // override with the X-HTTP-M
  res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, \
  Authorization');
+if(req.headers['x-forwarded-proto']!='https')
+    res.redirect('https://mediclick.herokuapp.com');
  next();
  });
 
@@ -71,12 +73,12 @@ app.use(express.static(__dirname+'/'));
 
 //Setup one route to index.html file
 
-app.get('*',function(req,res,next){
-  if(req.headers['x-forwarded-proto']!='https')
-    res.redirect('https://mediclick.herokuapp.com');
-  else
-    next(); /* Continue to other routes if we're not redirecting */
-});
+// app.get('*',function(req,res,next){
+//   if(req.headers['x-forwarded-proto']!='https')
+//     res.redirect('https://mediclick.herokuapp.com');
+//   else
+//     next(); /* Continue to other routes if we're not redirecting */
+// });
  
 app.get('/',function(req,res){
  	//res.send('index',{title:'hey',message:'Hello there!'});

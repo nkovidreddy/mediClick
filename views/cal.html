@@ -426,7 +426,7 @@ var activity = [{"Activity":"Cycling, mountain bike, bmx","wone":502,"wtwo":598,
                     <ul id="tabs">
     <li><a href="#" title="tab1">Food</a></li>
     <li><a href="#" title="tab2">Excercise</a></li>
-    <li><a href="#" title="tab3">Net Calories</a></li>
+    <li><a href="#" id="netCount" title="tab3">Net Calories</a></li>
 </ul>
 
 <div id="content"> 
@@ -456,12 +456,12 @@ var activity = [{"Activity":"Cycling, mountain bike, bmx","wone":502,"wtwo":598,
 
 <section class="col-md-1 col-xs-4" style="margin-top: 9%;height: 30px;"> 
 
-<img src="../public/img/eco/eq.png" id="" style="width: 100%;cursor: pointer;"> 
+<img src="../public/img/eco/eq.png" id="calConsumed" style="width: 100%;cursor: pointer;"> 
  </section>
 
 <section class="col-md-3 col-xs-10" style="height: 30px;margin-left: -3%;"> 
  <h4>Total Calories Consumed</h4>
-  <input type="text" readonly="" value="123" class="form-control" style="color: #A30A0A;text-align: center;font-weight: 700;font-size: larger;border: none;box-shadow: none;background: white;cursor: auto;">
+  <input type="text" readonly="" id="netCalConsumed"value="0" class="form-control" style="color: #A30A0A;text-align: center;font-weight: 700;font-size: larger;border: none;box-shadow: none;background: white;cursor: auto;">
 </section>
     </section>
     </div>
@@ -523,17 +523,17 @@ var activity = [{"Activity":"Cycling, mountain bike, bmx","wone":502,"wtwo":598,
 
 <section class="col-md-3 col-xs-10"> 
  <h4>Total Calories Spent</h4>
-  <input type="text" readonly id="netExCal" value="123" class="form-control" style="color: #66cc99;text-align: center;font-weight: 700;font-size: larger;border: none;box-shadow: none;background: white;cursor: auto;">
+  <input type="text" readonly id="netExCal" value="0" class="form-control" style="color: #66cc99;text-align: center;font-weight: 700;font-size: larger;border: none;box-shadow: none;background: white;cursor: auto;">
 </section>
     </section>
 
     </div>
 
-    <div id="tab3">
+    <div id="tab3" >
       <p>
       Your Net Calorie Count for today is: 
       </p>
-     <p> <span id="net">123</span></p>
+     <p> <span id="net">0</span></p>
     </div>
 
 </div>
@@ -824,7 +824,7 @@ $(document).ready(function() {
 var $select = $('#select1'); 
  $select.find('option').remove();
     for(var x=0; x<results.hits.length;x++){ 
-   var str = (results.hits[x].fields.item_name +" - "+results.hits[x].fields.nf_calories+"cals");
+   var str = (results.hits[x].fields.item_name +" Cal:"+results.hits[x].fields.nf_calories);
    console.log(str);
     $select.append('<option value=' + str + '>' + str + '</option>');
 
@@ -837,7 +837,37 @@ var $select = $('#select1');
     })
 
   });
+$('#calConsumed').click(function() {
+  alert("inside calcons");
+  var selectedFoodValues = []; 
+ var results = 0;
+  $('#select2 option').each(function(i, selected){
+ var calFoodCount = $(selected).text().substring($(selected).text().indexOf(":")+1);
+  selectedFoodValues[i] = calFoodCount; 
 });
+
+    for(var x=0; x<selectedFoodValues.length;x++){ 
+results = parseFloat(results) + parseFloat(selectedFoodValues[x]);
+  }
+
+$('#netCalConsumed').val(results);
+});
+});
+
+
+$(document).ready(function() {
+$('#netCount').click(function() {
+    //$('#searchtext').val();
+    alert("welcome");
+    var cons = parseFloat($('#netCalConsumed').val());
+    var spent = parseFloat($('#netExCal').val());
+   var finalVal = parseFloat(cons)+parseFloat(spent)
+alert(finalVal);
+   //$('#net').val(finalVal);
+   $("#net").text(finalVal);
+});
+});
+
 </script>
 
 

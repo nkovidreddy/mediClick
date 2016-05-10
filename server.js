@@ -898,10 +898,10 @@ apiRouter.route('/textapi')
 
 //app.listen(port);
 
-var httpServer = http.createServer(app);
+//var httpServer = http.createServer(app);
 var httpsServer = https.createServer(credentials, app);
 
-httpServer.listen(portHttp);
+//httpServer.listen(portHttp);
 httpsServer.listen(port);
 
 // https.createServer(credentials, app).listen(port, function () {

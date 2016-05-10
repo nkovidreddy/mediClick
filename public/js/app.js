@@ -37,6 +37,8 @@ angular.module('masters',['routerRoutes','ngStorage','ngMessages'])
     });
   }
 }
+$scope.loading=false;
+
 
 		vm.login=function(){
 			//console.log("Email=" +vm.email);
@@ -92,6 +94,8 @@ window.alert("please enter correct credentials");
     }
  
 $scope.notifyTest=function(){
+$scope.loading=true;
+  
 console.log("inside notify");
 $scope.$fname = $localStorage.fname;
 $scope.$notify = $localStorage.notify;
@@ -109,6 +113,8 @@ console.log("before sendemail");
 if (fname == null || email == null)
 {
 	window.alert("Please register to proceed!!");
+	$scope.loading=false;
+	return;
 }
 else
 {
@@ -140,6 +146,7 @@ window.alert("Your contacts have been alerted");
     	console.log(endLoc);
    	 	//$scope.practices=data.data.data;
     	//console.log($scope.doctors);
+    	$scope.loading=false;
     	window.location.href = '/gmaps/'+endLoc;
       })
      	//window.location.href = '/gmaps/'+endLoc;
@@ -342,9 +349,10 @@ else
 	//$scope.addictions = {};	
 	$scope.facts = {};
 	vm.selectValue="test";	
-
+	$scope.loading=false;
    vm.getsymptoms=function(){
-		 var url = '/api/diseaseinfo';
+   	$scope.loading=true;
+   	 var url = '/api/diseaseinfo';
 		 console.log(url);
 		 console.log(vm.selectValue);
 	   console.log("inside getsymptoms function");
@@ -375,6 +383,8 @@ else
 	$http(symptomInfo).then(function(data){
      	//window.location.href = '/index';
      	$scope.posConditions=data.data;
+     		$scope.loading=false;
+   
      	console.log(factid);
      	})
 	}

@@ -47,20 +47,21 @@
     <![endif]-->
     <script>
     function startup() {
-        alert("Starting Trouble :) ");
-        var userLoc=localStorage.getItem("ngStorage-user_locationBrow");
-        userLoc=userLoc.replace(/["']/g, "");
-        alert(userLoc);
-        document.getElementById('routeFromUnique').value = userLoc;
+
+        // alert("Starting Trouble :) ");
+        // var userLoc=localStorage.getItem("ngStorage-user_locationBrow");
+        // userLoc=userLoc.replace(/["']/g, "");
+        // alert(userLoc);
+        // document.getElementById('routeFromUnique').value = userLoc;
     }
     </script>
     
 </head>
 
-<body onload="hi();" ng-controller="gmapsController as gmaps ">
+<body onload="gmapsInit();" ng-controller="gmapsController as gmaps ">
 
-<body ng-controller="gmapsController as gmaps" onload="startup();">
-
+<!-- <body ng-controller="gmapsController as gmaps" onload="startup();">
+ -->
     <div class="pre-loader">
         <div class="load-con">
             <img src="../public/images/logo.png" alt="" class="logo">
@@ -208,12 +209,13 @@
         });
     </script>
     <script type="text/javascript">
-    function hi()
+    function gmapsInit()
     {
     var url=window.location.href;
     var loc=url.substring(url.lastIndexOf("/")+1);
     //window.alert(loc);
     document.getElementById('routeTo').value=loc;
+    document.getElementById("routeGo").click();
 }
     </script>
 </body>

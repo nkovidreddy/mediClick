@@ -81,6 +81,7 @@ if((data.data[0] != null) && (data.data[0].email==vm.email))
 $scope.email=vm.email;
 $scope.fname=vm.fname;
 window.alert("Login Successful");
+$('#myModal').modal('hide');
 
 	}
 

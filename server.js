@@ -1,4 +1,4 @@
-
+var fs = require('fs');
 var express=require('express');
 var app=express();
 var path=require('path');
@@ -10,6 +10,12 @@ var transporter = nodemailer.createTransport(); //create transport
 var TelCarrier = require('tel-carrier'); //telcarrier
 var sanitize = require('mongo-sanitize');
 var bcrypt = require('bcrypt-nodejs');
+var http = require("http");
+var https = require("https");
+var options = {
+   key  : fs.readFileSync('server.key'),
+   cert : fs.readFileSync('server.crt')
+};
 
  var apiRouter = express.Router();
 
@@ -883,6 +889,10 @@ apiRouter.route('/textapi')
 
   })
 //database3
-app.listen(port);
+
+//app.listen(port);
+https.createServer(options, app).listen(port, function () {
+   console.log('Started!');
+});
 console.log('listening to port' +port);
 //setting public folder

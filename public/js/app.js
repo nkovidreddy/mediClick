@@ -12,9 +12,40 @@ angular.module('masters',['routerRoutes','ngStorage','ngMessages'])
 //.controller('indexController',function($http,$scope){
 	.controller('indexController',['$scope','$sessionStorage','$http', function($scope,$sessionStorage,$http){
       var vm=this;
+
+//Write Code to call API and limit one result sort by distance and send the address location parameters to gmaps page
+	//Getting user current location
+	var api_key = '84595b9ae71e28e06f8414fafac6938e'; // Get your API key at developer.betterdoctor.com
+	$scope.userloc=$sessionStorage.user_locationBrow;
+	if(!$scope.userloc){
+		console.log("True");
+		vm.userLocation="";
+		var userloc = vm.userloc;
+		if (navigator.geolocation) {
+   		 navigator.geolocation.getCurrentPosition(function(position){
+      	$scope.$apply(function(){
+        $scope.position = position;
+        console.log("Position:");
+        console.log($scope.position.coords.latitude);
+		userLocation=$scope.position.coords.latitude+","+$scope.position.coords.longitude;
+		$sessionStorage.user_locationBrow=userLocation;
+		
+		//var userloc=userLocation;
+		$scope.userloc=userLocation;
+		console.log($scope.userloc);
+      });
+    });
+  }
+}
+
 		vm.login=function(){
 			//console.log("Email=" +vm.email);
 			console.log("inside login");
+		$scope.userloc=$sessionStorage.user_locationBrow;
+		var userLocPrev ;
+	if($scope.userloc){
+		userLocPrev= $scope.userloc;
+	}
 		$sessionStorage.$reset();
 			var url = '/api/users/' +vm.email+'/'+vm.password;
 			console.log(url);
@@ -41,7 +72,8 @@ if((data.data[0] != null) && (data.data[0].email==vm.email))
 	$scope.$storage = $sessionStorage.$default({
           fname: fname,
           notify:notify,
-          email:email
+          email:email,
+          user_locationBrow:userLocPrev
 
         });
 $scope.email=vm.email;
@@ -90,12 +122,29 @@ var emailinfo={
 console.log(emailinfo);
 $http(emailinfo).then(function(data){
 window.alert("Your contacts have been alerted");
-     	window.location.href = '/';
+	//Call an API for Practices
+	//var resource_prac_url = 'https://api.betterdoctor.com/2016-03-01/practices?location='+$scope.userloc+',100'+'&user_location='+$scope.userloc+'&sort=distance-asc&fields=lat,lon,website&skip=0&limit=1&user_key='+api_key;
+		var resource_prac_url = 'https://api.betterdoctor.com/2016-03-01/practices?location='+$scope.userloc+',100'+'&sort=distance-asc&fields=lat,lon,website&limit=1&user_key='+api_key;
+		console.log(resource_prac_url);
+		var emergencyReq = {
+      url: resource_prac_url,
+      method: 'GET'
+    }
+	$http(emergencyReq).then(function(data){
+		//console.log("displayng data in get method index"); 
+		//console.log(data.data[0].email);
+		console.log("Testing API");
+    	//console.log(data);
+    	var destAddr = data.data.data[0];
+    	var endLoc = destAddr.lat+','+destAddr.lon;
+    	console.log(endLoc);
+   	 	//$scope.practices=data.data.data;
+    	//console.log($scope.doctors);
+    	window.location.href = '/gmaps/'+endLoc;
+      })
+     	//window.location.href = '/gmaps/'+endLoc;
      })
-
 }
- 
-
 }])
 
 
@@ -104,7 +153,11 @@ window.alert("Your contacts have been alerted");
 	console.log("inside regoster cotroller");
 	var vm=this;
 	//$scope.emailTest=userem;
-	 
+	 $scope.userloc=$sessionStorage.user_locationBrow;
+		var userLocPrev ;
+	if($scope.userloc){
+		userLocPrev= $scope.userloc;
+	}
   //$scope.$storagefname = $sessionStorage.fname;
 	vm.register=function(){
 		console.log('Testing Register Function');
@@ -112,7 +165,8 @@ window.alert("Your contacts have been alerted");
 		var email=vm.email;
 
 		$scope.$storage = $sessionStorage.$default({
-          userId: email
+          userId: email,
+          user_locationBrow:userLocPrev
         });
 		var password=vm.password;
 		var cpassword=vm.confirmpassword;

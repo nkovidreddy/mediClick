@@ -238,12 +238,30 @@ apiRouter.route('/users/:email/:password')
 	//console.log(req.params.password);
 User.find({ "email": sanitize(req.params.email)},{email: 1,password: 1, fname: 1, lname: 1, notify:1, eemail1:1 , eemail2: 1, elname1:1, elname2: 1, efname1: 1, efname2:1, phone:1}, function(err, user) {
 var result;
-if(user == null)
-{
-  result = "User does not exist!";
+console.log(user);
+// if(user != null)
+// {
+
+ var emptyObj=[];
+ var boolValEmail=_.isEqual(user, emptyObj);
+ console.log(boolValEmail);
+
+if(boolValEmail){
+   result = "User does not exist!";
   //res.json("User does not exist!");     
   console.log(result);
+   console.log(user);
 }
+
+
+// if(user[0].email != req.params.email)
+// {
+//   result = "User does not exist!";
+//   //res.json("User does not exist!");     
+//   console.log(result);
+//    console.log(user);
+// }
+//}
 // var pwd=req.params.password;
 // var hash = user[0].password;
 else if((!(bcrypt.compareSync(req.params.password, user[0].password))))

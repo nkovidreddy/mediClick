@@ -499,7 +499,8 @@ var activity = [{"Activity":"Cycling, mountain bike, bmx","wone":502,"wtwo":598,
  </section>
  <section class="col-md-1 col-xs-4" style="margin-top: 9%;height: 30px;"> 
 
-<img src="../public/img/eco/adding.png" onclick="addEx();" style="width: 65%;cursor: pointer;"> 
+<!-- <img src="../public/img/eco/adding.png" id="calculate" onclick="addEx();" style="width: 65%;cursor: pointer;">  -->
+<img src="../public/img/eco/adding.png" id="calculate" style="width: 65%;cursor: pointer;">
  </section>
 
  <section class="col-md-4 col-xs-10" style="height: 220px;"> 
@@ -508,9 +509,13 @@ var activity = [{"Activity":"Cycling, mountain bike, bmx","wone":502,"wtwo":598,
     
   </select>  
 </section>
+<section class="col-md-1 col-xs-4" style="margin-top: 9%;height: 30px;"> 
+
+<img src="../public/img/eco/adding.png" id="netECal" style="width: 65%;cursor: pointer;"> 
+ </section>
 <section class="col-md-4 col-xs-10"> 
  <h4>Total Calories Spent</h4>
-  <input type="text" readonly value="123" class="form-control" style="color: #66cc99;text-align: center;font-weight: 700;font-size: larger;border: none;box-shadow: none;background: white;cursor: auto;">
+  <input type="text" readonly id="netExCal" value="123" class="form-control" style="color: #66cc99;text-align: center;font-weight: 700;font-size: larger;border: none;box-shadow: none;background: white;cursor: auto;">
 </section>
     </section>
 
@@ -580,6 +585,7 @@ $(document).ready(function() {
 
 
     <script type="text/javascript">
+
     function addEx()
     {
       var e=$('#excercise option:selected').html();
@@ -591,6 +597,13 @@ $(document).ready(function() {
     {
       $('#ex option:selected').remove();
     }
+
+    // function addEx()
+    // {
+    //   var e=$('#excercise option:selected').html();
+    //  $('#ex').append("<option value=\"" + e + "\">" + e + "</option>");
+    // }
+
 
         function togglediv(id) {
     var div = document.getElementById(id);
@@ -611,12 +624,178 @@ $.each(activity,function(key,value)
 
   });
 
-   $("#excercise").change(function(){
-   
+
+   $("#calculate").click(function(){
+      
+
+       // var selectedVal = String($(this).val());
+       var selectedVal = String($('#excercise').val());
+        var wt = String($('#weight').val());
+        var tim = parseFloat($('#time').val());
+        var cal=0;
+        alert(selectedVal+" "+ tim+" "+wt);
+        //alert("The text has been changed."+wt);
+             $.each(activity, function(i, v) {
+
+              var opt = String(v.Activity);
+            
+        if ((opt == selectedVal) && (wt == "wone")) {
+          if(tim == 0.5 )
+          {
+             cal = parseFloat(v.wone)*(0.5);
+             alert("net cal ct is" +cal);
+          }
+           else if(tim == 0.75)
+          {
+             cal = parseFloat(v.wone)*(0.75);
+             alert("net cal ct is" +cal);
+          }
+          else if(tim == 1)
+          {
+             cal = parseFloat(v.wone);
+             alert("net cal ct is" +cal);
+          }
+           else if(tim == 1.5)
+          {
+             cal = parseFloat(v.wone)+ (parseFloat(v.wone)/2);
+             alert("net cal ct is" +cal);
+          }
+             else if(tim == 2)
+          {
+             cal = parseFloat(v.wone)+parseFloat(v.wone);
+             alert("net cal ct is" +cal);
+          }
+           
+           // return;
+        }
+        else if ((opt == selectedVal) && (wt == "wtwo"))
+        {
+          //alert(v.wtwo);
+          if(tim == 0.5 )
+          {
+             cal = parseFloat(v.wtwo)*(0.5);
+             alert("net cal ct is" +cal);
+          }
+           else if(tim == 0.75)
+          {
+             cal = parseFloat(v.wtwo)*(0.75);
+             alert("net cal ct is" +cal);
+          }
+          else if(tim == 1)
+          {
+             cal = parseFloat(v.wtwo);
+             alert("net cal ct is" +cal);
+          }
+           else if(tim == 1.5)
+          {
+             cal = parseFloat(v.wtwo)+ (parseFloat(v.wtwo)/2);
+             alert("net cal ct is" +cal);
+          }
+             else if(tim == 2)
+          {
+             cal = parseFloat(v.wtwo)+parseFloat(v.wtwo);
+             alert("net cal ct is" +cal);
+          }
+        }
+        else if ((opt == selectedVal) && (wt == "wthree"))
+        {
+          //alert(v.wthree);
+          if(tim == 0.5 )
+          {
+             cal = parseFloat(v.wthree)*(0.5);
+             alert("net cal ct is" +cal);
+          }
+           else if(tim == 0.75)
+          {
+             cal = parseFloat(v.wthree)*(0.75);
+             alert("net cal ct is" +cal);
+          }
+          else if(tim == 1)
+          {
+             cal = parseFloat(v.wthree);
+             alert("net cal ct is" +cal);
+          }
+           else if(tim == 1.5)
+          {
+             cal = parseFloat(v.wthree)+ (parseFloat(v.wthree)/2);
+             alert("net cal ct is" +cal);
+          }
+             else if(tim == 2)
+          {
+             cal = parseFloat(v.wthree)+parseFloat(v.wthree);
+             alert("net cal ct is" +cal);
+          }
+        }
+        else if ((opt == selectedVal) && (wt == "wfour"))
+        {
+          //alert(v.wfour);
+          if(tim == 0.5 )
+          {
+             cal = parseFloat(v.wfour)*(0.5);
+             alert("net cal ct is" +cal);
+          }
+           else if(tim == 0.75)
+          {
+             cal = parseFloat(v.wfour)*(0.75);
+             alert("net cal ct is" +cal);
+          }
+          else if(tim == 1)
+          {
+             cal = parseFloat(v.wfour);
+             alert("net cal ct is" +cal);
+          }
+           else if(tim == 1.5)
+          {
+             cal = parseFloat(v.wfour)+ (parseFloat(v.wfour)/2);
+             alert("net cal ct is" +cal);
+          }
+             else if(tim == 2)
+          {
+             cal = parseFloat(v.wfour)+parseFloat(v.wfour);
+             alert("net cal ct is" +cal);
+          }
+        }
+        else
+        {
+          return;
+        }
+    });
+        // alert($(this).val());
+        // alert("hello");
+        var e=$('#excercise option:selected').html();
+      $('#ex').append("<option value=\"" + e + "Cal :" + cal + "\">" + e +"Cal :"+cal+ "</option>");
+
     });
 
-  //});
- 
+
+  $('#netECal').click(function() {
+   alert("inside netECal") ;
+
+  // var selectedValues = $('#ex option').each(function())
+ //  var selectedValues[];
+ //  $('#ex option').each(function(){
+ //    selectedValues = $(this).val();
+    
+ // })
+ // console.log("sindhu says");
+
+ var selectedValues = []; 
+ var res = 0;
+$('#ex option').each(function(i, selected){
+ var calCount = $(selected).text().substring($(selected).text().indexOf(":")+1);
+ //var selectedValues[i] = $(selected).text().substring($(selected).text().indexOf(":")+1);
+  selectedValues[i] = calCount; 
+  //var res = str.substring(str.indexOf(":")+1); 
+});
+//console.log(selectedValues[x]);
+  for(var x=0; x<selectedValues.length;x++){ 
+//console.log(selectedValues[x]);
+res = parseFloat(res) + parseFloat(selectedValues[x]);
+  }
+  alert("final result is "+res);
+
+$('#netExCal').val(res);
+  });
 
 });
 

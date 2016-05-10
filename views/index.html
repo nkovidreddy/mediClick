@@ -32,7 +32,21 @@
     
     <link rel="stylesheet" href="../public/css2/eco.css">
 
-  
+  <style>
+  @media
+only screen and (-webkit-min-device-pixel-ratio: 1.5),
+only screen and (-o-min-device-pixel-ratio: 3/2),
+only screen and (min--moz-device-pixel-ratio: 1.5),
+only screen and (min-device-pixel-ratio: 1.5){
+
+  html,
+  body{
+    width:100%;
+    overflow-x:hidden;
+  }
+
+}
+  </style>
     
 </head>
 
@@ -120,7 +134,7 @@
   
         
         <!--RevSlider-->
-        <div class="tp-banner-container">
+        <div class="tp-banner-container" style="overflow-x:hidden">
             <div class="tp-banner" >
                 <ul>
                     <!-- SLIDE  -->
@@ -173,29 +187,7 @@
                     <!-- SLIDE 2 -->
                    <!--  <li data-transition="zoomout" data-slotamount="7" data-masterspeed="1000" >
                       MAIN IMAGE -->
-                        <img src="../public/img/transparent.png"  alt="slidebg1"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
-                        <!-- LAYERS -->
-                        <!-- LAYER NR. 1 -->
-                        <div class="tp-caption lfb fadeout "
-                            data-x="center"
-                            data-y="bottom"
-                            data-hoffset="0"
-                            data-voffset="0"
-                            data-speed="1000"
-                            data-start="700"
-                            data-easing="Power4.easeOut">
-                            <img src="../public/img/eco/Slides/docs.png" alt="">
-                        </div>
-
-                        
-                        <div class="tp-caption large_white_light sft" data-x="center" data-y="250" data-hoffset="0" data-voffset="0" data-speed="1000" data-start="1400" data-easing="Power4.easeOut">
-                             <i class="fa fa-heart"></i>
-                             
-                        </div>
-                        
-                        
-                    </li> 
-
+                      
                     <!-- SLIDE 3 -->
                     <li data-transition="zoomout" data-slotamount="7" data-masterspeed="1000" >
                         <!-- MAIN IMAGE -->

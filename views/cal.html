@@ -434,7 +434,8 @@ var activity = [{"Activity":"Cycling, mountain bike, bmx","wone":502,"wtwo":598,
 <section class="row"> 
   <section class="col-md-3 col-xs-10" style=" height: 200px;"> 
   <h4>Food Search</h4>
-  <input type="text" class="form-control ">
+  <input type="text" id="searchtext" class="form-control ">
+  <button type="submit" id="getbtn" class="btn" style="background-color: #E7B319;width: 10%;margin-left: 25%;margin-top: 5%;">ok</button>
   <br>
   <select multiple="" id="select1" style="float:left;border: 4px solid #66cc99;width: 100%;border-radius: 10px;padding: 12px;font-size: small;">  
    
@@ -620,6 +621,40 @@ $.each(activity,function(key,value)
   //});
  
 
+});
+
+
+
+
+
+$(document).ready(function() {
+  $('#getbtn').click(function() {
+      var inp=$('#searchtext').val();
+       alert(inp); 
+       var resp = 'https://api.nutritionix.com/v1_1/search/'+inp+'?fields=item_name%2Cnf_calories&appId=fb76e0a9&appKey=13708009f0deee0f63a0546647b8bd24';
+        alert(resp);
+      $.ajax({
+        type: 'GET',
+        url: resp,
+        dataType: "json",
+        success: function(results) {
+      
+var $select = $('#select1'); 
+ $select.find('option').remove();
+    for(var x=0; x<results.hits.length;x++){ 
+   var str = (results.hits[x].fields.item_name +" - "+results.hits[x].fields.nf_calories);
+   console.log(str);
+    $select.append('<option value=' + str + '>' + str + '</option>');
+
+    }
+  
+ 
+    }
+        
+      
+    })
+
+  });
 });
 </script>
 

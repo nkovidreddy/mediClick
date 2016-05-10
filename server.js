@@ -71,18 +71,18 @@ app.use(express.static(__dirname+'/'));
 
 //Setup one route to index.html file
 
-app.get('*',function(req,res,next){
+app.get('/',function(req,res,next){
   if(req.headers['x-forwarded-proto']!='https')
     res.redirect('https://mediclick.herokuapp.com');
   else
     next(); /* Continue to other routes if we're not redirecting */
 })
  
-app.get('/',function(req,res){
- 	//res.send('index',{title:'hey',message:'Hello there!'});
- 	res.sendFile(path.join(__dirname+'/views/index.html'))
- 	//next();
- });
+// app.get('/',function(req,res){
+//  	//res.send('index',{title:'hey',message:'Hello there!'});
+//  	res.sendFile(path.join(__dirname+'/views/index.html'))
+//  	//next();
+//  });
 
 app.get('/register',function(req,res){
  	//res.send('index',{title:'hey',message:'Hello there!'});

@@ -10,7 +10,7 @@ var transporter = nodemailer.createTransport(); //create transport
 var TelCarrier = require('tel-carrier'); //telcarrier
 var sanitize = require('mongo-sanitize');
 var bcrypt = require('bcrypt-nodejs');
-var http = require("http");
+//var http = require("http");
 var https = require("https");
 var options = {
    key  : fs.readFileSync('server.key'),

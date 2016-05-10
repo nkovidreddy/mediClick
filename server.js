@@ -42,6 +42,8 @@ var port=process.env.PORT || 3000;
 
 //var portHttp=process.env.PORT || 8888;
 
+
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(methodOverride('X-HTTP-Method-Override')); // override with the X-HTTP-Method-Override header in the request
@@ -62,10 +64,19 @@ app.use(methodOverride('X-HTTP-Method-Override')); // override with the X-HTTP-M
  // all of our routes will be prefixed with /api
 app.use('/api', apiRouter);
 
+console.log(__dirname);
+
 app.use(express.static(__dirname+'/'));
 
 
 //Setup one route to index.html file
+
+// app.get('*',function(req,res,next){
+//   if(req.headers['x-forwarded-proto']!='https')
+//     res.redirect('https://localhost:'+port);
+//   else
+//     next(); /* Continue to other routes if we're not redirecting */
+// })
  
 app.get('/',function(req,res){
  	//res.send('index',{title:'hey',message:'Hello there!'});

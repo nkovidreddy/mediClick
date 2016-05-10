@@ -77,6 +77,12 @@ $routeProvider
  	controller : 'aboutController',
  	controllerAs: 'about'
  	})
+
+ 	.when('/calorie', {
+ 	templateUrl : 'views/cal.html',
+ 	controller : 'aboutController',
+ 	controllerAs: 'about'
+ 	})
 	
  // set our app up to have pretty URLS
 $locationProvider.html5Mode(true);

@@ -1,0 +1,333 @@
+<!doctype html>
+<!--[if lt IE 7]><html lang="en" class="no-js ie6"><![endif]-->
+<!--[if IE 7]><html lang="en" class="no-js ie7"><![endif]-->
+<!--[if IE 8]><html lang="en" class="no-js ie8"><![endif]-->
+<!--[if gt IE 8]><!-->
+<html ng-app="masters">
+<!--<![endif]-->
+
+<head>
+    <meta charset="UTF-8">
+    <title>MediClick</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="shortcut icon" href="favicon.png">
+
+<!--angular routes-->
+ <script src="../public/js/app.routes.js"></script>
+ <script src="../public/js/app.js"></script>
+ <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+ <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-route.js"></script>
+ <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-animate.js"></script>
+ <script src="../public/js2/angular-messages.js"></script>
+ <script src="../public/js2/ngStorage.min.js"></script>
+ <script src="../public/js/app.routes.js"></script>
+ <script src="../public/js/app.js"></script>
+
+    <link rel="stylesheet" href="../public/css2/bookApp.css">
+    <link rel="stylesheet" href="../public/css2/bootstrap.css">
+    
+    <link rel="stylesheet" href="../public/css2/animate.css">
+    <link rel="stylesheet" href="../public/css2/font-awesome.min.css">
+    <link rel="stylesheet" href="../public/css2/slick.css">
+    <link rel="stylesheet" href="../public/js2/rs-plugin/css/settings.css">
+
+    <script type="text/javascript" src="../public/js2/modernizr.custom.32033.js"></script>
+    
+    <link rel="stylesheet" href="../public/css2/eco.css">
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+     
+   
+ 
+    <style>
+    #tabs {
+  overflow: auto;
+  width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#tabs li {
+    margin: 0;
+    padding: 0;
+    float: left;
+}
+
+#tabs a {
+    box-shadow: -4px 0 0 rgba(0, 0, 0, .2);
+    background: #ad1c1c;
+    background: linear-gradient(220deg, transparent 10px, #66cc99 10px);
+    /*text-shadow: 0 1px 0 rgba(0,0,0,.5);*/
+    color: #fff;
+    float: left;
+    font: bold 12px/35px 'Lucida sans', Arial, Helvetica;
+    height: 35px;
+    padding: 0 30px;
+    text-decoration: none;
+}
+
+#tabs a:hover {
+    background: #c93434;
+    background: linear-gradient(220deg, transparent 10px, #c93434 10px);     
+}
+
+#tabs a:focus {
+    outline: 0;
+}
+
+#tabs #current a {
+    background: linear-gradient(220deg, transparent 10px, #339999 10px);
+    text-shadow: none;
+    color: white;
+}
+
+#content {
+    background-color: #fff;
+    border-radius: 12px 12px 12px 12px;
+    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.45), 0 -1px 0 #fff inset;
+    padding: 30px;
+    border: 4px solid #66cc99;
+    overflow-y: overlay;
+}
+
+/* Remove the rule below if you want the content to be "organic" */
+#content div {
+    height: 220px; 
+}
+    </style>
+    
+</head>
+
+<body  ng-controller="aboutController as about">
+
+    <div class="pre-loader">
+        <div class="load-con">
+            <img src="../public/images/logo.png" alt="" class="logo">
+            <div class="spinner">
+              <div class="bounce1"></div>
+              <div class="bounce2"></div>
+              <div class="bounce3"></div>
+            </div>
+        </div>
+    </div>
+   
+    <header>
+        
+          <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="fa fa-bars fa-lg"></span>
+                        </button>
+                        <a class="navbar-brand" href="index.html">
+                            <img src="../public/images/logo.png" alt="" class="logo">
+                        </a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="/">Home</a>
+                            </li>
+                            
+                            <li><a href="/Symptoms">Symptom Checker</a>
+                            </li>
+                            <li><a href="/pharm">Pharmacy</a>
+                            </li>
+                    
+                        </ul>
+                    </div>
+
+
+                  
+                    <!-- /.navbar-collapse -->
+                </div>
+                <!-- /.container-->
+        </nav>
+
+  <section ng-init="bhealth.getInsurance()" id="reviews">
+            <div class="container">
+                <div class="section-heading inverse scrollpoint sp-effect3">
+                
+                               
+                </div>
+                </div>                    
+        </section>
+
+ </header>
+<div class="wrapper">
+               <section id="screens">
+            <div class="container">             
+             <div class="section-heading scrollpoint sp-effect3" style="margin-top: 10px">
+                    <h1>Calorie Counter </h1>
+                    <div class="divider"></div>
+                    
+                    <div>
+                    <ul id="tabs">
+    <li><a href="#" title="tab1">Food</a></li>
+    <li><a href="#" title="tab2">Excercise</a></li>
+    <li><a href="#" title="tab3">Net Calories</a></li>
+</ul>
+
+<div id="content"> 
+    <div id="tab1">
+<section class="row"> 
+  <section class="col-md-3 col-xs-10" style=" height: 200px;"> 
+  <h4>Food Search</h4>
+  <input type="text" class="form-control ">
+  <br>
+  <select multiple="" id="select1" style="float:left;border: 4px solid #66cc99;width: 100%;border-radius: 10px;padding: 12px;font-size: small;">  
+   
+  <option value="1">Option 1</option>
+  <option value="2">Option 2</option>
+   <option value="3">Option 3</option>  
+   <option value="4">Option 4</option> 
+
+  </select>  
+ </section>
+ <section class="col-md-1 col-xs-4" style="margin-top: 9%;height: 30px;"> 
+ 
+<a href="#"><img src="../public/img/eco/add.png" id="add" style="width: 60%;cursor: pointer;"></a>
+<br>
+<a href="#"><img src="../public/img/eco/remove.png" id="remove" style="width: 65%;cursor: pointer;"> </a>
+ </section>
+ <section class="col-md-4 col-xs-10" style="height: 220px;"> 
+ <h4>Meal</h4>
+  <select multiple="" id="select2" style="border: 4px solid #66cc99;width: 100%;border-radius: 10px;padding: 12px;height: 160px;font-size: small;"></select>  
+</section>
+<section class="col-md-4 col-xs-10"> 
+ <h4>Total Calories Consumed</h4>
+  <input type="text" readonly value="123" class="form-control" style="color: #A30A0A;text-align: center;font-weight: 700;font-size: larger;border: none;box-shadow: none;background: white;cursor: auto;">
+</section>
+    </section>
+    </div>
+
+    <div id="tab2">
+
+  <section class="row"> 
+
+  <section class="col-md-3 col-xs-10" style=" height: 200px; text-align:left; margin-top: 1%"> 
+  <form>
+  <p style="font-size: medium;font-weight: 400;height:15px">Your Weight:</p>
+  <select  id="weight" style="float:left;border: 2px solid #66cc99;width: 100%;border-radius: 10px;padding: 5px;font-size: small;margin-bottom: 3%;">  
+   
+  <option value="1">Option 1</option>
+  <option value="2">Option 2</option>
+   <option value="3">Option 3</option>  
+   <option value="4">Option 4</option> 
+
+  </select>  
+
+  <p style="font-size: medium;font-weight: 400;height:50px">Type Of Excercise</p>
+  <select  id="excercise" style="float:left;border: 2px solid #66cc99;width: 100%;border-radius: 10px;padding: 5px;font-size: small;margin-bottom: 3%;">  
+   
+  <option value="1">Option 1</option>
+  <option value="2">Option 2</option>
+   <option value="3">Option 3</option>  
+   <option value="4">Option 4</option> 
+
+  </select>  
+
+  <p style="font-size: medium;font-weight: 400;height:50px">Duration Of Excercise</p>
+  <select  id="time" style="float:left;border: 2px solid #66cc99;width: 100%;border-radius: 10px;padding: 5px;font-size: small;margin-bottom: 3%;">  
+   
+  <option value="1">Option 1</option>
+  <option value="2">Option 2</option>
+   <option value="3">Option 3</option>  
+   <option value="4">Option 4</option> 
+
+  </select>  
+</form>
+ </section>
+
+ <section class="col-md-4 col-xs-10" style="height: 220px;"> 
+ <h4>Excercise</h4>
+  <select multiple="" id="select2" style="border: 4px solid #66cc99;width: 100%;border-radius: 10px;padding: 12px;height: 160px;font-size: small;"></select>  
+</section>
+<section class="col-md-4 col-xs-10"> 
+ <h4>Total Calories Spent</h4>
+  <input type="text" readonly value="123" class="form-control" style="color: #A30A0A;text-align: center;font-weight: 700;font-size: larger;border: none;box-shadow: none;background: white;cursor: auto;">
+</section>
+    </section>
+
+    </div>
+
+    <div id="tab3">Three - content</div>
+
+</div>
+</section>
+</div>
+                </div>
+             
+     
+       </div>  
+    </div>
+        </section>
+          </div>
+
+
+    </div>
+
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script src="../public/js2/jquery.js" type="text/javascript"></script>
+    <script src="../public/js2/bootstrap.min.js"></script>
+    <script src="../public/js2/slick.min.js"></script>
+    <script src="../public/js2/placeholdem.min.js"></script>
+    <script src="../public/js2/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+    <script src="../public/js2/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+    <script src="../public/js2/waypoints.min.js"></script>
+
+    <script src="../public/js2/scripts.js"></script>
+ <!--    <script>
+        $(document).ready(function() {
+            appMaster.preLoader();
+        });
+    </script> -->
+
+<script>
+$(document).ready(function() {
+  appMaster.preLoader();
+
+ $('#add').click(function() {  
+    return !$('#select1 option:selected').remove().appendTo('#select2');  
+   });  
+   $('#remove').click(function() {  
+    return !$('#select2 option:selected').remove().appendTo('#select1');  
+   });  
+
+    $("#content div").hide(); // Initially hide all content
+    $("#tabs li:first").attr("id","current"); // Activate first tab
+    $("#content div:first").fadeIn(); // Show first tab content
+    
+    $('#tabs a').click(function(e) {
+        e.preventDefault();        
+        $("#content div").hide(); //Hide all content
+        $("#tabs li").attr("id",""); //Reset id's
+        $(this).parent().attr("id","current"); // Activate this
+        $('#' + $(this).attr('title')).fadeIn(); // Show content for current tab
+    });
+});
+</script>
+
+
+    <script type="text/javascript">
+    function show()
+    {
+      document.getElementById('insurance').style.display='block';
+    }
+        function togglediv(id) {
+    var div = document.getElementById(id);
+    div.style.display = div.style.display == "none" ? "block" : "none";
+    console.log("hi");
+}
+</script>
+</body>
+
+</html>

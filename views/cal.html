@@ -446,7 +446,7 @@ var activity = [{"Activity":"Cycling, mountain bike, bmx","wone":502,"wtwo":598,
  <!--  <input type="text" id="select1" title="Please enter a valid text" class="form-control " style="float: left;width: 80%;" pattern="^[A-Za-z ,.'-]+$"> -->
  <span class="form-inline col-md-7 col-xs-12" style="margin-top: 5%;">
 <label style="float: left;color:#555555">Servings size</label>
-   <input type="text" id="inp" title="Please enter a valid text" class="form-control " style="border: 1px solid #66cc99;width: 40%;border-radius: 10px;padding: 12px;font-size: small;margin-top: -4%;overflow-x: overlay;" pattern="^[1-9]+$">
+   <input type="text" id="inpServe" title="Please enter a valid text" class="form-control " style="border: 1px solid #66cc99;width: 40%;border-radius: 10px;padding: 12px;font-size: small;margin-top: -4%;overflow-x: overlay;" pattern="^[1-9]+$">
    </span>
   <br>
   <br>
@@ -850,9 +850,14 @@ $('#calConsumed').click(function() {
   alert("inside calcons");
   var selectedFoodValues = []; 
  var results = 0;
+ 
+
   $('#select2 option').each(function(i, selected){
  var calFoodCount = $(selected).text().substring($(selected).text().indexOf(":")+1);
-  selectedFoodValues[i] = calFoodCount; 
+ var inpSer=$('#inpServe').val();
+ //alert(inpSer);
+ //alert(parseFloat(calFoodCount)* parseFloat(inpSer)); 
+  selectedFoodValues[i] = parseFloat(calFoodCount)* parseFloat(inpSer); 
 });
 
     for(var x=0; x<selectedFoodValues.length;x++){ 
@@ -867,11 +872,11 @@ $('#netCalConsumed').val(results);
 $(document).ready(function() {
 $('#netCount').click(function() {
     //$('#searchtext').val();
-    alert("welcome");
+    //alert("welcome");
     var cons = parseFloat($('#netCalConsumed').val());
     var spent = parseFloat($('#netExCal').val());
-   var finalVal = parseFloat(cons)+parseFloat(spent)
-alert(finalVal);
+   var finalVal = parseFloat(cons)-parseFloat(spent)
+//alert(finalVal);
    //$('#net').val(finalVal);
    $("#net").text(finalVal);
 });

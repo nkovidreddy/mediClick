@@ -392,7 +392,7 @@ var activity = [{"Activity":"Cycling, mountain bike, bmx","wone":502,"wtwo":598,
                             
                             <li><a href="/Symptoms">Symptom Checker</a>
                             </li>
-                            <li><a href="/pharm">Pharmacy</a>
+                            <li><a href="/pharm">Find Pharmacy</a>
                             </li>
                     
                         </ul>
@@ -587,7 +587,13 @@ $(document).ready(function() {
     function addEx()
     {
       var e=$('#excercise option:selected').html();
-     $('#ex').append("<option value=\"" + e + "\">" + e + "</option>");
+      var v=$('#excercise option:selected').val();
+     $('#ex').append("<option style='background: #66cc99;padding: 10px;cursor: pointer;' onclick='del();' value=\"" + e + "\">" + e + "</option>");
+    }
+
+     function del()
+    {
+      $('#ex option:selected').remove();
     }
 
         function togglediv(id) {

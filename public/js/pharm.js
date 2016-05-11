@@ -8,7 +8,6 @@ $(window).load(function() {
  var c=s.split(',');
  var a = c[0];
  var b = c[1];
-window.alert(a+','+b);
    //var pyrmont = new google.maps.LatLng(s);
   
    var pyrmont = new google.maps.LatLng(parseFloat(a), parseFloat(b));

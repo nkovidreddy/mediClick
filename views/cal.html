@@ -43,6 +43,19 @@
    
  
     <style>
+    .modal-content
+    {
+      position: relative;
+    background-color: rgb(245, 245, 245);
+    border: 1px solid #999999;
+    border: 5px solid #339999;
+    border-radius: 26px;
+    -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+    background-clip: padding-box;
+    padding-left: 20px;
+    padding-right: 20px;
+    }
     #tabs {
   overflow: auto;
   width: 100%;
@@ -406,8 +419,25 @@ var activity = [{"Activity":"Cycling, mountain bike, bmx","wone":502,"wtwo":598,
                 </div>
                 <!-- /.container-->
         </nav>
+        <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content" style="margin-top: 100%;">
+        
+        <div class="modal-body">
+        
+         <div class="wrapper">    
+      <h4 class="form-signin-heading" style="color:#339999">HElloooooooo! This is the Tip of the day re you pichi fello! Chasav ga? Tharinchu</h4>
+     <h5> <button class="btn btn-lg btn-primary btn-block" data-dismiss="modal">ok</button> </h5>  
+     
+  </div>
+  <!--end-->
+        </div>
+        
+      </div>
+    </div>
+  </div>
 
-  <section ng-init="bhealth.getInsurance()" id="reviews">
+  <section  id="reviews">
             <div class="container">
                 <div class="section-heading inverse scrollpoint sp-effect3">
                 
@@ -423,7 +453,9 @@ var activity = [{"Activity":"Cycling, mountain bike, bmx","wone":502,"wtwo":598,
              <div class="section-heading scrollpoint sp-effect3" style="margin-top: 10px">
                     <h1>Calorie Counter </h1>
                     <div class="divider"></div>
-                    
+                    <div class="row">
+                    <a href="#" style="float:right" data-toggle="modal" data-target="#myModal">Tip Of the Day</a>
+                    </div>
                     <div>
                     <ul id="tabs">
     <li><a href="#" title="tab1">Food</a></li>

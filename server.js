@@ -766,10 +766,13 @@ console.log(sendtextto);
      //create reusable transporter object using SMTP transport
     var transporter = nodemailer.createTransport({
         service: 'Gmail',
+        host: 'smtp.gmail.com',
+        use_authentication: true,
         auth: {
             user: 'sindhurav18790@gmail.com',
             pass: 'Sindhu@7'
         }
+        
     });
 var mailOptions = {
         from: 'Sindhu<sindhurav18790@gmail.com>', // sender address
@@ -803,6 +806,8 @@ console.log(sendtextto2);
      //create reusable transporter object using SMTP transport
     var transporter = nodemailer.createTransport({
         service: 'Gmail',
+        host: 'smtp.gmail.com',
+        use_authentication: true,
         auth: {
             user: 'sindhurav18790@gmail.com',
             pass: 'Sindhu@7'
@@ -890,7 +895,7 @@ console.log("inside book app server.js");
 //var text= "You are recieving this email from Mediclick."
 var sendtodoctor="vallabhanenisindhura85@gmail.com";
 var todoctor= "You are recieving this email because you have registered with mediclick's schedule appointment service."+" "+ fname+" "+lname+" "+" has scheduled and appointment with you on" + " "+ month+ " "+day+" "+ "at" + time +" "+ "Users Message: "+msg;
- var sendtouser ="sindhura.vallabhaneni@sjsu.edu";
+ var sendtouser =email;
  var touser= "Thank you for scheduling your doctor's appointment through mediclick. Please find the details of your appointment. "+ "Docname" + docname + "Appointment Time: " +  + " "+ month+ " "+day+" "+ "at" + time +" " + "Make you you arrive on time";
 //create reusable transporter object using SMTP transport
     var transporter = nodemailer.createTransport({

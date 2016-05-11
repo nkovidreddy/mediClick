@@ -95,9 +95,10 @@ only screen and (min-device-pixel-ratio: 1.5){
                             </li>
                             <li><a href="/about">About Us</a>
                             </li>
-                            <li><a class="getApp" data-toggle="modal" data-target="#myModal">Sign In</a>
+                            <li><a id="login" class="getApp" data-toggle="modal" data-target="#myModal">Sign In</a>
                             </li>
-                            
+                            <li><a id="logout" class="getApp" data-toggle="modal" data-target="#myModal2">Sign Out</a>
+                            </li>
                            
 
                         </ul>
@@ -131,6 +132,26 @@ only screen and (min-device-pixel-ratio: 1.5){
     </div>
   </div>
         
+        <div class="modal fade" id="myModal2" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        
+        <div class="modal-body">
+         <!-- login -->
+         <a data-dismiss="modal" href="#" style="color:white;float:right">x</a>
+         <div class="wrapper">
+    <form class="form-signin" ng-submit="index.logout()">       
+      <h2 class="form-signin-heading" style="color:white">Are you sure you want to sign out?</h2>
+     
+      <button class="btn btn-lg btn-primary btn-block" type="submit" >Logout</button>   
+    </form>
+  </div>
+  <!--end-->
+        </div>
+        
+      </div>
+    </div>
+  </div>
   
         
         <!--RevSlider-->
@@ -367,6 +388,7 @@ only screen and (min-device-pixel-ratio: 1.5){
     <script>
         $(document).ready(function() {
             appMaster.preLoader();
+           
         });
     </script>
 </body>

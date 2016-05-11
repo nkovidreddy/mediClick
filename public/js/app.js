@@ -13,6 +13,8 @@ angular.module('masters',['routerRoutes','ngStorage','ngMessages'])
 	.controller('indexController',['$scope','$sessionStorage','$http', function($scope,$sessionStorage,$http){
       var vm=this;
 
+ 
+
 //Write Code to call API and limit one result sort by distance and send the address location parameters to gmaps page
 	//Getting user current location
 	var api_key = '84595b9ae71e28e06f8414fafac6938e'; // Get your API key at developer.betterdoctor.com
@@ -37,8 +39,17 @@ angular.module('masters',['routerRoutes','ngStorage','ngMessages'])
     });
   }
 }
-$scope.loading=false;
 
+$scope.loading=false;
+     if ($sessionStorage.fname != null )
+{
+	$('#login').hide();
+	
+}
+else
+{
+ $('#logout').hide();
+}
 
 		vm.login=function(){
 			//console.log("Email=" +vm.email);
@@ -82,6 +93,8 @@ $scope.email=vm.email;
 $scope.fname=vm.fname;
 window.alert("Login Successful");
 $('#myModal').modal('hide');
+$('#login').hide();
+$('#logout').show();
 
 	}
 
@@ -93,6 +106,23 @@ window.alert("please enter correct credentials");
 
       })
     }
+
+    //logout
+
+    vm.logout=function(){
+			//console.log("Email=" +vm.email);
+			console.log("inside logout");
+		
+		$sessionStorage.$reset();
+			
+
+window.alert("Logout Successful");
+$('#myModal2').modal('hide');
+$('#logout').hide();
+$('#login').show();
+
+	}
+
  
 $scope.notifyTest=function(){
 $scope.loading=true;

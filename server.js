@@ -13,6 +13,7 @@ var bcrypt = require('bcrypt-nodejs');
 var http = require("http");
 var sendgrid = require("sendgrid")("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");
 var postmark = require("postmark");
+var client = new postmark.Client("c3b13ea0-3d65-4176-9478-f6f31fddf21b");
 //var https = require("https");
 var credentials = {
    key  : fs.readFileSync('server.key'),
@@ -752,9 +753,10 @@ var sendtextto2;
  {
   telCarrier = TelCarrier.create({
   service: "data24-7.com",
-  username: "sindhura",
-  password: "sindhu77"
+  username: "sachutun",
+  password: "Iwonttell3"
 });
+  console.error("before going to telcarrier lookup");
   telCarrier.lookup(phone, function (err, data) {
   if (err) {
     console.error(err);
@@ -766,33 +768,49 @@ console.log(sendtextto);
   }
 
      //create reusable transporter object using SMTP transport
-    var transporter = nodemailer.createTransport({
-        service: 'Gmail',
-        host: 'smtp.gmail.com',
-        use_authentication: true,
-        auth: {
-            user: 'sindhurav18790@gmail.com',
-            pass: 'Sindhu@7'
-        }
+//     var transporter = nodemailer.createTransport({
+//         service: 'Gmail',
+//         host: 'smtp.gmail.com',
+//         use_authentication: true,
+//         auth: {
+//             user: 'sindhurav18790@gmail.com',
+//             pass: 'Sindhu@7'
+//         }
         
-    });
-var mailOptions = {
-        from: 'Sindhu<sindhurav18790@gmail.com>', // sender address
-        to: sendtextto, // list of receivers
-        subject: 'Emergencyyyy!', // Subject line
-        text: 'Testing my code', // plaintext body
-        html: '<b>Emergency Alert!!! Please attend!</b>' // html body
-    };
-    // send mail with defined transport object
-    transporter.sendMail(mailOptions, function(error, info){
-        if(error){
-            console.log(error);
-        }else{
-            console.log('Message sent: ' + info.response);            
-              }
-    transporter.close(); 
+//     });
+// var mailOptions = {
+//         from: 'Sindhu<sindhurav18790@gmail.com>', // sender address
+//         to: sendtextto, // list of receivers
+//         subject: 'Emergencyyyy!', // Subject line
+//         text: 'Testing my code', // plaintext body
+//         html: '<b>Emergency Alert!!! Please attend!</b>' // html body
+//     };
+//     // send mail with defined transport object
+//     transporter.sendMail(mailOptions, function(error, info){
+//         if(error){
+//             console.log(error);
+//         }else{
+//             console.log('Message sent: ' + info.response);            
+//               }
+//     transporter.close(); 
   
-    });
+//     });
+//var client = new postmark.Client("c3b13ea0-3d65-4176-9478-f6f31fddf21b");
+console.log("postmark sindhu testing");
+client.sendEmail({
+    "From": "sindhura.vallabhaneni@sjsu.edu",
+    "To": sendtextto,
+    "Subject": "Emergencyyyy!",
+    "TextBody": "Emergency Alert!!! Please attend!!",
+    "Tag": "Emergency Alert"
+}, function(error, success) {
+    if(error) {
+        console.error("Unable to send via postmark: " + error.message);
+       return;
+    }
+    console.info("Sent to postmark for delivery");
+    //res.json("in else success");
+});
     })
   ///alert second contact via text
 telCarrier.lookup(phone2, function (err, data) {
@@ -805,33 +823,49 @@ telCarrier.lookup(phone2, function (err, data) {
 console.log(sendtextto2);
   }
 
-     //create reusable transporter object using SMTP transport
-    var transporter = nodemailer.createTransport({
-        service: 'Gmail',
-        host: 'smtp.gmail.com',
-        use_authentication: true,
-        auth: {
-            user: 'sindhurav18790@gmail.com',
-            pass: 'Sindhu@7'
-        }
-    });
-var mailOptions = {
-        from: 'Sindhu<sindhurav18790@gmail.com>', // sender address
-        to: sendtextto2, // list of receivers
-        subject: 'Emergencyyyy!', // Subject line
-        text: 'Testing my code', // plaintext body
-        html: '<b>Emergency Alert!!! Please attend!</b>' // html body
-    };
-    // send mail with defined transport object
-    transporter.sendMail(mailOptions, function(error, info){
-        if(error){
-            console.log(error);
-        }else{
-            console.log('Message sent: ' + info.response);            
-              }
-    transporter.close(); 
+//      //create reusable transporter object using SMTP transport
+//     var transporter = nodemailer.createTransport({
+//         service: 'Gmail',
+//         host: 'smtp.gmail.com',
+//         use_authentication: true,
+//         auth: {
+//             user: 'sindhurav18790@gmail.com',
+//             pass: 'Sindhu@7'
+//         }
+//     });
+// var mailOptions = {
+//         from: 'Sindhu<sindhurav18790@gmail.com>', // sender address
+//         to: sendtextto2, // list of receivers
+//         subject: 'Emergencyyyy!', // Subject line
+//         text: 'Testing my code', // plaintext body
+//         html: '<b>Emergency Alert!!! Please attend!</b>' // html body
+//     };
+//     // send mail with defined transport object
+//     transporter.sendMail(mailOptions, function(error, info){
+//         if(error){
+//             console.log(error);
+//         }else{
+//             console.log('Message sent: ' + info.response);            
+//               }
+//     transporter.close(); 
    
-    });
+//     });
+//var client = new postmark.Client("c3b13ea0-3d65-4176-9478-f6f31fddf21b");
+console.log("postmark sindhu testing");
+client.sendEmail({
+    "From": "sindhura.vallabhaneni@sjsu.edu",
+    "To": sendtextto2,
+    "Subject": "Emergencyyyy!",
+    "TextBody": "Emergency Alert!!! Please attend!!",
+    "Tag": "Emergency Alert"
+}, function(error, success) {
+    if(error) {
+        console.error("Unable to send via postmark: " + error.message);
+       return;
+    }
+    console.info("Sent to postmark for delivery");
+    //res.json("in else success");
+});
     })
   res.json("in if success");
    ///alert second contact via text
@@ -886,14 +920,14 @@ else
 // Example request
 
 
-var client = new postmark.Client("c3b13ea0-3d65-4176-9478-f6f31fddf21b");
+//var client = new postmark.Client("c3b13ea0-3d65-4176-9478-f6f31fddf21b");
 console.log("postmark sindhu testing");
 client.sendEmail({
     "From": "sindhura.vallabhaneni@sjsu.edu",
-    "To": "vallabhanenisindhura85@gmail.com, nkovidreddy@gmail.com",
-    "Subject": "Hello from Postmark",
-    "TextBody": "Hello!",
-    "Tag": "big-bang"
+    "To": sendemailto,
+    "Subject": "Emergencyyyy!",
+    "TextBody": "Emergency Alert!!! Please attend!!",
+    "Tag": "Emergency Alert"
 }, function(error, success) {
     if(error) {
         console.error("Unable to send via postmark: " + error.message);
@@ -928,55 +962,90 @@ var sendtodoctor="vallabhanenisindhura85@gmail.com";
 var todoctor= "You are recieving this email because you have registered with mediclick's schedule appointment service."+" "+ fname+" "+lname+" "+" has scheduled and appointment with you on" + " "+ month+ " "+day+" "+ "at" + time +" "+ "Users Message: "+msg;
  var sendtouser =email;
  var touser= "Thank you for scheduling your doctor's appointment through mediclick. Please find the details of your appointment. "+ "Docname" + docname + "Appointment Time: " +  + " "+ month+ " "+day+" "+ "at" + time +" " + "Make you you arrive on time";
-//create reusable transporter object using SMTP transport
-    var transporter = nodemailer.createTransport({
-        service: 'Gmail',
-        auth: {
-            user: 'sindhurav18790@gmail.com',
-            pass: 'Sindhu@7'
-        }
-    });
+
+
+
+console.log("postmark sindhu testing");
+client.sendEmail({
+    "From": "sindhura.vallabhaneni@sjsu.edu",
+    "To": sendtouser,
+    "Subject": "Confirmation of your appointment!",
+    "TextBody": touser,
+    "Tag": "Emergency Alert"
+}, function(error, success) {
+    if(error) {
+        console.error("Unable to send via postmark: " + error.message);
+       return;
+    }
+    console.info("Sent to postmark for delivery");
+    //res.json("in else success");
+});
+
+
+// //create reusable transporter object using SMTP transport
+//     var transporter = nodemailer.createTransport({
+//         service: 'Gmail',
+//         auth: {
+//             user: 'sindhurav18790@gmail.com',
+//             pass: 'Sindhu@7'
+//         }
+//     });
 
     
-    var mailOptions = {
-        from: 'Sindhu<sindhurav18790@gmail.com>', // sender address
-        to: sendtouser, // list of receivers
-        subject: 'Confirmation of your appointment!', // Subject line
-        text: touser
+//     var mailOptions = {
+//         from: 'Sindhu<sindhurav18790@gmail.com>', // sender address
+//         to: sendtouser, // list of receivers
+//         subject: 'Confirmation of your appointment!', // Subject line
+//         text: touser
         
-       // html: '<b>second line</b><br>'
+//        // html: '<b>second line</b><br>'
 
-    };
+//     };
 
-    // send mail with defined transport object
-    transporter.sendMail(mailOptions, function(error, info){
-        if(error){
-            console.log(error);
-        }else{
-            console.log('Message sent: ' + info.response);            
-              }
-               // transporter.close(); 
-    });
+//     // send mail with defined transport object
+//     transporter.sendMail(mailOptions, function(error, info){
+//         if(error){
+//             console.log(error);
+//         }else{
+//             console.log('Message sent: ' + info.response);            
+//               }
+//                // transporter.close(); 
+//     });
 
-    var mailOptions = {
-        from: 'Sindhu<sindhurav18790@gmail.com>', // sender address
-        to: sendtodoctor, // list of receivers
-        subject: 'Regading an appointment!', // Subject line
-        text: todoctor
+    // var mailOptions = {
+    //     from: 'Sindhu<sindhurav18790@gmail.com>', // sender address
+    //     to: sendtodoctor, // list of receivers
+    //     subject: 'Regading an appointment!', // Subject line
+    //     text: todoctor
         
-       // html: '<b>second line</b><br>'
+    //    // html: '<b>second line</b><br>'
 
-    };
+    // };
 
-    // send mail with defined transport object
-    transporter.sendMail(mailOptions, function(error, info){
-        if(error){
-            console.log(error);
-        }else{
-            console.log('Message sent: ' + info.response);            
-              }
-                transporter.close(); 
-    });
+    // // send mail with defined transport object
+    // transporter.sendMail(mailOptions, function(error, info){
+    //     if(error){
+    //         console.log(error);
+    //     }else{
+    //         console.log('Message sent: ' + info.response);            
+    //           }
+    //             transporter.close(); 
+    // });
+
+    client.sendEmail({
+    "From": "sindhura.vallabhaneni@sjsu.edu",
+    "To": sendtodoctor,
+    "Subject": "Regading an appointment!",
+    "TextBody": todoctor,
+    "Tag": "Emergency Alert"
+}, function(error, success) {
+    if(error) {
+        console.error("Unable to send via postmark: " + error.message);
+       return;
+    }
+    console.info("Sent to postmark for delivery");
+    //res.json("in else success");
+});
 
     res.json("Appointment scheduled!");
 

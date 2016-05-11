@@ -19,6 +19,9 @@ angular.module('masters',['routerRoutes','ngStorage','ngMessages'])
 	//Getting user current location
 	var api_key = '84595b9ae71e28e06f8414fafac6938e'; // Get your API key at developer.betterdoctor.com
 	$scope.userloc=$sessionStorage.user_locationBrow;
+	$scope.useremail=$sessionStorage.email;
+	$scope.userfname=$sessionStorage.fname;
+  
 	if(!$scope.userloc){
 		console.log("True");
 		vm.userLocation="";
@@ -91,6 +94,9 @@ if((data.data[0] != null) && (data.data[0].email==vm.email))
         });
 $scope.email=vm.email;
 $scope.fname=vm.fname;
+$scope.useremail=$sessionStorage.email;
+$scope.userfname=$sessionStorage.fname;
+  
 window.alert("Login Successful");
 $('#myModal').modal('hide');
 $('#login').hide();

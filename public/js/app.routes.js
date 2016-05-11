@@ -80,8 +80,8 @@ $routeProvider
 
  	.when('/calorie', {
  	templateUrl : 'views/cal.html',
- 	controller : 'aboutController',
- 	controllerAs: 'about'
+ 	controller : 'getmoreController',
+ 	controllerAs: 'getmore'
  	})
 	
  // set our app up to have pretty URLS

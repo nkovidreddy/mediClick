@@ -95,9 +95,9 @@ only screen and (min-device-pixel-ratio: 1.5){
                             </li>
                             <li><a href="/about">About Us</a>
                             </li>
-                            <li><a id="login" class="getApp" data-toggle="modal" data-target="#myModal">Sign In</a>
+                            <li><a id="login" style="cursor:pointer" class="getApp" data-toggle="modal" data-target="#myModal">Sign In</a>
                             </li>
-                            <li><a id="logout" class="getApp" data-toggle="modal" data-target="#myModal2">Sign Out</a>
+                            <li><a id="logout" style="cursor:pointer" class="getApp" data-toggle="modal" data-target="#myModal2">Sign Out</a>
                             </li>
                            
 
@@ -141,7 +141,7 @@ only screen and (min-device-pixel-ratio: 1.5){
          <a data-dismiss="modal" href="#" style="color:white;float:right">x</a>
          <div class="wrapper">
     <form class="form-signin" ng-submit="index.logout()">       
-      <h2 class="form-signin-heading" style="color:white">Are you sure you want to sign out?</h2>
+      <h4 class="form-signin-heading" style="color:white">Are you sure you want to sign out?</h4>
      
       <button class="btn btn-lg btn-primary btn-block" type="submit" >Logout</button>   
     </form>
@@ -347,12 +347,11 @@ only screen and (min-device-pixel-ratio: 1.5){
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-4 col-xs-7" >
-                        <div class="about-item scrollpoint sp-effect1">
+                        <div class="about-item scrollpoint sp-effect2">
                           <!--  <i class="fa fa-sliders fa-2x"></i>
                           <a href="/calorie">  <img src="../public/img/eco/more.png"></a>-->
                                                  
-                          <a> <img src="../public/img/eco/more.png" ng-click="index.navcalorie()"></a>
-
+                          <a > <img style="cursor:pointer" src="../public/img/eco/more.png" ng-click="index.navcalorie()"></a>
 
                             <h3>Get More</h3>
                             <p>Access additional features such as Calorimeter</p>

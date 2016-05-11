@@ -148,17 +148,17 @@
        </p>
        </div>
          <div class="filter sp-effect3 col-md-2">
-                    <a href="javascript:void(0)" ng-click="showDetails = ! showDetails" class="button js-filter-all active">Read More</a>
-                    <a href="javascript:void(0)" ng-click="showAdd = ! showAdd" class="button js-filter-one">Address</a>
-                    <a href="javascript:void(0)" ng-click="showCon = ! showCon" class="button js-filter-two">Contact</a>
-                     <a href="javascript:void(0)" ng-click="bookAppointment = ! bookAppointment" class="button js-filter-three">Book Appointment</a>
+                    <a href="javascript:void(0)" ng-click="show = 1" class="button js-filter-all active">Read More</a>
+                    <a href="javascript:void(0)" ng-click="show = 2" class="button js-filter-one">Address</a>
+                    <a href="javascript:void(0)" ng-click="show = 3" class="button js-filter-two">Contact</a>
+                     <a href="javascript:void(0)" ng-click="show = 4" class="button js-filter-three">Book Appointment</a>
                 </div>
 
-       <div class="col-md-6" ng-show="showDetails"> 
+       <div class="col-md-6" ng-show="show==1"> 
        <p>{{doctor.profile.bio}}</p>      
        </div> 
 
-        <div class="col-md-6" ng-show="showAdd"> 
+        <div class="col-md-6" ng-show="show==2"> 
         <div class="row">
         <div class="col-md-6 " ng-repeat="p in doctor.practices" >
 
@@ -182,7 +182,7 @@
        </div> 
        </div>
 
-       <div class="col-md-6" ng-show="showCon"> 
+       <div class="col-md-6" ng-show="show==3"> 
         <div class="row">
         <div class="col-md-6 " ng-repeat="p in doctor.practices" >
         <h4>Contact: </h4>
@@ -194,7 +194,7 @@
        </div>
 
 
-       <div class="col-md-6" ng-show="bookAppointment"> 
+       <div class="col-md-6" ng-show="show==4"> 
         <div class="row">
     
       <form class="wellbook span7" ng-submit="bhealth.bookAppointment()">

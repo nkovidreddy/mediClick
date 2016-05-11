@@ -11,6 +11,8 @@ var TelCarrier = require('tel-carrier'); //telcarrier
 var sanitize = require('mongo-sanitize');
 var bcrypt = require('bcrypt-nodejs');
 var http = require("http");
+var sendgrid = require("sendgrid")("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");
+var postmark = require("postmark");
 //var https = require("https");
 var credentials = {
    key  : fs.readFileSync('server.key'),
@@ -842,35 +844,64 @@ else
    var sendemailto=eemail1+","+eemail2;
   console.log(sendemailto);
      //create reusable transporter object using SMTP transport
-    var transporter = nodemailer.createTransport({
-        service: 'Gmail',
-        auth: {
-            user: 'sindhurav18790@gmail.com',
-            pass: 'Sindhu@7'
-        }
-    });
+    // var transporter = nodemailer.createTransport({
+    //     service: 'Gmail',
+    //     auth: {
+    //         user: 'sindhurav18790@gmail.com',
+    //         pass: 'Sindhu@7'
+    //     }
+    // });
 
     
-    var mailOptions = {
-        from: 'Sindhu<sindhurav18790@gmail.com>', // sender address
-        to: sendemailto, // list of receivers
-        subject: 'Emergency!', // Subject line
-        text: 'Testing my code', // plaintext body
-        html: '<b>Emergency Alert!!! Please attend!</b>' // html body
-    };
+    // var mailOptions = {
+    //     from: 'Sindhu<sindhurav18790@gmail.com>', // sender address
+    //     to: sendemailto, // list of receivers
+    //     subject: 'Emergency!', // Subject line
+    //     text: 'Testing my code', // plaintext body
+    //     html: '<b>Emergency Alert!!! Please attend!</b>' // html body
+    // };
 
-    // send mail with defined transport object
-    transporter.sendMail(mailOptions, function(error, info){
-        if(error){
-            console.log(error);
-        }else{
-            console.log('Message sent: ' + info.response);            
-              }
-    transporter.close(); 
+    // // send mail with defined transport object
+    // transporter.sendMail(mailOptions, function(error, info){
+    //     if(error){
+    //         console.log(error);
+    //     }else{
+    //         console.log('Message sent: ' + info.response);            
+    //           }
+    // transporter.close(); 
+    // res.json("in else success");
+    // });
+// var email = new sendgrid.Email();
+
+// email.addTo("vallabhanenisindhura85@gmail.com");
+// email.setFrom("you@youremail.com");
+// email.setSubject("Sending with SendGrid is Fun");
+// email.setHtml("and easy to do anywhere, even with Node.js");
+
+// sendgrid.send(email);
+// res.json("in else success");
+
+
+
+// Example request
+
+
+var client = new postmark.Client("c3b13ea0-3d65-4176-9478-f6f31fddf21b");
+console.log("postmark sindhu testing");
+client.sendEmail({
+    "From": "sindhura.vallabhaneni@sjsu.edu",
+    "To": "vallabhanenisindhura85@gmail.com, nkovidreddy@gmail.com",
+    "Subject": "Hello from Postmark",
+    "TextBody": "Hello!",
+    "Tag": "big-bang"
+}, function(error, success) {
+    if(error) {
+        console.error("Unable to send via postmark: " + error.message);
+       return;
+    }
+    console.info("Sent to postmark for delivery");
     res.json("in else success");
-    });
-
-
+});
      }
   })
 })

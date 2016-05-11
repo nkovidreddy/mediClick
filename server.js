@@ -199,6 +199,10 @@ console.log(req.body);
 apiRouter.route('/users/:email')
 
 .put(function(req, res) {
+
+var hashPhone = bcrypt.hashSync(req.body.phone);
+var hashAddr = bcrypt.hashSync(req.body.address);
+ 
   var email=sanitize(req.params.email);
   console.log("testing inside sindhuupdate"+email);
 //var user = new User();
@@ -206,16 +210,15 @@ apiRouter.route('/users/:email')
  var lname = sanitize(req.body.lname);
  var bday=sanitize(req.body.bday);
  var gender=sanitize(req.body.gender);
- var phone=sanitize(req.body.phone);
- var address=sanitize(req.body.address);
  var zipcode=sanitize(req.body.zipcode);
 //var query = { email: 'sindhu@gmail.com' };
 //User.findOneAndUpdate(query, { email: 'tested@gmail.com' }, options, callback)
 
 
+
 var conditions = { email: email };
 //var update = { $set: {fname: "sindhu",lname:"vallabhaneni"}};
-var update = { $set: {fname: fname,lname:lname,bday:bday,gender:gender,phone:phone,address:address,zipcode:zipcode}};
+var update = { $set: {fname: fname,lname:lname,bday:bday,gender:gender,phone:hashPhone,address:hashAddr,zipcode:zipcode}};
 
 var options = { upsert: true };
 

@@ -121,6 +121,8 @@ window.alert("please enter correct credentials");
 		
 		$sessionStorage.$reset();
 			
+$scope.useremail=$sessionStorage.email;
+$scope.userfname=$sessionStorage.fname;
 
 window.alert("Logout Successful");
 $('#myModal2').modal('hide');

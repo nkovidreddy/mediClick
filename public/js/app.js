@@ -118,9 +118,11 @@ window.alert("please enter correct credentials");
     vm.logout=function(){
 			//console.log("Email=" +vm.email);
 			console.log("inside logout");
-		
+	//	console.log($scope.userloc);
 		$sessionStorage.$reset();
-			
+			$scope.$storage = $sessionStorage.$default({
+          user_locationBrow:$scope.userloc
+        });
 $scope.useremail=$sessionStorage.email;
 $scope.userfname=$sessionStorage.fname;
 

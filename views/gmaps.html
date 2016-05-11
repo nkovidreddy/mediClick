@@ -98,7 +98,7 @@
                             <li><a href="/Symptoms">Symptom Checker</a>
                             </li>
                             
-                            <li><a href="/betterhealth">Doctor</a>
+                            <li><a href="/betterhealth">Find Doctor</a>
                             </li>
                             
                         </ul>
@@ -217,6 +217,10 @@
     document.getElementById('routeTo').value=loc;
     document.getElementById("routeGo").click();
 }
+   $("#routeClear").on("click", function() {
+    $("#routeTo").val("");
+    $("#routeFrom").val("");
+  });
     </script>
 </body>
 

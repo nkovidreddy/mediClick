@@ -16,7 +16,7 @@ $(window).load(function() {
  //var pyrmont = {lat: 37.3352, lng: -121.8811};
 
   //var pyrmont = new google.maps.LatLng(37.3352, -121.8811);
-  var pyrmont = document.getElementById("routeFrom").value;
+  // var pyrmont = document.getElementById("routeFrom").value;
  //var myloc = {lat: 37.3352, lng: -121.8811};
 
    map = new google.maps.Map(document.getElementById('map_canvas'), {

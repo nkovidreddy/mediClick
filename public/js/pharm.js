@@ -4,8 +4,16 @@ var map;
 $(window).load(function() {
 
   //var pyrmont = new google.maps.LatLng(-33.8665, 151.1956);
-  var pyrmont = new google.maps.LatLng(37.3352, -121.8811);
- //var myloc = {lat: 37.3352, lng: -121.8811};
+  var s= document.getElementById("routeFrom").value;
+ var c=s.split(',');
+ var a = c[0];
+ var b = c[1];
+window.alert(a+','+b);
+   //var pyrmont = new google.maps.LatLng(s);
+  
+   var pyrmont = new google.maps.LatLng(parseFloat(a), parseFloat(b));
+
+ //var pyrmont = {lat: 37.3352, lng: -121.8811};
    map = new google.maps.Map(document.getElementById('map_canvas'), {
     center: pyrmont,
     zoom: 15,

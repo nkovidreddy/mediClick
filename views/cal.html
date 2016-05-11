@@ -394,6 +394,8 @@ var activity = [{"Activity":"Cycling, mountain bike, bmx","wone":502,"wtwo":598,
                             </li>
                             <li><a href="/pharm">Find Pharmacy</a>
                             </li>
+                            <li><a href="/betterhealth">Find Doctor</a>
+                            </li>                            
                     
                         </ul>
                     </div>
@@ -443,10 +445,10 @@ var activity = [{"Activity":"Cycling, mountain bike, bmx","wone":502,"wtwo":598,
   <br>
   <select multiple="" id="select1" style="float:left;border: 4px solid #66cc99;width: 100%;border-radius: 10px;padding: 12px;font-size: small;margin-top: 2%;overflow-x: overlay;height: 150px;">  </select>  
  <!--  <input type="text" id="select1" title="Please enter a valid text" class="form-control " style="float: left;width: 80%;" pattern="^[A-Za-z ,.'-]+$"> -->
- <span class="form-inline col-md-7 col-xs-12" style="margin-top: 5%;">
+ <!-- <span class="form-inline col-md-7 col-xs-12" style="margin-top: 5%;">
 <label style="float: left;color:#555555">Servings size</label>
    <input type="text" id="inpServe" title="Please enter a valid text" class="form-control " style="border: 1px solid #66cc99;width: 40%;border-radius: 10px;padding: 12px;font-size: small;margin-top: -4%;overflow-x: overlay;" pattern="^[1-9]+$">
-   </span>
+   </span> -->
   <br>
   <br>
  </section>
@@ -853,10 +855,10 @@ $('#calConsumed').click(function() {
 
   $('#select2 option').each(function(i, selected){
  var calFoodCount = $(selected).text().substring($(selected).text().indexOf(":")+1);
- var inpSer=$('#inpServe').val();
+ // var inpSer=$('#inpServe').val();
  //alert(inpSer);
  //alert(parseFloat(calFoodCount)* parseFloat(inpSer)); 
-  selectedFoodValues[i] = parseFloat(calFoodCount)* parseFloat(inpSer); 
+  selectedFoodValues[i] = parseFloat(calFoodCount); 
 });
 
     for(var x=0; x<selectedFoodValues.length;x++){ 

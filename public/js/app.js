@@ -143,7 +143,7 @@ console.log("before sendemail");
 
 if (fname == null || email == null)
 {
-	window.alert("Please register to proceed!!");
+	window.alert("Please sign in to proceed!!");
 	$scope.loading=false;
 	return;
 }
@@ -183,6 +183,40 @@ window.alert("Your contacts have been alerted");
      	//window.location.href = '/gmaps/'+endLoc;
      })
 }
+
+
+
+vm.navcalorie=function(){
+$scope.loading=true;
+  
+console.log("inside navCalorie");
+$scope.$fname = $sessionStorage.fname;
+$scope.$email = $sessionStorage.email;
+
+		
+var fname= $sessionStorage.fname;
+var email = $sessionStorage.email;
+
+
+
+
+if (fname == null || email == null)
+{
+	window.alert("Please register to access our additional features!!");
+	$scope.loading=false;
+	return;
+}
+else
+{
+
+window.location.href = '/calorie';
+}
+
+}
+
+
+
+
 }])
 
 
@@ -364,6 +398,7 @@ else
       }
 
 		$http(medicalInfo).then(function(data){
+		window.alert ("Thank you completing the form. Please signin to proceed!");	
      	window.location.href = '/';
 
       })
@@ -517,6 +552,13 @@ console.log("inside pharm testing");
 	var vm=this;
 	
 
+
+   }])
+
+.controller('getmoreController',['$scope','$sessionStorage','$http', function($scope,$sessionStorage,$http){
+	var vm=this;
+	
+console.log("inside this getmore controller");
 
    }])
 

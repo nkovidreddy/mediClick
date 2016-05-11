@@ -54,8 +54,8 @@ app.use(methodOverride('X-HTTP-Method-Override')); // override with the X-HTTP-M
  res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, \
  Authorization');
-if(req.headers['x-forwarded-proto']!='https')
-    res.redirect('https://mediclick.herokuapp.com');
+// if(req.headers['x-forwarded-proto']!='https')
+//     res.redirect('https://mediclick.herokuapp.com');
  next();
  });
 
@@ -722,7 +722,8 @@ var email=sanitize(req.body.email);
 var fname=sanitize(req.body.fname);
 var notify=sanitize(req.body.notify);
 var email1=sanitize(req.body.email1);
- var sendtextto;
+var sendtextto;
+var sendtextto2;
  User.find({"email":email}, function(error, users) {
  if(error){
             console.log(error);
@@ -737,6 +738,8 @@ var email1=sanitize(req.body.email1);
  var sendvia = users[0].notify;
  var phone = users[0].elname1;
  var eemail1 = users[0].eemail1;
+ var phone2 = users[0].elname2;
+ var eemail2 = users[0].eemail2;
  console.log(sendvia);
  //res.json(users);
 
@@ -770,7 +773,7 @@ var mailOptions = {
         to: sendtextto, // list of receivers
         subject: 'Emergencyyyy!', // Subject line
         text: 'Testing my code', // plaintext body
-        html: '<b>hahaha</b>' // html body
+        html: '<b>Emergency Alert!!! Please attend!</b>' // html body
     };
     // send mail with defined transport object
     transporter.sendMail(mailOptions, function(error, info){
@@ -780,16 +783,55 @@ var mailOptions = {
             console.log('Message sent: ' + info.response);            
               }
     transporter.close(); 
-    res.json("in if success");
+  
     });
     })
+  ///alert second contact via text
+telCarrier.lookup(phone2, function (err, data) {
+  if (err) {
+    console.error(err);
+  } else {
+    console.log('data');
+    console.log(data.smsGateway);
+     sendtextto2=data.smsGateway;
+console.log(sendtextto2);
+  }
+
+     //create reusable transporter object using SMTP transport
+    var transporter = nodemailer.createTransport({
+        service: 'Gmail',
+        auth: {
+            user: 'sindhurav18790@gmail.com',
+            pass: 'Sindhu@7'
+        }
+    });
+var mailOptions = {
+        from: 'Sindhu<sindhurav18790@gmail.com>', // sender address
+        to: sendtextto2, // list of receivers
+        subject: 'Emergencyyyy!', // Subject line
+        text: 'Testing my code', // plaintext body
+        html: '<b>Emergency Alert!!! Please attend!</b>' // html body
+    };
+    // send mail with defined transport object
+    transporter.sendMail(mailOptions, function(error, info){
+        if(error){
+            console.log(error);
+        }else{
+            console.log('Message sent: ' + info.response);            
+              }
+    transporter.close(); 
+   
+    });
+    })
+  res.json("in if success");
+   ///alert second contact via text
 }
 
 
 else
 {
   console.log("In Else Block");
-   var sendemailto=eemail1;
+   var sendemailto=eemail1+","+eemail2;
   console.log(sendemailto);
      //create reusable transporter object using SMTP transport
     var transporter = nodemailer.createTransport({

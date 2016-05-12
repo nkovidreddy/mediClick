@@ -57,8 +57,8 @@ app.use(methodOverride('X-HTTP-Method-Override')); // override with the X-HTTP-M
  res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, \
  Authorization');
-if(req.headers['x-forwarded-proto']!='https')
-    res.redirect('https://mediclick.herokuapp.com');
+// if(req.headers['x-forwarded-proto']!='https')
+//     res.redirect('https://mediclick.herokuapp.com');
  next();
  });
 

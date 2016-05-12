@@ -12,6 +12,13 @@ var map;
 // });
 
 $(window).load(function() {
+  var input = /** @type {!HTMLInputElement} */(
+      document.getElementById('routeTo'));
+   var autocomplete = new google.maps.places.Autocomplete(input);
+
+   var input2 = /** @type {!HTMLInputElement} */(
+      document.getElementById('routeFrom'));
+   var autocomplete2 = new google.maps.places.Autocomplete(input2);
   var myOptions = {
     zoom: 10,
     mapTypeId: google.maps.MapTypeId.ROADMAP,

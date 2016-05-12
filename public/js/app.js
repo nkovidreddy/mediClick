@@ -575,7 +575,7 @@ console.log("inside this getmore controller");
 .controller('bhealthController',['$scope','$sessionStorage','$http', function($scope,$sessionStorage,$http){
 	var vm=this;
 	
-	
+	$scope.date = new Date();
 	vm.message = 'Better Health';
 	//User Location - Kovid Insert
 	vm.userLocation="";
@@ -703,6 +703,7 @@ vm.getInsurance=function(){
 }
 
 vm.bookAppointment=function(){
+	
 		console.log("inside book appt");
 		var fname=vm.fname;
 		var lname=vm.lname;

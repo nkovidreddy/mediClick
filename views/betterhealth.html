@@ -201,22 +201,22 @@
        <div class="col-md-6" ng-show="show==4"> 
         <div class="row">
     
-      <form name="bookAppointmentForm" class="wellbook span7" name="doc" ng-submit="bhealth.bookAppointment()">
+      <form  class="wellbook span7" name="doc" ng-submit="bhealth.bookAppointment()">
         
         <div class="row">
              
 
          <div class="form-group">
                                         <label for="fnameVD">First Name:</label>
-                                        <input type="text" name="firstName" placeholder=""  id="firstName" ng-model="bhealth.fname" required ng-pattern="/^[A-Za-z ,.'-]+$/">
+                                        <input type="text" name="firstName" placeholder=""  id="firstName" ng-model="bhealth.fname"  ng-pattern="/^[A-Za-z ,.'-]+$/" required>
 
-                                        <div ng-messages="bookAppointmentForm.firstName.$error">
+                                        <div ng-messages="doc.firstName.$error">
                                        <div style="color:red" ng-message="pattern">Please enter a valid first name</div>
                                    </div>
 
                                          <label for="lnameVD">Last Name:</label>
-                                        <input type="text" name="lastName" placeholder=""  id="lastName" ng-model="bhealth.lname" ng-pattern="/^[A-Za-z ,.'-]+$/" required>
-                                        <div ng-messages="bookAppointmentForm.lastName.$error">
+                                        <input type="text" name="lastName" placeholder=""  id="lastName" ng-model="bhealth.lname" ng-pattern="/^[A-Za-z ,.'-]+$/" required >
+                                        <div ng-messages="doc.lastName.$error">
                                        <div style="color:red" ng-message="pattern">Please enter a valid last name</div>
                                         </div>
                                     </div>
@@ -241,9 +241,10 @@
         <div class="form-group">
                                        
                                         <div class="span5">
-                <label>Date and Time</label>
+                <label>Date</label>
                 <div class="btn-toolbar" style="margin: 0;">
-                    <div class="btn-group">
+                <input type="date" ng-model="bhealth.StartDate" name="StartDate" min="{{date | date:'yyyy-MM-dd'}}" />
+                    <!-- <div class="btn-group">
                         <select class="" ng-model="bhealth.month" required>
                             <option value="Month" class="">- Month -</option>
                             <option value="January" class="">January</option>
@@ -312,7 +313,7 @@
                         </select>
                        
                         
-                    </div>
+                    </div> -->
                                     </div>
            
                    

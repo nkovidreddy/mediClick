@@ -201,22 +201,22 @@
        <div class="col-md-6" ng-show="show==4"> 
         <div class="row">
     
-      <form class="wellbook span7" ng-submit="bhealth.bookAppointment()">
+      <form class="wellbook span7" name="doc" ng-submit="bhealth.bookAppointment()">
         
         <div class="row">
          <div class="form-group">
                                         <label>First Name:</label>
-                                        <input type="text" name="firstName" placeholder=""  id="firstName" ng-model="bhealth.fname">
+                                        <input type="text" name="firstName" placeholder=""  id="firstName" ng-model="bhealth.fname" pattern="^[A-Za-z ,.'-]+$"required>
 
                                          <label>Last Name:</label>
-                                        <input type="text" name="lastName" placeholder=""  id="lastName" ng-model="bhealth.lname">
+                                        <input type="text" name="lastName" placeholder=""  id="lastName" ng-model="bhealth.lname"pattern="^[A-Za-z ,.'-]+$"required>
                                     </div>
        
         <div class="form-group">
                                         <label>Email Id:  </label>
-                                        <input type="email" name="email" placeholder=""  id="email" ng-model="bhealth.email">
+                                        <input type="email" name="email" placeholder=""  id="email" ng-model="bhealth.email" required>
  <label>Visit Regarding</label>
-                                         <select id="subject" name="subject" class="span2" ng-model="bhealth.visitregarding">
+                                         <select id="subject" name="subject" class="span2" ng-model="bhealth.visitregarding" required>
                     <option value="na" selected="" class="">Visit regarding...</option>
                     <option value="MySon" class="">My son</option>
                     <option value="MyDaughter" class="">My Daughter</option>
@@ -235,7 +235,7 @@
                 <label>Date and Time</label>
                 <div class="btn-toolbar" style="margin: 0;">
                     <div class="btn-group">
-                        <select class="" ng-model="bhealth.month">
+                        <select class="" ng-model="bhealth.month" required>
                             <option value="Month" class="">- Month -</option>
                             <option value="January" class="">January</option>
                             <option value="February" class="">February</option>
@@ -250,7 +250,7 @@
                             <option value="November" class="">November</option>
                             <option value="December" class="">December</option>
                         </select>
-                        <select class="" ng-model="bhealth.day">
+                        <select class="" ng-model="bhealth.day" required>
                             <option value="Day" class="">- Day -</option>
                             <option value="01" class="">1</option>
                             <option value="02" class="">2</option>
@@ -284,7 +284,7 @@
                             <option value="03" class="">30</option>
                             <option value="03" class="">31</option>
                         </select>
-                        <select class="" ng-model="bhealth.time">
+                        <select class="" ng-model="bhealth.time" required>
                             <option value="Time" class="">Time am/pm</option>
                             <option value="10am" class="">10:00am</option>
                             <option value="1030am" class="">10:30am</option>
@@ -309,9 +309,15 @@
                    
                 </div>
                 <label class="">Message</label>
-                <textarea name="message" id="message" class="span4" rows="5" style="width: 96%" ng-model="bhealth.msg"></textarea>
+                <textarea name="message" id="message" class="span4" rows="5" style="width: 96%" ng-model="bhealth.msg" ng-pattern="/^[a-zA-Z0-9\s,'-]*$/" required></textarea>
+                   <div ng-messages="doc.message.$error">
+                                      <!-- <div ng-message="required">This field is required</div>
+                                      <div ng-message="minlength">Message must be over 5 characters</div>
+                                      <div ng-message="maxlength">Message must not exceed 100 characters</div> -->
+                                       <div style="color:red" ng-message="pattern">Please enter a valid message</div>
+                                   </div>
             </div>
-            <button type="submit" class="btn btn-warning" style="margin-left: 32%;" contenteditable="false">Submit</button>
+            <button type="submit" class="btn btn-warning" style="margin-left: 32%;" contenteditable="false" ng-disabled="!doc.$valid">Submit</button>
         </div>
     </form>
 

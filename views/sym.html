@@ -456,7 +456,11 @@
   <fieldset class="form-group">
     <label for="exampleSelect1">Selected body part:</label>
 
-    <input type="text" class="form-control"  name="bodypart" id="selections" placeholder="..." ng-value="name" ng-model="selBodyValue">
+    <input type="text" class="form-control"  name="bodypart" id="selections" placeholder="..." ng-value="name" ng-model="selBodyValue" ng-pattern="/^[A-Za-z ,.'-]+$/">
+    <div ng-messages="symform.bodypart.$error">
+                                
+                                       <div style="color:red" ng-message="pattern">Please do not enter special characters</div>
+                                   </div>
    <!-- <input id="selections" ng-model="selections">-->
   </fieldset>
 
@@ -465,14 +469,19 @@
 
   <fieldset class="form-group">
     <label for="exampleSelect1">Select a specific body part</label>
-  <a href="" data-toggle="tooltip" data-placement="left" title="Type a specific body part, if not found on the model">  <input type="text" class="form-control"  id="specific" placeholder="..." ng-model="selBodyPartValue"></a>   
-
+  <a href="" data-toggle="tooltip" data-placement="left" title="Type a specific body part, if not found on the model"> 
+   <input name=spec type="text" class="form-control"  id="specific" placeholder="..." ng-model="selBodyPartValue" ng-pattern="/^[A-Za-z ,.'-]+$/"></a>   
+<div ng-messages="symform.spec.$error">
+                                       <div style="color:red" ng-message="pattern">Please do not enter special characters</div>
+                                   </div>
   </fieldset>  
   <fieldset class="form-group">
     <label for="exampleSelect1">Enter Symptom</label>
      <a href="" data-toggle="tooltip" data-placement="left" title="Type your symptom as a simple phrase">
-     <input name="symp" type="text" class="form-control"  id="symptom" placeholder="..." ng-model="selSymptomValue" ></a>     
-      
+     <input name="symp" type="text" class="form-control"  id="symptom" placeholder="..." ng-model="selSymptomValue" ng-pattern="/^[A-Za-z ,.'-]+$/"></a>     
+      <div ng-messages="symform.symp.$error">
+                                       <div style="color:red" ng-message="pattern">Please do not enter special characters</div>
+                                   </div>
   </fieldset>  
   <button type="submit" onclick="convert();" class="btn btn-primary">Submit</button>
 </form>

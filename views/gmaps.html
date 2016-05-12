@@ -123,15 +123,15 @@
                     <div class="divider"></div>
                     <p>Get to us</p>
                 </div>
-
+               <form>
                 <!-- <div style="display: none"> -->
                   <label for="routeFrom">From</label>   
                   <input class="form-group" type="hidden" id="r"  value="{{userloc}}" />       
-                 <input class="form-group" type="text" id="routeFrom" name="routeFrom" value="{{userloc}}" style="width:30%"/>      
+                 <input class="form-group" type="text" id="routeFrom" name="routeFrom" value="{{userloc}}" style="width:30%" pattern="^[A-Za-z0-9 ,.'-]+$"required/>      
                   
 
                 <label for="routeTo">To</label>
-                 <input class="form-group" type="text" id="routeTo" name="routeTo" value="" style="width:30%" />
+                 <input class="form-group" type="text" id="routeTo" name="routeTo" value="" style="width:30%" pattern="^[A-Za-z0-9 ,.'-]+$" required/>
                   <!-- </div> -->
                   
                   <label for="routeMode">Mode</label>
@@ -143,9 +143,9 @@
                      </select>
                     
                     
-                   <button  id="routeGo" class="btn btn-success">Route</button> 
+                   <button  id="routeGo" class="btn btn-success" type="submit">Route</button> 
                  <button id="routeClear" class="btn btn-success">Clear Route</button> 
-                
+                </form>>
                
 
             <!--      <div class="form-inline">

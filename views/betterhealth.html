@@ -104,10 +104,14 @@
                 </div>
                 
                  
-                <form role="form" ng-submit="bhealth.getDoctors()" class="registration-form col-md-4" >
+                <form role="form" ng-submit="bhealth.getDoctors()" class="registration-form col-md-4" name="heal" >
                 
                  <fieldset class="form-group">
-                 <input type="text" class="form-control"  id="symptom" placeholder="Enter symptom" ng-model="bhealth.symptomVal"> 
+                 <input type="text" class="form-control" name="sym" id="symptom" placeholder="Enter symptom" ng-model="bhealth.symptomVal" ng-pattern="/^[A-Za-z ,.'-]+$/" required> 
+                  <div ng-messages="heal.sym.$error">
+                                
+                                       <div style="color:red" ng-message="pattern">Please do not enter special characters</div>
+                                   </div>
 
                  <button class="btn btn-success"  onclick="show();" ng-model="insurance.aetna">Select an Insurance Plan</button>      
                  </fieldset> 
@@ -120,7 +124,7 @@
                  
                  </select> 
                  </div>
-                 <button type="submit" class="btn btn-success" >Get Doctors</button>
+                 <button type="submit" class="btn btn-success" ng-disabled="!heal.$valid">Get Doctors</button>
 
             </form>
            

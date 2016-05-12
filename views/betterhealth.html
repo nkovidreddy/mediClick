@@ -224,6 +224,9 @@
         <div class="form-group">
                                         <label>Email Id:  </label>
                                         <input type="email" name="email" placeholder=""  id="email" ng-model="bhealth.email" required>
+                                        <div ng-messages="doc.email.$error">
+                                       <div style="color:red" ng-message="email">Please enter a valid address</div>
+                                   </div>
  <label>Visit Regarding</label>
                                          <select id="subject" name="subject" class="span2" ng-model="bhealth.visitregarding" required>
                     <option value="na" selected="" class="">Visit regarding...</option>

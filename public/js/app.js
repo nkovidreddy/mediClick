@@ -709,15 +709,13 @@ vm.bookAppointment=function(){
 		var lname=vm.lname;
 		var email=vm.email;
 		var visitregarding=vm.visitregarding;
-		var month=vm.month;
-		var day=vm.day;
-		var time=vm.time;
+		var day = vm.StartDate;
 		var msg=vm.msg;
 		
 	var bookappreq = {
       url: '/api/bookappointment', // No need of IP address
       method: 'POST',
-      data: {'fname':vm.fname,'lname':vm.lname,'email':vm.email,'visitregarding':vm.visitregarding,'month':vm.month,'day':vm.day,'time':vm.time,'msg':vm.msg},
+      data: {'fname':vm.fname,'lname':vm.lname,'email':vm.email,'visitregarding':vm.visitregarding,'day':vm.StartDate,'msg':vm.msg},
       headers: {'Content-Type': 'application/json'}
 	}
 

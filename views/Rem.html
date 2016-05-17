@@ -72,11 +72,11 @@
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="/">Home</a>
+                            <li><a href="" onclick="home();">Home</a>
                             </li>
-                            <li><a href="/Symptoms">Symptom Checker</a>
+                            <li><a href="" onclick="sym();">Symptom Checker</a>
                             </li>
-                            <li><a href="/betterhealth">Find Doctor</a>
+                            <li><a href="" onclick="hi();">Find Doctor</a>
                             </li>
                             
                         </ul>
@@ -188,6 +188,15 @@
     {
         window.location.assign("/betterhealth")
     }
+     function home()
+    {
+        window.location.assign("/")
+    }
+     function sym()
+    {
+        window.location.assign("/Symptoms")
+    }
+     
 
     </script>
 </body>
